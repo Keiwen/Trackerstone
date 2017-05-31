@@ -1,6 +1,18 @@
 # Trackerstone
 
-> Simple Hearthstone tracker
+<a target="_blank" href="https://keiwen.github.io/Trackerstone/#/">Test it!</a>
+
+> Experiments with VueJS framework
+
+Simple Hearthstone tracker. Just track your win and loss. App can:
+- display your current rank and star
+
+Maybe one day this app will let you know:
+- winrate with specified deck
+- stats against opponent's deck types
+- graph with progress history
+- how many win needed 'til next rank milestone
+- and of course a lot of pink unicorned stuff
 
 ## Build Setup
 
@@ -18,4 +30,3 @@ npm run build
 npm run build --report
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
