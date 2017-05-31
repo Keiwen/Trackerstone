@@ -4,9 +4,12 @@ var path = require('path')
 module.exports = {
   build: {
     env: require('./prod.env'),
+    //replace dist by docs to generate github page
     index: path.resolve(__dirname, '../dist/index.html'),
+    //replace dist by docs to generate github page
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
+    //replace / by ./ to generate github page
     assetsPublicPath: '/',
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
