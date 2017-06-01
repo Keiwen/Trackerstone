@@ -4,14 +4,15 @@
 
 > Experiments with VueJS framework
 
-Simple Hearthstone tracker. Just track your win and loss. App can:
-- display your current rank and star
+Simple Hearthstone tracker. Just track your win and loss. On app you'll find:
+- your current rank and star
+- how many win needed 'til next rank milestone
 
 Maybe one day this app will let you know:
 - winrate with specified deck
 - stats against opponent's deck types
 - graph with progress history
-- how many win needed 'til next rank milestone
+- save/load data in cookie
 - and of course a lot of pink unicorned stuff
 
 ## Build Setup
