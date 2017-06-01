@@ -119,6 +119,23 @@ const actions = {
 // Mutations
 // ----------
 const mutations = {
+  [types.SET_SERIE_DATA] (state, data) {
+    if (typeof data.rank === 'undefined') data.rank = 25
+    if (typeof data.stars === 'undefined') data.stars = 0
+    if (typeof data.winStreak === 'undefined') data.winStreak = 0
+    if (typeof data.highest === 'undefined') data.highest = data.rank
+
+    // rank between 0 and 25
+    if (data.rank >= 0 && data.rank <= 25) state.rank = data.rank
+    // stars between 0 and max by rank, 0 if rank 0
+    if (state.rank === 0) data.stars = 0
+    if (data.stars >= 0 && data.stars <= state.RANKS[state.rank]['stars']) state.stars = data.stars
+    // win streak must be > 0
+    if (data.winStreak >= 0) state.winStreak = data.winStreak
+    // highest should be at least rank
+    if (data.highest > state.rank) data.highest = state.rank
+    if (data.highest >= 0 && data.highest <= 25) state.highest = data.highest
+  },
   [types.INCREASE_RANK] (state) {
     if (state.rank === 0) return // max level
     state.rank--

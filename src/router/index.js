@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Serie from '@/components/Serie'
+import SerieSet from '@/components/SerieSet'
 import 'bootstrap/dist/css/bootstrap.css'
 import Icon from 'vue-awesome/components/Icon'
 import 'vue-awesome/icons'
@@ -12,8 +13,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Serie',
+      name: 'serie',
       component: Serie
+    },
+    {
+      path: '/set',
+      name: 'serieSet',
+      component: SerieSet
     }
   ]
 })

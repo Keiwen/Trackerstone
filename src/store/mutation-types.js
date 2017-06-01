@@ -5,4 +5,5 @@ export const REMOVE_STAR = 'REMOVE_STAR'
 export const ADD_WIN_STREAK = 'ADD_WIN_STREAK'
 export const STOP_WIN_STREAK = 'STOP_WIN_STREAK'
 export const RESET_SERIE = 'RESET_SERIE'
+export const SET_SERIE_DATA = 'SET_SERIE_DATA'
 
