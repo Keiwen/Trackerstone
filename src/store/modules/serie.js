@@ -58,6 +58,38 @@ const getters = {
     if (typeof id === 'undefined') id = state.rank
     return state.RANKS[id]['stars']
   },
+  nextMilestone: state => {
+    if (state.rank === 0) return 0
+    let nextMilestone = 0
+    for (let i = state.MILESTONES.length - 1; i >= 0; i--) {
+      if (state.MILESTONES[i] >= state.rank) break
+      nextMilestone = state.MILESTONES[i]
+    }
+    return nextMilestone
+  },
+  starsToMilestone: (state, getters) => {
+    if (state.rank === 0) return 0
+    const nextMilestone = getters.nextMilestone
+    let stars = 1
+    for (let i = state.rank; i > nextMilestone; i--) {
+      stars += state.RANKS[i]['stars']
+    }
+    stars -= state.stars
+    return stars
+  },
+  winsToMilestone: (state, getters) => {
+    if (state.rank === 0) return 0
+    const starsToMilestone = getters.starsToMilestone
+    // if no more bonus, wins = number of stars
+    if (state.rank <= state.RANK_BONUSCANCELED) return starsToMilestone
+    // games to win before bonus star
+    let winTilBonus = state.WIN_STREAK - 1 - state.winStreak
+    if (winTilBonus < 0) winTilBonus = 0
+    let normalWins = Math.min(winTilBonus, starsToMilestone)
+    // games to win with bonus
+    let bonusWins = (starsToMilestone - normalWins) / (state.BONUS_STAR + 1)
+    return Math.ceil(normalWins + bonusWins)
+  },
   stars: state => state.stars,
   winStreak: state => state.winStreak,
   highest: state => state.highest
