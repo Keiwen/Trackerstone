@@ -41,7 +41,8 @@ const state = {
   rank: 25,
   stars: 0,
   winStreak: 0,
-  highest: 25
+  highest: 25,
+  history: []
 
 }
 
@@ -92,7 +93,14 @@ const getters = {
   },
   stars: state => state.stars,
   winStreak: state => state.winStreak,
-  highest: state => state.highest
+  highest: state => state.highest,
+  gamesPlayed: state => state.history.length,
+  gamesWon: state => state.history.filter(history => history.won).length,
+  gamesLoss: (state, getters) => (getters.gamesPlayed - getters.gamesWon),
+  winRate: (state, getters) => {
+    if (getters.gamesPlayed === 0) return 0
+    return Math.round((getters.gamesWon / getters.gamesPlayed) * 100) / 100
+  }
 }
 
 // ----------
@@ -203,6 +211,15 @@ const mutations = {
     state.rank = 25
     state.stars = 0
     state.winstreak = 0
+    state.history = []
+  },
+  [types.SET_HISTORY] (state, history) {
+    state.history = history
+  },
+  [types.ADD_HISTORY] (state, history) {
+    history.rank = state.rank
+    history.stars = state.stars
+    state.history.push(history)
   }
 
 }
