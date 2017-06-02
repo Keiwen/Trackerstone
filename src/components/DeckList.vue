@@ -6,9 +6,7 @@
         </ul>
         <hr/>
         <label>Class: </label>
-        <select v-model="newClass">
-            <option v-for="(hsClass, key) in classes" :value="key">{{ hsClass.name }}</option>
-        </select>
+        <class-pick @pick-class="pickClass"></class-pick>
         <label>Type: </label>
         <select v-model="newType">
             <option v-for="type in types">{{ type }}</option>
@@ -28,8 +26,10 @@
 
   import { mapGetters } from 'vuex'
   import * as storeMut from '../store/mutation-types'
+  import ClassPick from '@/components/ClassPick'
 
   export default {
+    components: {ClassPick},
     data () {
       return {
         newClass: '',
@@ -48,12 +48,14 @@
           name: this.newName
         }
         this.$store.commit(storeMut.ADD_DECK, deckData)
-        this.newClass = ''
         this.newType = ''
         this.newName = ''
       },
       remove (id) {
         this.$store.commit(storeMut.REMOVE_DECK, id)
+      },
+      pickClass (pick) {
+        this.newClass = pick
       },
       getClassName (id) {
         return this.$store.getters.className(id)
