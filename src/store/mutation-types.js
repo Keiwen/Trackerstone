@@ -11,4 +11,7 @@ export const ADD_DECK = 'ADD_DECK'
 export const REMOVE_DECK = 'REMOVE_DECK'
 export const ADD_DECKTYPE = 'ADD_DECKTYPE'
 export const REMOVE_DECKTYPE = 'REMOVE_DECKTYPE'
+export const SET_OWN_DECKLIST = 'SET_OWN_DECKLIST'
+export const SET_DECKTYPES = 'SET_DECKTYPES'
+export const SET_DECK_NEXTID = 'SET_DECK_NEXTID'
 

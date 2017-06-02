@@ -5,7 +5,6 @@
             <li v-for="type in types">{{ type }} <button @click="remove(type)">Remove</button></li>
             <li><input type="text" v-model="newType" @keyup.enter="add()"/> <button @click="add()">Add</button></li>
         </ul>
-
     </div>
 </template>
 

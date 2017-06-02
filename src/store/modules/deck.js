@@ -1,4 +1,5 @@
 import * as types from '../mutation-types'
+import Vue from 'vue'
 
 // ----------
 // Initial state
@@ -16,9 +17,10 @@ const state = {
     'warrior': {'name': 'Warrior'}
   },
 
-  own: [],
+  own: {},
   current: {},
-  types: ['aggro', 'control', 'midrange', 'combo', 'tempo']
+  types: ['aggro', 'control', 'midrange', 'combo', 'tempo'],
+  nextId: 1
 
 }
 
@@ -26,13 +28,19 @@ const state = {
 // Getters
 // ----------
 const getters = {
+  classes: state => state.CLASSES,
   types: state => state.types,
   ownDeck: state => (id) => {
     if (typeof id === 'undefined') id = 0
-//    if (typeof state.own[id] === 'undefined') return undefined
+    if (typeof state.own[id] === 'undefined') return {}
     return state.own[id]
   },
+  className: state => (id) => {
+    if (typeof state.CLASSES[id] === 'undefined') return ''
+    return state.CLASSES[id]['name']
+  },
   own: state => state.own,
+  nextId: state => state.nextId,
   current: state => state.current
 }
 
@@ -47,13 +55,20 @@ const actions = {
 // ----------
 const mutations = {
   [types.ADD_DECK] (state, deckData) {
-    state.own.push(deckData)
+    state.own[state.nextId] = deckData
+    state.nextId++
   },
   [types.REMOVE_DECK] (state, id) {
-    state.own[id] = undefined
+    Vue.delete(state.own, id)
     if (state.current.id === id) {
       state.current = {}
     }
+  },
+  [types.SET_OWN_DECKLIST] (state, deckList) {
+    state.own = deckList
+  },
+  [types.SET_DECK_NEXTID] (state, nextId) {
+    state.nextId = nextId
   },
   [types.CHOOSE_DECK] (state, id) {
     if (typeof state.own[id] === 'undefined') return
@@ -62,6 +77,9 @@ const mutations = {
   },
   [types.ADD_DECKTYPE] (state, name) {
     state.types.push(name)
+  },
+  [types.SET_DECKTYPES] (state, deckTypes) {
+    state.types = deckTypes
   },
   [types.REMOVE_DECKTYPE] (state, name) {
     state.types.splice(state.types.indexOf(name), 1)
