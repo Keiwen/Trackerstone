@@ -1,12 +1,13 @@
 # Trackerstone
 
-<a target="_blank" href="https://keiwen.github.io/Trackerstone/#/">Test it!</a>
+<a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it!</a>
 
 > Experiments with VueJS framework
 
 Simple Hearthstone tracker. Just track your win and loss. On app you'll find:
 - your current rank and star
 - how many win needed 'til next rank milestone
+- global winrate
 
 Maybe one day this app will let you know:
 - winrate with specified deck
