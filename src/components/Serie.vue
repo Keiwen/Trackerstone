@@ -11,8 +11,8 @@
             <router-link :to="{ name: 'deckList' }">Manage decks</router-link>
         </div>
         <br/>
-        <button @click="win()">Win</button>
-        <button @click="loose()">Loss</button>
+        <button @click="win()" class="btn btn-success">Win <icon name="thumbs-up" /></button>
+        <button @click="loose()" class="btn btn-warning">Loss <icon name="thumbs-down" /></button>
         <br/><br/>
         <h3>Stats</h3>
         <p>Global: {{ gamesWon }} won / {{ gamesPlayed }} played ({{ winPercent }} % winrate)</p>
@@ -21,7 +21,7 @@
             <win-loss v-for="game in recentGames" :game="game"></win-loss>
         </p>
         <hr/>
-        <button @click="reset()">Reset</button>
+        <button @click="reset()" class="btn btn-danger">Reset</button>
     </div>
 </template>
 

@@ -2,7 +2,10 @@
     <div class="container">
         <h2>Manage decks</h2>
         <ul>
-            <li v-for="(deck, id) in own">{{ deck.name }} ({{ getClassName(deck.hsClass) }} {{ deck.type }}) <button @click="remove(id)">Remove <icon name="trash" /></button></li>
+            <li v-for="(deck, id) in own">
+                {{ deck.name }} ({{ getClassName(deck.hsClass) }} {{ deck.archetype }})
+                <button @click="remove(id)" class="btn btn-danger">Remove <icon name="trash" /></button>
+            </li>
         </ul>
         <hr/>
         <label>Class: </label>
@@ -12,7 +15,7 @@
             <option v-for="archetype in archetypes">{{ archetype }}</option>
         </select>
         <label>Name (opt): </label><input type="text" v-model="newName" @keyup.enter="add()"/>
-        <button @click="add()">Add</button>
+        <button @click="add()" class="btn btn-success">Add</button>
 
         <br/><br/>
         <router-link :to="{ name: 'deckTypesSet' }">Manage deck archetypes</router-link>

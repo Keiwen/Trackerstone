@@ -6,7 +6,7 @@
         <label>Win streak: </label><input type="number" v-model="winStreak"/>
         <label>Chest: </label><input type="number" v-model="highest"/>
         <hr/>
-        <button @click="set()">Ok</button>
+        <button @click="set()" class="btn btn-success">Ok</button>
     </div>
 </template>
 
