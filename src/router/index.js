@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Serie from '@/components/Serie'
 import SerieSet from '@/components/SerieSet'
-import DeckTypeSet from '@/components/DeckTypeSet'
+import DeckArchetypeSet from '@/components/DeckArchetypeSet'
 import DeckList from '@/components/DeckList'
 import 'bootstrap/dist/css/bootstrap.css'
 import Icon from 'vue-awesome/components/Icon'
@@ -24,9 +24,9 @@ export default new Router({
       component: SerieSet
     },
     {
-      path: '/deckTypes',
-      name: 'deckTypesSet',
-      component: DeckTypeSet
+      path: '/deckArchetypes',
+      name: 'deckArchetypesSet',
+      component: DeckArchetypeSet
     },
     {
       path: '/deckList',

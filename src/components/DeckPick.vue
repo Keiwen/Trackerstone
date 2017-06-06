@@ -1,6 +1,6 @@
 <template>
     <select v-model="pick" @change="pickDeck()">
-        <option v-for="(deck, id) in own" :value="id">{{ deck.name }} ({{ getClassName(deck.hsClass) }} {{ deck.type }})</option>
+        <option v-for="(deck, id) in own" :value="id">{{ deck.name }} ({{ getClassName(deck.hsClass) }} {{ deck.archetype }})</option>
     </select>
 </template>
 

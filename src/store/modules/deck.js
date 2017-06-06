@@ -20,7 +20,8 @@ const state = {
 
   own: {},
   current: {},
-  types: ['aggro', 'control', 'midrange', 'combo', 'tempo'],
+  archetypes: ['aggro', 'midrange', 'control', 'combo', 'zoo'],
+  types: [],
   nextId: 1
 
 }
@@ -30,7 +31,7 @@ const state = {
 // ----------
 const getters = {
   classes: state => state.CLASSES,
-  types: state => state.types,
+  archetypes: state => state.archetypes,
   ownDeck: state => (id) => {
     if (typeof id === 'undefined') id = 0
     if (typeof state.own[id] === 'undefined') return {}
@@ -76,14 +77,14 @@ const mutations = {
     state.current = state.own[id]
     state.current.id = id
   },
-  [types.ADD_DECKTYPE] (state, name) {
+  [types.ADD_DECKARCHETYPE] (state, name) {
     state.types.push(name)
   },
-  [types.SET_DECKTYPES] (state, deckTypes) {
-    state.types = deckTypes
+  [types.SET_DECKARCHETYPES] (state, deckTypes) {
+    state.archetypes = deckTypes
   },
-  [types.REMOVE_DECKTYPE] (state, name) {
-    state.types.splice(state.types.indexOf(name), 1)
+  [types.REMOVE_DECKARCHETYPE] (state, name) {
+    state.archetypes.splice(state.archetypes.indexOf(name), 1)
   }
 }
 

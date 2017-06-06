@@ -7,15 +7,15 @@
         <hr/>
         <label>Class: </label>
         <class-pick @pick-class="pickClass"></class-pick>
-        <label>Type: </label>
-        <select v-model="newType">
-            <option v-for="type in types">{{ type }}</option>
+        <label>Archetype: </label>
+        <select v-model="newArchetype">
+            <option v-for="archetype in archetypes">{{ archetype }}</option>
         </select>
         <label>Name (opt): </label><input type="text" v-model="newName" @keyup.enter="add()"/>
         <button @click="add()">Add</button>
 
         <br/><br/>
-        <router-link :to="{ name: 'deckTypesSet' }">Manage deck types</router-link>
+        <router-link :to="{ name: 'deckTypesSet' }">Manage deck archetypes</router-link>
 
 
     </div>
@@ -33,22 +33,22 @@
     data () {
       return {
         newClass: '',
-        newType: '',
+        newArchetype: '',
         newName: ''
       }
     },
     computed: {
-      ...mapGetters(['own', 'classes', 'types'])
+      ...mapGetters(['own', 'classes', 'archetypes'])
     },
     methods: {
       add () {
         const deckData = {
           hsClass: this.newClass,
-          type: this.newType,
+          archetype: this.newArchetype,
           name: this.newName
         }
         this.$store.commit(storeMut.ADD_DECK, deckData)
-        this.newType = ''
+        this.newArchetype = ''
         this.newName = ''
       },
       remove (id) {

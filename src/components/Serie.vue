@@ -14,7 +14,7 @@
         <button @click="win()">Win</button>
         <button @click="loose()">Loss</button>
         <br/><br/>
-        <h2>Stats</h2>
+        <h3>Stats</h3>
         <p>Global: {{ gamesWon }} won / {{ gamesPlayed }} played ({{ winPercent }} % winrate)</p>
         <p>
             Last {{ recentNumberGames }} games: {{ recentGamesWon }} won ({{ recentWinPercent }} % winrate)
