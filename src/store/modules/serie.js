@@ -94,12 +94,20 @@ const getters = {
   stars: state => state.stars,
   winStreak: state => state.winStreak,
   highest: state => state.highest,
-  gamesPlayed: state => state.history.length,
-  gamesWon: state => state.history.filter(history => history.won).length,
+  gamesPlayed: (state, getters) => { return getters.getGamesFiltered().length },
+  gamesWon: (state, getters) => { return getters.getGamesFiltered(0, 'won').length },
   gamesLoss: (state, getters) => (getters.gamesPlayed - getters.gamesWon),
   winRate: (state, getters) => {
     if (getters.gamesPlayed === 0) return 0
+    // round 2 digits
     return Math.round((getters.gamesWon / getters.gamesPlayed) * 100) / 100
+  },
+  getGamesFiltered: state => (numberOfGames, filter, value) => {
+    if (typeof numberOfGames === 'undefined') numberOfGames = 0
+    const historySliced = state.history.slice(-numberOfGames)
+    if (typeof filter === 'undefined') return historySliced
+    if (typeof value === 'undefined') value = true
+    return historySliced.filter(game => { return game[filter] === value })
   }
 }
 

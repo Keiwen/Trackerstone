@@ -14,7 +14,12 @@
         <button @click="win()">Win</button>
         <button @click="loose()">Loss</button>
         <br/><br/>
-        <p>{{ gamesWon }} won / {{ gamesPlayed }} played ({{ winPercent }} % winrate)</p>
+        <h2>Stats</h2>
+        <p>Global: {{ gamesWon }} won / {{ gamesPlayed }} played ({{ winPercent }} % winrate)</p>
+        <p>
+            Last {{ recentNumberGames }} games: {{ recentGamesWon }} won ({{ recentWinPercent }} % winrate)
+            <win-loss v-for="game in recentGames" :game="game"></win-loss>
+        </p>
         <hr/>
         <button @click="reset()">Reset</button>
     </div>
@@ -24,9 +29,15 @@
 <script>
   import { mapGetters, mapActions } from 'vuex'
   import DeckPick from '@/components/DeckPick'
+  import WinLoss from '@/components/WinLoss'
 
   export default {
-    components: {DeckPick},
+    components: {DeckPick, WinLoss},
+    data () {
+      return {
+        recentNumberGames: 10
+      }
+    },
     computed: {
       ...mapGetters(['rank', 'stars', 'highest', 'nextMilestone', 'winsToMilestone', 'gamesPlayed', 'gamesWon', 'winRate']),
       rankTitle () {
@@ -34,6 +45,19 @@
       },
       winPercent () {
         return parseInt(this.winRate * 100)
+      },
+      recentGames () {
+        return this.$store.getters.getGamesFiltered(this.recentNumberGames)
+      },
+      recentGamesPlayed () {
+        return this.recentGames.length
+      },
+      recentGamesWon () {
+        return this.$store.getters.getGamesFiltered(this.recentNumberGames, 'won').length
+      },
+      recentWinPercent () {
+        if (this.recentGamesPlayed === 0) return 0
+        return Math.round((this.recentGamesWon / this.recentGamesPlayed) * 100)
       },
       milestoneTitle () {
         return this.$store.getters.rankTitle(this.nextMilestone)
