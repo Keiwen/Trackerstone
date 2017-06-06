@@ -11,12 +11,16 @@
       </div>
     <img src="./assets/logo.png" style="height: 150px">
     <router-view></router-view>
+    <cookie-law theme="dark-lime" message="This website uses cookies to save/load data if you decided to. Actually, this is not ready yet"></cookie-law>
   </div>
 </template>
 
 <script>
+  import CookieLaw from 'vue-cookie-law'
+
   export default {
-    name: 'app'
+    name: 'app',
+    components: { CookieLaw }
   }
 </script>
 
