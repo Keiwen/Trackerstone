@@ -2,7 +2,7 @@
     <div class="container">
         <h2>Manage decks</h2>
         <ul>
-            <li v-for="(deck, id) in own">{{ deck.name }} ({{ getClassName(deck.hsClass) }} {{ deck.type }}) <button @click="remove(id)">Remove</button></li>
+            <li v-for="(deck, id) in own">{{ deck.name }} ({{ getClassName(deck.hsClass) }} {{ deck.type }}) <button @click="remove(id)">Remove <icon name="trash" /></button></li>
         </ul>
         <hr/>
         <label>Class: </label>

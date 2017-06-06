@@ -2,7 +2,7 @@
     <div class="container">
         <h2>Manage deck archetypes</h2>
         <ul>
-            <li v-for="archetype in archetypes">{{ archetype }} <button @click="remove(archetype)">Remove</button></li>
+            <li v-for="archetype in archetypes">{{ archetype }} <button @click="remove(archetype)">Remove <icon name="trash" /></button></li>
             <li><input type="text" v-model="newArchetype" @keyup.enter="add()"/> <button @click="add()">Add</button></li>
         </ul>
     </div>
