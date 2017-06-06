@@ -4,9 +4,13 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-require('../node_modules/bootstrap/dist/css/bootstrap.css')
+import Icon from 'vue-awesome/components/Icon'
+import 'vue-awesome/icons'
+import 'bootstrap/dist/css/bootstrap.css'
 
 Vue.config.productionTip = false
+
+Vue.component('icon', Icon)
 
 /* eslint-disable no-new */
 new Vue({
