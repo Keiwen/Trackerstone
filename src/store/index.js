@@ -8,6 +8,9 @@ import deck from './modules/deck'
 import createLogger from '../../node_modules/vuex/src/plugins/logger'
 import * as types from './mutation-types'
 
+import persistedState from 'vuex-persistedstate'
+// tried to store in cookie with import Cookie from 'vue-cookie' but not well updated
+
 Vue.use(Vuex)
 
 const debug = process.env.NODE_ENV !== 'production'
@@ -34,5 +37,5 @@ export default new Vuex.Store({
     serie, deck
   },
   strict: debug,
-  plugins: debug ? [createLogger()] : []
+  plugins: debug ? [createLogger(), persistedState()] : [persistedState()]
 })
