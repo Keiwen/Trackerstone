@@ -110,7 +110,7 @@ const mutations = {
   [types.CHOOSE_DECK] (state, id) {
     if (typeof state.own[id] === 'undefined') return
     state.current = state.own[id]
-    state.current.id = id
+    state.current.id = parseInt(id)
   },
   [types.ADD_DECKARCHETYPE] (state, name) {
     state.archetypes.push(name)
