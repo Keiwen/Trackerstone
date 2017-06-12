@@ -110,7 +110,7 @@ const getters = {
     return historySliced.filter(game => {
       if (filter.indexOf('.') > 0) {
         const split = filter.split('.')
-        if (typeof game[split[0]] === 'undefined') return false
+        if (typeof game[split[0]] === 'undefined') return value !== false
         return game[split[0]][split[1]] === value
       }
       return game[filter] === value
