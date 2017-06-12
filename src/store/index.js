@@ -15,6 +15,10 @@ Vue.use(Vuex)
 
 const debug = process.env.NODE_ENV !== 'production'
 
+const persistOptions = {
+  key: 'trackerstone'
+}
+
 export default new Vuex.Store({
 //  getters,
   actions: {
@@ -31,11 +35,17 @@ export default new Vuex.Store({
         opponent: {}
       }
       commit(types.ADD_HISTORY, history)
+    },
+    resetState () {
+      // call this.$store.dispatch('resetState') from a component action
+      localStorage.removeItem(persistOptions.key)
+      localStorage.removeItem('cookie:accepted')
+      location.reload()
     }
   },
   modules: {
     serie, deck
   },
   strict: debug,
-  plugins: debug ? [createLogger(), persistedState()] : [persistedState()]
+  plugins: debug ? [createLogger(), persistedState(persistOptions)] : [persistedState(persistOptions)]
 })
