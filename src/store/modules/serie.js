@@ -107,7 +107,16 @@ const getters = {
     const historySliced = state.history.slice(-numberOfGames)
     if (typeof filter === 'undefined') return historySliced
     if (typeof value === 'undefined') value = true
-    return historySliced.filter(game => { return game[filter] === value })
+    return historySliced.filter(game => {
+      if (filter.indexOf('.') > 0) {
+        const split = filter.split('.')
+        const filter1 = split[0]
+        const filter2 = split[1]
+        if (typeof game[filter1] === 'undefined') return false
+        return game[filter1][filter2] === value
+      }
+      return game[filter] === value
+    })
   }
 }
 
