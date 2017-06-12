@@ -19,6 +19,9 @@
     computed: {
       ...mapGetters(['own', 'current'])
     },
+    mounted: function () {
+      this.pick = this.current.id
+    },
     methods: {
       getClassName (id) {
         return this.$store.getters.className(id)
