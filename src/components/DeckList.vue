@@ -4,6 +4,8 @@
         <ul>
             <li v-for="(deck, id) in own">
                 {{ deck.name }} ({{ getClassName(deck.type.hsClass) }} {{ deck.type.name }})
+                -
+                Won {{ getDeckGamesWon(id) }} / {{ getDeckGamesPlayed(id) }} ({{ getDeckWinPercent(id) }} % global, {{ getDeckWinPercent(id, true) }} % last {{ recentNumberGames }} games)
                 <button @click="remove(id)" class="btn btn-danger">Remove <icon name="trash" /></button>
             </li>
         </ul>
@@ -36,6 +38,7 @@
   export default {
     data () {
       return {
+        recentNumberGames: 10,
         newType: {},
         newName: ''
       }
@@ -64,6 +67,26 @@
       },
       getClassName (id) {
         return this.$store.getters.className(id)
+      },
+      getDeckGames (id, recent) {
+        id = parseInt(id)
+        let gamesCount = 0
+        if (typeof recent !== 'undefined' && recent) gamesCount = this.recentNumberGames
+        return this.$store.getters.getGamesFiltered(gamesCount, 'deck.id', id)
+      },
+      getDeckGamesPlayed (id, recent) {
+        return this.getDeckGames(id, recent).length
+      },
+      getDeckGamesWon (id, recent) {
+        const games = this.getDeckGames(id, recent)
+        const wons = games.filter(game => {
+          return game['won'] === true
+        })
+        return wons.length
+      },
+      getDeckWinPercent (id, recent) {
+        if (this.getDeckGamesPlayed(id, recent) === 0) return 0
+        return Math.round((this.getDeckGamesWon(id, recent) / this.getDeckGamesPlayed(id, recent)) * 100)
       }
     }
   }
