@@ -55,7 +55,6 @@ const state = {
   nextId: 1
 
 }
-// TODO do we really need id? Maybe we can manage with full object, would be lighter
 
 // ----------
 // Getters
