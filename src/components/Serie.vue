@@ -18,7 +18,7 @@
         <p>Global: {{ gamesWon }} won / {{ gamesPlayed }} played ({{ winPercent }} % winrate)</p>
         <p>
             Last {{ recentNumberGames }} games: {{ recentGamesWon }} won ({{ recentWinPercent }} % winrate)
-            <win-loss v-for="game in recentGames" :game="game"></win-loss>
+            <win-loss v-for="(game, gameIndex) in recentGames" :game="game" :key="gameIndex"></win-loss>
         </p>
         <hr/>
         <button @click="reset()" class="btn btn-danger">Reset</button>
