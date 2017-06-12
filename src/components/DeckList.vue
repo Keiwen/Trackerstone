@@ -11,14 +11,7 @@
         </ul>
         <hr/>
         <label>Type: </label>
-        <select v-model="newType">
-            <optgroup label="Stared">
-                <option v-for="type in typesTop" :value="type">{{ getClassName(type.hsClass) }} {{ type.name }} ({{ type.archetype }})</option>
-            </optgroup>
-            <optgroup label="------">
-                <option v-for="type in typesNoTop" :value="type">{{ getClassName(type.hsClass) }} {{ type.name }} ({{ type.archetype }})</option>
-            </optgroup>
-        </select>
+        <type-pick @pick-type="pickType"></type-pick>
         <label>Name (opt): </label><input type="text" v-model="newName" @keyup.enter="add()"/>
         <button @click="add()" class="btn btn-success">Add</button>
 
@@ -34,8 +27,10 @@
 
   import { mapGetters } from 'vuex'
   import * as storeMut from '../store/mutation-types'
+  import TypePick from '@/components/TypePick'
 
   export default {
+    components: {TypePick},
     data () {
       return {
         recentNumberGames: 10,
@@ -44,15 +39,12 @@
       }
     },
     computed: {
-      ...mapGetters(['own', 'types']),
-      typesTop () {
-        return this.$store.getters.getTypesFiltered('top')
-      },
-      typesNoTop () {
-        return this.$store.getters.getTypesFiltered('top', false)
-      }
+      ...mapGetters(['own', 'types'])
     },
     methods: {
+      pickType (type) {
+        this.newType = type
+      },
       add () {
         const deckData = {
           type: this.newType,
