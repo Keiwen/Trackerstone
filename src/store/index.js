@@ -32,7 +32,7 @@ export default new Vuex.Store({
       const history = {
         won: won,
         deck: state.deck.current,
-        opponent: {}
+        opponent: state.deck.opponent
       }
       commit(types.ADD_HISTORY, history)
     },

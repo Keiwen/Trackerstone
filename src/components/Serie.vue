@@ -10,6 +10,10 @@
             <br/>
             <router-link :to="{ name: 'deckList' }">Manage decks</router-link>
         </div>
+        <div>
+            <h3>Opponent deck</h3>
+            <type-pick @pick-type="pickOpponentType"></type-pick>
+        </div>
         <br/>
         <button @click="win()" class="btn btn-success">Win <icon name="thumbs-up" /></button>
         <button @click="loose()" class="btn btn-warning">Loss <icon name="thumbs-down" /></button>
@@ -27,12 +31,14 @@
 
 
 <script>
+  import * as storeMut from '../store/mutation-types'
   import { mapGetters, mapActions } from 'vuex'
   import DeckPick from '@/components/DeckPick'
+  import TypePick from '@/components/TypePick'
   import WinLoss from '@/components/WinLoss'
 
   export default {
-    components: {DeckPick, WinLoss},
+    components: {DeckPick, TypePick, WinLoss},
     data () {
       return {
         recentNumberGames: 10
@@ -64,7 +70,10 @@
       }
     },
     methods: {
-      ...mapActions(['win', 'loose', 'reset'])
+      ...mapActions(['win', 'loose', 'reset']),
+      pickOpponentType (type) {
+        this.$store.commit(storeMut.CHOOSE_OPPONENT, type)
+      }
     }
   }
 

@@ -20,6 +20,7 @@ const state = {
 
   own: {},
   current: {},
+  opponent: {},
   archetypes: ['aggro', 'midrange', 'control', 'combo'],
   types: [
     {name: 'Aggro', hsClass: 'druid', archetype: 'aggro', top: false},
@@ -78,7 +79,8 @@ const getters = {
     if (typeof value === 'undefined') value = true
     return state.types.filter(type => { return type[filter] === value })
   },
-  current: state => state.current
+  current: state => state.current,
+  opponent: state => state.opponent
 }
 
 // ----------
@@ -111,6 +113,9 @@ const mutations = {
     if (typeof state.own[id] === 'undefined') return
     state.current = state.own[id]
     state.current.id = parseInt(id)
+  },
+  [types.CHOOSE_OPPONENT] (state, type) {
+    state.opponent = type
   },
   [types.ADD_DECKARCHETYPE] (state, name) {
     state.archetypes.push(name)
