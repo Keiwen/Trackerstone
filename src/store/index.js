@@ -5,6 +5,7 @@ import Vuex from 'vuex'
 // import * as getters from './getters'
 import serie from './modules/serie'
 import deck from './modules/deck'
+import history from './modules/history'
 import createLogger from '../../node_modules/vuex/src/plugins/logger'
 import * as types from './mutation-types'
 
@@ -29,12 +30,14 @@ export default new Vuex.Store({
       dispatch('storeGame', false)
     },
     storeGame ({dispatch, state, commit}, won) {
-      const history = {
+      const historyData = {
+        rank: state.serie.rank,
+        stars: state.serie.stars,
         won: won,
         deck: state.deck.current,
         opponent: state.deck.opponent
       }
-      commit(types.ADD_HISTORY, history)
+      commit(types.ADD_HISTORY, historyData)
     },
     resetState () {
       // call this.$store.dispatch('resetState') from a component action
@@ -44,7 +47,7 @@ export default new Vuex.Store({
     }
   },
   modules: {
-    serie, deck
+    serie, deck, history
   },
   strict: debug,
   plugins: debug ? [createLogger(), persistedState(persistOptions)] : [persistedState(persistOptions)]

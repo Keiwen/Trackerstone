@@ -41,8 +41,7 @@ const state = {
   rank: 25,
   stars: 0,
   winStreak: 0,
-  highest: 25,
-  history: []
+  highest: 25
 
 }
 
@@ -93,29 +92,7 @@ const getters = {
   },
   stars: state => state.stars,
   winStreak: state => state.winStreak,
-  highest: state => state.highest,
-  gamesPlayed: (state, getters) => { return getters.getGamesFiltered().length },
-  gamesWon: (state, getters) => { return getters.getGamesFiltered(0, 'won').length },
-  gamesLoss: (state, getters) => (getters.gamesPlayed - getters.gamesWon),
-  winRate: (state, getters) => {
-    if (getters.gamesPlayed === 0) return 0
-    // round 2 digits
-    return Math.round((getters.gamesWon / getters.gamesPlayed) * 100) / 100
-  },
-  getGamesFiltered: state => (numberOfGames, filter, value) => {
-    if (typeof numberOfGames === 'undefined') numberOfGames = 0
-    const historySliced = state.history.slice(-numberOfGames)
-    if (typeof filter === 'undefined') return historySliced
-    if (typeof value === 'undefined') value = true
-    return historySliced.filter(game => {
-      if (filter.indexOf('.') > 0) {
-        const split = filter.split('.')
-        if (typeof game[split[0]] === 'undefined') return value !== false
-        return game[split[0]][split[1]] === value
-      }
-      return game[filter] === value
-    })
-  }
+  highest: state => state.highest
 }
 
 // ----------
@@ -166,6 +143,7 @@ const actions = {
   reset ({dispatch, commit, state}) {
     const bonusStar = 25 - state.highest
     commit(types.RESET_SERIE)
+    commit(types.RESET_HISTORY)
     dispatch('earnStar', bonusStar)
   }
 }
@@ -226,15 +204,6 @@ const mutations = {
     state.rank = 25
     state.stars = 0
     state.winstreak = 0
-    state.history = []
-  },
-  [types.SET_HISTORY] (state, history) {
-    state.history = history
-  },
-  [types.ADD_HISTORY] (state, history) {
-    history.rank = state.rank
-    history.stars = state.stars
-    state.history.push(history)
   }
 
 }
