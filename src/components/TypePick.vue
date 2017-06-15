@@ -15,6 +15,7 @@
   import { mapGetters } from 'vuex'
 
   export default {
+    props: ['initialPick'],
     data () {
       return {
         pick: {}
@@ -36,6 +37,9 @@
       pickType () {
         this.$emit('pick-type', this.pick)
       }
+    },
+    mounted: function () {
+      if (typeof this.initialPick !== 'undefined') this.pick = this.initialPick
     }
   }
 

@@ -12,7 +12,7 @@
         </div>
         <div>
             <h3>Opponent deck</h3>
-            <type-pick @pick-type="pickOpponentType"></type-pick>
+            <type-pick @pick-type="pickOpponentType" :initialPick="opponent"></type-pick>
         </div>
         <br/>
         <button @click="win()" class="btn btn-success">Win <icon name="thumbs-up" /></button>
@@ -45,7 +45,7 @@
       }
     },
     computed: {
-      ...mapGetters(['rank', 'stars', 'highest', 'nextMilestone', 'winsToMilestone', 'gamesPlayed', 'gamesWon', 'winRate']),
+      ...mapGetters(['rank', 'stars', 'highest', 'nextMilestone', 'winsToMilestone', 'gamesPlayed', 'gamesWon', 'winRate', 'opponent']),
       rankTitle () {
         return this.$store.getters.rankTitle()
       },
