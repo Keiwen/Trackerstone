@@ -1,5 +1,6 @@
 <template>
     <select v-model="pick" @change="pickType()">
+        <option :value="{}">Undefined</option>
         <optgroup label="Stared">
             <option v-for="type in typesTop" :value="type">{{ getClassName(type.hsClass) }} {{ type.name }} ({{ type.archetype }})</option>
         </optgroup>
