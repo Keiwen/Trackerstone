@@ -1,6 +1,6 @@
 # Trackerstone
 
-<a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it!</a>
+<a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it!</a> (Oh seems to have some issues with IE)
 
 > Experiments with VueJS framework
 
