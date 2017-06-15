@@ -5,7 +5,7 @@
             <li v-for="type in types">
                 {{ getClassName(type.hsClass) }} {{ type.name }} ({{ type.archetype }})
                 <icon name="star" v-if="type.top" />
-                <button @click="remove(type)"  class="btn btn-danger">
+                <button @click="remove(type.id)"  class="btn btn-danger">
                     Remove <icon name="trash" />
                 </button>
             </li>
@@ -66,8 +66,8 @@
       pickClass (pick) {
         this.newClass = pick
       },
-      remove (type) {
-        this.$store.commit(storeMut.REMOVE_DECKTYPE, type)
+      remove (id) {
+        this.$store.commit(storeMut.REMOVE_DECKTYPE, id)
       },
       getClassName (id) {
         return this.$store.getters.className(id)

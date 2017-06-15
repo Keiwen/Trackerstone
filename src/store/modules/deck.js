@@ -23,37 +23,31 @@ const state = {
   opponent: {},
   archetypes: ['aggro', 'midrange', 'control', 'combo'],
   types: [
-    {name: 'Aggro', hsClass: 'druid', archetype: 'aggro', top: false},
-    {name: 'Dragon', hsClass: 'priest', archetype: 'midrange', top: false},
-    {name: 'Elemental', hsClass: 'shaman', archetype: 'midrange', top: false},
-    {name: 'Evolve', hsClass: 'shaman', archetype: 'midrange', top: false},
-    {name: 'Face', hsClass: 'hunter', archetype: 'aggro', top: true},
-    {name: 'Flamewaker', hsClass: 'mage', archetype: 'midrange', top: false},
-    {name: 'Freeze', hsClass: 'mage', archetype: 'control', top: false},
-    {name: 'Jade', hsClass: 'druid', archetype: 'combo', top: false},
-    {name: 'Handlock', hsClass: 'warlock', archetype: 'control', top: false},
-    {name: 'Mid-Range', hsClass: 'hunter', archetype: 'midrange', top: false},
-    {name: 'Mid-Range', hsClass: 'paladin', archetype: 'midrange', top: false},
-    {name: 'Mill', hsClass: 'rogue', archetype: 'combo', top: false},
-    {name: 'Miracle', hsClass: 'rogue', archetype: 'combo', top: false},
-    {name: 'Mech', hsClass: 'mage', archetype: 'midrange', top: false},
-    {name: 'Mech', hsClass: 'shaman', archetype: 'aggro', top: false},
-    {name: 'Medivh', hsClass: 'mage', archetype: 'control', top: false},
-    {name: 'Murloc', hsClass: 'paladin', archetype: 'aggro', top: true},
-    {name: 'Overload', hsClass: 'shaman', archetype: 'aggro', top: false},
-    {name: 'Patron', hsClass: 'warrior', archetype: 'combo', top: false},
-    {name: 'Pirate', hsClass: 'warrior', archetype: 'aggro', top: true},
-    {name: 'Quest', hsClass: 'priest', archetype: 'midrange', top: false},
-    {name: 'Quest', hsClass: 'rogue', archetype: 'combo', top: true},
-    {name: 'Quest', hsClass: 'warrior', archetype: 'control', top: true},
-    {name: 'Ramp', hsClass: 'druid', archetype: 'midrange', top: false},
-    {name: 'Renolock', hsClass: 'warlock', archetype: 'control', top: false},
-    {name: 'Silence', hsClass: 'priest', archetype: 'midrange', top: false},
-    {name: 'Secret', hsClass: 'paladin', archetype: 'aggro', top: true},
-    {name: 'Token', hsClass: 'druid', archetype: 'aggro', top: false},
-    {name: 'Zoolock', hsClass: 'warlock', archetype: 'aggro', top: false}
+    {id: 1, name: 'Aggro', hsClass: 'druid', archetype: 'aggro', top: false},
+    {id: 2, name: 'Dragon', hsClass: 'priest', archetype: 'midrange', top: false},
+    {id: 3, name: 'Elemental', hsClass: 'shaman', archetype: 'midrange', top: false},
+    {id: 4, name: 'Evolve', hsClass: 'shaman', archetype: 'midrange', top: false},
+    {id: 5, name: 'Face', hsClass: 'hunter', archetype: 'aggro', top: true},
+    {id: 6, name: 'Freeze', hsClass: 'mage', archetype: 'control', top: false},
+    {id: 7, name: 'Jade', hsClass: 'druid', archetype: 'combo', top: false},
+    {id: 8, name: 'Mid-Range', hsClass: 'hunter', archetype: 'midrange', top: false},
+    {id: 9, name: 'Mid-Range', hsClass: 'paladin', archetype: 'midrange', top: false},
+    {id: 10, name: 'Miracle', hsClass: 'rogue', archetype: 'combo', top: false},
+    {id: 11, name: 'Mech', hsClass: 'mage', archetype: 'midrange', top: false},
+    {id: 12, name: 'Murloc', hsClass: 'paladin', archetype: 'aggro', top: true},
+    {id: 13, name: 'Overload', hsClass: 'shaman', archetype: 'aggro', top: false},
+    {id: 14, name: 'Pirate', hsClass: 'warrior', archetype: 'aggro', top: true},
+    {id: 15, name: 'Quest', hsClass: 'priest', archetype: 'midrange', top: false},
+    {id: 16, name: 'Quest', hsClass: 'rogue', archetype: 'combo', top: true},
+    {id: 17, name: 'Quest', hsClass: 'warrior', archetype: 'control', top: true},
+    {id: 18, name: 'Ramp', hsClass: 'druid', archetype: 'midrange', top: false},
+    {id: 19, name: 'Silence', hsClass: 'priest', archetype: 'midrange', top: false},
+    {id: 20, name: 'Secret', hsClass: 'paladin', archetype: 'aggro', top: true},
+    {id: 21, name: 'Token', hsClass: 'druid', archetype: 'aggro', top: false},
+    {id: 22, name: 'Zoolock', hsClass: 'warlock', archetype: 'aggro', top: false}
   ],
-  nextId: 1
+  nextId: 1,
+  nextTypeId: 23
 
 }
 
@@ -75,6 +69,7 @@ const getters = {
   },
   own: state => state.own,
   nextId: state => state.nextId,
+  nextTypeId: state => state.nextTypeId,
   getTypesFiltered: state => (filter, value) => {
     if (typeof value === 'undefined') value = true
     return state.types.filter(type => { return type[filter] === value })
@@ -127,13 +122,22 @@ const mutations = {
     state.archetypes.splice(state.archetypes.indexOf(name), 1)
   },
   [types.ADD_DECKTYPE] (state, type) {
+    type.id = state.nextTypeId
+    state.nextTypeId++
     state.types.push(type)
   },
   [types.SET_DECKTYPES] (state, deckTypes) {
     state.types = deckTypes
   },
-  [types.REMOVE_DECKTYPE] (state, type) {
-    state.types.splice(state.types.indexOf(type), 1)
+  [types.REMOVE_DECKTYPE] (state, id) {
+    state.types.forEach(function (type, index, object) {
+      if (type.id === id) {
+        object.splice(index, 1)
+      }
+    })
+    if (state.opponent.id === id) {
+      state.opponent = {}
+    }
   }
 }
 
