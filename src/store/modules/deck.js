@@ -25,8 +25,8 @@ const state = {
   types: [
     {name: 'Aggro', hsClass: 'druid', archetype: 'aggro', top: false},
     {name: 'Dragon', hsClass: 'priest', archetype: 'midrange', top: false},
-    {name: 'Elemental', hsClass: 'chaman', archetype: 'midrange', top: false},
-    {name: 'Evolve', hsClass: 'chaman', archetype: 'midrange', top: false},
+    {name: 'Elemental', hsClass: 'shaman', archetype: 'midrange', top: false},
+    {name: 'Evolve', hsClass: 'shaman', archetype: 'midrange', top: false},
     {name: 'Face', hsClass: 'hunter', archetype: 'aggro', top: true},
     {name: 'Flamewaker', hsClass: 'mage', archetype: 'midrange', top: false},
     {name: 'Freeze', hsClass: 'mage', archetype: 'control', top: false},
