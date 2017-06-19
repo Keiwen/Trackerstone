@@ -3,9 +3,7 @@
         <h2>Manage decks</h2>
         <ul>
             <li v-for="(deck, id) in own">
-                {{ deck.name }} ({{ getClassName(deck.type.hsClass) }} {{ deck.type.name }})
-                -
-                Won {{ getDeckGamesWon(id) }} / {{ getDeckGamesPlayed(id) }} ({{ getDeckWinPercent(id) }} % global, {{ getDeckWinPercent(id, true) }} % last {{ recentNumberGames }} games)
+                <deck-show :recentNumberGames="recentNumberGames" :deck="deck" idDeck="id"></deck-show>
                 <button @click="remove(id)" class="btn btn-danger">Remove <icon name="trash" /></button>
             </li>
         </ul>
@@ -28,9 +26,10 @@
   import { mapGetters } from 'vuex'
   import * as storeMut from '../store/mutation-types'
   import TypePick from '@/components/TypePick'
+  import DeckShow from '@/components/DeckShow'
 
   export default {
-    components: {TypePick},
+    components: {TypePick, DeckShow},
     data () {
       return {
         recentNumberGames: 10,
