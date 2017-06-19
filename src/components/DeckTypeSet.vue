@@ -3,8 +3,7 @@
         <h2>Manage deck types</h2>
         <ul>
             <li v-for="type in types">
-                {{ getClassName(type.hsClass) }} {{ type.name }} ({{ type.archetype }})
-                <icon name="star" v-if="type.top" />
+                <deck-type-show :type="type"></deck-type-show>
                 <button @click="remove(type.id)"  class="btn btn-danger">
                     Remove <icon name="trash" />
                 </button>
@@ -35,9 +34,10 @@
   import { mapGetters } from 'vuex'
   import * as storeMut from '../store/mutation-types'
   import ClassPick from '@/components/ClassPick'
+  import DeckTypeShow from '@/components/DeckTypeShow'
 
   export default {
-    components: {ClassPick},
+    components: {ClassPick, DeckTypeShow},
     data () {
       return {
         newName: '',
@@ -68,9 +68,6 @@
       },
       remove (id) {
         this.$store.commit(storeMut.REMOVE_DECKTYPE, id)
-      },
-      getClassName (id) {
-        return this.$store.getters.className(id)
       }
     }
   }
