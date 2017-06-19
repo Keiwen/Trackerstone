@@ -3,7 +3,7 @@
         <h2>Manage decks</h2>
         <ul>
             <li v-for="(deck, id) in own">
-                <deck-show :recentNumberGames="recentNumberGames" :deck="deck" idDeck="id"></deck-show>
+                <deck-show :deck="deck" :idDeck="id"></deck-show>
                 <button @click="remove(id)" class="btn btn-danger">Remove <icon name="trash" /></button>
             </li>
         </ul>
