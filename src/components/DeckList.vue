@@ -32,13 +32,12 @@
     components: {TypePick, DeckShow},
     data () {
       return {
-        recentNumberGames: 10,
         newType: {},
         newName: ''
       }
     },
     computed: {
-      ...mapGetters(['own', 'types'])
+      ...mapGetters(['own', 'types', 'recentNumberGames'])
     },
     methods: {
       pickType (type) {

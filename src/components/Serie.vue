@@ -44,13 +44,8 @@
 
   export default {
     components: {DeckPick, TypePick, WinLoss},
-    data () {
-      return {
-        recentNumberGames: 10
-      }
-    },
     computed: {
-      ...mapGetters(['rank', 'stars', 'highest', 'nextMilestone', 'winsToMilestone', 'gamesPlayed', 'gamesWon', 'winRate', 'current', 'opponent']),
+      ...mapGetters(['rank', 'stars', 'highest', 'nextMilestone', 'winsToMilestone', 'gamesPlayed', 'gamesWon', 'winRate', 'current', 'opponent', 'recentNumberGames']),
       rankTitle () {
         return this.$store.getters.rankTitle()
       },

@@ -4,7 +4,8 @@ import * as types from '../mutation-types'
 // Initial state
 // ----------
 const state = {
-  history: []
+  history: [],
+  recentNumberGames: 10
 
 }
 
@@ -33,7 +34,8 @@ const getters = {
     if (getters.gamesPlayed === 0) return 0
     // round 2 digits
     return Math.round((getters.gamesWon / getters.gamesPlayed) * 100) / 100
-  }
+  },
+  recentNumberGames: state => state.recentNumberGames
 }
 
 // ----------

@@ -12,9 +12,9 @@
   import { mapGetters } from 'vuex'
 
   export default {
-    props: ['deck', 'idDeck', 'recentNumberGames'],
+    props: ['deck', 'idDeck'],
     computed: {
-      ...mapGetters(['own', 'types']),
+      ...mapGetters(['own', 'types', 'recentNumberGames']),
       idDeckComputed () {
         return parseInt(this.idDeck)
       }
