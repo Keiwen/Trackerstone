@@ -13,10 +13,27 @@ var env = config.build.env
 
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
+    //loaders added fo scss style
+    loaders: [
+        {
+          test: /\.vue$/,
+          loader: 'vue'
+        },
+        {
+            test: /\.s[a|c]ss$/,
+            loader: 'style!css!sass'
+        }
+      ],
     rules: utils.styleLoaders({
       sourceMap: config.build.productionSourceMap,
       extract: true
     })
+  },
+  //loaders added fo scss style 2nd part
+  vue: {
+    loaders: {
+      scss: 'style!css!sass'
+    }
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
