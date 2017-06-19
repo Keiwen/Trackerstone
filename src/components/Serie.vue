@@ -4,15 +4,20 @@
         <p>Rank: {{ rank }} - {{ rankTitle }} // Stars: {{ stars }} (Chest: {{ highest }})</p>
         <p>Next milestone: {{ nextMilestone}} - {{ milestoneTitle }} ({{ winsToMilestone }} wins needed)</p>
         <hr/>
-        <div>
-            <h3>Current deck</h3>
-            <deck-pick></deck-pick>
-            <br/>
-            <router-link :to="{ name: 'deckList' }">Manage decks</router-link>
+        <div class="container">
+            <div class="col-md-6">
+                <h3>Current deck</h3>
+                <deck-pick></deck-pick>
+                <br/>
+                <router-link :to="{ name: 'deckList' }">Manage decks</router-link>
+            </div>
+            <div class="col-md-6">
+                <h3>Opponent deck</h3>
+                <type-pick @pick-type="pickOpponentType" :initialPick="opponent"></type-pick>
+            </div>
         </div>
         <div>
-            <h3>Opponent deck</h3>
-            <type-pick @pick-type="pickOpponentType" :initialPick="opponent"></type-pick>
+            <p>{{ gamesCurrentPlayedVs.length }} similar games played ({{ gamesCurrentWinpercentVs }} % won)</p>
         </div>
         <br/>
         <button @click="win()" class="btn btn-success">Win <icon name="thumbs-up" /></button>
@@ -45,9 +50,28 @@
       }
     },
     computed: {
-      ...mapGetters(['rank', 'stars', 'highest', 'nextMilestone', 'winsToMilestone', 'gamesPlayed', 'gamesWon', 'winRate', 'opponent']),
+      ...mapGetters(['rank', 'stars', 'highest', 'nextMilestone', 'winsToMilestone', 'gamesPlayed', 'gamesWon', 'winRate', 'current', 'opponent']),
       rankTitle () {
         return this.$store.getters.rankTitle()
+      },
+      gamesCurrentPlayedVs () {
+        if (this.opponent === {}) return 0
+        const gamesPlayedVs = this.$store.getters.getGamesFiltered(0, 'opponent.id', this.opponent.id)
+        return gamesPlayedVs.filter(game => {
+          return game.deck.id === this.current.id
+        })
+      },
+      gamesCurrentWonVs () {
+        const gamesCurrentPlayedVs = this.gamesCurrentPlayedVs
+        return gamesCurrentPlayedVs.filter(game => {
+          return game.won === true
+        })
+      },
+      gamesCurrentWinpercentVs () {
+        if (this.gamesCurrentPlayedVs.length === 0) return 0
+        // round 2 digits
+        const winRate = Math.round((this.gamesCurrentWonVs.length / this.gamesCurrentPlayedVs.length) * 100) / 100
+        return parseInt(winRate * 100)
       },
       winPercent () {
         return parseInt(this.winRate * 100)
