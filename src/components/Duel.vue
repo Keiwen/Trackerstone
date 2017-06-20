@@ -3,13 +3,13 @@
         <div class="container">
             <div class="col-md-6">
                 <h3>Current deck</h3>
-                <deck-pick></deck-pick>
+                <deck-pick/>
                 <br/>
                 <router-link :to="{ name: 'deckList' }">Manage decks</router-link>
             </div>
             <div class="col-md-6">
                 <h3>Opponent deck</h3>
-                <type-pick @pick-type="pickOpponentType" :initialPick="opponent"></type-pick>
+                <type-pick @pick-type="pickOpponentType" :initialPick="opponent" />
             </div>
         </div>
         <div>

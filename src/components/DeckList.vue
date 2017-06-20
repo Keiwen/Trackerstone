@@ -3,13 +3,13 @@
         <h2>Manage decks</h2>
         <ul>
             <li v-for="(deck, id) in own">
-                <deck-show :deck="deck" :idDeck="id"></deck-show>
+                <deck-show :deck="deck" :idDeck="id" />
                 <button @click="remove(id)" class="btn btn-danger">Remove <icon name="trash" /></button>
             </li>
         </ul>
         <hr/>
         <label>Type: </label>
-        <type-pick @pick-type="pickType"></type-pick>
+        <type-pick @pick-type="pickType" />
         <label>Name (opt): </label><input type="text" v-model="newName" @keyup.enter="add()"/>
         <button @click="add()" class="btn btn-success">Add</button>
 

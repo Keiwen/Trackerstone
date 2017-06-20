@@ -1,9 +1,9 @@
 <template>
     <div class="container">
-        <serie-sum></serie-sum>
+        <serie-sum/>
         <hr/>
-        <duel></duel>
-        <serie-stats></serie-stats>
+        <duel/>
+        <serie-stats/>
         <hr/>
         <button @click="reset()" class="btn btn-danger">Reset</button>
     </div>

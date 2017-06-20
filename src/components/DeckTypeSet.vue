@@ -3,7 +3,7 @@
         <h2>Manage deck types</h2>
         <ul>
             <li v-for="type in types">
-                <deck-type-show :type="type"></deck-type-show>
+                <deck-type-show :type="type" />
                 <button @click="remove(type.id)"  class="btn btn-danger">
                     Remove <icon name="trash" />
                 </button>
@@ -12,7 +12,7 @@
 
         <hr/>
         <label>Class: </label>
-        <class-pick @pick-class="pickClass"></class-pick>
+        <class-pick @pick-class="pickClass" />
         <label>Archetype: </label>
         <select v-model="newArchetype">
             <option v-for="archetype in archetypes">{{ archetype }}</option>
