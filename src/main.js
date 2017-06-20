@@ -6,6 +6,7 @@ import router from './router'
 import store from './store'
 import Icon from 'vue-awesome/components/Icon'
 import VueCookie from 'vue-cookie'
+import VueAnalytics from 'vue-analytics'
 import 'vue-awesome/icons'
 import 'bootstrap/dist/css/bootstrap.css'
 // TODO rework toastr
@@ -24,6 +25,13 @@ Vue.config.productionTip = false
 
 Vue.component('icon', Icon)
 Vue.use(VueCookie)
+Vue.use(VueAnalytics, {
+  id: 'UA-101315491-1',
+  router,
+  autoTracking: {
+    exception: true
+  }
+})
 
 const toastrConfig = {
   position: 'top right',
