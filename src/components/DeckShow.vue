@@ -2,7 +2,7 @@
     <span>
         {{ deck.name }} ({{ getClassName(deck.type.hsClass) }} {{ deck.type.name }})
         -
-        Won {{ getDeckGamesWon() }} / {{ getDeckGamesPlayed() }} ({{ getDeckWinPercent() }} % global, {{ getDeckWinPercent(true) }} % last {{ recentNumberGames }} games)
+        Won {{ getDeckGamesWon() }} / {{ getDeckGamesPlayed() }} ({{ getDeckWinPercent() }} % global, {{ getDeckWinPercent(true) }} % last {{ getDeckGamesPlayed(true) }} games)
     </span>
 </template>
 
@@ -21,11 +21,10 @@
         return this.$store.getters.className(id)
       },
       getDeckGames (recent) {
-        let history = this.$store.getters.getGamesFiltered(0, 'deck.id', this.deck.id)
-        if (typeof recent !== 'undefined' && recent) {
-          history = history.slice(-this.recentNumberGames)
+        if (recent) {
+          return this.$store.getters.getLastGamesFiltered(this.recentNumberGames, 'deck.id', this.deck.id)
         }
-        return history
+        return this.$store.getters.getGamesFiltered(0, 'deck.id', this.deck.id)
       },
       getDeckGamesPlayed (recent) {
         return this.getDeckGames(recent).length

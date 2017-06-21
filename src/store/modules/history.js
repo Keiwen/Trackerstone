@@ -27,6 +27,11 @@ const getters = {
       return game[filter] === value
     })
   },
+  getLastGamesFiltered: (state, getters) => (numberOfGames, filter, value) => {
+    let history = getters.getGamesFiltered(0, filter, value)
+    if (typeof numberOfGames === 'undefined') numberOfGames = 0
+    return history.slice(-numberOfGames)
+  },
   gamesPlayed: (state, getters) => { return getters.getGamesFiltered().length },
   gamesWon: (state, getters) => { return getters.getGamesFiltered(0, 'won').length },
   gamesLoss: (state, getters) => (getters.gamesPlayed - getters.gamesWon),
