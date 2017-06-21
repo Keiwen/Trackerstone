@@ -2,9 +2,9 @@
     <div class="container">
         <h2>Manage decks</h2>
         <ul>
-            <li v-for="deck in own">
-                <deck-show :deck="deck"/>
-                <button @click="remove(id)" class="btn btn-danger">Remove <icon name="trash" /></button>
+            <li v-for="(deck, id) in own">
+                <deck-show :deck="deck" :idDeck="id" />
+                <button @click="remove(id)" class="btn btn-danger">Remove {{ id }}<icon name="trash" /></button>
             </li>
         </ul>
         <hr/>
