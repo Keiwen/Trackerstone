@@ -21,6 +21,11 @@
         return this.$store.getters.className(id)
       },
       getDeckGames (recent) {
+        let history = this.$store.getters.getGamesFiltered(0, 'deck.id', this.deck.id)
+        if (typeof recent !== 'undefined' && recent) {
+          history = history.slice(-this.recentNumberGames)
+        }
+        return history
       },
       getDeckGamesPlayed (recent) {
         return this.getDeckGames(recent).length
