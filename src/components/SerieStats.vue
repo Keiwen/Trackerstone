@@ -3,7 +3,7 @@
         <h3>Stats</h3>
         <p>Global: {{ gamesWon }} won / {{ gamesPlayed }} played ({{ winPercent }} % winrate)</p>
         <p>
-            Last {{ recentNumberGames }} games: {{ recentGamesWon }} won ({{ recentWinPercent }} % winrate)
+            Last {{ recentGamesPlayed }} games: {{ recentGamesWon }} won ({{ recentWinPercent }} % winrate)
             <win-loss v-for="(game, gameIndex) in recentGames" :game="game" :key="gameIndex" />
         </p>
     </div>
