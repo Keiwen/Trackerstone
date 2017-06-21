@@ -3,7 +3,7 @@
         {{ getClassName(type.hsClass) }} {{ type.name }} ({{ type.archetype }})
         <icon name="star" v-if="type.top" />
         -
-        Won {{ getGamesWonVs() }} / {{ getGamesPlayedVs() }} against ({{ getWinPercentVs() }} % global, {{ getWinPercentVs(true) }} % last {{ recentNumberGames }} games)
+        Won {{ getGamesWonVs() }} / {{ getGamesPlayedVs() }} against ({{ getWinPercentVs() }} % global, {{ getWinPercentVs(true) }} % last {{ getGamesPlayedVs(true) }} games)
     </span>
 </template>
 
@@ -22,9 +22,10 @@
         return this.$store.getters.className(id)
       },
       getGamesVs (recent) {
-        let gamesCount = 0
-        if (typeof recent !== 'undefined' && recent) gamesCount = this.recentNumberGames
-        return this.$store.getters.getGamesFiltered(gamesCount, 'opponent.id', this.type.id)
+        if (recent) {
+          return this.$store.getters.getLastGamesFiltered(this.recentNumberGames, 'opponent.id', this.type.id)
+        }
+        return this.$store.getters.getGamesFiltered(0, 'opponent.id', this.type.id)
       },
       getGamesPlayedVs (recent) {
         return this.getGamesVs(recent).length
