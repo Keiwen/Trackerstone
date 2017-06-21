@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "chart.js": "^2.6.0",
     "cxlt-vue2-toastr": "^1.0.8",
     "vue": "^2.2.6",
     "vue-analytics": "^4.1.2",

@@ -9,6 +9,7 @@ import VueCookie from 'vue-cookie'
 import VueAnalytics from 'vue-analytics'
 import 'vue-awesome/icons'
 import 'bootstrap/dist/css/bootstrap.css'
+import 'chart.js'
 // TODO rework toastr
 /*
 I dont like s4l1h/vue-toastr because of its ugly/heavy usage like this.$root.$refs.toastr.e("ERRROR MESSAGE");
