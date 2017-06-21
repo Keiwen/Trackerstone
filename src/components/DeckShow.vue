@@ -14,16 +14,13 @@
   export default {
     props: ['deck'],
     computed: {
-      ...mapGetters(['own', 'types', 'recentNumberGames'])
+      ...mapGetters(['recentNumberGames'])
     },
     methods: {
       getClassName (id) {
         return this.$store.getters.className(id)
       },
       getDeckGames (recent) {
-        let gamesCount = 0
-        if (typeof recent !== 'undefined' && recent) gamesCount = this.recentNumberGames
-        return this.$store.getters.getGamesFiltered(gamesCount, 'deck.id', this.deck.id)
       },
       getDeckGamesPlayed (recent) {
         return this.getDeckGames(recent).length
