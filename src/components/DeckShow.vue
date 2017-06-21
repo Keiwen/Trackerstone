@@ -12,12 +12,9 @@
   import { mapGetters } from 'vuex'
 
   export default {
-    props: ['deck', 'idDeck'],
+    props: ['deck'],
     computed: {
-      ...mapGetters(['own', 'types', 'recentNumberGames']),
-      idDeckComputed () {
-        return parseInt(this.idDeck)
-      }
+      ...mapGetters(['own', 'types', 'recentNumberGames'])
     },
     methods: {
       getClassName (id) {
@@ -26,7 +23,7 @@
       getDeckGames (recent) {
         let gamesCount = 0
         if (typeof recent !== 'undefined' && recent) gamesCount = this.recentNumberGames
-        return this.$store.getters.getGamesFiltered(gamesCount, 'deck.id', this.idDeckComputed)
+        return this.$store.getters.getGamesFiltered(gamesCount, 'deck.id', this.deck.id)
       },
       getDeckGamesPlayed (recent) {
         return this.getDeckGames(recent).length
