@@ -33,22 +33,20 @@
       ...mapGetters(['gamesPlayed', 'winRate', 'current', 'opponent']),
       gamesCurrentPlayedVs () {
         if (this.opponent === {}) return 0
-        const gamesPlayedVs = this.$store.getters.getGamesFiltered(0, 'opponent.id', this.opponent.id)
+        const gamesPlayedVs = this.$store.getters.getGamesVsType(this.opponent.id)
         return gamesPlayedVs.filter(game => {
           return game.deck.id === this.current.id
         })
       },
       gamesCurrentWonVs () {
-        const gamesCurrentPlayedVs = this.gamesCurrentPlayedVs
-        return gamesCurrentPlayedVs.filter(game => {
-          return game.won === true
+        if (this.opponent === {}) return 0
+        const gamesWonVs = this.$store.getters.getGamesWonVsType(this.opponent.id)
+        return gamesWonVs.filter(game => {
+          return game.deck.id === this.current.id
         })
       },
       gamesCurrentWinpercentVs () {
-        if (this.gamesCurrentPlayedVs.length === 0) return 0
-        // round 2 digits
-        const winRate = Math.round((this.gamesCurrentWonVs.length / this.gamesCurrentPlayedVs.length) * 100) / 100
-        return parseInt(winRate * 100)
+        return this.$store.getters.computeWinPercent(this.gamesCurrentPlayedVs.length, this.gamesCurrentWonVs.length)
       }
     },
     methods: {

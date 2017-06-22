@@ -29,11 +29,11 @@
           // skip loop if the property is from prototype
           if (!this.decks.hasOwnProperty(idDeck)) continue
           const deck = this.decks[idDeck]
-          const gamesList = this.$store.getters.getGamesFiltered(0, 'deck.id', parseInt(idDeck))
+          const gamesList = this.$store.getters.getGamesWithDeck(idDeck)
           const played = gamesList.length
           if (played === 0) continue
           labels.push(deck.name)
-          const recentGamesList = this.$store.getters.getLastGamesFiltered(this.$store.getters.recentNumberGames, 'deck.id', parseInt(idDeck))
+          const recentGamesList = this.$store.getters.getGamesWithDeck(idDeck, true)
           const recentPlayed = recentGamesList.length
           let winPercent = 0
           let recentWinPercent = 0

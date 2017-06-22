@@ -3,7 +3,7 @@
         <h3>Stats</h3>
         <p>Global: {{ gamesWon }} won / {{ gamesPlayed }} played ({{ winPercent }} % winrate)</p>
         <p>
-            Last {{ recentGamesPlayed }} games: {{ recentGamesWon }} won ({{ recentWinPercent }} % winrate)
+            Last {{ recentGames.length }} games: {{ recentGamesWon.length }} won ({{ recentWinPercent }} % winrate)
             <win-loss v-for="(game, gameIndex) in recentGames" :game="game" :key="gameIndex" />
         </p>
     </div>
@@ -17,22 +17,15 @@
   export default {
     components: {WinLoss},
     computed: {
-      ...mapGetters(['gamesPlayed', 'gamesWon', 'winRate', 'recentNumberGames']),
-      winPercent () {
-        return parseInt(this.winRate * 100)
-      },
+      ...mapGetters(['gamesPlayed', 'gamesWon', 'winPercent', 'recentNumberGames']),
       recentGames () {
-        return this.$store.getters.getGamesFiltered(this.recentNumberGames)
-      },
-      recentGamesPlayed () {
-        return this.recentGames.length
+        return this.$store.getters.getGamesList(true)
       },
       recentGamesWon () {
-        return this.$store.getters.getGamesFiltered(this.recentNumberGames, 'won').length
+        return this.$store.getters.getGamesWonAmong(this.recentGames)
       },
       recentWinPercent () {
-        if (this.recentGamesPlayed === 0) return 0
-        return Math.round((this.recentGamesWon / this.recentGamesPlayed) * 100)
+        return this.$store.getters.computeWinPercent(this.recentGames.length, this.recentGamesWon.length)
       }
     }
   }
