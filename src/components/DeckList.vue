@@ -4,9 +4,10 @@
         <ul>
             <li v-for="(deck, id) in own">
                 <deck-show :deck="deck" :idDeck="id" />
-                <button @click="remove(id)" class="btn btn-danger">Remove {{ id }}<icon name="trash" /></button>
+                <button @click="remove(id)" class="btn btn-danger">Remove<icon name="trash" /></button>
             </li>
         </ul>
+        <router-link :to="{ name: 'deckChart' }">See charts</router-link>
         <hr/>
         <label>Type: </label>
         <type-pick @pick-type="pickType" />
