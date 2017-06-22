@@ -32,7 +32,7 @@
           const gamesList = this.$store.getters.getGamesWithDeck(idDeck)
           const played = gamesList.length
           if (played === 0) continue
-          labels.push(deck.name)
+          labels.push(this.getDeckTitle(deck))
           const recentGamesList = this.$store.getters.getGamesWithDeck(idDeck, true)
           const recentPlayed = recentGamesList.length
           let winPercent = 0
@@ -54,6 +54,15 @@
         }
 
         return { labels: labels, datasets: [datasetGlobal, datasetRecent] }
+      }
+    },
+    methods: {
+      getClassName (id) {
+        return this.$store.getters.className(id)
+      },
+      getDeckTitle (deck) {
+        const className = this.getClassName(deck.type.hsClass)
+        return deck.name + ' (' + className + ' ' + deck.type.name + ')'
       }
     }
   }
