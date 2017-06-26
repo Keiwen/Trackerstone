@@ -58,11 +58,6 @@ const getters = {
   classes: state => state.CLASSES,
   types: state => state.types,
   archetypes: state => state.archetypes,
-  ownDeck: state => (id) => {
-    if (typeof id === 'undefined') id = 0
-    if (typeof state.own[id] === 'undefined') return {}
-    return state.own[id]
-  },
   className: state => (id) => {
     if (typeof state.CLASSES[id] === 'undefined') return ''
     return state.CLASSES[id]['name']
