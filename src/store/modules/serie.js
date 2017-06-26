@@ -92,7 +92,20 @@ const getters = {
   },
   stars: state => state.stars,
   winStreak: state => state.winStreak,
-  highest: state => state.highest
+  highest: state => state.highest,
+  getTotalStars: state => (rank, starsInRank) => {
+    if (typeof rank === 'undefined') rank = state.rank
+    if (typeof starsInRank === 'undefined') starsInRank = state.stars
+    let totalStars = 0
+    for (let i = 25; i >= rank; i--) {
+      if (rank === i) {
+        totalStars += starsInRank
+      } else {
+        totalStars += state.RANKS[i]['stars']
+      }
+    }
+    return totalStars
+  }
 }
 
 // ----------
