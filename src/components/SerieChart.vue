@@ -1,9 +1,13 @@
 <template>
     <div class="container">
-        <h2>Ranks</h2>
-        <serie-rank-evol-graph :history="history" />
-        <h2>Total stars</h2>
-        <serie-stars-evol-graph :history="history" />
+        <div class="chart">
+            <h2>Ranks</h2>
+            <serie-rank-evol-graph :history="history" :height="100" />
+        </div>
+        <div class="chart">
+            <h2>Total stars</h2>
+            <serie-stars-evol-graph :history="history" :height="100" />
+        </div>
 
     </div>
 </template>

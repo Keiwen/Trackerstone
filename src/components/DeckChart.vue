@@ -1,8 +1,9 @@
 <template>
     <div class="container">
-        <h2>Winrates</h2>
-
-        <deck-win-rate-graph :decks="own" />
+        <div class="chart">
+            <h2>Winrates</h2>
+            <deck-win-rate-graph :decks="own" :height="100" />
+        </div>
 
     </div>
 </template>

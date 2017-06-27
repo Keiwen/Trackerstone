@@ -33,4 +33,17 @@
   color: #2c3e50;
   margin-top: 60px;
 }
+
+.chart {
+    background-color: #463C3B;
+    border-radius: 25px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.chart h2 {
+    color: #D3921F;
+    border-bottom: 1px solid #D3921F;
+    margin-top: 0;
+    padding-bottom: 15px;
+}
 </style>

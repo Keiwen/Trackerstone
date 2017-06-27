@@ -1,24 +1,21 @@
-<template>
-    <div>
-        <line-chart :chart-data="chartData" :height="100" />
-    </div>
-</template>
+
 
 <script>
 
-  import LineChart from './LineChart'
+  import { Line } from 'vue-chartjs'
   import { mapGetters } from 'vuex'
 
-  export default {
+  export default Line.extend({
     props: ['history'],
-    components: {LineChart},
     computed: {
       ...mapGetters(['rank', 'stars']),
       chartData () {
         let labels = []
         let dataset = {
           label: 'Total stars',
-          backgroundColor: '#f87979',
+          fill: false,
+          backgroundColor: '#D3921F',
+          borderColor: '#D3921F',
           data: []
         }
 
@@ -33,13 +30,21 @@
         dataset.data.push(totalStars)
 
         return { labels: labels, datasets: [dataset] }
+      },
+      options () {
+        return {
+          legend: { display: false }
+        }
       }
     },
     methods: {
       getTotalStars (rank, stars) {
         return this.$store.getters.getTotalStars(rank, stars)
       }
+    },
+    mounted () {
+      this.renderChart(this.chartData, this.options)
     }
-  }
+  })
 
 </script>

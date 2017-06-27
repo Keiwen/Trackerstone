@@ -1,24 +1,20 @@
-<template>
-    <div>
-        <line-chart :chart-data="chartData" :height="100" />
-    </div>
-</template>
 
 <script>
 
-  import LineChart from './LineChart'
+  import { Line } from 'vue-chartjs'
   import { mapGetters } from 'vuex'
 
-  export default {
+  export default Line.extend({
     props: ['history'],
-    components: {LineChart},
     computed: {
-      ...mapGetters(['rank']),
+      ...mapGetters(['rank', 'highest']),
       chartData () {
         let labels = []
         let dataset = {
           label: 'Rank',
-          backgroundColor: '#f87979',
+          fill: false,
+          backgroundColor: '#D3921F',
+          borderColor: '#D3921F',
           data: []
         }
 
@@ -30,8 +26,25 @@
         dataset.data.push(this.rank)
 
         return { labels: labels, datasets: [dataset] }
+      },
+      options () {
+        return {
+          scales: {
+            yAxes: [{
+              ticks: {
+                reverse: true,
+                min: this.highest,
+                max: 25
+              }
+            }]
+          },
+          legend: { display: false }
+        }
       }
+    },
+    mounted () {
+      this.renderChart(this.chartData, this.options)
     }
-  }
+  })
 
 </script>

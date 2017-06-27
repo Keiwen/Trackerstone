@@ -1,32 +1,25 @@
-<template>
-    <div>
-        <bar-chart :chart-data="chartData" :height="100" />
-    </div>
-</template>
 
 <script>
 
-  import BarChart from './BarChart'
+  import { Bar } from 'vue-chartjs'
 
-  export default {
+  export default Bar.extend({
     props: ['decks'],
-    components: {BarChart},
     computed: {
       chartData () {
         let labels = []
         let datasetGlobal = {
           label: 'Global',
-          backgroundColor: '#f87979',
+          backgroundColor: '#D15C69',
           data: []
         }
         let datasetRecent = {
           label: 'Recent',
-          backgroundColor: '#087979',
+          backgroundColor: '#00C2D3',
           data: []
         }
 
         for (let idDeck in this.decks) {
-          // skip loop if the property is from prototype
           if (!this.decks.hasOwnProperty(idDeck)) continue
           const deck = this.decks[idDeck]
           const gamesList = this.$store.getters.getGamesWithDeck(idDeck)
@@ -54,6 +47,11 @@
         }
 
         return { labels: labels, datasets: [datasetGlobal, datasetRecent] }
+      },
+      options () {
+        return {
+          legend: { display: false }
+        }
       }
     },
     methods: {
@@ -64,7 +62,10 @@
         const className = this.getClassName(deck.type.hsClass)
         return deck.name + ' (' + className + ' ' + deck.type.name + ')'
       }
+    },
+    mounted () {
+      this.renderChart(this.chartData, this.options)
     }
-  }
+  })
 
 </script>
