@@ -25,9 +25,9 @@
 <script>
 
   import { mapGetters } from 'vuex'
-  import * as storeMut from '../store/mutation-types'
-  import TypePick from '@/components/TypePick'
-  import DeckShow from '@/components/DeckShow'
+  import * as storeMut from '@/store/mutation-types'
+  import TypePick from './TypePick'
+  import DeckShow from './DeckShow'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
 
   export default {

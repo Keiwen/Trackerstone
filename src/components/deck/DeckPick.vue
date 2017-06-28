@@ -8,7 +8,7 @@
 <script>
 
   import { mapGetters } from 'vuex'
-  import * as storeMut from '../store/mutation-types'
+  import * as storeMut from '@/store/mutation-types'
 
   export default {
     data () {

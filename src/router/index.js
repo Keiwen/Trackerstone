@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Serie from '@/components/Serie'
-import SerieSet from '@/components/SerieSet'
-import DeckTypeSet from '@/components/DeckTypeSet'
-import DeckList from '@/components/DeckList'
-import DeckChart from '@/components/DeckChart'
-import SerieChart from '@/components/SerieChart'
+import Serie from '@/components/serie/Serie'
+import SerieSet from '@/components/serie/SerieSet'
+import DeckTypeSet from '@/components/deck/DeckTypeSet'
+import DeckList from '@/components/deck/DeckList'
+import DeckChart from '@/components/deck/DeckChart'
+import SerieChart from '@/components/serie/SerieChart'
 
 Vue.use(Router)
 

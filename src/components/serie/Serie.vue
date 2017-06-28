@@ -16,12 +16,12 @@
 
 <script>
   import { mapActions } from 'vuex'
-  import DeckPick from '@/components/DeckPick'
-  import TypePick from '@/components/TypePick'
-  import WinLoss from '@/components/WinLoss'
-  import SerieSum from '@/components/SerieSum'
-  import Duel from '@/components/Duel'
-  import SerieStats from '@/components/SerieStats'
+  import DeckPick from '@/components/deck/DeckPick'
+  import TypePick from '@/components/deck/TypePick'
+  import WinLoss from './WinLoss'
+  import SerieSum from './SerieSum'
+  import Duel from './Duel'
+  import SerieStats from './SerieStats'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
 
   export default {

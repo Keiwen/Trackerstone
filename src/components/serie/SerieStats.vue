@@ -13,7 +13,7 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  import WinLoss from '@/components/WinLoss'
+  import WinLoss from './WinLoss'
 
   export default {
     components: {WinLoss},

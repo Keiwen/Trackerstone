@@ -10,7 +10,7 @@
 <script>
 
   import { mapGetters } from 'vuex'
-  import ClassCard from '@/components/ClassCard'
+  import ClassCard from './ClassCard'
 
   export default {
     components: {ClassCard},

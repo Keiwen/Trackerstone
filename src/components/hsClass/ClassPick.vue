@@ -14,7 +14,7 @@
 
   import { mapGetters } from 'vuex'
   import { SweetModal } from 'sweet-modal-vue'
-  import ClassSpread from '@/components/ClassSpread'
+  import ClassSpread from './ClassSpread'
 
   export default {
     components: { SweetModal, ClassSpread },

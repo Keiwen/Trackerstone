@@ -22,10 +22,10 @@
 
 
 <script>
-  import * as storeMut from '../store/mutation-types'
+  import * as storeMut from '@/store/mutation-types'
   import { mapGetters, mapActions } from 'vuex'
-  import DeckPick from '@/components/DeckPick'
-  import TypePick from '@/components/TypePick'
+  import DeckPick from '@/components/deck/DeckPick'
+  import TypePick from '@/components/deck/TypePick'
 
   export default {
     components: {DeckPick, TypePick},

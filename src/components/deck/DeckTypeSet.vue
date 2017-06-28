@@ -30,9 +30,9 @@
 <script>
 
   import { mapGetters } from 'vuex'
-  import * as storeMut from '../store/mutation-types'
-  import ClassPick from '@/components/ClassPick'
-  import DeckTypeShow from '@/components/DeckTypeShow'
+  import * as storeMut from '@/store/mutation-types'
+  import ClassPick from '@/components/hsClass/ClassPick'
+  import DeckTypeShow from './DeckTypeShow'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
 
   export default {
