@@ -6,7 +6,7 @@ import Vue from 'vue'
 // ----------
 const state = {
   CLASSES: {
-    '': {'name': ''},
+    '': {'name': 'None'},
     'druid': {'name': 'Druid'},
     'hunter': {'name': 'Hunter'},
     'mage': {'name': 'Mage'},
