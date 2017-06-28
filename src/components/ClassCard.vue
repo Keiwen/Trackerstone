@@ -26,6 +26,7 @@
 <style>
     .hero {
         border: 1px solid transparent;
+        cursor: pointer;
     }
 
     .hero:hover {
