@@ -67,7 +67,6 @@
     methods: {
       promptConfirm () {
         this.$refs.modalConfirmation.open()
-//        this.$emit('pick-class', this.pick)
       },
       confirmed () {
         this.$refs.modalConfirmation.close()
