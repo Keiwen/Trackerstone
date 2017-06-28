@@ -5,7 +5,11 @@
         <duel/>
         <serie-stats/>
         <hr/>
-        <button @click="reset()" class="btn btn-danger">Reset</button>
+        <confirmation-modal
+                @modal-confirm="reset()"
+                modalText="Are you sure you want to reset serie?"
+                buttonText="Reset" iconName=""
+        />
     </div>
 </template>
 
@@ -18,9 +22,10 @@
   import SerieSum from '@/components/SerieSum'
   import Duel from '@/components/Duel'
   import SerieStats from '@/components/SerieStats'
+  import ConfirmationModal from '@/components/modals/ConfirmationModal'
 
   export default {
-    components: {DeckPick, TypePick, WinLoss, SerieSum, Duel, SerieStats},
+    components: {DeckPick, TypePick, WinLoss, SerieSum, Duel, SerieStats, ConfirmationModal},
     methods: {
       ...mapActions(['reset'])
     }
