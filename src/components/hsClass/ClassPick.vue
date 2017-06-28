@@ -12,7 +12,6 @@
 
 <script>
 
-  import { mapGetters } from 'vuex'
   import { SweetModal } from 'sweet-modal-vue'
   import ClassSpread from './ClassSpread'
 
@@ -24,7 +23,6 @@
       }
     },
     computed: {
-      ...mapGetters(['classes']),
       btnText () {
         if (this.pick) return this.getClassName(this.pick)
         return 'Choose class...'
