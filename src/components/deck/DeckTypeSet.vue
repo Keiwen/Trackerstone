@@ -12,9 +12,7 @@
         <label>Class: </label>
         <class-pick @pick-class="pickClass" />
         <label>Archetype: </label>
-        <select v-model="newArchetype">
-            <option v-for="archetype in archetypes">{{ archetype }}</option>
-        </select>
+        <archetype-pick @pick-archetype="pickArchetype" />
         <label>Name: </label>
         <input type="text" v-model="newName" @keyup.enter="add()"/>
         <label for="type_top">Star: </label>
@@ -34,9 +32,10 @@
   import ClassPick from '@/components/hsClass/ClassPick'
   import DeckTypeShow from './DeckTypeShow'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
+  import ArchetypePick from './ArchetypePick.vue'
 
   export default {
-    components: {ClassPick, DeckTypeShow, ConfirmationModal},
+    components: {ClassPick, DeckTypeShow, ConfirmationModal, ArchetypePick},
     data () {
       return {
         newName: '',
@@ -64,6 +63,9 @@
       },
       pickClass (pick) {
         this.newClass = pick
+      },
+      pickArchetype (pick) {
+        this.newArchetype = pick
       },
       remove (id) {
         this.$store.commit(storeMut.REMOVE_DECKTYPE, id)
