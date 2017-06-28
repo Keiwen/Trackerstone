@@ -4,9 +4,7 @@
         <ul>
             <li v-for="type in types">
                 <deck-type-show :type="type" />
-                <button @click="remove(type.id)"  class="btn btn-danger">
-                    Remove <icon name="trash" />
-                </button>
+                <confirmation-modal @modal-confirm="remove(type.id)" modalText="Are you sure you want to remove this type?"/>
             </li>
         </ul>
 
@@ -35,9 +33,10 @@
   import * as storeMut from '../store/mutation-types'
   import ClassPick from '@/components/ClassPick'
   import DeckTypeShow from '@/components/DeckTypeShow'
+  import ConfirmationModal from '@/components/modals/ConfirmationModal'
 
   export default {
-    components: {ClassPick, DeckTypeShow},
+    components: {ClassPick, DeckTypeShow, ConfirmationModal},
     data () {
       return {
         newName: '',

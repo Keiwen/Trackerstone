@@ -4,7 +4,7 @@
         <ul>
             <li v-for="(deck, id) in own">
                 <deck-show :deck="deck" :idDeck="id" />
-                <button @click="remove(id)" class="btn btn-danger">Remove<icon name="trash" /></button>
+                <confirmation-modal @modal-confirm="remove(id)" modalText="Are you sure you want to delete this deck?"/>
             </li>
         </ul>
         <router-link :to="{ name: 'deckChart' }">See charts</router-link>
@@ -28,9 +28,10 @@
   import * as storeMut from '../store/mutation-types'
   import TypePick from '@/components/TypePick'
   import DeckShow from '@/components/DeckShow'
+  import ConfirmationModal from '@/components/modals/ConfirmationModal'
 
   export default {
-    components: {TypePick, DeckShow},
+    components: {TypePick, DeckShow, ConfirmationModal},
     data () {
       return {
         newType: {},
