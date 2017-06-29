@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Serie from '@/components/serie/Serie'
 import SerieSet from '@/components/serie/SerieSet'
-import DeckTypeSet from '@/components/deck/DeckTypeSet'
+import DeckTypeList from '@/components/deck/DeckTypeList'
 import DeckList from '@/components/deck/DeckList'
 import DeckChart from '@/components/deck/DeckChart'
 import SerieChart from '@/components/serie/SerieChart'
@@ -23,8 +23,8 @@ export default new Router({
     },
     {
       path: '/deckTypes',
-      name: 'deckTypesSet',
-      component: DeckTypeSet
+      name: 'deckTypesList',
+      component: DeckTypeList
     },
     {
       path: '/deckList',
