@@ -5,7 +5,7 @@
           -
           <router-link :to="{ name: 'serieSet' }">Set serie data</router-link>
           -
-          <router-link :to="{ name: 'deckTypesSet' }">Manage deck types</router-link>
+          <router-link :to="{ name: 'deckTypesList' }">Manage deck types</router-link>
           -
           <router-link :to="{ name: 'deckList' }">Manage decks</router-link>
       </div>
