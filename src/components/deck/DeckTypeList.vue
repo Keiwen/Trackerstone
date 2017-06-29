@@ -31,8 +31,8 @@
     computed: {
       ...mapGetters(['types', 'archetypes']),
       typesTopFirst () {
-        const top = this.$store.getters.getTypesFiltered('top')
-        const noTop = this.$store.getters.getTypesFiltered('top', false)
+        const top = this.$store.getters.getTypesOnTop()
+        const noTop = this.$store.getters.getTypesOnTop(false)
         return top.concat(noTop)
       }
     },

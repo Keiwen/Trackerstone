@@ -69,6 +69,16 @@ const getters = {
     if (typeof value === 'undefined') value = true
     return state.types.filter(type => { return type[filter] === value })
   },
+  getTypesWithClass: (state, getters) => (hsClass) => {
+    return getters.getTypesFiltered('hcClass', hsClass)
+  },
+  getTypesWithArchetype: (state, getters) => (archetype) => {
+    return getters.getTypesFiltered('archetype', archetype)
+  },
+  getTypesOnTop: (state, getters) => (top) => {
+    if (typeof top === 'undefined') top = true
+    return getters.getTypesFiltered('top', top)
+  },
   current: state => state.current,
   opponent: state => state.opponent
 }

@@ -25,10 +25,10 @@
     computed: {
       ...mapGetters(['types']),
       typesTop () {
-        return this.$store.getters.getTypesFiltered('top')
+        return this.$store.getters.getTypesOnTop()
       },
       typesNoTop () {
-        return this.$store.getters.getTypesFiltered('top', false)
+        return this.$store.getters.getTypesOnTop(false)
       }
     },
     methods: {
