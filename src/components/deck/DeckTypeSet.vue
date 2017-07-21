@@ -37,6 +37,12 @@
           archetype: this.newArchetype,
           top: this.newTop
         })
+      },
+      pickClass (pick) {
+        this.newClass = pick
+      },
+      pickArchetype (pick) {
+        this.newArchetype = pick
       }
     }
   }
