@@ -15,7 +15,7 @@
         <button @click="add()" class="btn btn-success">Add</button>
 
         <br/><br/>
-        <router-link :to="{ name: 'deckTypesSet' }">Manage deck types</router-link>
+        <router-link :to="{ name: 'deckTypesList' }">Manage deck types</router-link>
 
 
     </div>
