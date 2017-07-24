@@ -50,7 +50,7 @@
       },
       options () {
         return {
-          legend: { display: false }
+          legend: { display: true }
         }
       }
     },
