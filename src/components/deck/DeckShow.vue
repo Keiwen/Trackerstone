@@ -1,9 +1,8 @@
 <template>
-    <span>
-        {{ deck.name }} ({{ getClassName(deck.type.hsClass) }} {{ deck.type.name }})
-        -
-        Won {{ getDeckGamesWonCount() }} / {{ getDeckGamesPlayedCount() }} ({{ getDeckWinPercent() }} % global, {{ getDeckWinPercent(true) }} % last {{ getDeckGamesPlayedCount(true) }} games)
-    </span>
+    <div>
+        <h3>{{ deck.name }} ({{ getClassName(deck.type.hsClass) }} {{ deck.type.name }})</h3>
+        <p>Won {{ getDeckGamesWonCount() }} / {{ getDeckGamesPlayedCount() }} ({{ getDeckWinPercent() }} % global, {{ getDeckWinPercent(true) }} % last {{ getDeckGamesPlayedCount(true) }} games)</p>
+    </div>
 </template>
 
 
@@ -28,3 +27,8 @@
   }
 
 </script>
+
+<style>
+
+
+</style>
