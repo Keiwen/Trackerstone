@@ -1,14 +1,24 @@
 <template>
-    <span>
-        {{ getClassName(type.hsClass) }} {{ type.name }} ({{ type.archetype }})
-        <icon name="star" v-if="type.top" />
-        -
-        Won {{ getGamesWonVsCount() }} / {{ getGamesPlayedVsCount() }} against ({{ getWinPercentVs() }} % global, {{ getWinPercentVs(true) }} % last {{ getGamesPlayedVsCount(true) }} games)
-    </span>
+    <div class="deckTypeShow">
+        <div class="row">
+            <div class="col-xs-10">
+                <h4>
+                    {{ getClassName(type.hsClass) }} {{ type.name }} ({{ type.archetype }})
+                </h4>
+            </div>
+            <div class="starIcon col-xs-2" @click="switchTop()">
+                <icon name="star" v-if="type.top" class="stared"/>
+                <icon name="star-o" v-else />
+            </div>
+        </div>
+        <p>Won {{ getGamesWonVsCount() }} / {{ getGamesPlayedVsCount() }} against ({{ getWinPercentVs() }} % global, {{ getWinPercentVs(true) }} % last {{ getGamesPlayedVsCount(true) }} games)</p>
+    </div>
 </template>
 
 
 <script>
+
+  import * as storeMut from '@/store/mutation-types'
 
   export default {
     props: ['type'],
@@ -24,8 +34,26 @@
       },
       getWinPercentVs (recent) {
         return this.$store.getters.getWinPercentVsType(this.type.id, recent)
+      },
+      switchTop () {
+        this.$store.commit(storeMut.SWITCH_DECKTYPE_TOP, this.type.id)
       }
     }
   }
 
 </script>
+
+<style>
+    .deckTypeShow {
+
+    }
+
+    .starIcon {
+        cursor: pointer;
+    }
+
+    .stared {
+        color: #C6AA37;
+    }
+
+</style>
