@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container-fluid">
         <h2>Manage decks</h2>
         <div class="container-fluid">
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" v-for="(deck, id) in own">

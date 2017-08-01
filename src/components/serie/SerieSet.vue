@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container-fluid">
         <h2>Set serie data</h2>
         <label>Rank: </label><input type="number" v-model="rank"/>
         <label>Stars: </label><input type="number" v-model="stars"/>

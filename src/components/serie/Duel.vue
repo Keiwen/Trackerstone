@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container-fluid">
         <div class="container">
             <div class="col-md-6">
                 <h3>Current deck</h3>
