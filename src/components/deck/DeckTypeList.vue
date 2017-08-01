@@ -1,19 +1,22 @@
 <template>
-    <div class="container">
+    <div class="container-fluid">
         <h2>Manage deck types</h2>
 
         Sort by:
-        <enhanced-check-radio :label="['Star', 'Time added']" :value="['star', 'old']"
+        <enhanced-check-radio :label="['Star', 'Time added']" :value="['star', 'old']" name="deck_type_sort"
                               subClass="primary" :animate="true" :inline="true" v-model="sortBy" :rounded="true">
 
         </enhanced-check-radio>
 
-        <ul>
-            <li v-for="type in typesList">
+
+        <div class="container-fluid">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" v-for="type in typesList">
                 <deck-type-show :type="type" />
-                <confirmation-modal @modal-confirm="remove(type.id)" modalText="Are you sure you want to remove this type?"/>
-            </li>
-        </ul>
+                <div>
+                    <confirmation-modal @modal-confirm="remove(type.id)" modalText="Are you sure you want to remove this type?"/>
+                </div>
+            </div>
+        </div>
 
         <hr/>
 

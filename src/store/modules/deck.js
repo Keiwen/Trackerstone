@@ -143,6 +143,13 @@ const mutations = {
     if (state.opponent.id === id) {
       state.opponent = {}
     }
+  },
+  [types.SWITCH_DECKTYPE_TOP] (state, id) {
+    state.types.forEach(function (type, index, object) {
+      if (type.id === id) {
+        type.top = !type.top
+      }
+    })
   }
 }
 
