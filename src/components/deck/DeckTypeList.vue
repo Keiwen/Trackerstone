@@ -2,7 +2,11 @@
     <div class="container">
         <h2>Manage deck types</h2>
 
-        <toggle-button @change="onTopFirstToggle" :sync="true" :value="topFirst" :labels="{checked: 'Star first', unchecked: 'Old first'}" :width="110" :height="30" />
+        Sort by:
+        <enhanced-check-radio :label="['Star', 'Time added']" :value="['star', 'old']"
+                              subClass="primary" :animate="true" :inline="true" v-model="sortBy" :rounded="true">
+
+        </enhanced-check-radio>
 
         <ul>
             <li v-for="type in typesList">
@@ -28,18 +32,20 @@
   import DeckTypeShow from './DeckTypeShow'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
   import DeckTypeSet from './DeckTypeSet'
+  import { EnhancedCheckRadio } from 'vue-enhanced-check'
 
   export default {
-    components: {DeckTypeShow, ConfirmationModal, DeckTypeSet},
+    components: {DeckTypeShow, ConfirmationModal, DeckTypeSet, EnhancedCheckRadio},
     data () {
       return {
+        sortBy: 'star',
         topFirst: true
       }
     },
     computed: {
       ...mapGetters(['types', 'archetypes']),
       typesList () {
-        if (this.topFirst) return this.typesTopFirst
+        if (this.sortBy === 'star') return this.typesTopFirst
         return this.types
       },
       typesTopFirst () {
@@ -62,7 +68,4 @@
 
 
 <style>
-    .v-switch-label {
-        font-size: 16px;
-    }
 </style>
