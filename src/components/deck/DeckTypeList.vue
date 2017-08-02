@@ -3,7 +3,7 @@
         <h2>Manage deck types</h2>
 
         Sort by:
-        <enhanced-check-radio :label="['Star', 'Time added']" :value="['star', 'old']" name="deck_type_sort"
+        <enhanced-check-radio :label="['Star', 'Time added', 'Winrate vs']" :value="['star', 'old', 'winrate']" name="deck_type_sort"
                               subClass="primary" :animate="true" :inline="true" v-model="sortBy" :rounded="true">
 
         </enhanced-check-radio>
@@ -41,6 +41,7 @@
     components: {DeckTypeShow, ConfirmationModal, DeckTypeSet, EnhancedCheckRadio},
     data () {
       return {
+        typeEnhanced: [],
         sortBy: 'star',
         topFirst: true
       }
@@ -48,8 +49,16 @@
     computed: {
       ...mapGetters(['types', 'archetypes']),
       typesList () {
-        if (this.sortBy === 'star') return this.typesTopFirst
-        return this.types
+        switch (this.sortBy) {
+          case 'star':
+            return this.typesTopFirst
+          case 'winrate':
+            return this.getTypesByWinrateAgainst()
+          case 'winrateRecent':
+            return this.getTypesByWinrateAgainst(true)
+          default:
+            return this.types
+        }
       },
       typesTopFirst () {
         const top = this.$store.getters.getTypesOnTop()
@@ -61,8 +70,16 @@
       remove (id) {
         this.$store.commit(storeMut.REMOVE_DECKTYPE, id)
       },
-      onTopFirstToggle (event) {
-        this.topFirst = event.value
+      getTypesByWinrateAgainst (recent) {
+        let typeEnhanced = []
+        for (let i = 0; i < this.types.length; i++) {
+          let type = this.types[i]
+          type.winPercentVs = this.$store.getters.getWinPercentVsType(type.id, recent)
+          typeEnhanced.push(type)
+        }
+        return typeEnhanced.sort(function (a, b) {
+          return a.winPercentVs > b.winPercentVs
+        }).reverse()
       }
     }
   }
