@@ -1,17 +1,23 @@
 <template>
     <div class="deckTypeShow">
         <div class="row">
-            <div class="col-xs-10">
+            <div class="col-xs-11">
                 <h4>
                     {{ getClassName(type.hsClass) }} {{ type.name }} ({{ type.archetype }})
                 </h4>
             </div>
-            <div class="starIcon col-xs-2" @click="switchTop()">
+            <div class="starIcon col-xs-1" @click="switchTop()">
                 <icon name="star" v-if="type.top" class="stared"/>
                 <icon name="star-o" v-else />
             </div>
         </div>
-        <p>Won {{ getGamesWonVsCount() }} / {{ getGamesPlayedVsCount() }} against ({{ getWinPercentVs() }} % global, {{ getWinPercentVs(true) }} % last {{ getGamesPlayedVsCount(true) }} games)</p>
+        <p>
+            Won {{ getGamesWonVsCount() }} / {{ getGamesPlayedVsCount() }} against
+            <i>
+                ({{ getWinPercentVs() }} % global, {{ getWinPercentVs(true) }} % last {{ getGamesPlayedVsCount(true) }} games)
+                 - score {{ getWinScoreVs() }}
+            </i>
+        </p>
     </div>
 </template>
 
@@ -34,6 +40,9 @@
       },
       getWinPercentVs (recent) {
         return this.$store.getters.getWinPercentVsType(this.type.id, recent)
+      },
+      getWinScoreVs (recent) {
+        return this.$store.getters.getWinScoreVsType(this.type.id, recent)
       },
       switchTop () {
         this.$store.commit(storeMut.SWITCH_DECKTYPE_TOP, this.type.id)

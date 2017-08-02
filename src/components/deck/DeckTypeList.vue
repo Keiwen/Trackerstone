@@ -3,7 +3,7 @@
         <h2>Manage deck types</h2>
 
         Sort by:
-        <enhanced-check-radio :label="['Star', 'Time added', 'Winrate vs']" :value="['star', 'old', 'winrate']" name="deck_type_sort"
+        <enhanced-check-radio :label="['Star', 'Time added', 'Winrate vs', 'Win score vs']" :value="['star', 'old', 'winrate', 'winscore']" name="deck_type_sort"
                               subClass="primary" :animate="true" :inline="true" v-model="sortBy" :rounded="true">
 
         </enhanced-check-radio>
@@ -52,6 +52,8 @@
         switch (this.sortBy) {
           case 'star':
             return this.typesTopFirst
+          case 'winscore':
+            return this.getTypesByWinScoreAgainst()
           case 'winrate':
             return this.getTypesByWinrateAgainst()
           case 'winrateRecent':
@@ -70,15 +72,24 @@
       remove (id) {
         this.$store.commit(storeMut.REMOVE_DECKTYPE, id)
       },
-      getTypesByWinrateAgainst (recent) {
+      getEnhancedTypes (recent) {
         let typeEnhanced = []
         for (let i = 0; i < this.types.length; i++) {
           let type = this.types[i]
           type.winPercentVs = this.$store.getters.getWinPercentVsType(type.id, recent)
+          type.winScoreVs = this.$store.getters.getWinScoreVsType(type.id)
           typeEnhanced.push(type)
         }
-        return typeEnhanced.sort(function (a, b) {
+        return typeEnhanced
+      },
+      getTypesByWinrateAgainst (recent) {
+        return this.getEnhancedTypes(recent).sort(function (a, b) {
           return a.winPercentVs > b.winPercentVs
+        }).reverse()
+      },
+      getTypesByWinScoreAgainst () {
+        return this.getEnhancedTypes().sort(function (a, b) {
+          return a.winScoreVs > b.winScoreVs
         }).reverse()
       }
     }

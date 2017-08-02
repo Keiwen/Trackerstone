@@ -5,8 +5,14 @@ import * as types from '../mutation-types'
 // ----------
 const state = {
   history: [],
-  recentNumberGames: 10
-
+  recentNumberGames: 10,
+  // score is win percent multiplied by function a/(1+(b/(x^3)))
+  // x = games count
+  // a = multiplier
+  // b = coef
+  // first games doesn't count much, then score grows up to maximum
+  scoreCoef: 2000, // by 20 games, score will be 80 % of multiplier
+  scoreMult: 2 // Winrate should be around 1/2, so multiply by 2 to give score with max ~ 100
 }
 
 // ----------
@@ -48,6 +54,10 @@ const getters = {
     if (playedCount === 0) return 0
     return Math.round((wonCount / playedCount) * 100)
   },
+  computeWinScore: state => (playedCount, winPercent) => {
+    if (playedCount === 0) return 0
+    return Math.round(winPercent * state.scoreMult / (1 + (state.scoreCoef / Math.pow(playedCount, 3))))
+  },
   getGamesWithDeck: (state, getters) => (idDeck, recentOnly) => {
     return getters.getGamesList(recentOnly, 'deck.id', parseInt(idDeck))
   },
@@ -59,6 +69,11 @@ const getters = {
     const played = getters.getGamesWithDeck(idDeck, recentOnly)
     const won = getters.getGamesWonWithDeck(idDeck, recentOnly)
     return getters.computeWinPercent(played.length, won.length)
+  },
+  getWinScoreWithDeck: (state, getters) => (idDeck, recentOnly) => {
+    const played = getters.getGamesWithDeck(idDeck, recentOnly)
+    const percent = getters.getWinPercentWithDeck(idDeck, recentOnly)
+    return getters.computeWinScore(played.length, percent)
   },
   getGamesVsType: (state, getters) => (idType, recentOnly) => {
     return getters.getGamesList(recentOnly, 'opponent.id', parseInt(idType))
@@ -72,6 +87,11 @@ const getters = {
     const won = getters.getGamesWonVsType(idType, recentOnly)
     return getters.computeWinPercent(played.length, won.length)
   },
+  getWinScoreVsType: (state, getters) => (idType, recentOnly) => {
+    const played = getters.getGamesVsType(idType, recentOnly)
+    const percent = getters.getWinPercentVsType(idType, recentOnly)
+    return getters.computeWinScore(played.length, percent)
+  },
   // GAMES FILTERS >>>
   gamesPlayed: (state, getters) => { return getters.getGamesList().length },
   gamesWon: (state, getters) => { return getters.getGamesFiltered('won').length },
@@ -81,6 +101,9 @@ const getters = {
   },
   winPercent: (state, getters) => {
     return getters.computeWinPercent(getters.gamesPlayed, getters.gamesWon)
+  },
+  winScore: (state, getters) => {
+    return getters.computeWinScore(getters.gamesPlayed, getters.winPercent)
   },
   recentNumberGames: state => state.recentNumberGames
 }
