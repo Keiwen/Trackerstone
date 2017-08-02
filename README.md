@@ -11,10 +11,12 @@ Simple Hearthstone tracker. Just track your win and loss. On app you'll find:
 - winrate with each deck
 - persist data in local browser storage
 - stats against opponent's deck types
-- charts on rnak progress, deck winrates
+- charts on rank progress, deck winrates
 
 Maybe one day this app will:
 - get a real design ;)
+- set notes on deck types
+- MOAR CHARTS!!! CHARTS EVERYWHERE!!!
 - get a lot of pink unicorned stuff
 
 ## Build Setup
