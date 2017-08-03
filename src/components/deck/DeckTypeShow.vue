@@ -6,9 +6,9 @@
                     {{ getClassName(type.hsClass) }} {{ type.name }} ({{ type.archetype }})
                 </h4>
             </div>
-            <div class="starIcon col-xs-2" @click="switchTop()" >
-                <icon name="star" v-if="type.top" class="stared"/>
-                <icon name="star-o" v-else />
+            <div class="starIcon col-xs-2" @click="switchTop()" @mouseover="hoverStarIcon()" @mouseout="hoverStarIcon()" >
+                <icon name="star" v-if="type.top" class="stared" :scale="starIconScale" />
+                <icon name="star-o" v-else :scale="starIconScale" />
             </div>
         </div>
         <p>
@@ -28,6 +28,16 @@
 
   export default {
     props: ['type'],
+    data () {
+      return {
+        starIconHover: false
+      }
+    },
+    computed: {
+      starIconScale () {
+        return (this.starIconHover) ? 2 : 1
+      }
+    },
     methods: {
       getClassName (id) {
         return this.$store.getters.className(id)
@@ -44,6 +54,9 @@
       getWinScoreVs (recent) {
         return this.$store.getters.getWinScoreVsType(this.type.id, recent)
       },
+      hoverStarIcon () {
+        this.starIconHover = !this.starIconHover
+      },
       switchTop () {
         this.$store.commit(storeMut.SWITCH_DECKTYPE_TOP, this.type.id)
       }
@@ -52,14 +65,17 @@
 
 </script>
 
-<style>
+<style lang="scss">
     .deckTypeShow {
         padding-top: 20px;
     }
 
     .starIcon {
         cursor: pointer;
-        margin-top: 10px;
+        padding-bottom: 1em;
+        &:hover {
+            padding-bottom: 0;
+        }
     }
 
     .stared {
