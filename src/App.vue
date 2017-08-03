@@ -26,12 +26,14 @@
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .chart {
@@ -40,6 +42,7 @@
     padding: 20px;
     margin-bottom: 20px;
 }
+
 .chart h2 {
     color: #D3921F;
     border-bottom: 1px solid #D3921F;
