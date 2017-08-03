@@ -1,12 +1,12 @@
 <template>
     <div class="deckTypeShow">
         <div class="row">
-            <div class="col-xs-11">
+            <div class="col-xs-10">
                 <h4>
                     {{ getClassName(type.hsClass) }} {{ type.name }} ({{ type.archetype }})
                 </h4>
             </div>
-            <div class="starIcon col-xs-1" @click="switchTop()">
+            <div class="starIcon col-xs-2" @click="switchTop()" >
                 <icon name="star" v-if="type.top" class="stared"/>
                 <icon name="star-o" v-else />
             </div>
@@ -54,11 +54,12 @@
 
 <style>
     .deckTypeShow {
-
+        padding-top: 20px;
     }
 
     .starIcon {
         cursor: pointer;
+        margin-top: 10px;
     }
 
     .stared {
