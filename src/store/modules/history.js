@@ -55,7 +55,7 @@ const getters = {
     return Math.round((wonCount / playedCount) * 100)
   },
   computeWinScore: state => (playedCount, winPercent) => {
-    if (playedCount === 0) return 0
+    if (playedCount === 0) return -1
     return Math.round(winPercent * state.scoreMult / (1 + (state.scoreCoef / Math.pow(playedCount, 3))))
   },
   getGamesWithDeck: (state, getters) => (idDeck, recentOnly) => {
