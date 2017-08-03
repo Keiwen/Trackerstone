@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div class="container">
         <div class="chart">
             <h2>Ranks</h2>
             <serie-rank-evol-graph :history="history" :height="100" />

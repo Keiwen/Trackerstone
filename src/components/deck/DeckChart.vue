@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div class="container">
         <div class="chart">
             <h2>Winrates</h2>
             <deck-win-rate-graph :decks="own" :height="100" />
