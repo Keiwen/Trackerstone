@@ -8,33 +8,26 @@
     computed: {
       chartData () {
         let labels = []
-        let datasetGlobal = {
-          label: 'Global',
+        let dataset = {
+          label: 'Score',
           backgroundColor: '#D15C69',
-          data: []
-        }
-        let datasetRecent = {
-          label: 'Recent',
-          backgroundColor: '#00C2D3',
           data: []
         }
 
         for (let idDeck in this.decks) {
           if (!this.decks.hasOwnProperty(idDeck)) continue
           const deck = this.decks[idDeck]
-          const gamesList = this.$store.getters.getGamesWithDeck(idDeck)
-          const played = gamesList.length
-          if (played === 0) continue
+          const score = this.$store.getters.getWinScoreWithDeck(idDeck)
+          if (score < 0) continue
           labels.push(this.getDeckTitle(deck))
-          datasetGlobal.data.push(this.$store.getters.getWinPercentWithDeck(idDeck))
-          datasetRecent.data.push(this.$store.getters.getWinPercentWithDeck(idDeck, true))
+          dataset.data.push(score)
         }
 
-        return { labels: labels, datasets: [datasetGlobal, datasetRecent] }
+        return { labels: labels, datasets: [dataset] }
       },
       options () {
         return {
-          legend: { display: true }
+          legend: { display: false }
         }
       }
     },

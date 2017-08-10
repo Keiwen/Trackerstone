@@ -1,15 +1,22 @@
 <template>
-    <div class="container">
+    <div class="container-fluid">
         <h2>Manage deck types</h2>
 
-        <toggle-button @change="onTopFirstToggle" :sync="true" :value="topFirst" :labels="{checked: 'Star first', unchecked: 'Old first'}" :width="110" :height="30" />
+        Sort by:
+        <enhanced-check-radio :label="['Star', 'Time added', 'Winrate vs', 'Win score vs']" :value="['star', 'old', 'winrate', 'winscore']" name="deck_type_sort"
+                              subClass="primary" :animate="true" :inline="true" v-model="sortBy" :rounded="true">
 
-        <ul>
-            <li v-for="type in typesList">
+        </enhanced-check-radio>
+
+
+        <div class="container-fluid">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" v-for="type in typesList">
                 <deck-type-show :type="type" />
-                <confirmation-modal @modal-confirm="remove(type.id)" modalText="Are you sure you want to remove this type?"/>
-            </li>
-        </ul>
+                <div>
+                    <confirmation-modal @modal-confirm="remove(type.id)" modalText="Are you sure you want to remove this type?"/>
+                </div>
+            </div>
+        </div>
 
         <hr/>
 
@@ -28,19 +35,32 @@
   import DeckTypeShow from './DeckTypeShow'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
   import DeckTypeSet from './DeckTypeSet'
+  import { EnhancedCheckRadio } from 'vue-enhanced-check'
 
   export default {
-    components: {DeckTypeShow, ConfirmationModal, DeckTypeSet},
+    components: {DeckTypeShow, ConfirmationModal, DeckTypeSet, EnhancedCheckRadio},
     data () {
       return {
+        typeEnhanced: [],
+        sortBy: 'star',
         topFirst: true
       }
     },
     computed: {
       ...mapGetters(['types', 'archetypes']),
       typesList () {
-        if (this.topFirst) return this.typesTopFirst
-        return this.types
+        switch (this.sortBy) {
+          case 'star':
+            return this.typesTopFirst
+          case 'winscore':
+            return this.getTypesByWinScoreAgainst()
+          case 'winrate':
+            return this.getTypesByWinrateAgainst()
+          case 'winrateRecent':
+            return this.getTypesByWinrateAgainst(true)
+          default:
+            return this.types
+        }
       },
       typesTopFirst () {
         const top = this.$store.getters.getTypesOnTop()
@@ -52,8 +72,25 @@
       remove (id) {
         this.$store.commit(storeMut.REMOVE_DECKTYPE, id)
       },
-      onTopFirstToggle (event) {
-        this.topFirst = event.value
+      getEnhancedTypes (recent) {
+        let typeEnhanced = []
+        for (let i = 0; i < this.types.length; i++) {
+          let type = this.types[i]
+          type.winPercentVs = this.$store.getters.getWinPercentVsType(type.id, recent)
+          type.winScoreVs = this.$store.getters.getWinScoreVsType(type.id)
+          typeEnhanced.push(type)
+        }
+        return typeEnhanced
+      },
+      getTypesByWinrateAgainst (recent) {
+        return this.getEnhancedTypes(recent).sort(function (a, b) {
+          return a.winPercentVs > b.winPercentVs
+        }).reverse()
+      },
+      getTypesByWinScoreAgainst () {
+        return this.getEnhancedTypes().sort(function (a, b) {
+          return a.winScoreVs > b.winScoreVs
+        }).reverse()
       }
     }
   }
@@ -62,7 +99,4 @@
 
 
 <style>
-    .v-switch-label {
-        font-size: 16px;
-    }
 </style>

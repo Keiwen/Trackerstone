@@ -1,13 +1,12 @@
 <template>
-    <span>
-
+    <div>
         <button @click="promptConfirm()" class="btn" :class="btnClass">{{ buttonText }} <icon :name="iconName" v-if="displayIcon" /></button>
         <sweet-modal :icon="iconModal" ref="modalConfirmation" :modal-theme="modalTheme">
             {{ modalText }}
             <button slot="button" @click="confirmed()" class="btn btn-success">{{ confirmText }} <icon :name="iconName" v-if="displayIcon" /></button>
             <button slot="button" @click="canceled()" class="btn btn-default">{{ cancelText }} <icon name="times" v-if="displayIcon" /></button>
         </sweet-modal>
-    </span>
+    </div>
 </template>
 
 
@@ -80,7 +79,11 @@
 
 </script>
 
-<style>
+<style scoped>
+
+    div {
+        display: inline-block;
+    }
 
     .sweet-buttons button {
         margin-left: 20px;

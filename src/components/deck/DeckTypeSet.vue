@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container-fluid">
         <label>Class: </label>
         <class-pick @pick-class="pickClass" />
         <label>Archetype: </label>

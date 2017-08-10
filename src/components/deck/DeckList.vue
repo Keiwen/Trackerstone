@@ -1,12 +1,14 @@
 <template>
-    <div class="container">
+    <div class="container-fluid">
         <h2>Manage decks</h2>
-        <ul>
-            <li v-for="(deck, id) in own">
+        <div class="container-fluid">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" v-for="(deck, id) in own">
                 <deck-show :deck="deck" :idDeck="id" />
-                <confirmation-modal @modal-confirm="remove(id)" modalText="Are you sure you want to delete this deck?"/>
-            </li>
-        </ul>
+                <div>
+                    <confirmation-modal @modal-confirm="remove(id)" modalText="Are you sure you want to delete this deck?"/>
+                </div>
+            </div>
+        </div>
         <router-link :to="{ name: 'deckChart' }">See charts</router-link>
         <hr/>
         <label>Type: </label>
@@ -15,7 +17,7 @@
         <button @click="add()" class="btn btn-success">Add</button>
 
         <br/><br/>
-        <router-link :to="{ name: 'deckTypesSet' }">Manage deck types</router-link>
+        <router-link :to="{ name: 'deckTypesList' }">Manage deck types</router-link>
 
 
     </div>
@@ -64,3 +66,8 @@
   }
 
 </script>
+
+
+<style>
+
+</style>

@@ -12,14 +12,11 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'chart.js'
 import CxltToastr from 'cxlt-vue2-toastr'
 import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
-import ToggleButton from 'vue-js-toggle-button'
-// TODO not big fan of this toggle
 
 Vue.config.productionTip = false
 
 Vue.component('icon', Icon)
 Vue.use(VueCookie)
-Vue.use(ToggleButton)
 Vue.use(VueAnalytics, {
   id: 'UA-101315491-1',
   router,
