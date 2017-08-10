@@ -37,7 +37,6 @@
 }
 
 .chart {
-    background-color: #463C3B;
     border-radius: 25px;
     padding: 20px;
     margin-bottom: 20px;
