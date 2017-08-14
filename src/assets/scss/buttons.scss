@@ -24,22 +24,6 @@
   }
 }
 
-.druid::before {
-  background: url('/static/icones_classes.png') -160px -160px no-repeat;
-}
-
-.paladin::before {
-  background: url('/static/icones_classes.png') -280px -160px no-repeat;
-}
-
-.mage::before {
-  background: url('/static/icones_classes.png') -40px -160px no-repeat;
-}
-
-.priest::before {
-  background: url('/static/icones_classes.png') -40px -280px no-repeat;
-}
-
 .hunter::before {
   background: url('/static/icones_classes.png') -40px -40px no-repeat;
 }
@@ -52,10 +36,26 @@
   background: url('/static/icones_classes.png') -280px -40px no-repeat;
 }
 
-.rogue::before {
-  background: url('/static/icones_classes.png') -280px -280px no-repeat;
+.mage::before {
+  background: url('/static/icones_classes.png') -40px -160px no-repeat;
+}
+
+.druid::before {
+  background: url('/static/icones_classes.png') -160px -160px no-repeat;
+}
+
+.paladin::before {
+  background: url('/static/icones_classes.png') -280px -160px no-repeat;
+}
+
+.priest::before {
+  background: url('/static/icones_classes.png') -40px -280px no-repeat;
 }
 
 .warrior::before {
   background: url('/static/icones_classes.png') -160px -280px no-repeat;
+}
+
+.rogue::before {
+  background: url('/static/icones_classes.png') -280px -280px no-repeat;
 }
