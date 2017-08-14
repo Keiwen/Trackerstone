@@ -142,6 +142,20 @@ const mutations = {
       state.opponent = {}
     }
   },
+  [types.SET_DECKTYPE_NAME] (state, payload) {
+    state.types.forEach(function (type, index, object) {
+      if (type.id === payload.id) {
+        type.name = payload.name
+      }
+    })
+  },
+  [types.SET_DECKTYPE_NOTE] (state, payload) {
+    state.types.forEach(function (type, index, object) {
+      if (type.id === payload.id) {
+        type.note = payload.note
+      }
+    })
+  },
   [types.SWITCH_DECKTYPE_TOP] (state, id) {
     state.types.forEach(function (type, index, object) {
       if (type.id === id) {
