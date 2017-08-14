@@ -10,6 +10,15 @@
             <div class="col-md-6">
                 <h3>Opponent deck</h3>
                 <type-pick @pick-type="pickOpponentType" :initialPick="opponent" />
+                <span @click="showNote()">
+                    <icon name="info-circle" :scale="2" class="infoNote" :class="{'noted': opponent.note}"></icon>
+                </span>
+
+                <sweet-modal ref="modalNote" modal-theme="dark" title="Deck type note">
+                    <pre v-if="opponent.note">{{ opponent.note }}</pre>
+                    <p v-else><i>No note stored for this deck type</i></p>
+                </sweet-modal>
+
             </div>
         </div>
         <div>
@@ -26,9 +35,10 @@
   import { mapGetters, mapActions } from 'vuex'
   import DeckPick from '@/components/deck/DeckPick'
   import TypePick from '@/components/deck/TypePick'
+  import { SweetModal } from 'sweet-modal-vue'
 
   export default {
-    components: {DeckPick, TypePick},
+    components: {DeckPick, TypePick, SweetModal},
     computed: {
       ...mapGetters(['gamesPlayed', 'winRate', 'current', 'opponent']),
       gamesCurrentPlayedVs () {
@@ -53,6 +63,9 @@
       ...mapActions(['win', 'loose']),
       pickOpponentType (type) {
         this.$store.commit(storeMut.CHOOSE_OPPONENT, type)
+      },
+      showNote () {
+        this.$refs.modalNote.open()
       }
     }
   }
