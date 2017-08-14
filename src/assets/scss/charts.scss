@@ -1,7 +1,7 @@
 
 .chart {
     // background-color: $brown-logo;
-    background-color: brown;
+    background-color: #463C3B;
     border-radius: 25px;
     padding: 20px;
     margin-bottom: 20px;
@@ -9,6 +9,8 @@
     h2 {
       //color: $orange-logo;
      // border-bottom: 1px solid $orange-logo;
+      color: $orange-logo;
+      border-bottom: 1px solid $orange-logo;
       margin-top: 0;
       padding-bottom: 15px;
     }
