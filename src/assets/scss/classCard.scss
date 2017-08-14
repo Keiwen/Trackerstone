@@ -10,7 +10,7 @@
     -webkit-transition: 0.5s;
     transition: 0.5s;
     border-radius: 50%;
-    box-shadow:inset 0px 0px 1px 6px white, 2px 2px 10px 0 rgba(1,1,1,0.5);
+    box-shadow:inset 0px 0px 1px 6px white, 1px 1px 8px 0 rgba(1,1,1,0.5);
     /*box-shadow:3px 3px 15px 0 rgba(1,1,1,0.5);*/
 }
 
@@ -20,6 +20,7 @@
   transform: scale(1);
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  box-shadow:inset 0px 0px 1px 6px white, 1px 1px 10px 0 rgba(1,1,1,0.5);
 }
 
 .hero-warrior {

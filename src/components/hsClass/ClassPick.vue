@@ -1,6 +1,6 @@
 <template>
     <span>
-        <button class="btn btn-default" @click="openClassSpread()">{{ btnText }}</button>
+        <button class="btn btn-default btn-class" :class="btnClass" @click="openClassSpread()">{{ btnText }}</button>
 
         <sweet-modal ref="modalClassPick" overlay-theme="dark" title="Pick class">
             <class-spread @pick-class="classPicked" />
@@ -26,6 +26,10 @@
       btnText () {
         if (this.pick) return this.getClassName(this.pick)
         return 'Choose class...'
+      },
+      btnClass () {
+        if (this.pick) return 'btn-pick ' + (this.pick)
+        return ''
       }
     },
     methods: {
@@ -44,3 +48,8 @@
   }
 
 </script>
+
+<style lang="scss">
+@import '../../assets/scss/_import.scss'
+
+</style>
