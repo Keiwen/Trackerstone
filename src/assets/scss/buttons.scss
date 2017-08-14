@@ -3,9 +3,14 @@
   position: relative;
   margin-left: 60px;
 
-  &:active:focus {
+  &:active:focus{
     outline: none;
   }
+
+  &:focus {
+    outline: none;
+  }
+
 
   &::before {
     content: '';
