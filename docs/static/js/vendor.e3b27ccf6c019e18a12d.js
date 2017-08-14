@@ -4467,7 +4467,7 @@ return hooks;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)(module)))
 
 /***/ }),
 /* 2 */
@@ -4528,6 +4528,866 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var freeGlobal = __webpack_require__(101);
+
+/** Detect free variable `self`. */
+var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root = freeGlobal || freeSelf || Function('return this')();
+
+module.exports = root;
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+/**
+ * Checks if `value` is classified as an `Array` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+ * @example
+ *
+ * _.isArray([1, 2, 3]);
+ * // => true
+ *
+ * _.isArray(document.body.children);
+ * // => false
+ *
+ * _.isArray('abc');
+ * // => false
+ *
+ * _.isArray(_.noop);
+ * // => false
+ */
+var isArray = Array.isArray;
+
+module.exports = isArray;
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export Store */
+/* unused harmony export mapState */
+/* unused harmony export mapMutations */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mapGetters; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return mapActions; });
+/**
+ * vuex v2.3.0
+ * (c) 2017 Evan You
+ * @license MIT
+ */
+var applyMixin = function (Vue) {
+  var version = Number(Vue.version.split('.')[0]);
+
+  if (version >= 2) {
+    var usesInit = Vue.config._lifecycleHooks.indexOf('init') > -1;
+    Vue.mixin(usesInit ? { init: vuexInit } : { beforeCreate: vuexInit });
+  } else {
+    // override init and inject vuex init procedure
+    // for 1.x backwards compatibility.
+    var _init = Vue.prototype._init;
+    Vue.prototype._init = function (options) {
+      if ( options === void 0 ) options = {};
+
+      options.init = options.init
+        ? [vuexInit].concat(options.init)
+        : vuexInit;
+      _init.call(this, options);
+    };
+  }
+
+  /**
+   * Vuex init hook, injected into each instances init hooks list.
+   */
+
+  function vuexInit () {
+    var options = this.$options;
+    // store injection
+    if (options.store) {
+      this.$store = options.store;
+    } else if (options.parent && options.parent.$store) {
+      this.$store = options.parent.$store;
+    }
+  }
+};
+
+var devtoolHook =
+  typeof window !== 'undefined' &&
+  window.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+
+function devtoolPlugin (store) {
+  if (!devtoolHook) { return }
+
+  store._devtoolHook = devtoolHook;
+
+  devtoolHook.emit('vuex:init', store);
+
+  devtoolHook.on('vuex:travel-to-state', function (targetState) {
+    store.replaceState(targetState);
+  });
+
+  store.subscribe(function (mutation, state) {
+    devtoolHook.emit('vuex:mutation', mutation, state);
+  });
+}
+
+/**
+ * Get the first item that pass the test
+ * by second argument function
+ *
+ * @param {Array} list
+ * @param {Function} f
+ * @return {*}
+ */
+/**
+ * Deep copy the given object considering circular structure.
+ * This function caches all nested objects and its copies.
+ * If it detects circular structure, use cached copy to avoid infinite loop.
+ *
+ * @param {*} obj
+ * @param {Array<Object>} cache
+ * @return {*}
+ */
+
+
+/**
+ * forEach for object
+ */
+function forEachValue (obj, fn) {
+  Object.keys(obj).forEach(function (key) { return fn(obj[key], key); });
+}
+
+function isObject (obj) {
+  return obj !== null && typeof obj === 'object'
+}
+
+function isPromise (val) {
+  return val && typeof val.then === 'function'
+}
+
+function assert (condition, msg) {
+  if (!condition) { throw new Error(("[vuex] " + msg)) }
+}
+
+var Module = function Module (rawModule, runtime) {
+  this.runtime = runtime;
+  this._children = Object.create(null);
+  this._rawModule = rawModule;
+  var rawState = rawModule.state;
+  this.state = (typeof rawState === 'function' ? rawState() : rawState) || {};
+};
+
+var prototypeAccessors$1 = { namespaced: {} };
+
+prototypeAccessors$1.namespaced.get = function () {
+  return !!this._rawModule.namespaced
+};
+
+Module.prototype.addChild = function addChild (key, module) {
+  this._children[key] = module;
+};
+
+Module.prototype.removeChild = function removeChild (key) {
+  delete this._children[key];
+};
+
+Module.prototype.getChild = function getChild (key) {
+  return this._children[key]
+};
+
+Module.prototype.update = function update (rawModule) {
+  this._rawModule.namespaced = rawModule.namespaced;
+  if (rawModule.actions) {
+    this._rawModule.actions = rawModule.actions;
+  }
+  if (rawModule.mutations) {
+    this._rawModule.mutations = rawModule.mutations;
+  }
+  if (rawModule.getters) {
+    this._rawModule.getters = rawModule.getters;
+  }
+};
+
+Module.prototype.forEachChild = function forEachChild (fn) {
+  forEachValue(this._children, fn);
+};
+
+Module.prototype.forEachGetter = function forEachGetter (fn) {
+  if (this._rawModule.getters) {
+    forEachValue(this._rawModule.getters, fn);
+  }
+};
+
+Module.prototype.forEachAction = function forEachAction (fn) {
+  if (this._rawModule.actions) {
+    forEachValue(this._rawModule.actions, fn);
+  }
+};
+
+Module.prototype.forEachMutation = function forEachMutation (fn) {
+  if (this._rawModule.mutations) {
+    forEachValue(this._rawModule.mutations, fn);
+  }
+};
+
+Object.defineProperties( Module.prototype, prototypeAccessors$1 );
+
+var ModuleCollection = function ModuleCollection (rawRootModule) {
+  var this$1 = this;
+
+  // register root module (Vuex.Store options)
+  this.root = new Module(rawRootModule, false);
+
+  // register all nested modules
+  if (rawRootModule.modules) {
+    forEachValue(rawRootModule.modules, function (rawModule, key) {
+      this$1.register([key], rawModule, false);
+    });
+  }
+};
+
+ModuleCollection.prototype.get = function get (path) {
+  return path.reduce(function (module, key) {
+    return module.getChild(key)
+  }, this.root)
+};
+
+ModuleCollection.prototype.getNamespace = function getNamespace (path) {
+  var module = this.root;
+  return path.reduce(function (namespace, key) {
+    module = module.getChild(key);
+    return namespace + (module.namespaced ? key + '/' : '')
+  }, '')
+};
+
+ModuleCollection.prototype.update = function update$1 (rawRootModule) {
+  update(this.root, rawRootModule);
+};
+
+ModuleCollection.prototype.register = function register (path, rawModule, runtime) {
+    var this$1 = this;
+    if ( runtime === void 0 ) runtime = true;
+
+  var parent = this.get(path.slice(0, -1));
+  var newModule = new Module(rawModule, runtime);
+  parent.addChild(path[path.length - 1], newModule);
+
+  // register nested modules
+  if (rawModule.modules) {
+    forEachValue(rawModule.modules, function (rawChildModule, key) {
+      this$1.register(path.concat(key), rawChildModule, runtime);
+    });
+  }
+};
+
+ModuleCollection.prototype.unregister = function unregister (path) {
+  var parent = this.get(path.slice(0, -1));
+  var key = path[path.length - 1];
+  if (!parent.getChild(key).runtime) { return }
+
+  parent.removeChild(key);
+};
+
+function update (targetModule, newModule) {
+  // update target module
+  targetModule.update(newModule);
+
+  // update nested modules
+  if (newModule.modules) {
+    for (var key in newModule.modules) {
+      if (!targetModule.getChild(key)) {
+        console.warn(
+          "[vuex] trying to add a new module '" + key + "' on hot reloading, " +
+          'manual reload is needed'
+        );
+        return
+      }
+      update(targetModule.getChild(key), newModule.modules[key]);
+    }
+  }
+}
+
+var Vue; // bind on install
+
+var Store = function Store (options) {
+  var this$1 = this;
+  if ( options === void 0 ) options = {};
+
+  assert(Vue, "must call Vue.use(Vuex) before creating a store instance.");
+  assert(typeof Promise !== 'undefined', "vuex requires a Promise polyfill in this browser.");
+
+  var state = options.state; if ( state === void 0 ) state = {};
+  var plugins = options.plugins; if ( plugins === void 0 ) plugins = [];
+  var strict = options.strict; if ( strict === void 0 ) strict = false;
+
+  // store internal state
+  this._committing = false;
+  this._actions = Object.create(null);
+  this._mutations = Object.create(null);
+  this._wrappedGetters = Object.create(null);
+  this._modules = new ModuleCollection(options);
+  this._modulesNamespaceMap = Object.create(null);
+  this._subscribers = [];
+  this._watcherVM = new Vue();
+
+  // bind commit and dispatch to self
+  var store = this;
+  var ref = this;
+  var dispatch = ref.dispatch;
+  var commit = ref.commit;
+  this.dispatch = function boundDispatch (type, payload) {
+    return dispatch.call(store, type, payload)
+  };
+  this.commit = function boundCommit (type, payload, options) {
+    return commit.call(store, type, payload, options)
+  };
+
+  // strict mode
+  this.strict = strict;
+
+  // init root module.
+  // this also recursively registers all sub-modules
+  // and collects all module getters inside this._wrappedGetters
+  installModule(this, state, [], this._modules.root);
+
+  // initialize the store vm, which is responsible for the reactivity
+  // (also registers _wrappedGetters as computed properties)
+  resetStoreVM(this, state);
+
+  // apply plugins
+  plugins.concat(devtoolPlugin).forEach(function (plugin) { return plugin(this$1); });
+};
+
+var prototypeAccessors = { state: {} };
+
+prototypeAccessors.state.get = function () {
+  return this._vm._data.$$state
+};
+
+prototypeAccessors.state.set = function (v) {
+  assert(false, "Use store.replaceState() to explicit replace store state.");
+};
+
+Store.prototype.commit = function commit (_type, _payload, _options) {
+    var this$1 = this;
+
+  // check object-style commit
+  var ref = unifyObjectStyle(_type, _payload, _options);
+    var type = ref.type;
+    var payload = ref.payload;
+    var options = ref.options;
+
+  var mutation = { type: type, payload: payload };
+  var entry = this._mutations[type];
+  if (!entry) {
+    console.error(("[vuex] unknown mutation type: " + type));
+    return
+  }
+  this._withCommit(function () {
+    entry.forEach(function commitIterator (handler) {
+      handler(payload);
+    });
+  });
+  this._subscribers.forEach(function (sub) { return sub(mutation, this$1.state); });
+
+  if (options && options.silent) {
+    console.warn(
+      "[vuex] mutation type: " + type + ". Silent option has been removed. " +
+      'Use the filter functionality in the vue-devtools'
+    );
+  }
+};
+
+Store.prototype.dispatch = function dispatch (_type, _payload) {
+  // check object-style dispatch
+  var ref = unifyObjectStyle(_type, _payload);
+    var type = ref.type;
+    var payload = ref.payload;
+
+  var entry = this._actions[type];
+  if (!entry) {
+    console.error(("[vuex] unknown action type: " + type));
+    return
+  }
+  return entry.length > 1
+    ? Promise.all(entry.map(function (handler) { return handler(payload); }))
+    : entry[0](payload)
+};
+
+Store.prototype.subscribe = function subscribe (fn) {
+  var subs = this._subscribers;
+  if (subs.indexOf(fn) < 0) {
+    subs.push(fn);
+  }
+  return function () {
+    var i = subs.indexOf(fn);
+    if (i > -1) {
+      subs.splice(i, 1);
+    }
+  }
+};
+
+Store.prototype.watch = function watch (getter, cb, options) {
+    var this$1 = this;
+
+  assert(typeof getter === 'function', "store.watch only accepts a function.");
+  return this._watcherVM.$watch(function () { return getter(this$1.state, this$1.getters); }, cb, options)
+};
+
+Store.prototype.replaceState = function replaceState (state) {
+    var this$1 = this;
+
+  this._withCommit(function () {
+    this$1._vm._data.$$state = state;
+  });
+};
+
+Store.prototype.registerModule = function registerModule (path, rawModule) {
+  if (typeof path === 'string') { path = [path]; }
+  assert(Array.isArray(path), "module path must be a string or an Array.");
+  this._modules.register(path, rawModule);
+  installModule(this, this.state, path, this._modules.get(path));
+  // reset store to update getters...
+  resetStoreVM(this, this.state);
+};
+
+Store.prototype.unregisterModule = function unregisterModule (path) {
+    var this$1 = this;
+
+  if (typeof path === 'string') { path = [path]; }
+  assert(Array.isArray(path), "module path must be a string or an Array.");
+  this._modules.unregister(path);
+  this._withCommit(function () {
+    var parentState = getNestedState(this$1.state, path.slice(0, -1));
+    Vue.delete(parentState, path[path.length - 1]);
+  });
+  resetStore(this);
+};
+
+Store.prototype.hotUpdate = function hotUpdate (newOptions) {
+  this._modules.update(newOptions);
+  resetStore(this, true);
+};
+
+Store.prototype._withCommit = function _withCommit (fn) {
+  var committing = this._committing;
+  this._committing = true;
+  fn();
+  this._committing = committing;
+};
+
+Object.defineProperties( Store.prototype, prototypeAccessors );
+
+function resetStore (store, hot) {
+  store._actions = Object.create(null);
+  store._mutations = Object.create(null);
+  store._wrappedGetters = Object.create(null);
+  store._modulesNamespaceMap = Object.create(null);
+  var state = store.state;
+  // init all modules
+  installModule(store, state, [], store._modules.root, true);
+  // reset vm
+  resetStoreVM(store, state, hot);
+}
+
+function resetStoreVM (store, state, hot) {
+  var oldVm = store._vm;
+
+  // bind store public getters
+  store.getters = {};
+  var wrappedGetters = store._wrappedGetters;
+  var computed = {};
+  forEachValue(wrappedGetters, function (fn, key) {
+    // use computed to leverage its lazy-caching mechanism
+    computed[key] = function () { return fn(store); };
+    Object.defineProperty(store.getters, key, {
+      get: function () { return store._vm[key]; },
+      enumerable: true // for local getters
+    });
+  });
+
+  // use a Vue instance to store the state tree
+  // suppress warnings just in case the user has added
+  // some funky global mixins
+  var silent = Vue.config.silent;
+  Vue.config.silent = true;
+  store._vm = new Vue({
+    data: {
+      $$state: state
+    },
+    computed: computed
+  });
+  Vue.config.silent = silent;
+
+  // enable strict mode for new vm
+  if (store.strict) {
+    enableStrictMode(store);
+  }
+
+  if (oldVm) {
+    if (hot) {
+      // dispatch changes in all subscribed watchers
+      // to force getter re-evaluation for hot reloading.
+      store._withCommit(function () {
+        oldVm._data.$$state = null;
+      });
+    }
+    Vue.nextTick(function () { return oldVm.$destroy(); });
+  }
+}
+
+function installModule (store, rootState, path, module, hot) {
+  var isRoot = !path.length;
+  var namespace = store._modules.getNamespace(path);
+
+  // register in namespace map
+  if (module.namespaced) {
+    store._modulesNamespaceMap[namespace] = module;
+  }
+
+  // set state
+  if (!isRoot && !hot) {
+    var parentState = getNestedState(rootState, path.slice(0, -1));
+    var moduleName = path[path.length - 1];
+    store._withCommit(function () {
+      Vue.set(parentState, moduleName, module.state);
+    });
+  }
+
+  var local = module.context = makeLocalContext(store, namespace, path);
+
+  module.forEachMutation(function (mutation, key) {
+    var namespacedType = namespace + key;
+    registerMutation(store, namespacedType, mutation, local);
+  });
+
+  module.forEachAction(function (action, key) {
+    var namespacedType = namespace + key;
+    registerAction(store, namespacedType, action, local);
+  });
+
+  module.forEachGetter(function (getter, key) {
+    var namespacedType = namespace + key;
+    registerGetter(store, namespacedType, getter, local);
+  });
+
+  module.forEachChild(function (child, key) {
+    installModule(store, rootState, path.concat(key), child, hot);
+  });
+}
+
+/**
+ * make localized dispatch, commit, getters and state
+ * if there is no namespace, just use root ones
+ */
+function makeLocalContext (store, namespace, path) {
+  var noNamespace = namespace === '';
+
+  var local = {
+    dispatch: noNamespace ? store.dispatch : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if (!store._actions[type]) {
+          console.error(("[vuex] unknown local action type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      return store.dispatch(type, payload)
+    },
+
+    commit: noNamespace ? store.commit : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if (!store._mutations[type]) {
+          console.error(("[vuex] unknown local mutation type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      store.commit(type, payload, options);
+    }
+  };
+
+  // getters and state object must be gotten lazily
+  // because they will be changed by vm update
+  Object.defineProperties(local, {
+    getters: {
+      get: noNamespace
+        ? function () { return store.getters; }
+        : function () { return makeLocalGetters(store, namespace); }
+    },
+    state: {
+      get: function () { return getNestedState(store.state, path); }
+    }
+  });
+
+  return local
+}
+
+function makeLocalGetters (store, namespace) {
+  var gettersProxy = {};
+
+  var splitPos = namespace.length;
+  Object.keys(store.getters).forEach(function (type) {
+    // skip if the target getter is not match this namespace
+    if (type.slice(0, splitPos) !== namespace) { return }
+
+    // extract local getter type
+    var localType = type.slice(splitPos);
+
+    // Add a port to the getters proxy.
+    // Define as getter property because
+    // we do not want to evaluate the getters in this time.
+    Object.defineProperty(gettersProxy, localType, {
+      get: function () { return store.getters[type]; },
+      enumerable: true
+    });
+  });
+
+  return gettersProxy
+}
+
+function registerMutation (store, type, handler, local) {
+  var entry = store._mutations[type] || (store._mutations[type] = []);
+  entry.push(function wrappedMutationHandler (payload) {
+    handler(local.state, payload);
+  });
+}
+
+function registerAction (store, type, handler, local) {
+  var entry = store._actions[type] || (store._actions[type] = []);
+  entry.push(function wrappedActionHandler (payload, cb) {
+    var res = handler({
+      dispatch: local.dispatch,
+      commit: local.commit,
+      getters: local.getters,
+      state: local.state,
+      rootGetters: store.getters,
+      rootState: store.state
+    }, payload, cb);
+    if (!isPromise(res)) {
+      res = Promise.resolve(res);
+    }
+    if (store._devtoolHook) {
+      return res.catch(function (err) {
+        store._devtoolHook.emit('vuex:error', err);
+        throw err
+      })
+    } else {
+      return res
+    }
+  });
+}
+
+function registerGetter (store, type, rawGetter, local) {
+  if (store._wrappedGetters[type]) {
+    console.error(("[vuex] duplicate getter key: " + type));
+    return
+  }
+  store._wrappedGetters[type] = function wrappedGetter (store) {
+    return rawGetter(
+      local.state, // local state
+      local.getters, // local getters
+      store.state, // root state
+      store.getters // root getters
+    )
+  };
+}
+
+function enableStrictMode (store) {
+  store._vm.$watch(function () { return this._data.$$state }, function () {
+    assert(store._committing, "Do not mutate vuex store state outside mutation handlers.");
+  }, { deep: true, sync: true });
+}
+
+function getNestedState (state, path) {
+  return path.length
+    ? path.reduce(function (state, key) { return state[key]; }, state)
+    : state
+}
+
+function unifyObjectStyle (type, payload, options) {
+  if (isObject(type) && type.type) {
+    options = payload;
+    payload = type;
+    type = type.type;
+  }
+
+  assert(typeof type === 'string', ("Expects string as the type, but found " + (typeof type) + "."));
+
+  return { type: type, payload: payload, options: options }
+}
+
+function install (_Vue) {
+  if (Vue) {
+    console.error(
+      '[vuex] already installed. Vue.use(Vuex) should be called only once.'
+    );
+    return
+  }
+  Vue = _Vue;
+  applyMixin(Vue);
+}
+
+// auto install in dist mode
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue);
+}
+
+var mapState = normalizeNamespace(function (namespace, states) {
+  var res = {};
+  normalizeMap(states).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedState () {
+      var state = this.$store.state;
+      var getters = this.$store.getters;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapState', namespace);
+        if (!module) {
+          return
+        }
+        state = module.context.state;
+        getters = module.context.getters;
+      }
+      return typeof val === 'function'
+        ? val.call(this, state, getters)
+        : state[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+var mapMutations = normalizeNamespace(function (namespace, mutations) {
+  var res = {};
+  normalizeMap(mutations).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    val = namespace + val;
+    res[key] = function mappedMutation () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      if (namespace && !getModuleByNamespace(this.$store, 'mapMutations', namespace)) {
+        return
+      }
+      return this.$store.commit.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+var mapGetters = normalizeNamespace(function (namespace, getters) {
+  var res = {};
+  normalizeMap(getters).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    val = namespace + val;
+    res[key] = function mappedGetter () {
+      if (namespace && !getModuleByNamespace(this.$store, 'mapGetters', namespace)) {
+        return
+      }
+      if (!(val in this.$store.getters)) {
+        console.error(("[vuex] unknown getter: " + val));
+        return
+      }
+      return this.$store.getters[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+var mapActions = normalizeNamespace(function (namespace, actions) {
+  var res = {};
+  normalizeMap(actions).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    val = namespace + val;
+    res[key] = function mappedAction () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      if (namespace && !getModuleByNamespace(this.$store, 'mapActions', namespace)) {
+        return
+      }
+      return this.$store.dispatch.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+function normalizeMap (map) {
+  return Array.isArray(map)
+    ? map.map(function (key) { return ({ key: key, val: key }); })
+    : Object.keys(map).map(function (key) { return ({ key: key, val: map[key] }); })
+}
+
+function normalizeNamespace (fn) {
+  return function (namespace, map) {
+    if (typeof namespace !== 'string') {
+      map = namespace;
+      namespace = '';
+    } else if (namespace.charAt(namespace.length - 1) !== '/') {
+      namespace += '/';
+    }
+    return fn(namespace, map)
+  }
+}
+
+function getModuleByNamespace (store, helper, namespace) {
+  var module = store._modulesNamespaceMap[namespace];
+  if (!module) {
+    console.error(("[vuex] module namespace not found in " + helper + "(): " + namespace));
+  }
+  return module
+}
+
+var index_esm = {
+  Store: Store,
+  install: install,
+  version: '2.3.0',
+  mapState: mapState,
+  mapMutations: mapMutations,
+  mapGetters: mapGetters,
+  mapActions: mapActions
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (index_esm);
+
+
+/***/ }),
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14601,866 +15461,6 @@ Vue$3.compile = compileToFunctions;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(66)))
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var freeGlobal = __webpack_require__(101);
-
-/** Detect free variable `self`. */
-var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root = freeGlobal || freeSelf || Function('return this')();
-
-module.exports = root;
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-/**
- * Checks if `value` is classified as an `Array` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an array, else `false`.
- * @example
- *
- * _.isArray([1, 2, 3]);
- * // => true
- *
- * _.isArray(document.body.children);
- * // => false
- *
- * _.isArray('abc');
- * // => false
- *
- * _.isArray(_.noop);
- * // => false
- */
-var isArray = Array.isArray;
-
-module.exports = isArray;
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export Store */
-/* unused harmony export mapState */
-/* unused harmony export mapMutations */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mapGetters; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return mapActions; });
-/**
- * vuex v2.3.0
- * (c) 2017 Evan You
- * @license MIT
- */
-var applyMixin = function (Vue) {
-  var version = Number(Vue.version.split('.')[0]);
-
-  if (version >= 2) {
-    var usesInit = Vue.config._lifecycleHooks.indexOf('init') > -1;
-    Vue.mixin(usesInit ? { init: vuexInit } : { beforeCreate: vuexInit });
-  } else {
-    // override init and inject vuex init procedure
-    // for 1.x backwards compatibility.
-    var _init = Vue.prototype._init;
-    Vue.prototype._init = function (options) {
-      if ( options === void 0 ) options = {};
-
-      options.init = options.init
-        ? [vuexInit].concat(options.init)
-        : vuexInit;
-      _init.call(this, options);
-    };
-  }
-
-  /**
-   * Vuex init hook, injected into each instances init hooks list.
-   */
-
-  function vuexInit () {
-    var options = this.$options;
-    // store injection
-    if (options.store) {
-      this.$store = options.store;
-    } else if (options.parent && options.parent.$store) {
-      this.$store = options.parent.$store;
-    }
-  }
-};
-
-var devtoolHook =
-  typeof window !== 'undefined' &&
-  window.__VUE_DEVTOOLS_GLOBAL_HOOK__;
-
-function devtoolPlugin (store) {
-  if (!devtoolHook) { return }
-
-  store._devtoolHook = devtoolHook;
-
-  devtoolHook.emit('vuex:init', store);
-
-  devtoolHook.on('vuex:travel-to-state', function (targetState) {
-    store.replaceState(targetState);
-  });
-
-  store.subscribe(function (mutation, state) {
-    devtoolHook.emit('vuex:mutation', mutation, state);
-  });
-}
-
-/**
- * Get the first item that pass the test
- * by second argument function
- *
- * @param {Array} list
- * @param {Function} f
- * @return {*}
- */
-/**
- * Deep copy the given object considering circular structure.
- * This function caches all nested objects and its copies.
- * If it detects circular structure, use cached copy to avoid infinite loop.
- *
- * @param {*} obj
- * @param {Array<Object>} cache
- * @return {*}
- */
-
-
-/**
- * forEach for object
- */
-function forEachValue (obj, fn) {
-  Object.keys(obj).forEach(function (key) { return fn(obj[key], key); });
-}
-
-function isObject (obj) {
-  return obj !== null && typeof obj === 'object'
-}
-
-function isPromise (val) {
-  return val && typeof val.then === 'function'
-}
-
-function assert (condition, msg) {
-  if (!condition) { throw new Error(("[vuex] " + msg)) }
-}
-
-var Module = function Module (rawModule, runtime) {
-  this.runtime = runtime;
-  this._children = Object.create(null);
-  this._rawModule = rawModule;
-  var rawState = rawModule.state;
-  this.state = (typeof rawState === 'function' ? rawState() : rawState) || {};
-};
-
-var prototypeAccessors$1 = { namespaced: {} };
-
-prototypeAccessors$1.namespaced.get = function () {
-  return !!this._rawModule.namespaced
-};
-
-Module.prototype.addChild = function addChild (key, module) {
-  this._children[key] = module;
-};
-
-Module.prototype.removeChild = function removeChild (key) {
-  delete this._children[key];
-};
-
-Module.prototype.getChild = function getChild (key) {
-  return this._children[key]
-};
-
-Module.prototype.update = function update (rawModule) {
-  this._rawModule.namespaced = rawModule.namespaced;
-  if (rawModule.actions) {
-    this._rawModule.actions = rawModule.actions;
-  }
-  if (rawModule.mutations) {
-    this._rawModule.mutations = rawModule.mutations;
-  }
-  if (rawModule.getters) {
-    this._rawModule.getters = rawModule.getters;
-  }
-};
-
-Module.prototype.forEachChild = function forEachChild (fn) {
-  forEachValue(this._children, fn);
-};
-
-Module.prototype.forEachGetter = function forEachGetter (fn) {
-  if (this._rawModule.getters) {
-    forEachValue(this._rawModule.getters, fn);
-  }
-};
-
-Module.prototype.forEachAction = function forEachAction (fn) {
-  if (this._rawModule.actions) {
-    forEachValue(this._rawModule.actions, fn);
-  }
-};
-
-Module.prototype.forEachMutation = function forEachMutation (fn) {
-  if (this._rawModule.mutations) {
-    forEachValue(this._rawModule.mutations, fn);
-  }
-};
-
-Object.defineProperties( Module.prototype, prototypeAccessors$1 );
-
-var ModuleCollection = function ModuleCollection (rawRootModule) {
-  var this$1 = this;
-
-  // register root module (Vuex.Store options)
-  this.root = new Module(rawRootModule, false);
-
-  // register all nested modules
-  if (rawRootModule.modules) {
-    forEachValue(rawRootModule.modules, function (rawModule, key) {
-      this$1.register([key], rawModule, false);
-    });
-  }
-};
-
-ModuleCollection.prototype.get = function get (path) {
-  return path.reduce(function (module, key) {
-    return module.getChild(key)
-  }, this.root)
-};
-
-ModuleCollection.prototype.getNamespace = function getNamespace (path) {
-  var module = this.root;
-  return path.reduce(function (namespace, key) {
-    module = module.getChild(key);
-    return namespace + (module.namespaced ? key + '/' : '')
-  }, '')
-};
-
-ModuleCollection.prototype.update = function update$1 (rawRootModule) {
-  update(this.root, rawRootModule);
-};
-
-ModuleCollection.prototype.register = function register (path, rawModule, runtime) {
-    var this$1 = this;
-    if ( runtime === void 0 ) runtime = true;
-
-  var parent = this.get(path.slice(0, -1));
-  var newModule = new Module(rawModule, runtime);
-  parent.addChild(path[path.length - 1], newModule);
-
-  // register nested modules
-  if (rawModule.modules) {
-    forEachValue(rawModule.modules, function (rawChildModule, key) {
-      this$1.register(path.concat(key), rawChildModule, runtime);
-    });
-  }
-};
-
-ModuleCollection.prototype.unregister = function unregister (path) {
-  var parent = this.get(path.slice(0, -1));
-  var key = path[path.length - 1];
-  if (!parent.getChild(key).runtime) { return }
-
-  parent.removeChild(key);
-};
-
-function update (targetModule, newModule) {
-  // update target module
-  targetModule.update(newModule);
-
-  // update nested modules
-  if (newModule.modules) {
-    for (var key in newModule.modules) {
-      if (!targetModule.getChild(key)) {
-        console.warn(
-          "[vuex] trying to add a new module '" + key + "' on hot reloading, " +
-          'manual reload is needed'
-        );
-        return
-      }
-      update(targetModule.getChild(key), newModule.modules[key]);
-    }
-  }
-}
-
-var Vue; // bind on install
-
-var Store = function Store (options) {
-  var this$1 = this;
-  if ( options === void 0 ) options = {};
-
-  assert(Vue, "must call Vue.use(Vuex) before creating a store instance.");
-  assert(typeof Promise !== 'undefined', "vuex requires a Promise polyfill in this browser.");
-
-  var state = options.state; if ( state === void 0 ) state = {};
-  var plugins = options.plugins; if ( plugins === void 0 ) plugins = [];
-  var strict = options.strict; if ( strict === void 0 ) strict = false;
-
-  // store internal state
-  this._committing = false;
-  this._actions = Object.create(null);
-  this._mutations = Object.create(null);
-  this._wrappedGetters = Object.create(null);
-  this._modules = new ModuleCollection(options);
-  this._modulesNamespaceMap = Object.create(null);
-  this._subscribers = [];
-  this._watcherVM = new Vue();
-
-  // bind commit and dispatch to self
-  var store = this;
-  var ref = this;
-  var dispatch = ref.dispatch;
-  var commit = ref.commit;
-  this.dispatch = function boundDispatch (type, payload) {
-    return dispatch.call(store, type, payload)
-  };
-  this.commit = function boundCommit (type, payload, options) {
-    return commit.call(store, type, payload, options)
-  };
-
-  // strict mode
-  this.strict = strict;
-
-  // init root module.
-  // this also recursively registers all sub-modules
-  // and collects all module getters inside this._wrappedGetters
-  installModule(this, state, [], this._modules.root);
-
-  // initialize the store vm, which is responsible for the reactivity
-  // (also registers _wrappedGetters as computed properties)
-  resetStoreVM(this, state);
-
-  // apply plugins
-  plugins.concat(devtoolPlugin).forEach(function (plugin) { return plugin(this$1); });
-};
-
-var prototypeAccessors = { state: {} };
-
-prototypeAccessors.state.get = function () {
-  return this._vm._data.$$state
-};
-
-prototypeAccessors.state.set = function (v) {
-  assert(false, "Use store.replaceState() to explicit replace store state.");
-};
-
-Store.prototype.commit = function commit (_type, _payload, _options) {
-    var this$1 = this;
-
-  // check object-style commit
-  var ref = unifyObjectStyle(_type, _payload, _options);
-    var type = ref.type;
-    var payload = ref.payload;
-    var options = ref.options;
-
-  var mutation = { type: type, payload: payload };
-  var entry = this._mutations[type];
-  if (!entry) {
-    console.error(("[vuex] unknown mutation type: " + type));
-    return
-  }
-  this._withCommit(function () {
-    entry.forEach(function commitIterator (handler) {
-      handler(payload);
-    });
-  });
-  this._subscribers.forEach(function (sub) { return sub(mutation, this$1.state); });
-
-  if (options && options.silent) {
-    console.warn(
-      "[vuex] mutation type: " + type + ". Silent option has been removed. " +
-      'Use the filter functionality in the vue-devtools'
-    );
-  }
-};
-
-Store.prototype.dispatch = function dispatch (_type, _payload) {
-  // check object-style dispatch
-  var ref = unifyObjectStyle(_type, _payload);
-    var type = ref.type;
-    var payload = ref.payload;
-
-  var entry = this._actions[type];
-  if (!entry) {
-    console.error(("[vuex] unknown action type: " + type));
-    return
-  }
-  return entry.length > 1
-    ? Promise.all(entry.map(function (handler) { return handler(payload); }))
-    : entry[0](payload)
-};
-
-Store.prototype.subscribe = function subscribe (fn) {
-  var subs = this._subscribers;
-  if (subs.indexOf(fn) < 0) {
-    subs.push(fn);
-  }
-  return function () {
-    var i = subs.indexOf(fn);
-    if (i > -1) {
-      subs.splice(i, 1);
-    }
-  }
-};
-
-Store.prototype.watch = function watch (getter, cb, options) {
-    var this$1 = this;
-
-  assert(typeof getter === 'function', "store.watch only accepts a function.");
-  return this._watcherVM.$watch(function () { return getter(this$1.state, this$1.getters); }, cb, options)
-};
-
-Store.prototype.replaceState = function replaceState (state) {
-    var this$1 = this;
-
-  this._withCommit(function () {
-    this$1._vm._data.$$state = state;
-  });
-};
-
-Store.prototype.registerModule = function registerModule (path, rawModule) {
-  if (typeof path === 'string') { path = [path]; }
-  assert(Array.isArray(path), "module path must be a string or an Array.");
-  this._modules.register(path, rawModule);
-  installModule(this, this.state, path, this._modules.get(path));
-  // reset store to update getters...
-  resetStoreVM(this, this.state);
-};
-
-Store.prototype.unregisterModule = function unregisterModule (path) {
-    var this$1 = this;
-
-  if (typeof path === 'string') { path = [path]; }
-  assert(Array.isArray(path), "module path must be a string or an Array.");
-  this._modules.unregister(path);
-  this._withCommit(function () {
-    var parentState = getNestedState(this$1.state, path.slice(0, -1));
-    Vue.delete(parentState, path[path.length - 1]);
-  });
-  resetStore(this);
-};
-
-Store.prototype.hotUpdate = function hotUpdate (newOptions) {
-  this._modules.update(newOptions);
-  resetStore(this, true);
-};
-
-Store.prototype._withCommit = function _withCommit (fn) {
-  var committing = this._committing;
-  this._committing = true;
-  fn();
-  this._committing = committing;
-};
-
-Object.defineProperties( Store.prototype, prototypeAccessors );
-
-function resetStore (store, hot) {
-  store._actions = Object.create(null);
-  store._mutations = Object.create(null);
-  store._wrappedGetters = Object.create(null);
-  store._modulesNamespaceMap = Object.create(null);
-  var state = store.state;
-  // init all modules
-  installModule(store, state, [], store._modules.root, true);
-  // reset vm
-  resetStoreVM(store, state, hot);
-}
-
-function resetStoreVM (store, state, hot) {
-  var oldVm = store._vm;
-
-  // bind store public getters
-  store.getters = {};
-  var wrappedGetters = store._wrappedGetters;
-  var computed = {};
-  forEachValue(wrappedGetters, function (fn, key) {
-    // use computed to leverage its lazy-caching mechanism
-    computed[key] = function () { return fn(store); };
-    Object.defineProperty(store.getters, key, {
-      get: function () { return store._vm[key]; },
-      enumerable: true // for local getters
-    });
-  });
-
-  // use a Vue instance to store the state tree
-  // suppress warnings just in case the user has added
-  // some funky global mixins
-  var silent = Vue.config.silent;
-  Vue.config.silent = true;
-  store._vm = new Vue({
-    data: {
-      $$state: state
-    },
-    computed: computed
-  });
-  Vue.config.silent = silent;
-
-  // enable strict mode for new vm
-  if (store.strict) {
-    enableStrictMode(store);
-  }
-
-  if (oldVm) {
-    if (hot) {
-      // dispatch changes in all subscribed watchers
-      // to force getter re-evaluation for hot reloading.
-      store._withCommit(function () {
-        oldVm._data.$$state = null;
-      });
-    }
-    Vue.nextTick(function () { return oldVm.$destroy(); });
-  }
-}
-
-function installModule (store, rootState, path, module, hot) {
-  var isRoot = !path.length;
-  var namespace = store._modules.getNamespace(path);
-
-  // register in namespace map
-  if (module.namespaced) {
-    store._modulesNamespaceMap[namespace] = module;
-  }
-
-  // set state
-  if (!isRoot && !hot) {
-    var parentState = getNestedState(rootState, path.slice(0, -1));
-    var moduleName = path[path.length - 1];
-    store._withCommit(function () {
-      Vue.set(parentState, moduleName, module.state);
-    });
-  }
-
-  var local = module.context = makeLocalContext(store, namespace, path);
-
-  module.forEachMutation(function (mutation, key) {
-    var namespacedType = namespace + key;
-    registerMutation(store, namespacedType, mutation, local);
-  });
-
-  module.forEachAction(function (action, key) {
-    var namespacedType = namespace + key;
-    registerAction(store, namespacedType, action, local);
-  });
-
-  module.forEachGetter(function (getter, key) {
-    var namespacedType = namespace + key;
-    registerGetter(store, namespacedType, getter, local);
-  });
-
-  module.forEachChild(function (child, key) {
-    installModule(store, rootState, path.concat(key), child, hot);
-  });
-}
-
-/**
- * make localized dispatch, commit, getters and state
- * if there is no namespace, just use root ones
- */
-function makeLocalContext (store, namespace, path) {
-  var noNamespace = namespace === '';
-
-  var local = {
-    dispatch: noNamespace ? store.dispatch : function (_type, _payload, _options) {
-      var args = unifyObjectStyle(_type, _payload, _options);
-      var payload = args.payload;
-      var options = args.options;
-      var type = args.type;
-
-      if (!options || !options.root) {
-        type = namespace + type;
-        if (!store._actions[type]) {
-          console.error(("[vuex] unknown local action type: " + (args.type) + ", global type: " + type));
-          return
-        }
-      }
-
-      return store.dispatch(type, payload)
-    },
-
-    commit: noNamespace ? store.commit : function (_type, _payload, _options) {
-      var args = unifyObjectStyle(_type, _payload, _options);
-      var payload = args.payload;
-      var options = args.options;
-      var type = args.type;
-
-      if (!options || !options.root) {
-        type = namespace + type;
-        if (!store._mutations[type]) {
-          console.error(("[vuex] unknown local mutation type: " + (args.type) + ", global type: " + type));
-          return
-        }
-      }
-
-      store.commit(type, payload, options);
-    }
-  };
-
-  // getters and state object must be gotten lazily
-  // because they will be changed by vm update
-  Object.defineProperties(local, {
-    getters: {
-      get: noNamespace
-        ? function () { return store.getters; }
-        : function () { return makeLocalGetters(store, namespace); }
-    },
-    state: {
-      get: function () { return getNestedState(store.state, path); }
-    }
-  });
-
-  return local
-}
-
-function makeLocalGetters (store, namespace) {
-  var gettersProxy = {};
-
-  var splitPos = namespace.length;
-  Object.keys(store.getters).forEach(function (type) {
-    // skip if the target getter is not match this namespace
-    if (type.slice(0, splitPos) !== namespace) { return }
-
-    // extract local getter type
-    var localType = type.slice(splitPos);
-
-    // Add a port to the getters proxy.
-    // Define as getter property because
-    // we do not want to evaluate the getters in this time.
-    Object.defineProperty(gettersProxy, localType, {
-      get: function () { return store.getters[type]; },
-      enumerable: true
-    });
-  });
-
-  return gettersProxy
-}
-
-function registerMutation (store, type, handler, local) {
-  var entry = store._mutations[type] || (store._mutations[type] = []);
-  entry.push(function wrappedMutationHandler (payload) {
-    handler(local.state, payload);
-  });
-}
-
-function registerAction (store, type, handler, local) {
-  var entry = store._actions[type] || (store._actions[type] = []);
-  entry.push(function wrappedActionHandler (payload, cb) {
-    var res = handler({
-      dispatch: local.dispatch,
-      commit: local.commit,
-      getters: local.getters,
-      state: local.state,
-      rootGetters: store.getters,
-      rootState: store.state
-    }, payload, cb);
-    if (!isPromise(res)) {
-      res = Promise.resolve(res);
-    }
-    if (store._devtoolHook) {
-      return res.catch(function (err) {
-        store._devtoolHook.emit('vuex:error', err);
-        throw err
-      })
-    } else {
-      return res
-    }
-  });
-}
-
-function registerGetter (store, type, rawGetter, local) {
-  if (store._wrappedGetters[type]) {
-    console.error(("[vuex] duplicate getter key: " + type));
-    return
-  }
-  store._wrappedGetters[type] = function wrappedGetter (store) {
-    return rawGetter(
-      local.state, // local state
-      local.getters, // local getters
-      store.state, // root state
-      store.getters // root getters
-    )
-  };
-}
-
-function enableStrictMode (store) {
-  store._vm.$watch(function () { return this._data.$$state }, function () {
-    assert(store._committing, "Do not mutate vuex store state outside mutation handlers.");
-  }, { deep: true, sync: true });
-}
-
-function getNestedState (state, path) {
-  return path.length
-    ? path.reduce(function (state, key) { return state[key]; }, state)
-    : state
-}
-
-function unifyObjectStyle (type, payload, options) {
-  if (isObject(type) && type.type) {
-    options = payload;
-    payload = type;
-    type = type.type;
-  }
-
-  assert(typeof type === 'string', ("Expects string as the type, but found " + (typeof type) + "."));
-
-  return { type: type, payload: payload, options: options }
-}
-
-function install (_Vue) {
-  if (Vue) {
-    console.error(
-      '[vuex] already installed. Vue.use(Vuex) should be called only once.'
-    );
-    return
-  }
-  Vue = _Vue;
-  applyMixin(Vue);
-}
-
-// auto install in dist mode
-if (typeof window !== 'undefined' && window.Vue) {
-  install(window.Vue);
-}
-
-var mapState = normalizeNamespace(function (namespace, states) {
-  var res = {};
-  normalizeMap(states).forEach(function (ref) {
-    var key = ref.key;
-    var val = ref.val;
-
-    res[key] = function mappedState () {
-      var state = this.$store.state;
-      var getters = this.$store.getters;
-      if (namespace) {
-        var module = getModuleByNamespace(this.$store, 'mapState', namespace);
-        if (!module) {
-          return
-        }
-        state = module.context.state;
-        getters = module.context.getters;
-      }
-      return typeof val === 'function'
-        ? val.call(this, state, getters)
-        : state[val]
-    };
-    // mark vuex getter for devtools
-    res[key].vuex = true;
-  });
-  return res
-});
-
-var mapMutations = normalizeNamespace(function (namespace, mutations) {
-  var res = {};
-  normalizeMap(mutations).forEach(function (ref) {
-    var key = ref.key;
-    var val = ref.val;
-
-    val = namespace + val;
-    res[key] = function mappedMutation () {
-      var args = [], len = arguments.length;
-      while ( len-- ) args[ len ] = arguments[ len ];
-
-      if (namespace && !getModuleByNamespace(this.$store, 'mapMutations', namespace)) {
-        return
-      }
-      return this.$store.commit.apply(this.$store, [val].concat(args))
-    };
-  });
-  return res
-});
-
-var mapGetters = normalizeNamespace(function (namespace, getters) {
-  var res = {};
-  normalizeMap(getters).forEach(function (ref) {
-    var key = ref.key;
-    var val = ref.val;
-
-    val = namespace + val;
-    res[key] = function mappedGetter () {
-      if (namespace && !getModuleByNamespace(this.$store, 'mapGetters', namespace)) {
-        return
-      }
-      if (!(val in this.$store.getters)) {
-        console.error(("[vuex] unknown getter: " + val));
-        return
-      }
-      return this.$store.getters[val]
-    };
-    // mark vuex getter for devtools
-    res[key].vuex = true;
-  });
-  return res
-});
-
-var mapActions = normalizeNamespace(function (namespace, actions) {
-  var res = {};
-  normalizeMap(actions).forEach(function (ref) {
-    var key = ref.key;
-    var val = ref.val;
-
-    val = namespace + val;
-    res[key] = function mappedAction () {
-      var args = [], len = arguments.length;
-      while ( len-- ) args[ len ] = arguments[ len ];
-
-      if (namespace && !getModuleByNamespace(this.$store, 'mapActions', namespace)) {
-        return
-      }
-      return this.$store.dispatch.apply(this.$store, [val].concat(args))
-    };
-  });
-  return res
-});
-
-function normalizeMap (map) {
-  return Array.isArray(map)
-    ? map.map(function (key) { return ({ key: key, val: key }); })
-    : Object.keys(map).map(function (key) { return ({ key: key, val: map[key] }); })
-}
-
-function normalizeNamespace (fn) {
-  return function (namespace, map) {
-    if (typeof namespace !== 'string') {
-      map = namespace;
-      namespace = '';
-    } else if (namespace.charAt(namespace.length - 1) !== '/') {
-      namespace += '/';
-    }
-    return fn(namespace, map)
-  }
-}
-
-function getModuleByNamespace (store, helper, namespace) {
-  var module = store._modulesNamespaceMap[namespace];
-  if (!module) {
-    console.error(("[vuex] module namespace not found in " + helper + "(): " + namespace));
-  }
-  return module
-}
-
-var index_esm = {
-  Store: Store,
-  install: install,
-  version: '2.3.0',
-  mapState: mapState,
-  mapMutations: mapMutations,
-  mapGetters: mapGetters,
-  mapActions: mapActions
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (index_esm);
-
-
-/***/ }),
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15599,28 +15599,6 @@ if (typeof window !== 'undefined') {
 
 /***/ }),
 /* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.mergeOptions = mergeOptions;
-
-var _merge = __webpack_require__(490);
-
-var _merge2 = _interopRequireDefault(_merge);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function mergeOptions(obj, src) {
-  return (0, _merge2.default)(obj, src);
-}
-
-/***/ }),
-/* 12 */
 /***/ (function(module, exports) {
 
 /**
@@ -15653,6 +15631,28 @@ function isObjectLike(value) {
 
 module.exports = isObjectLike;
 
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.mergeOptions = mergeOptions;
+
+var _merge = __webpack_require__(490);
+
+var _merge2 = _interopRequireDefault(_merge);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function mergeOptions(obj, src) {
+  return (0, _merge2.default)(obj, src);
+}
 
 /***/ }),
 /* 13 */
@@ -15688,7 +15688,7 @@ if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(4);
+var root = __webpack_require__(3);
 
 /** Built-in value references. */
 var Symbol = root.Symbol;
@@ -15761,7 +15761,7 @@ module.exports = copyArray;
 /***/ (function(module, exports, __webpack_require__) {
 
 var assignValue = __webpack_require__(84),
-    baseAssignValue = __webpack_require__(51);
+    baseAssignValue = __webpack_require__(52);
 
 /**
  * Copies properties of `source` to `object`.
@@ -15877,7 +15877,7 @@ module.exports = eq;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(16),
-    isObjectLike = __webpack_require__(12);
+    isObjectLike = __webpack_require__(11);
 
 /** `Object#toString` result references. */
 var symbolTag = '[object Symbol]';
@@ -15909,6 +15909,18 @@ module.exports = isSymbol;
 
 /***/ }),
 /* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var SweetModal = __webpack_require__(1331)
+var SweetModalTab = __webpack_require__(1332)
+
+module.exports = {
+	SweetModal: SweetModal,
+	SweetModalTab: SweetModalTab
+}
+
+/***/ }),
+/* 23 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -15936,16 +15948,16 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(24)(function(){
+module.exports = !__webpack_require__(25)(function(){
   return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
 });
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports) {
 
 module.exports = function(exec){
@@ -15957,7 +15969,7 @@ module.exports = function(exec){
 };
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var listCacheClear = __webpack_require__(453),
@@ -15995,10 +16007,10 @@ module.exports = ListCache;
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ListCache = __webpack_require__(25),
+var ListCache = __webpack_require__(26),
     stackClear = __webpack_require__(473),
     stackDelete = __webpack_require__(474),
     stackGet = __webpack_require__(475),
@@ -16028,7 +16040,7 @@ module.exports = Stack;
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var eq = __webpack_require__(20);
@@ -16055,7 +16067,7 @@ module.exports = assocIndexOf;
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(9);
@@ -16091,10 +16103,10 @@ module.exports = baseCreate;
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseCreate = __webpack_require__(28),
+var baseCreate = __webpack_require__(29),
     isObject = __webpack_require__(9);
 
 /**
@@ -16134,7 +16146,7 @@ module.exports = createCtor;
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isKeyable = __webpack_require__(450);
@@ -16158,7 +16170,7 @@ module.exports = getMapData;
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports) {
 
 /** Used as references for various `Number` constants. */
@@ -16186,7 +16198,7 @@ module.exports = isIndex;
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(13);
@@ -16198,7 +16210,7 @@ module.exports = nativeCreate;
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports) {
 
 /**
@@ -16225,11 +16237,11 @@ module.exports = identity;
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsArguments = __webpack_require__(396),
-    isObjectLike = __webpack_require__(12);
+    isObjectLike = __webpack_require__(11);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -16267,11 +16279,11 @@ module.exports = isArguments;
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isFunction = __webpack_require__(37),
-    isLength = __webpack_require__(61);
+var isFunction = __webpack_require__(38),
+    isLength = __webpack_require__(62);
 
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's
@@ -16306,10 +16318,10 @@ module.exports = isArrayLike;
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(4),
+/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(3),
     stubFalse = __webpack_require__(501);
 
 /** Detect free variable `exports`. */
@@ -16348,10 +16360,10 @@ var isBuffer = nativeIsBuffer || stubFalse;
 
 module.exports = isBuffer;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)(module)))
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(16),
@@ -16394,12 +16406,12 @@ module.exports = isFunction;
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayLikeKeys = __webpack_require__(80),
     baseKeys = __webpack_require__(90),
-    isArrayLike = __webpack_require__(35);
+    isArrayLike = __webpack_require__(36);
 
 /**
  * Creates an array of the own enumerable property names of `object`.
@@ -16437,12 +16449,12 @@ module.exports = keys;
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayLikeKeys = __webpack_require__(80),
     baseKeysIn = __webpack_require__(403),
-    isArrayLike = __webpack_require__(35);
+    isArrayLike = __webpack_require__(36);
 
 /**
  * Creates an array of the own and inherited enumerable property names of `object`.
@@ -16475,7 +16487,7 @@ module.exports = keysIn;
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16484,7 +16496,7 @@ module.exports = keysIn;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.mixins = exports.Scatter = exports.Bubble = exports.Radar = exports.PolarArea = exports.Pie = exports.Line = exports.Doughnut = exports.HorizontalBar = exports.Bar = exports.VueCharts = undefined;
+exports.mixins = exports.Bubble = exports.Radar = exports.PolarArea = exports.Pie = exports.Line = exports.Doughnut = exports.HorizontalBar = exports.Bar = exports.VueCharts = undefined;
 
 var _Bar = __webpack_require__(1297);
 
@@ -16518,15 +16530,11 @@ var _Bubble = __webpack_require__(1298);
 
 var _Bubble2 = _interopRequireDefault(_Bubble);
 
-var _Scatter = __webpack_require__(1305);
-
-var _Scatter2 = _interopRequireDefault(_Scatter);
-
-var _index = __webpack_require__(1306);
+var _index = __webpack_require__(1305);
 
 var _index2 = _interopRequireDefault(_index);
 
-var _package = __webpack_require__(1309);
+var _package = __webpack_require__(1308);
 
 var _package2 = _interopRequireDefault(_package);
 
@@ -16542,7 +16550,6 @@ var VueCharts = {
   PolarArea: _PolarArea2.default,
   Radar: _Radar2.default,
   Bubble: _Bubble2.default,
-  Scatter: _Scatter2.default,
   mixins: _index2.default
 };
 
@@ -16556,11 +16563,10 @@ exports.Pie = _Pie2.default;
 exports.PolarArea = _PolarArea2.default;
 exports.Radar = _Radar2.default;
 exports.Bubble = _Bubble2.default;
-exports.Scatter = _Scatter2.default;
 exports.mixins = _index2.default;
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16590,10 +16596,10 @@ exports.default = function (obj, key, value) {
 };
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global    = __webpack_require__(43)
+var global    = __webpack_require__(44)
   , core      = __webpack_require__(14)
   , ctx       = __webpack_require__(342)
   , hide      = __webpack_require__(346)
@@ -16656,7 +16662,7 @@ $export.R = 128; // real proto method for `library`
 module.exports = $export;
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports) {
 
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
@@ -16665,7 +16671,7 @@ var global = module.exports = typeof window != 'undefined' && window.Math == Mat
 if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports) {
 
 module.exports = function(it){
@@ -16673,11 +16679,11 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseCreate = __webpack_require__(28),
-    baseLodash = __webpack_require__(52);
+var baseCreate = __webpack_require__(29),
+    baseLodash = __webpack_require__(53);
 
 /** Used as references for the maximum length and index of an array. */
 var MAX_ARRAY_LENGTH = 4294967295;
@@ -16707,11 +16713,11 @@ module.exports = LazyWrapper;
 
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(13),
-    root = __webpack_require__(4);
+    root = __webpack_require__(3);
 
 /* Built-in method references that are verified to be native. */
 var Map = getNative(root, 'Map');
@@ -16720,7 +16726,7 @@ module.exports = Map;
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var mapCacheClear = __webpack_require__(458),
@@ -16758,7 +16764,7 @@ module.exports = MapCache;
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports) {
 
 /**
@@ -16785,7 +16791,7 @@ module.exports = apply;
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports) {
 
 /**
@@ -16813,7 +16819,7 @@ module.exports = arrayEach;
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports) {
 
 /**
@@ -16839,7 +16845,7 @@ module.exports = arrayPush;
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var defineProperty = __webpack_require__(99);
@@ -16870,7 +16876,7 @@ module.exports = baseAssignValue;
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports) {
 
 /**
@@ -16886,7 +16892,7 @@ module.exports = baseLodash;
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Uint8Array = __webpack_require__(78);
@@ -16908,7 +16914,7 @@ module.exports = cloneArrayBuffer;
 
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseSetData = __webpack_require__(91),
@@ -17020,7 +17026,7 @@ module.exports = createWrap;
 
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var overArg = __webpack_require__(112);
@@ -17032,7 +17038,7 @@ module.exports = getPrototype;
 
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayFilter = __webpack_require__(387),
@@ -17068,10 +17074,10 @@ module.exports = getSymbols;
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isArray = __webpack_require__(5),
+var isArray = __webpack_require__(4),
     isSymbol = __webpack_require__(21);
 
 /** Used to match property names within property paths. */
@@ -17103,7 +17109,7 @@ module.exports = isKey;
 
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -17127,7 +17133,7 @@ module.exports = isPrototype;
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports) {
 
 /** Used as the internal argument placeholder. */
@@ -17162,7 +17168,7 @@ module.exports = replaceHolders;
 
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseSetToString = __webpack_require__(411),
@@ -17182,7 +17188,7 @@ module.exports = setToString;
 
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports) {
 
 /** Used as references for various `Number` constants. */
@@ -17223,7 +17229,7 @@ module.exports = isLength;
 
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsTypedArray = __webpack_require__(401),
@@ -17254,18 +17260,6 @@ var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedA
 
 module.exports = isTypedArray;
 
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var SweetModal = __webpack_require__(1332)
-var SweetModalTab = __webpack_require__(1333)
-
-module.exports = {
-	SweetModal: SweetModal,
-	SweetModalTab: SweetModalTab
-}
 
 /***/ }),
 /* 64 */,
@@ -17828,7 +17822,7 @@ var anObject       = __webpack_require__(339)
   , toPrimitive    = __webpack_require__(358)
   , dP             = Object.defineProperty;
 
-exports.f = __webpack_require__(23) ? Object.defineProperty : function defineProperty(O, P, Attributes){
+exports.f = __webpack_require__(24) ? Object.defineProperty : function defineProperty(O, P, Attributes){
   anObject(O);
   P = toPrimitive(P, true);
   anObject(Attributes);
@@ -17888,8 +17882,8 @@ module.exports = function(it){
 /* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseCreate = __webpack_require__(28),
-    baseLodash = __webpack_require__(52);
+var baseCreate = __webpack_require__(29),
+    baseLodash = __webpack_require__(53);
 
 /**
  * The base constructor for creating `lodash` wrapper objects.
@@ -17916,7 +17910,7 @@ module.exports = LodashWrapper;
 /* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(4);
+var root = __webpack_require__(3);
 
 /** Built-in value references. */
 var Uint8Array = root.Uint8Array;
@@ -17929,7 +17923,7 @@ module.exports = Uint8Array;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(13),
-    root = __webpack_require__(4);
+    root = __webpack_require__(3);
 
 /* Built-in method references that are verified to be native. */
 var WeakMap = getNative(root, 'WeakMap');
@@ -17942,11 +17936,11 @@ module.exports = WeakMap;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseTimes = __webpack_require__(412),
-    isArguments = __webpack_require__(34),
-    isArray = __webpack_require__(5),
-    isBuffer = __webpack_require__(36),
-    isIndex = __webpack_require__(31),
-    isTypedArray = __webpack_require__(62);
+    isArguments = __webpack_require__(35),
+    isArray = __webpack_require__(4),
+    isBuffer = __webpack_require__(37),
+    isIndex = __webpack_require__(32),
+    isTypedArray = __webpack_require__(63);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -18055,7 +18049,7 @@ module.exports = arrayReduce;
 /* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseAssignValue = __webpack_require__(51),
+var baseAssignValue = __webpack_require__(52),
     eq = __webpack_require__(20);
 
 /**
@@ -18081,7 +18075,7 @@ module.exports = assignMergeValue;
 /* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseAssignValue = __webpack_require__(51),
+var baseAssignValue = __webpack_require__(52),
     eq = __webpack_require__(20);
 
 /** Used for built-in method references. */
@@ -18116,7 +18110,7 @@ module.exports = assignValue;
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(18),
-    keys = __webpack_require__(38);
+    keys = __webpack_require__(39);
 
 /**
  * The base implementation of `_.assign` without support for multiple sources
@@ -18138,8 +18132,8 @@ module.exports = baseAssign;
 /* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(26),
-    arrayEach = __webpack_require__(49),
+var Stack = __webpack_require__(27),
+    arrayEach = __webpack_require__(50),
     assignValue = __webpack_require__(84),
     baseAssign = __webpack_require__(85),
     baseAssignIn = __webpack_require__(390),
@@ -18153,10 +18147,10 @@ var Stack = __webpack_require__(26),
     initCloneArray = __webpack_require__(445),
     initCloneByTag = __webpack_require__(446),
     initCloneObject = __webpack_require__(107),
-    isArray = __webpack_require__(5),
-    isBuffer = __webpack_require__(36),
+    isArray = __webpack_require__(4),
+    isBuffer = __webpack_require__(37),
     isObject = __webpack_require__(9),
-    keys = __webpack_require__(38);
+    keys = __webpack_require__(39);
 
 /** Used to compose bitmasks for cloning. */
 var CLONE_DEEP_FLAG = 1,
@@ -18327,8 +18321,8 @@ module.exports = baseGet;
 /* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayPush = __webpack_require__(50),
-    isArray = __webpack_require__(5);
+var arrayPush = __webpack_require__(51),
+    isArray = __webpack_require__(4);
 
 /**
  * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
@@ -18354,7 +18348,7 @@ module.exports = baseGetAllKeys;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsEqualDeep = __webpack_require__(397),
-    isObjectLike = __webpack_require__(12);
+    isObjectLike = __webpack_require__(11);
 
 /**
  * The base implementation of `_.isEqual` which supports partial comparisons
@@ -18387,7 +18381,7 @@ module.exports = baseIsEqual;
 /* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isPrototype = __webpack_require__(58),
+var isPrototype = __webpack_require__(59),
     nativeKeys = __webpack_require__(465);
 
 /** Used for built-in method references. */
@@ -18423,7 +18417,7 @@ module.exports = baseKeys;
 /* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var identity = __webpack_require__(33),
+var identity = __webpack_require__(34),
     metaMap = __webpack_require__(111);
 
 /**
@@ -18446,8 +18440,8 @@ module.exports = baseSetData;
 /* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isArray = __webpack_require__(5),
-    isKey = __webpack_require__(57),
+var isArray = __webpack_require__(4),
+    isKey = __webpack_require__(58),
     stringToPath = __webpack_require__(118),
     toString = __webpack_require__(123);
 
@@ -18473,7 +18467,7 @@ module.exports = castPath;
 /* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(4);
+/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(3);
 
 /** Detect free variable `exports`. */
 var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
@@ -18509,13 +18503,13 @@ function cloneBuffer(buffer, isDeep) {
 
 module.exports = cloneBuffer;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)(module)))
 
 /***/ }),
 /* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var cloneArrayBuffer = __webpack_require__(53);
+var cloneArrayBuffer = __webpack_require__(54);
 
 /**
  * Creates a clone of `typedArray`.
@@ -18632,12 +18626,12 @@ module.exports = composeArgsRight;
 var composeArgs = __webpack_require__(95),
     composeArgsRight = __webpack_require__(96),
     countHolders = __webpack_require__(424),
-    createCtor = __webpack_require__(29),
+    createCtor = __webpack_require__(30),
     createRecurry = __webpack_require__(98),
     getHolder = __webpack_require__(104),
     reorder = __webpack_require__(470),
-    replaceHolders = __webpack_require__(59),
-    root = __webpack_require__(4);
+    replaceHolders = __webpack_require__(60),
+    root = __webpack_require__(3);
 
 /** Used to compose bitmasks for function metadata. */
 var WRAP_BIND_FLAG = 1,
@@ -18907,8 +18901,8 @@ module.exports = freeGlobal;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetAllKeys = __webpack_require__(88),
-    getSymbols = __webpack_require__(56),
-    keys = __webpack_require__(38);
+    getSymbols = __webpack_require__(57),
+    keys = __webpack_require__(39);
 
 /**
  * Creates an array of own enumerable property names and symbols of `object`.
@@ -18968,9 +18962,9 @@ module.exports = getHolder;
 /* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayPush = __webpack_require__(50),
-    getPrototype = __webpack_require__(55),
-    getSymbols = __webpack_require__(56),
+var arrayPush = __webpack_require__(51),
+    getPrototype = __webpack_require__(56),
+    getSymbols = __webpack_require__(57),
     stubArray = __webpack_require__(121);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
@@ -19000,7 +18994,7 @@ module.exports = getSymbolsIn;
 /***/ (function(module, exports, __webpack_require__) {
 
 var DataView = __webpack_require__(380),
-    Map = __webpack_require__(46),
+    Map = __webpack_require__(47),
     Promise = __webpack_require__(382),
     Set = __webpack_require__(383),
     WeakMap = __webpack_require__(79),
@@ -19063,9 +19057,9 @@ module.exports = getTag;
 /* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseCreate = __webpack_require__(28),
-    getPrototype = __webpack_require__(55),
-    isPrototype = __webpack_require__(58);
+var baseCreate = __webpack_require__(29),
+    getPrototype = __webpack_require__(56),
+    isPrototype = __webpack_require__(59);
 
 /**
  * Initializes an object clone.
@@ -19191,7 +19185,7 @@ module.exports = overArg;
 /* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var apply = __webpack_require__(48);
+var apply = __webpack_require__(49);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMax = Math.max;
@@ -19285,7 +19279,7 @@ module.exports = setToArray;
 
 var getWrapDetails = __webpack_require__(438),
     insertWrapDetails = __webpack_require__(447),
-    setToString = __webpack_require__(60),
+    setToString = __webpack_require__(61),
     updateWrapDetails = __webpack_require__(479);
 
 /**
@@ -44774,7 +44768,7 @@ module.exports = function(it){
 /* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(44);
+var isObject = __webpack_require__(45);
 module.exports = function(it){
   if(!isObject(it))throw TypeError(it + ' is not an object!');
   return it;
@@ -44845,8 +44839,8 @@ module.exports = function(fn, that, length){
 /* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(44)
-  , document = __webpack_require__(43).document
+var isObject = __webpack_require__(45)
+  , document = __webpack_require__(44).document
   // in old IE typeof document.createElement is 'object'
   , is = isObject(document) && isObject(document.createElement);
 module.exports = function(it){
@@ -44877,7 +44871,7 @@ module.exports = function(it, key){
 
 var dP         = __webpack_require__(72)
   , createDesc = __webpack_require__(353);
-module.exports = __webpack_require__(23) ? function(object, key, value){
+module.exports = __webpack_require__(24) ? function(object, key, value){
   return dP.f(object, key, createDesc(1, value));
 } : function(object, key, value){
   object[key] = value;
@@ -44888,7 +44882,7 @@ module.exports = __webpack_require__(23) ? function(object, key, value){
 /* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = !__webpack_require__(23) && !__webpack_require__(24)(function(){
+module.exports = !__webpack_require__(24) && !__webpack_require__(25)(function(){
   return Object.defineProperty(__webpack_require__(343)('div'), 'a', {get: function(){ return 7; }}).a != 7;
 });
 
@@ -44907,7 +44901,7 @@ var getKeys  = __webpack_require__(73)
   , $assign  = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
-module.exports = !$assign || __webpack_require__(24)(function(){
+module.exports = !$assign || __webpack_require__(25)(function(){
   var A = {}
     , B = {}
     , S = Symbol()
@@ -44970,9 +44964,9 @@ exports.f = {}.propertyIsEnumerable;
 /***/ (function(module, exports, __webpack_require__) {
 
 // most Object methods by ES6 should accept primitives
-var $export = __webpack_require__(42)
+var $export = __webpack_require__(43)
   , core    = __webpack_require__(14)
-  , fails   = __webpack_require__(24);
+  , fails   = __webpack_require__(25);
 module.exports = function(KEY, exec){
   var fn  = (core.Object || {})[KEY] || Object[KEY]
     , exp = {};
@@ -45007,7 +45001,7 @@ module.exports = function(key){
 /* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(43)
+var global = __webpack_require__(44)
   , SHARED = '__core-js_shared__'
   , store  = global[SHARED] || (global[SHARED] = {});
 module.exports = function(key){
@@ -45042,7 +45036,7 @@ module.exports = function(it){
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(44);
+var isObject = __webpack_require__(45);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function(it, S){
@@ -45069,7 +45063,7 @@ module.exports = function(key){
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.1 Object.assign(target, source)
-var $export = __webpack_require__(42);
+var $export = __webpack_require__(43);
 
 $export($export.S + $export.F, 'Object', {assign: __webpack_require__(348)});
 
@@ -45077,9 +45071,9 @@ $export($export.S + $export.F, 'Object', {assign: __webpack_require__(348)});
 /* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $export = __webpack_require__(42);
+var $export = __webpack_require__(43);
 // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-$export($export.S + $export.F * !__webpack_require__(23), 'Object', {defineProperty: __webpack_require__(72).f});
+$export($export.S + $export.F * !__webpack_require__(24), 'Object', {defineProperty: __webpack_require__(72).f});
 
 /***/ }),
 /* 362 */
@@ -47323,14 +47317,14 @@ function stubFalse() {
 
 module.exports = merge;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(66), __webpack_require__(22)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(66), __webpack_require__(23)(module)))
 
 /***/ }),
 /* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(13),
-    root = __webpack_require__(4);
+    root = __webpack_require__(3);
 
 /* Built-in method references that are verified to be native. */
 var DataView = getNative(root, 'DataView');
@@ -47381,7 +47375,7 @@ module.exports = Hash;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(13),
-    root = __webpack_require__(4);
+    root = __webpack_require__(3);
 
 /* Built-in method references that are verified to be native. */
 var Promise = getNative(root, 'Promise');
@@ -47394,7 +47388,7 @@ module.exports = Promise;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(13),
-    root = __webpack_require__(4);
+    root = __webpack_require__(3);
 
 /* Built-in method references that are verified to be native. */
 var Set = getNative(root, 'Set');
@@ -47406,7 +47400,7 @@ module.exports = Set;
 /* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapCache = __webpack_require__(47),
+var MapCache = __webpack_require__(48),
     setCacheAdd = __webpack_require__(471),
     setCacheHas = __webpack_require__(472);
 
@@ -47565,7 +47559,7 @@ module.exports = arraySome;
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(18),
-    keysIn = __webpack_require__(39);
+    keysIn = __webpack_require__(40);
 
 /**
  * The base implementation of `_.assignIn` without support for multiple sources
@@ -47617,7 +47611,7 @@ module.exports = baseFindIndex;
 /* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayPush = __webpack_require__(50),
+var arrayPush = __webpack_require__(51),
     isFlattenable = __webpack_require__(448);
 
 /**
@@ -47729,7 +47723,7 @@ module.exports = baseIndexOf;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(16),
-    isObjectLike = __webpack_require__(12);
+    isObjectLike = __webpack_require__(11);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]';
@@ -47752,14 +47746,14 @@ module.exports = baseIsArguments;
 /* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(26),
+var Stack = __webpack_require__(27),
     equalArrays = __webpack_require__(100),
     equalByTag = __webpack_require__(430),
     equalObjects = __webpack_require__(431),
     getTag = __webpack_require__(106),
-    isArray = __webpack_require__(5),
-    isBuffer = __webpack_require__(36),
-    isTypedArray = __webpack_require__(62);
+    isArray = __webpack_require__(4),
+    isBuffer = __webpack_require__(37),
+    isTypedArray = __webpack_require__(63);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -47841,7 +47835,7 @@ module.exports = baseIsEqualDeep;
 /* 398 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(26),
+var Stack = __webpack_require__(27),
     baseIsEqual = __webpack_require__(89);
 
 /** Used to compose bitmasks for value comparisons. */
@@ -47927,7 +47921,7 @@ module.exports = baseIsNaN;
 /* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isFunction = __webpack_require__(37),
+var isFunction = __webpack_require__(38),
     isMasked = __webpack_require__(452),
     isObject = __webpack_require__(9),
     toSource = __webpack_require__(119);
@@ -47981,8 +47975,8 @@ module.exports = baseIsNative;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(16),
-    isLength = __webpack_require__(61),
-    isObjectLike = __webpack_require__(12);
+    isLength = __webpack_require__(62),
+    isObjectLike = __webpack_require__(11);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]',
@@ -48048,8 +48042,8 @@ module.exports = baseIsTypedArray;
 
 var baseMatches = __webpack_require__(404),
     baseMatchesProperty = __webpack_require__(405),
-    identity = __webpack_require__(33),
-    isArray = __webpack_require__(5),
+    identity = __webpack_require__(34),
+    isArray = __webpack_require__(4),
     property = __webpack_require__(499);
 
 /**
@@ -48084,7 +48078,7 @@ module.exports = baseIteratee;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(9),
-    isPrototype = __webpack_require__(58),
+    isPrototype = __webpack_require__(59),
     nativeKeysIn = __webpack_require__(466);
 
 /** Used for built-in method references. */
@@ -48153,7 +48147,7 @@ module.exports = baseMatches;
 var baseIsEqual = __webpack_require__(89),
     get = __webpack_require__(491),
     hasIn = __webpack_require__(492),
-    isKey = __webpack_require__(57),
+    isKey = __webpack_require__(58),
     isStrictComparable = __webpack_require__(108),
     matchesStrictComparable = __webpack_require__(110),
     toKey = __webpack_require__(19);
@@ -48189,12 +48183,12 @@ module.exports = baseMatchesProperty;
 /* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(26),
+var Stack = __webpack_require__(27),
     assignMergeValue = __webpack_require__(83),
     baseFor = __webpack_require__(393),
     baseMergeDeep = __webpack_require__(407),
     isObject = __webpack_require__(9),
-    keysIn = __webpack_require__(39);
+    keysIn = __webpack_require__(40);
 
 /**
  * The base implementation of `_.merge` without support for multiple sources.
@@ -48241,14 +48235,14 @@ var assignMergeValue = __webpack_require__(83),
     cloneTypedArray = __webpack_require__(94),
     copyArray = __webpack_require__(17),
     initCloneObject = __webpack_require__(107),
-    isArguments = __webpack_require__(34),
-    isArray = __webpack_require__(5),
+    isArguments = __webpack_require__(35),
+    isArray = __webpack_require__(4),
     isArrayLikeObject = __webpack_require__(493),
-    isBuffer = __webpack_require__(36),
-    isFunction = __webpack_require__(37),
+    isBuffer = __webpack_require__(37),
+    isFunction = __webpack_require__(38),
     isObject = __webpack_require__(9),
     isPlainObject = __webpack_require__(494),
-    isTypedArray = __webpack_require__(62),
+    isTypedArray = __webpack_require__(63),
     toPlainObject = __webpack_require__(505);
 
 /**
@@ -48377,9 +48371,9 @@ module.exports = basePropertyDeep;
 /* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var identity = __webpack_require__(33),
+var identity = __webpack_require__(34),
     overRest = __webpack_require__(113),
-    setToString = __webpack_require__(60);
+    setToString = __webpack_require__(61);
 
 /**
  * The base implementation of `_.rest` which doesn't validate or coerce arguments.
@@ -48402,7 +48396,7 @@ module.exports = baseRest;
 
 var constant = __webpack_require__(483),
     defineProperty = __webpack_require__(99),
-    identity = __webpack_require__(33);
+    identity = __webpack_require__(34);
 
 /**
  * The base implementation of `setToString` without support for hot loop shorting.
@@ -48456,7 +48450,7 @@ module.exports = baseTimes;
 
 var Symbol = __webpack_require__(15),
     arrayMap = __webpack_require__(81),
-    isArray = __webpack_require__(5),
+    isArray = __webpack_require__(4),
     isSymbol = __webpack_require__(21);
 
 /** Used as references for various `Number` constants. */
@@ -48536,7 +48530,7 @@ module.exports = cacheHas;
 /* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var cloneArrayBuffer = __webpack_require__(53);
+var cloneArrayBuffer = __webpack_require__(54);
 
 /**
  * Creates a clone of `dataView`.
@@ -48662,7 +48656,7 @@ module.exports = cloneSymbol;
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(18),
-    getSymbols = __webpack_require__(56);
+    getSymbols = __webpack_require__(57);
 
 /**
  * Copies own symbols of `source` to `object`.
@@ -48705,7 +48699,7 @@ module.exports = copySymbolsIn;
 /* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(4);
+var root = __webpack_require__(3);
 
 /** Used to detect overreaching core-js shims. */
 var coreJsData = root['__core-js_shared__'];
@@ -48818,8 +48812,8 @@ module.exports = createBaseFor;
 /* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var createCtor = __webpack_require__(29),
-    root = __webpack_require__(4);
+var createCtor = __webpack_require__(30),
+    root = __webpack_require__(3);
 
 /** Used to compose bitmasks for function metadata. */
 var WRAP_BIND_FLAG = 1;
@@ -48852,13 +48846,13 @@ module.exports = createBind;
 /* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var apply = __webpack_require__(48),
-    createCtor = __webpack_require__(29),
+var apply = __webpack_require__(49),
+    createCtor = __webpack_require__(30),
     createHybrid = __webpack_require__(97),
     createRecurry = __webpack_require__(98),
     getHolder = __webpack_require__(104),
-    replaceHolders = __webpack_require__(59),
-    root = __webpack_require__(4);
+    replaceHolders = __webpack_require__(60),
+    root = __webpack_require__(3);
 
 /**
  * Creates a function that wraps `func` to enable currying.
@@ -48904,9 +48898,9 @@ module.exports = createCurry;
 /* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var apply = __webpack_require__(48),
-    createCtor = __webpack_require__(29),
-    root = __webpack_require__(4);
+var apply = __webpack_require__(49),
+    createCtor = __webpack_require__(30),
+    root = __webpack_require__(3);
 
 /** Used to compose bitmasks for function metadata. */
 var WRAP_BIND_FLAG = 1;
@@ -49168,7 +49162,7 @@ module.exports = equalObjects;
 
 var flatten = __webpack_require__(485),
     overRest = __webpack_require__(113),
-    setToString = __webpack_require__(60);
+    setToString = __webpack_require__(61);
 
 /**
  * A specialized version of `baseRest` which flattens the rest array.
@@ -49190,7 +49184,7 @@ module.exports = flatRest;
 
 var baseGetAllKeys = __webpack_require__(88),
     getSymbolsIn = __webpack_require__(105),
-    keysIn = __webpack_require__(39);
+    keysIn = __webpack_require__(40);
 
 /**
  * Creates an array of own and inherited enumerable property names and
@@ -49249,7 +49243,7 @@ module.exports = getFuncName;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isStrictComparable = __webpack_require__(108),
-    keys = __webpack_require__(38);
+    keys = __webpack_require__(39);
 
 /**
  * Gets the property names, values, and compare flags of `object`.
@@ -49373,10 +49367,10 @@ module.exports = getWrapDetails;
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(92),
-    isArguments = __webpack_require__(34),
-    isArray = __webpack_require__(5),
-    isIndex = __webpack_require__(31),
-    isLength = __webpack_require__(61),
+    isArguments = __webpack_require__(35),
+    isArray = __webpack_require__(4),
+    isIndex = __webpack_require__(32),
+    isLength = __webpack_require__(62),
     toKey = __webpack_require__(19);
 
 /**
@@ -49417,7 +49411,7 @@ module.exports = hasPath;
 /* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(32);
+var nativeCreate = __webpack_require__(33);
 
 /**
  * Removes all key-value entries from the hash.
@@ -49461,7 +49455,7 @@ module.exports = hashDelete;
 /* 442 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(32);
+var nativeCreate = __webpack_require__(33);
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -49497,7 +49491,7 @@ module.exports = hashGet;
 /* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(32);
+var nativeCreate = __webpack_require__(33);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -49526,7 +49520,7 @@ module.exports = hashHas;
 /* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(32);
+var nativeCreate = __webpack_require__(33);
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -49587,7 +49581,7 @@ module.exports = initCloneArray;
 /* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var cloneArrayBuffer = __webpack_require__(53),
+var cloneArrayBuffer = __webpack_require__(54),
     cloneDataView = __webpack_require__(416),
     cloneMap = __webpack_require__(417),
     cloneRegExp = __webpack_require__(418),
@@ -49703,8 +49697,8 @@ module.exports = insertWrapDetails;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(15),
-    isArguments = __webpack_require__(34),
-    isArray = __webpack_require__(5);
+    isArguments = __webpack_require__(35),
+    isArray = __webpack_require__(4);
 
 /** Built-in value references. */
 var spreadableSymbol = Symbol ? Symbol.isConcatSpreadable : undefined;
@@ -49729,8 +49723,8 @@ module.exports = isFlattenable;
 /***/ (function(module, exports, __webpack_require__) {
 
 var eq = __webpack_require__(20),
-    isArrayLike = __webpack_require__(35),
-    isIndex = __webpack_require__(31),
+    isArrayLike = __webpack_require__(36),
+    isIndex = __webpack_require__(32),
     isObject = __webpack_require__(9);
 
 /**
@@ -49785,7 +49779,7 @@ module.exports = isKeyable;
 /* 451 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var LazyWrapper = __webpack_require__(45),
+var LazyWrapper = __webpack_require__(46),
     getData = __webpack_require__(103),
     getFuncName = __webpack_require__(434),
     lodash = __webpack_require__(506);
@@ -49864,7 +49858,7 @@ module.exports = listCacheClear;
 /* 454 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(27);
+var assocIndexOf = __webpack_require__(28);
 
 /** Used for built-in method references. */
 var arrayProto = Array.prototype;
@@ -49905,7 +49899,7 @@ module.exports = listCacheDelete;
 /* 455 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(27);
+var assocIndexOf = __webpack_require__(28);
 
 /**
  * Gets the list cache value for `key`.
@@ -49930,7 +49924,7 @@ module.exports = listCacheGet;
 /* 456 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(27);
+var assocIndexOf = __webpack_require__(28);
 
 /**
  * Checks if a list cache value for `key` exists.
@@ -49952,7 +49946,7 @@ module.exports = listCacheHas;
 /* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(27);
+var assocIndexOf = __webpack_require__(28);
 
 /**
  * Sets the list cache `key` to `value`.
@@ -49985,8 +49979,8 @@ module.exports = listCacheSet;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Hash = __webpack_require__(381),
-    ListCache = __webpack_require__(25),
-    Map = __webpack_require__(46);
+    ListCache = __webpack_require__(26),
+    Map = __webpack_require__(47);
 
 /**
  * Removes all key-value entries from the map.
@@ -50011,7 +50005,7 @@ module.exports = mapCacheClear;
 /* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(30);
+var getMapData = __webpack_require__(31);
 
 /**
  * Removes `key` and its value from the map.
@@ -50035,7 +50029,7 @@ module.exports = mapCacheDelete;
 /* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(30);
+var getMapData = __webpack_require__(31);
 
 /**
  * Gets the map value for `key`.
@@ -50057,7 +50051,7 @@ module.exports = mapCacheGet;
 /* 461 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(30);
+var getMapData = __webpack_require__(31);
 
 /**
  * Checks if a map value for `key` exists.
@@ -50079,7 +50073,7 @@ module.exports = mapCacheHas;
 /* 462 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(30);
+var getMapData = __webpack_require__(31);
 
 /**
  * Sets the map `key` to `value`.
@@ -50141,7 +50135,7 @@ module.exports = memoizeCapped;
 
 var composeArgs = __webpack_require__(95),
     composeArgsRight = __webpack_require__(96),
-    replaceHolders = __webpack_require__(59);
+    replaceHolders = __webpack_require__(60);
 
 /** Used as the internal argument placeholder. */
 var PLACEHOLDER = '__lodash_placeholder__';
@@ -50296,7 +50290,7 @@ var nodeUtil = (function() {
 
 module.exports = nodeUtil;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)(module)))
 
 /***/ }),
 /* 468 */
@@ -50341,7 +50335,7 @@ module.exports = realNames;
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyArray = __webpack_require__(17),
-    isIndex = __webpack_require__(31);
+    isIndex = __webpack_require__(32);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMin = Math.min;
@@ -50420,7 +50414,7 @@ module.exports = setCacheHas;
 /* 473 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ListCache = __webpack_require__(25);
+var ListCache = __webpack_require__(26);
 
 /**
  * Removes all key-value entries from the stack.
@@ -50505,9 +50499,9 @@ module.exports = stackHas;
 /* 477 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ListCache = __webpack_require__(25),
-    Map = __webpack_require__(46),
-    MapCache = __webpack_require__(47);
+var ListCache = __webpack_require__(26),
+    Map = __webpack_require__(47),
+    MapCache = __webpack_require__(48);
 
 /** Used as the size to enable large array optimizations. */
 var LARGE_ARRAY_SIZE = 200;
@@ -50574,7 +50568,7 @@ module.exports = strictIndexOf;
 /* 479 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayEach = __webpack_require__(49),
+var arrayEach = __webpack_require__(50),
     arrayIncludes = __webpack_require__(388);
 
 /** Used to compose bitmasks for function metadata. */
@@ -50626,7 +50620,7 @@ module.exports = updateWrapDetails;
 /* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var LazyWrapper = __webpack_require__(45),
+var LazyWrapper = __webpack_require__(46),
     LodashWrapper = __webpack_require__(77),
     copyArray = __webpack_require__(17);
 
@@ -50655,7 +50649,7 @@ module.exports = wrapperClone;
 /* 481 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var createWrap = __webpack_require__(54);
+var createWrap = __webpack_require__(55);
 
 /** Used to compose bitmasks for function metadata. */
 var WRAP_ARY_FLAG = 128;
@@ -50764,7 +50758,7 @@ module.exports = constant;
 /* 484 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var createWrap = __webpack_require__(54);
+var createWrap = __webpack_require__(55);
 
 /** Used to compose bitmasks for function metadata. */
 var WRAP_CURRY_FLAG = 8;
@@ -51808,9 +51802,9 @@ module.exports = {
   'assign': __webpack_require__(85),
   'clone': __webpack_require__(482),
   'curry': __webpack_require__(484),
-  'forEach': __webpack_require__(49),
-  'isArray': __webpack_require__(5),
-  'isFunction': __webpack_require__(37),
+  'forEach': __webpack_require__(50),
+  'isArray': __webpack_require__(4),
+  'isFunction': __webpack_require__(38),
   'iteratee': __webpack_require__(495),
   'keys': __webpack_require__(90),
   'rearg': __webpack_require__(500),
@@ -51937,8 +51931,8 @@ module.exports = hasIn;
 /* 493 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isArrayLike = __webpack_require__(35),
-    isObjectLike = __webpack_require__(12);
+var isArrayLike = __webpack_require__(36),
+    isObjectLike = __webpack_require__(11);
 
 /**
  * This method is like `_.isArrayLike` except that it also checks if `value`
@@ -51977,8 +51971,8 @@ module.exports = isArrayLikeObject;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(16),
-    getPrototype = __webpack_require__(55),
-    isObjectLike = __webpack_require__(12);
+    getPrototype = __webpack_require__(56),
+    isObjectLike = __webpack_require__(11);
 
 /** `Object#toString` result references. */
 var objectTag = '[object Object]';
@@ -52103,7 +52097,7 @@ module.exports = iteratee;
 /* 496 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapCache = __webpack_require__(47);
+var MapCache = __webpack_require__(48);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -52252,7 +52246,7 @@ module.exports = noop;
 
 var baseProperty = __webpack_require__(408),
     basePropertyDeep = __webpack_require__(409),
-    isKey = __webpack_require__(57),
+    isKey = __webpack_require__(58),
     toKey = __webpack_require__(19);
 
 /**
@@ -52288,7 +52282,7 @@ module.exports = property;
 /* 500 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var createWrap = __webpack_require__(54),
+var createWrap = __webpack_require__(55),
     flatRest = __webpack_require__(432);
 
 /** Used to compose bitmasks for function metadata. */
@@ -52473,7 +52467,7 @@ module.exports = toNumber;
 
 var arrayMap = __webpack_require__(81),
     copyArray = __webpack_require__(17),
-    isArray = __webpack_require__(5),
+    isArray = __webpack_require__(4),
     isSymbol = __webpack_require__(21),
     stringToPath = __webpack_require__(118),
     toKey = __webpack_require__(19),
@@ -52511,7 +52505,7 @@ module.exports = toPath;
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(18),
-    keysIn = __webpack_require__(39);
+    keysIn = __webpack_require__(40);
 
 /**
  * Converts `value` to a plain object flattening inherited enumerable string
@@ -52548,11 +52542,11 @@ module.exports = toPlainObject;
 /* 506 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var LazyWrapper = __webpack_require__(45),
+var LazyWrapper = __webpack_require__(46),
     LodashWrapper = __webpack_require__(77),
-    baseLodash = __webpack_require__(52),
-    isArray = __webpack_require__(5),
-    isObjectLike = __webpack_require__(12),
+    baseLodash = __webpack_require__(53),
+    isArray = __webpack_require__(4),
+    isObjectLike = __webpack_require__(11),
     wrapperClone = __webpack_require__(480);
 
 /** Used for built-in method references. */
@@ -62605,7 +62599,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vue = __webpack_require__(3);
+var _vue = __webpack_require__(6);
 
 var _vue2 = _interopRequireDefault(_vue);
 
@@ -62613,7 +62607,7 @@ var _chart = __webpack_require__(10);
 
 var _chart2 = _interopRequireDefault(_chart);
 
-var _options = __webpack_require__(11);
+var _options = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62682,6 +62676,7 @@ exports.default = _vue2.default.extend({
         options: chartOptions,
         plugins: this.plugins
       });
+      this._chart.generateLegend();
     }
   },
   beforeDestroy: function beforeDestroy() {
@@ -62702,7 +62697,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vue = __webpack_require__(3);
+var _vue = __webpack_require__(6);
 
 var _vue2 = _interopRequireDefault(_vue);
 
@@ -62710,7 +62705,7 @@ var _chart = __webpack_require__(10);
 
 var _chart2 = _interopRequireDefault(_chart);
 
-var _options = __webpack_require__(11);
+var _options = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62780,6 +62775,7 @@ exports.default = _vue2.default.extend({
         options: chartOptions,
         plugins: this.plugins
       });
+      this._chart.generateLegend();
     }
   },
   beforeDestroy: function beforeDestroy() {
@@ -62800,7 +62796,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vue = __webpack_require__(3);
+var _vue = __webpack_require__(6);
 
 var _vue2 = _interopRequireDefault(_vue);
 
@@ -62808,7 +62804,7 @@ var _chart = __webpack_require__(10);
 
 var _chart2 = _interopRequireDefault(_chart);
 
-var _options = __webpack_require__(11);
+var _options = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62860,6 +62856,7 @@ exports.default = _vue2.default.extend({
         options: chartOptions,
         plugins: this.plugins
       });
+      this._chart.generateLegend();
     }
   },
   beforeDestroy: function beforeDestroy() {
@@ -62880,7 +62877,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vue = __webpack_require__(3);
+var _vue = __webpack_require__(6);
 
 var _vue2 = _interopRequireDefault(_vue);
 
@@ -62888,7 +62885,7 @@ var _chart = __webpack_require__(10);
 
 var _chart2 = _interopRequireDefault(_chart);
 
-var _options = __webpack_require__(11);
+var _options = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62957,6 +62954,7 @@ exports.default = _vue2.default.extend({
         options: chartOptions,
         plugins: this.plugins
       });
+      this._chart.generateLegend();
     }
   },
   beforeDestroy: function beforeDestroy() {
@@ -62977,7 +62975,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vue = __webpack_require__(3);
+var _vue = __webpack_require__(6);
 
 var _vue2 = _interopRequireDefault(_vue);
 
@@ -62985,7 +62983,7 @@ var _chart = __webpack_require__(10);
 
 var _chart2 = _interopRequireDefault(_chart);
 
-var _options = __webpack_require__(11);
+var _options = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -63053,6 +63051,7 @@ exports.default = _vue2.default.extend({
         options: chartOptions,
         plugins: this.plugins
       });
+      this._chart.generateLegend();
     }
   },
   beforeDestroy: function beforeDestroy() {
@@ -63073,7 +63072,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vue = __webpack_require__(3);
+var _vue = __webpack_require__(6);
 
 var _vue2 = _interopRequireDefault(_vue);
 
@@ -63081,7 +63080,7 @@ var _chart = __webpack_require__(10);
 
 var _chart2 = _interopRequireDefault(_chart);
 
-var _options = __webpack_require__(11);
+var _options = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -63133,6 +63132,7 @@ exports.default = _vue2.default.extend({
         options: chartOptions,
         plugins: this.plugins
       });
+      this._chart.generateLegend();
     }
   },
   beforeDestroy: function beforeDestroy() {
@@ -63153,7 +63153,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vue = __webpack_require__(3);
+var _vue = __webpack_require__(6);
 
 var _vue2 = _interopRequireDefault(_vue);
 
@@ -63161,7 +63161,7 @@ var _chart = __webpack_require__(10);
 
 var _chart2 = _interopRequireDefault(_chart);
 
-var _options = __webpack_require__(11);
+var _options = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -63213,6 +63213,7 @@ exports.default = _vue2.default.extend({
         options: chartOptions,
         plugins: this.plugins
       });
+      this._chart.generateLegend();
     }
   },
   beforeDestroy: function beforeDestroy() {
@@ -63233,7 +63234,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vue = __webpack_require__(3);
+var _vue = __webpack_require__(6);
 
 var _vue2 = _interopRequireDefault(_vue);
 
@@ -63241,7 +63242,7 @@ var _chart = __webpack_require__(10);
 
 var _chart2 = _interopRequireDefault(_chart);
 
-var _options = __webpack_require__(11);
+var _options = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -63293,6 +63294,7 @@ exports.default = _vue2.default.extend({
         options: chartOptions,
         plugins: this.plugins
       });
+      this._chart.generateLegend();
     }
   },
   beforeDestroy: function beforeDestroy() {
@@ -63313,98 +63315,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vue = __webpack_require__(3);
-
-var _vue2 = _interopRequireDefault(_vue);
-
-var _chart = __webpack_require__(10);
-
-var _chart2 = _interopRequireDefault(_chart);
-
-var _options = __webpack_require__(11);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _vue2.default.extend({
-  render: function render(createElement) {
-    return createElement('div', [createElement('canvas', {
-      attrs: {
-        id: this.chartId,
-        width: this.width,
-        height: this.height
-      },
-      ref: 'canvas'
-    })]);
-  },
-
-  props: {
-    chartId: {
-      default: 'scatter-chart',
-      type: String
-    },
-    width: {
-      default: 400,
-      type: Number
-    },
-    height: {
-      default: 400,
-      type: Number
-    }
-  },
-
-  data: function data() {
-    return {
-      defaultOptions: {
-        scales: {
-          xAxes: [{
-            type: 'linear',
-            position: 'bottom'
-          }]
-        }
-      },
-      plugins: []
-    };
-  },
-
-
-  methods: {
-    addPlugin: function addPlugin(plugin) {
-      this.plugins.push(plugin);
-    },
-    renderChart: function renderChart(data, options) {
-      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
-
-      this._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
-        type: 'scatter',
-        data: data,
-        options: chartOptions,
-        plugins: this.plugins
-      });
-    }
-  },
-  beforeDestroy: function beforeDestroy() {
-    if (this._chart) {
-      this._chart.destroy();
-    }
-  }
-});
-
-/***/ }),
-/* 1306 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _reactiveData = __webpack_require__(1307);
+var _reactiveData = __webpack_require__(1306);
 
 var _reactiveData2 = _interopRequireDefault(_reactiveData);
 
-var _reactiveProp = __webpack_require__(1308);
+var _reactiveProp = __webpack_require__(1307);
 
 var _reactiveProp2 = _interopRequireDefault(_reactiveProp);
 
@@ -63416,7 +63331,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 1307 */
+/* 1306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63491,7 +63406,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 1308 */
+/* 1307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63565,12 +63480,12 @@ module.exports = {
 };
 
 /***/ }),
-/* 1309 */,
-/* 1310 */
+/* 1308 */,
+/* 1309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
- * vue-cookie-law v1.2.0
+ * vue-cookie-law v1.3.0
  * (c) 2017 Jakub Juszczak <jakub@posteo.de>
  * 
  */
@@ -64206,6 +64121,10 @@ exports.default = {
     transitionName: {
       type: String,
       default: 'slideFromBottom'
+    },
+    buttonClass: {
+      type: String,
+      default: 'Cookie__button'
     }
   },
   data: function data() {
@@ -64260,12 +64179,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._t("message", [_vm._v(_vm._s(_vm.message))])], 2), _vm._v(" "), _c('div', {
     staticClass: "Cookie__buttons"
   }, [(_vm.buttonLink) ? _c('a', {
-    staticClass: "Cookie__button",
+    class: _vm.buttonClass,
     attrs: {
       "href": _vm.buttonLink
     }
   }, [_vm._v(_vm._s(_vm.buttonLinkText))]) : _vm._e(), _vm._v(" "), _c('div', {
-    staticClass: "Cookie__button",
+    class: _vm.buttonClass,
     on: {
       "click": _vm.accept
     }
@@ -64284,14 +64203,14 @@ if (false) {
 });
 
 /***/ }),
-/* 1311 */
+/* 1310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // import EnhancedInput from './EnhancedInput.vue'
-const EnhancedCheck = __webpack_require__(1334)
-const EnhancedCheckGroup = __webpack_require__(1335)
-const EnhancedCheckRadio = __webpack_require__(1336)
-const EnhancedToggle = __webpack_require__(1337)
+const EnhancedCheck = __webpack_require__(1333)
+const EnhancedCheckGroup = __webpack_require__(1334)
+const EnhancedCheckRadio = __webpack_require__(1335)
+const EnhancedToggle = __webpack_require__(1336)
 
 module.exports = {
   EnhancedCheck: EnhancedCheck,
@@ -64302,6 +64221,7 @@ module.exports = {
 
 
 /***/ }),
+/* 1311 */,
 /* 1312 */,
 /* 1313 */,
 /* 1314 */,
@@ -64355,8 +64275,7 @@ module.exports = {
 /* 1362 */,
 /* 1363 */,
 /* 1364 */,
-/* 1365 */,
-/* 1366 */
+/* 1365 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66868,7 +66787,7 @@ if (inBrowser && window.Vue) {
 
 
 /***/ }),
-/* 1367 */
+/* 1366 */
 /***/ (function(module, exports) {
 
 /**
@@ -66901,7 +66820,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 1368 */
+/* 1367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -67009,12 +66928,12 @@ return createPersistedState;
 
 
 /***/ }),
-/* 1369 */
+/* 1368 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = createLogger;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util__ = __webpack_require__(1370);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util__ = __webpack_require__(1369);
 // Credits: borrowed code from fcomb/redux-logger
 
 
@@ -67076,7 +66995,7 @@ function pad (num, maxLength) {
 
 
 /***/ }),
-/* 1370 */
+/* 1369 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67154,7 +67073,7 @@ function assert (condition, msg) {
 
 
 /***/ }),
-/* 1371 */
+/* 1370 */
 /***/ (function(module, exports) {
 
 /*
@@ -67236,7 +67155,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 1372 */
+/* 1371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -67255,7 +67174,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(1367)
+var listToStyles = __webpack_require__(1366)
 
 /*
 type StyleObject = {
@@ -67458,4 +67377,4 @@ function applyToTag (styleElement, obj) {
 
 /***/ })
 ]);
-//# sourceMappingURL=vendor.52ad43c631eeed32199f.js.map
+//# sourceMappingURL=vendor.e3b27ccf6c019e18a12d.js.map

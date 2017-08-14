@@ -23,28 +23,26 @@ const state = {
   opponent: {},
   archetypes: ['aggro', 'midrange', 'control', 'combo'],
   types: [
-    {id: 1, name: 'Aggro', hsClass: 'druid', archetype: 'aggro', top: false},
-    {id: 2, name: 'Dragon', hsClass: 'priest', archetype: 'midrange', top: false},
-    {id: 3, name: 'Elemental', hsClass: 'shaman', archetype: 'midrange', top: false},
-    {id: 4, name: 'Evolve', hsClass: 'shaman', archetype: 'midrange', top: false},
-    {id: 5, name: 'Face', hsClass: 'hunter', archetype: 'aggro', top: true},
-    {id: 6, name: 'Freeze', hsClass: 'mage', archetype: 'control', top: false},
-    {id: 7, name: 'Jade', hsClass: 'druid', archetype: 'combo', top: false},
-    {id: 8, name: 'Mid-Range', hsClass: 'hunter', archetype: 'midrange', top: false},
-    {id: 9, name: 'Mid-Range', hsClass: 'paladin', archetype: 'midrange', top: false},
-    {id: 10, name: 'Miracle', hsClass: 'rogue', archetype: 'combo', top: false},
-    {id: 11, name: 'Mech', hsClass: 'mage', archetype: 'midrange', top: false},
-    {id: 12, name: 'Murloc', hsClass: 'paladin', archetype: 'aggro', top: true},
-    {id: 13, name: 'Overload', hsClass: 'shaman', archetype: 'aggro', top: false},
-    {id: 14, name: 'Pirate', hsClass: 'warrior', archetype: 'aggro', top: true},
-    {id: 15, name: 'Quest', hsClass: 'priest', archetype: 'midrange', top: false},
-    {id: 16, name: 'Quest', hsClass: 'rogue', archetype: 'combo', top: true},
-    {id: 17, name: 'Quest', hsClass: 'warrior', archetype: 'control', top: true},
-    {id: 18, name: 'Ramp', hsClass: 'druid', archetype: 'midrange', top: false},
-    {id: 19, name: 'Silence', hsClass: 'priest', archetype: 'midrange', top: false},
-    {id: 20, name: 'Secret', hsClass: 'paladin', archetype: 'aggro', top: true},
-    {id: 21, name: 'Token', hsClass: 'druid', archetype: 'aggro', top: false},
-    {id: 22, name: 'Zoolock', hsClass: 'warlock', archetype: 'aggro', top: false}
+    {id: 1, name: 'Aggro', hsClass: 'druid', archetype: 'aggro', top: true, note: ''},
+    {id: 2, name: 'Dragon', hsClass: 'priest', archetype: 'midrange', top: false, note: ''},
+    {id: 3, name: 'Quest', hsClass: 'rogue', archetype: 'combo', top: false, note: ''},
+    {id: 4, name: 'Evolve', hsClass: 'shaman', archetype: 'midrange', top: true, note: ''},
+    {id: 5, name: 'Face', hsClass: 'hunter', archetype: 'aggro', top: false, note: ''},
+    {id: 6, name: 'Freeze', hsClass: 'mage', archetype: 'control', top: false, note: ''},
+    {id: 7, name: 'Jade', hsClass: 'druid', archetype: 'combo', top: true, note: ''},
+    {id: 8, name: 'Mid-Range', hsClass: 'hunter', archetype: 'midrange', top: false, note: ''},
+    {id: 9, name: 'Mid-Range', hsClass: 'paladin', archetype: 'midrange', top: false, note: ''},
+    {id: 10, name: 'Miracle', hsClass: 'rogue', archetype: 'combo', top: true, note: ''},
+    {id: 11, name: 'Token', hsClass: 'druid', archetype: 'aggro', top: false, note: ''},
+    {id: 12, name: 'Murloc', hsClass: 'paladin', archetype: 'aggro', top: true, note: ''},
+    {id: 13, name: 'Overload', hsClass: 'shaman', archetype: 'aggro', top: false, note: ''},
+    {id: 14, name: 'Pirate', hsClass: 'warrior', archetype: 'aggro', top: true, note: ''},
+    {id: 15, name: 'Quest', hsClass: 'priest', archetype: 'midrange', top: false, note: ''},
+    {id: 16, name: 'Quest', hsClass: 'warrior', archetype: 'control', top: false, note: ''},
+    {id: 17, name: 'Ramp', hsClass: 'druid', archetype: 'midrange', top: false, note: ''},
+    {id: 18, name: 'Silence', hsClass: 'priest', archetype: 'midrange', top: false, note: ''},
+    {id: 19, name: 'Secret', hsClass: 'mage', archetype: 'aggro', top: true, note: ''},
+    {id: 20, name: 'Zoolock', hsClass: 'warlock', archetype: 'aggro', top: false, note: ''}
   ],
   nextId: 1,
   nextTypeId: 23
@@ -143,6 +141,20 @@ const mutations = {
     if (state.opponent.id === id) {
       state.opponent = {}
     }
+  },
+  [types.SET_DECKTYPE_NAME] (state, payload) {
+    state.types.forEach(function (type, index, object) {
+      if (type.id === payload.id) {
+        type.name = payload.name
+      }
+    })
+  },
+  [types.SET_DECKTYPE_NOTE] (state, payload) {
+    state.types.forEach(function (type, index, object) {
+      if (type.id === payload.id) {
+        type.note = payload.note
+      }
+    })
   },
   [types.SWITCH_DECKTYPE_TOP] (state, id) {
     state.types.forEach(function (type, index, object) {
