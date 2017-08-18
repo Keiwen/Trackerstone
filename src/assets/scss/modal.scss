@@ -1,11 +1,27 @@
 /* ####### Modals ####### */
 .sweet-modal {
-
   .sweet-title > h2 {
     margin-top: 19px;
   }
-}
 
-.sweet-modal .sweet-title > h2 {
-  margin-top: 19px!important;
+  .sweet-box-actions {
+    top: 16px;
+    width: 30px;
+    right: 20px;
+    height: 30px;
+
+    .sweet-action-close {
+      width: 30px;
+      height: 30px;
+
+      svg {
+        margin-top: 3px;
+      }
+
+      &:hover {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
 }
