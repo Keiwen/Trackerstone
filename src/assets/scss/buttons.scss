@@ -1,4 +1,24 @@
 /* ####### Buttons ####### */
+
+// ** General style for buttons ** //
+.btn {
+  border-radius: 0px!important;
+  border-bottom: 3px solid darkgrey!important;
+}
+
+  .btn-success {
+      border-color: #4cae4c!important;
+  }
+
+  .btn-danger {
+      border-color: #d43f3a!important;
+  }
+
+  .btn-default {
+    border-color: $orange-logo!important;
+  }
+
+// ** Selection class buttons ** //
 .btn-class.btn-pick {
   position: relative;
   margin-left: 60px;
