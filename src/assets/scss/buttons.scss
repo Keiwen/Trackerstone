@@ -7,15 +7,15 @@
 }
 
   .btn-success {
-      border-color: #4cae4c!important;
+      border-color: $green-ts!important;
   }
 
   .btn-danger {
-      border-color: #d43f3a!important;
+      border-color: $red-ts!important;
   }
 
   .btn-default {
-    border-color: $orange-logo!important;
+    border-color: $orange-ts!important;
   }
 
 // ** Selection class buttons ** //
