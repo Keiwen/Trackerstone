@@ -4,6 +4,7 @@
 .btn {
   border-radius: 0px!important;
   border-bottom: 3px solid darkgrey!important;
+  position: relative;
 }
 
   .btn-success {
@@ -17,6 +18,7 @@
   .btn-default {
     border-color: $orange-ts!important;
   }
+
 
 // ** Selection class buttons ** //
 .btn-class.btn-pick {
