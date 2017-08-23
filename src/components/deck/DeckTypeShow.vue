@@ -1,18 +1,22 @@
 <template>
     <div class="deckTypeShow">
         <div class="row">
-            <div class="editIcon col-xs-2" @click="editType()" @mouseover="hoverEditIcon()" @mouseout="hoverEditIcon()" >
-                <icon name="pencil-square-o" :class="{'noted': type.note}" :scale="editIconScale" />
+            <div class="col-xs-2">
+              <div class="editIcon" @click="editType()" @mouseover="hoverEditIcon()" @mouseout="hoverEditIcon()" >
+                  <icon name="pencil-square-o" :class="{'noted': type.note}" :scale="editIconScale" />
+              </div>
             </div>
             <div class="col-xs-8">
                 <h4>
                     {{ getClassName(type.hsClass) }} {{ type.name }} ({{ type.archetype }})
                 </h4>
             </div>
-            <div class="starIcon col-xs-2" @click="switchTop()" @mouseover="hoverStarIcon()" @mouseout="hoverStarIcon()" >
+            <div class="col-xs-2">
+            <div class="starIcon" @click="switchTop()" @mouseover="hoverStarIcon()" @mouseout="hoverStarIcon()">
                 <icon name="star" v-if="type.top" class="stared" :scale="starIconScale" />
                 <icon name="star-o" v-else :scale="starIconScale" />
             </div>
+          </div>
         </div>
         <p>
             Won {{ getGamesWonVsCount() }} / {{ getGamesPlayedVsCount() }} against
@@ -21,7 +25,6 @@
                  - score {{ getWinScoreVs() }}
             </i>
         </p>
-
         <sweet-modal ref="modalEdit" modal-theme="dark" title="Edit type">
             <div class="form-group">
                 <label for="newName">Name:</label>
@@ -34,7 +37,6 @@
             <button slot="button" @click="confirmEdit()" class="btn btn-success">Save <icon name="save" /></button>
             <button slot="button" @click="cancelEdit()" class="btn btn-default">Cancel <icon name="times" /></button>
         </sweet-modal>
-
     </div>
 </template>
 
@@ -103,27 +105,3 @@
   }
 
 </script>
-
-<style lang="scss">
-    .deckTypeShow {
-        padding-top: 20px;
-        min-height: 120px;
-    }
-
-    .starIcon,.editIcon {
-        cursor: pointer;
-        padding-bottom: 1em;
-        &:hover {
-            padding-bottom: 0;
-        }
-    }
-
-    .stared {
-        color: #C6AA37;
-    }
-
-    .noted {
-        color: #C6AA37;
-    }
-
-</style>
