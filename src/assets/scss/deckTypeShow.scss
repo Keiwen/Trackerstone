@@ -1,26 +1,52 @@
 .deckTypeShow + div {
   .btn-danger {
     padding-left: 30px;
-      .fa-icon {
-        position: absolute;
-        left: 8px;
-        top: 8px;
-      }
-  }
 
+    .fa-icon {
+      position: absolute;
+      left: 8px;
+      top: 8px;
+    }
+  }
 }
 
 .deckTypeShow {
   .editIcon {
-    position: relative;
-      svg {
-        position: absolute;
-        top: 10px;
-      }
+     position: relative;
+     width:30px;
+     height: 30px;
 
-      &:hover svg {
-        top: 2px;
-        left: 20px;
-      }
+    svg {
+      position: absolute;
+      top: 10px;
+      left:8px;
+      -webkit-transition: 0.3s ease;
+      transition: 0.3s ease;
+    }
+
+    &:hover svg {
+      top: 2px;
+      left: 1px;
+    }
+  }
+
+  .starIcon {
+    position: relative;
+    width:30px;
+    height: 30px;
+
+    svg {
+      position: absolute;
+      top: 10px;
+      left:8px;
+      color: $orange-ts;
+      -webkit-transition: 0.3s ease;
+      transition: 0.3s ease;
+    }
+
+    &:hover svg {
+      top: 2px;
+      left: 1px;
+    }
   }
 }
