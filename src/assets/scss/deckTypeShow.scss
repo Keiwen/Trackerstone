@@ -11,8 +11,23 @@
 }
 
 .deckTypeShow {
-      padding-top: 20px;
       min-height: 120px;
+      background: darkgray;
+
+      .profil {
+        width: 100%;
+        height: 50px;
+        background-color: black;
+        display: inline-block;
+
+        h4 {
+          color:white;
+        }
+      }
+
+      p {
+        padding-top: 15px;
+      }
 
       .editIcon,
       .starIcon {
@@ -31,14 +46,14 @@
     svg {
       position: absolute;
       top: 10px;
-      left:8px;
+      left:18px;
       -webkit-transition: 0.3s ease;
       transition: 0.3s ease;
     }
 
     &:hover svg {
       top: 2px;
-      left: 1px;
+      left: 11px;
     }
   }
 
@@ -50,15 +65,14 @@
     svg {
       position: absolute;
       top: 10px;
-      left:8px;
-
+      right:14px;
       -webkit-transition: 0.3s ease;
       transition: 0.3s ease;
     }
 
     &:hover svg {
       top: 2px;
-      left: 1px;
+      right: 8px;
     }
   }
 
