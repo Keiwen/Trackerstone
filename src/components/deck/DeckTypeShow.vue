@@ -7,9 +7,11 @@
               </div>
             </div>
             <div class="col-xs-8">
-                <h4>
-                    {{ getClassName(type.hsClass) }} {{ type.name }} ({{ type.archetype }})
-                </h4>
+              <div class="profil">
+                  <h4>
+                      {{ getClassName(type.hsClass) }} {{ type.name }} ({{ type.archetype }})
+                  </h4>
+              </div>
             </div>
             <div class="col-xs-2">
             <div class="starIcon" @click="switchTop()" @mouseover="hoverStarIcon()" @mouseout="hoverStarIcon()">
