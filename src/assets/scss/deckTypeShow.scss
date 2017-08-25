@@ -1,113 +1,137 @@
-.deckTypeShow + div {
-  .btn-danger {
-    padding-left: 30px;
+.deckTypeContainer {
 
-    .fa-icon {
-      position: absolute;
-      left: 8px;
-      top: 8px;
+ margin-bottom : 15px;
+
+
+
+  .deckTypeShow + div {
+    .btn-danger {
+      padding-left: 30px;
+
+      .fa-icon {
+        position: absolute;
+        left: 8px;
+        top: 8px;
+      }
     }
   }
-}
 
-.deckTypeShow {
-      min-height: 120px;
-      background: darkgray;
+  .deckTypeShow {
+    min-height: 120px;
+    background: white;
+    border:1px solid black;
+    border-bottom: 5px solid $blue-ts;
 
-      .row {
-        margin: 0;
+    .row {
+      margin: 0;
+
+      > div {
+        padding: 0;
+      }
+
+      .col-xs-2 {
+        background-color: $black;
 
         > div {
-            padding: 0;
-        }
-        .col-xs-2 {
-          background-color: $black;
-          > div {
-              margin: 0 auto;
-              position: relative;
-              width:30px;
-              height: 58px;
-          }
+          margin: 0 auto;
+          position: relative;
+          width: 30px;
+          height: 58px;
         }
       }
+    }
 
-      .profil {
+    .profil {
+      width: 100%;
+      height: 58px;
+      background: url('/static/charac_skins.jpg') 0 0 no-repeat;
+      display: inline-block;
+      background-size: 100% 520px;
+
+      h4 {
+        color: white;
+        top: 36px;
+        z-index: 4;
+        position: absolute;
+        margin: 0 auto;
+        text-align: center;
         width: 100%;
-        height: 58px;
-        background: url('/static/charac_skins.jpg') 0px 0px no-repeat;
-        display: inline-block;
-        background-size: 100% 520px;
-
-        &::before {
-          content: '';
-          width: 100%;
-          height: 100%;
-          background: -webkit-linear-gradient(top, rgba(0,0,0,0) , rgba(0,0,0,0) , rgba(0,0,0,1));
-          background: -o-linear-gradient(top, rgba(0,0,0,0) , rgba(0,0,0,0) , rgba(0,0,0,1));
-          background: -moz-linear-gradient(top, rgba(0,0,0,0) , rgba(0,0,0,0) , rgba(0,0,0,1));
-          background: linear-gradient(top, rgba(0,0,0,0) , rgba(0,0,0,0) , rgba(0,0,0,1));
-          z-index: 2;
-          position: absolute;
-          top: 0;
-          left: 0;
-        }
-
-        h4 {
-          color:white;
-          margin-top: 33px;
-        }
+        min-width: 220px;
       }
 
-      p {
-        padding-top: 15px;
+      &::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: -moz-linear-gradient(270deg, rgba(128,128,128,0) 0%, rgba(0,0,0,1) 100%);
+        /* ff3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(128,128,128,0)), color-stop(100%, rgba(0,0,0,1)));
+        /* safari4+,chrome */
+        background: -webkit-linear-gradient(270deg, rgba(128,128,128,0) 0%, rgba(0,0,0,1) 100%);
+        /* safari5.1+,chrome10+ */
+        background: -o-linear-gradient(270deg, rgba(128,128,128,0) 0%, rgba(0,0,0,1) 100%);
+        /* opera 11.10+ */
+        background: -ms-linear-gradient(270deg, rgba(128,128,128,0) 0%, rgba(0,0,0,1) 100%);
+        /* ie10+ */
+        background: linear-gradient(180deg, rgba(128,128,128,0) 0%, rgba(0,0,0,1) 100%);
+        /* w3c */
+        z-index: 2;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+
+    p {
+      padding-top: 15px;
+    }
+
+    .editIcon,
+    .starIcon {
+      cursor: pointer;
+      padding-bottom: 1em;
+
+      &:hover {
+        padding-bottom: 0;
+      }
+    }
+
+    .editIcon {
+      svg {
+        position: absolute;
+        top: 10px;
+        left: 8px;
+        -webkit-transition: 0.3s ease;
+        transition: 0.3s ease;
       }
 
-      .editIcon,
-      .starIcon {
-          cursor: pointer;
-          padding-bottom: 1em;
-          &:hover {
-              padding-bottom: 0;
-          }
+      &:hover svg {
+        top: 2px;
+        left: 3px;
+      }
+    }
+
+    .starIcon {
+      svg {
+        position: absolute;
+        top: 10px;
+        right: 8px;
+        -webkit-transition: 0.3s ease;
+        transition: 0.3s ease;
       }
 
-  .editIcon {
-
-    svg {
-      position: absolute;
-      top: 10px;
-      left:8px;
-      -webkit-transition: 0.3s ease;
-      transition: 0.3s ease;
+      &:hover svg {
+        top: 2px;
+        right: 0;
+      }
     }
 
-    &:hover svg {
-      top: 2px;
-      left: 3px;
-    }
-  }
-
-  .starIcon {
-
-    svg {
-      position: absolute;
-      top: 10px;
-      right:8px;
-      -webkit-transition: 0.3s ease;
-      transition: 0.3s ease;
-    }
-
-    &:hover svg {
-      top: 2px;
-      right: 0px;
-    }
-  }
-
-  .stared {
+    .stared {
       color: $orange-ts;
-  }
+    }
 
-  .noted {
+    .noted {
       color: $orange-ts;
+    }
   }
 }

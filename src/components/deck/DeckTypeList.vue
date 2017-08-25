@@ -10,7 +10,7 @@
 
 
         <div class="container-fluid">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" v-for="type in typesList">
+            <div class="deckTypeContainer col-xs-12 col-sm-6 col-md-4 col-lg-3" v-for="type in typesList">
                 <deck-type-show :type="type" />
                 <div>
                     <confirmation-modal @modal-confirm="remove(type.id)" modalText="Are you sure you want to remove this type?"/>
