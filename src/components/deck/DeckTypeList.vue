@@ -3,7 +3,7 @@
         <h2>Manage deck types</h2>
 
         Sort by:
-        <enhanced-check-radio :label="['Star', 'Time added', 'Winrate vs', 'Win score vs']" :value="['star', 'old', 'winrate', 'winscore']" name="deck_type_sort"
+        <enhanced-check-radio :label="['Star', 'Class', 'Winrate vs', 'Win score vs']" :value="['star', 'hsClass', 'winrate', 'winscore']" name="deck_type_sort"
                               subClass="primary" :animate="true" :inline="true" v-model="sortBy" :rounded="true">
 
         </enhanced-check-radio>
@@ -58,6 +58,8 @@
             return this.getTypesByWinrateAgainst()
           case 'winrateRecent':
             return this.getTypesByWinrateAgainst(true)
+          case 'hsClass':
+            return this.getTypesByClass()
           default:
             return this.types
         }
@@ -91,6 +93,11 @@
         return this.getEnhancedTypes().sort(function (a, b) {
           return a.winScoreVs > b.winScoreVs
         }).reverse()
+      },
+      getTypesByClass () {
+        return this.getEnhancedTypes().sort(function (a, b) {
+          return a.hsClass.localeCompare(b.hsClass)
+        })
       }
     }
   }
