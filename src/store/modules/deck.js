@@ -6,16 +6,16 @@ import Vue from 'vue'
 // ----------
 const state = {
   CLASSES: {
-    '': {'name': 'None'},
-    'druid': {'name': 'Druid'},
-    'hunter': {'name': 'Hunter'},
-    'mage': {'name': 'Mage'},
-    'paladin': {'name': 'Paladin'},
-    'priest': {'name': 'Priest'},
-    'rogue': {'name': 'Rogue'},
-    'shaman': {'name': 'Shaman'},
-    'warlock': {'name': 'Warlock'},
-    'warrior': {'name': 'Warrior'}
+    '': {'name': 'None', 'backgroundColor': '#FFFFFF'},
+    'druid': {'name': 'Druid', 'backgroundColor': '#593A28'},
+    'hunter': {'name': 'Hunter', 'backgroundColor': '#1E581B'},
+    'mage': {'name': 'Mage', 'backgroundColor': '#34699E'},
+    'paladin': {'name': 'Paladin', 'backgroundColor': '#B27225'},
+    'priest': {'name': 'Priest', 'backgroundColor': '#D6D0DB'},
+    'rogue': {'name': 'Rogue', 'backgroundColor': '#251E20'},
+    'shaman': {'name': 'Shaman', 'backgroundColor': '#3645A2'},
+    'warlock': {'name': 'Warlock', 'backgroundColor': '#4D2A6A'},
+    'warrior': {'name': 'Warrior', 'backgroundColor': '#691320'}
   },
 
   own: {},
