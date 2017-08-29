@@ -1,5 +1,5 @@
 <template>
-    <div class="deckTypeShow">
+    <div class="deckTypeShow" :class="showDivClass">
         <div class="row">
             <div class="col-xs-2">
               <div class="editIcon" @click="editType()" @mouseover="hoverEditIcon()" @mouseout="hoverEditIcon()" >
@@ -60,6 +60,9 @@
       }
     },
     computed: {
+      showDivClass () {
+        return 'deckClass-' + this.type.hsClass + ' deckArchetype-' + this.type.archetype
+      },
       starIconScale () {
         return (this.starIconHover) ? 2 : 1
       },
