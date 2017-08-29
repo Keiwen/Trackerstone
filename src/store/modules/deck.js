@@ -23,17 +23,17 @@ const state = {
   opponent: {},
   archetypes: ['aggro', 'midrange', 'control', 'combo'],
   types: [
-    {id: 1, name: 'Aggro', hsClass: 'druid', archetype: 'aggro', top: true, note: ''},
+    {id: 1, name: 'Token', hsClass: 'druid', archetype: 'aggro', top: true, note: ''},
     {id: 2, name: 'Dragon', hsClass: 'priest', archetype: 'midrange', top: false, note: ''},
     {id: 3, name: 'Quest', hsClass: 'rogue', archetype: 'combo', top: false, note: ''},
     {id: 4, name: 'Evolve', hsClass: 'shaman', archetype: 'midrange', top: true, note: ''},
-    {id: 5, name: 'Face', hsClass: 'hunter', archetype: 'aggro', top: false, note: ''},
+    {id: 5, name: 'Face', hsClass: 'hunter', archetype: 'aggro', top: true, note: ''},
     {id: 6, name: 'Freeze', hsClass: 'mage', archetype: 'control', top: false, note: ''},
     {id: 7, name: 'Jade', hsClass: 'druid', archetype: 'combo', top: true, note: ''},
     {id: 8, name: 'Mid-Range', hsClass: 'hunter', archetype: 'midrange', top: false, note: ''},
     {id: 9, name: 'Mid-Range', hsClass: 'paladin', archetype: 'midrange', top: false, note: ''},
     {id: 10, name: 'Miracle', hsClass: 'rogue', archetype: 'combo', top: true, note: ''},
-    {id: 11, name: 'Token', hsClass: 'druid', archetype: 'aggro', top: false, note: ''},
+    {id: 11, name: 'DK Taunt', hsClass: 'druid', archetype: 'midrange', top: true, note: ''},
     {id: 12, name: 'Murloc', hsClass: 'paladin', archetype: 'aggro', top: true, note: ''},
     {id: 13, name: 'Overload', hsClass: 'shaman', archetype: 'aggro', top: false, note: ''},
     {id: 14, name: 'Pirate', hsClass: 'warrior', archetype: 'aggro', top: true, note: ''},
@@ -41,11 +41,15 @@ const state = {
     {id: 16, name: 'Quest', hsClass: 'warrior', archetype: 'control', top: false, note: ''},
     {id: 17, name: 'Ramp', hsClass: 'druid', archetype: 'midrange', top: false, note: ''},
     {id: 18, name: 'Silence', hsClass: 'priest', archetype: 'midrange', top: false, note: ''},
-    {id: 19, name: 'Secret', hsClass: 'mage', archetype: 'aggro', top: true, note: ''},
-    {id: 20, name: 'Zoolock', hsClass: 'warlock', archetype: 'aggro', top: false, note: ''}
+    {id: 19, name: 'Secret', hsClass: 'mage', archetype: 'midrange', top: true, note: ''},
+    {id: 20, name: 'Zoolock', hsClass: 'warlock', archetype: 'aggro', top: false, note: ''},
+    {id: 21, name: 'Quest', hsClass: 'mage', archetype: 'combo', top: false, note: ''},
+    {id: 22, name: 'DK Kazakus', hsClass: 'priest', archetype: 'control', top: false, note: ''},
+    {id: 23, name: 'Jade elemental', hsClass: 'shaman', archetype: 'midrange', top: false, note: ''},
+    {id: 24, name: 'DK lock', hsClass: 'warlock', archetype: 'control', top: false, note: ''}
   ],
   nextId: 1,
-  nextTypeId: 23
+  nextTypeId: 25
 
 }
 
