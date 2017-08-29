@@ -1,8 +1,5 @@
 .deckTypeContainer {
-
- margin-bottom : 15px;
-
-
+  margin-bottom: 15px;
 
   .deckTypeShow + div {
     .btn-danger {
@@ -17,34 +14,13 @@
   }
 
   .deckTypeShow {
-    min-height: 120px;
-    background: white;
-    border:1px solid black;
-    border-bottom: 5px solid $blue-ts;
-
-    .row {
-      margin: 0;
-
-      > div {
-        padding: 0;
-      }
-
-      .col-xs-2 {
-        background-color: $black;
-
-        > div {
-          margin: 0 auto;
-          position: relative;
-          width: 30px;
-          height: 58px;
-        }
-      }
-    }
+      min-height: 120px;
+      background: white;
+      border: 1px solid black;
 
     .profil {
       width: 100%;
       height: 58px;
-      background: url('/static/charac_skins.jpg') 0 0 no-repeat;
       display: inline-block;
       background-size: 100% 520px;
 
@@ -79,6 +55,93 @@
         position: absolute;
         top: 0;
         left: 0;
+      }
+    }
+  }
+
+  .deckClass {
+    &-druid .profil {
+      background: url('/static/charac_skins.jpg') -32px 0 no-repeat;
+    }
+
+    &-hunter .profil {
+      background: url('/static/charac_skins.jpg') -32px -70px no-repeat;
+    }
+
+    &-mage .profil {
+      background: url('/static/charac_skins.jpg') -32px -140px no-repeat;
+    }
+
+    &-paladin .profil {
+      background: url('/static/charac_skins.jpg') -32px -210px no-repeat;
+    }
+
+    &-priest .profil {
+      background: url('/static/charac_skins.jpg') -32px -280px no-repeat;
+    }
+
+    &-rogue .profil {
+      background: url('/static/charac_skins.jpg') -32px -350px no-repeat;
+    }
+
+    &-shaman .profil {
+      background: url('/static/charac_skins.jpg') -32px -420px no-repeat;
+    }
+
+    &-warlock .profil {
+      background: url('/static/charac_skins.jpg') -32px -490px no-repeat;
+    }
+
+    &-warrior .profil {
+      background: url('/static/charac_skins.jpg') -32px -560px no-repeat;
+    }
+  }
+
+  .deckArchetype {
+    &-aggro {
+      -webkit-box-shadow: inset 0px -6px 0px 0px $red-ts;
+      -moz-box-shadow: inset 0px -6px 0px 0px $red-ts;
+      box-shadow: inset 0px -6px 0px 0px $red-ts;
+    }
+
+    &-control {
+      -webkit-box-shadow: inset 0px -6px 0px 0px $blue-ts;
+      -moz-box-shadow: inset 0px -6px 0px 0px $blue-ts;
+      box-shadow: inset 0px -6px 0px 0px $blue-ts;
+    }
+
+    &-midrange {
+      -webkit-box-shadow: inset 0px -6px 0px 0px $green-ts;
+      -moz-box-shadow: inset 0px -6px 0px 0px $green-ts;
+      box-shadow: inset 0px -6px 0px 0px $green-ts;
+    }
+
+    &-combo {
+      -webkit-box-shadow: inset 0px -6px 0px 0px $orange-ts;
+      -moz-box-shadow: inset 0px -6px 0px 0px $orange-ts;
+      box-shadow: inset 0px -6px 0px 0px $orange-ts;
+    }
+
+  }
+
+  .deckTypeShow {
+
+    .row {
+      margin: 0;
+
+      > div {
+        padding: 0;
+      }
+
+      .col-xs-2 {
+        background-color: $black;
+
+        > div {
+          margin: 0 auto;
+          position: relative;
+          width: 30px;
+          height: 58px;
+        }
       }
     }
 
