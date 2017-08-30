@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h4>{{ deck.name }} ({{ getClassName(deck.type.hsClass) }} {{ deck.type.name }})</h4>
+        <h4>{{ generateDeckTitle(deck) }}</h4>
         <p>
             Won {{ getDeckGamesWonCount() }} / {{ getDeckGamesPlayedCount() }}
             <i>
@@ -14,23 +14,25 @@
 
 <script>
 
+  import { mapGetters } from 'vuex'
+
   export default {
     props: ['deck', 'idDeck'],
+    computed: {
+      ...mapGetters(['generateDeckTitle', 'getGamesWithDeck', 'getGamesWonWithDeck', 'getWinPercentWithDeck', 'getWinScoreWithDeck'])
+    },
     methods: {
-      getClassName (id) {
-        return this.$store.getters.className(id)
-      },
       getDeckGamesPlayedCount (recent) {
-        return this.$store.getters.getGamesWithDeck(this.idDeck, recent).length
+        return this.getGamesWithDeck(this.idDeck, recent).length
       },
       getDeckGamesWonCount (recent) {
-        return this.$store.getters.getGamesWonWithDeck(this.idDeck, recent).length
+        return this.getGamesWonWithDeck(this.idDeck, recent).length
       },
       getDeckWinPercent (recent) {
-        return this.$store.getters.getWinPercentWithDeck(this.idDeck, recent)
+        return this.getWinPercentWithDeck(this.idDeck, recent)
       },
       getDeckWinScore (recent) {
-        return this.$store.getters.getWinScoreWithDeck(this.idDeck, recent)
+        return this.getWinScoreWithDeck(this.idDeck, recent)
       }
     }
   }
