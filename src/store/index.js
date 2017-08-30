@@ -49,6 +49,10 @@ export default new Vuex.Store({
         }
       }
       return stats
+    },
+    generateDeckTitle: (state, getters) => (deck) => {
+      const className = getters.className(deck.type.hsClass)
+      return deck.name + ' (' + className + ' ' + deck.type.name + ')'
     }
   },
   actions: {
