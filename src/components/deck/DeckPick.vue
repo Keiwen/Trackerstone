@@ -1,6 +1,6 @@
 <template>
     <select v-model="pick" @change="pickDeck()">
-        <option v-for="(deck, id) in own" :value="id">{{ deck.name }} ({{ getClassName(deck.type.hsClass) }} {{ deck.type.name }})</option>
+        <option v-for="(deck, id) in own" :value="id">{{ generateDeckTitle(deck) }}</option>
     </select>
 </template>
 
@@ -17,15 +17,12 @@
       }
     },
     computed: {
-      ...mapGetters(['own', 'current'])
+      ...mapGetters(['own', 'current', 'generateDeckTitle'])
     },
     mounted: function () {
       this.pick = this.current.id
     },
     methods: {
-      getClassName (id) {
-        return this.$store.getters.className(id)
-      },
       pickDeck () {
         this.$store.commit(storeMut.CHOOSE_DECK, this.pick)
       }
