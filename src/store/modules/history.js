@@ -75,6 +75,23 @@ const getters = {
     const percent = getters.getWinPercentWithDeck(idDeck, recentOnly)
     return getters.computeWinScore(played.length, percent)
   },
+  getGamesWithClass: (state, getters) => (hsClass, recentOnly) => {
+    return getters.getGamesList(recentOnly, 'deck.type.hsClass', parseInt(hsClass))
+  },
+  getGamesWonWithClass: (state, getters) => (hsClass, recentOnly) => {
+    const played = getters.getGamesWithClass(hsClass, recentOnly)
+    return getters.getGamesWonAmong(played)
+  },
+  getWinPercentWithClass: (state, getters) => (hsClass, recentOnly) => {
+    const played = getters.getGamesWithClass(hsClass, recentOnly)
+    const won = getters.getGamesWonWithClass(hsClass, recentOnly)
+    return getters.computeWinPercent(played.length, won.length)
+  },
+  getWinScoreWithClass: (state, getters) => (hsClass, recentOnly) => {
+    const played = getters.getGamesWithClass(hsClass, recentOnly)
+    const percent = getters.getWinPercentWithClass(hsClass, recentOnly)
+    return getters.computeWinScore(played.length, percent)
+  },
   getGamesVsType: (state, getters) => (idType, recentOnly) => {
     return getters.getGamesList(recentOnly, 'opponent.id', parseInt(idType))
   },
@@ -90,6 +107,23 @@ const getters = {
   getWinScoreVsType: (state, getters) => (idType, recentOnly) => {
     const played = getters.getGamesVsType(idType, recentOnly)
     const percent = getters.getWinPercentVsType(idType, recentOnly)
+    return getters.computeWinScore(played.length, percent)
+  },
+  getGamesVsClass: (state, getters) => (hsClass, recentOnly) => {
+    return getters.getGamesList(recentOnly, 'opponent.hsClass', parseInt(hsClass))
+  },
+  getGamesWonVsClass: (state, getters) => (hsClass, recentOnly) => {
+    const played = getters.getGamesVsClass(hsClass, recentOnly)
+    return getters.getGamesWonAmong(played)
+  },
+  getWinPercentVsClass: (state, getters) => (hsClass, recentOnly) => {
+    const played = getters.getGamesVsClass(hsClass, recentOnly)
+    const won = getters.getGamesWonVsClass(hsClass, recentOnly)
+    return getters.computeWinPercent(played.length, won.length)
+  },
+  getWinScoreVsClass: (state, getters) => (hsClass, recentOnly) => {
+    const played = getters.getGamesVsClass(hsClass, recentOnly)
+    const percent = getters.getWinPercentVsClass(hsClass, recentOnly)
     return getters.computeWinScore(played.length, percent)
   },
   // GAMES FILTERS >>>
