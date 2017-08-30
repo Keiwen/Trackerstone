@@ -58,9 +58,6 @@
       },
       remove (id) {
         this.$store.commit(storeMut.REMOVE_DECK, id)
-      },
-      getClassName (id) {
-        return this.$store.getters.className(id)
       }
     }
   }
