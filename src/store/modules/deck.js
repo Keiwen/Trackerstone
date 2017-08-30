@@ -7,15 +7,15 @@ import Vue from 'vue'
 const state = {
   CLASSES: {
     '': {'name': 'None', 'backgroundColor': '#FFFFFF'},
-    'druid': {'name': 'Druid', 'backgroundColor': '#593A28'},
-    'hunter': {'name': 'Hunter', 'backgroundColor': '#1E581B'},
-    'mage': {'name': 'Mage', 'backgroundColor': '#34699E'},
-    'paladin': {'name': 'Paladin', 'backgroundColor': '#B27225'},
-    'priest': {'name': 'Priest', 'backgroundColor': '#D6D0DB'},
-    'rogue': {'name': 'Rogue', 'backgroundColor': '#251E20'},
-    'shaman': {'name': 'Shaman', 'backgroundColor': '#3645A2'},
-    'warlock': {'name': 'Warlock', 'backgroundColor': '#4D2A6A'},
-    'warrior': {'name': 'Warrior', 'backgroundColor': '#691320'}
+    'druid': {'name': 'Druid', 'backgroundColor': '#663E27'},
+    'hunter': {'name': 'Hunter', 'backgroundColor': '#1D6619'},
+    'mage': {'name': 'Mage', 'backgroundColor': '#2F6DAA'},
+    'paladin': {'name': 'Paladin', 'backgroundColor': '#BF761E'},
+    'priest': {'name': 'Priest', 'backgroundColor': '#DCD0E8'},
+    'rogue': {'name': 'Rogue', 'backgroundColor': '#33262A'},
+    'shaman': {'name': 'Shaman', 'backgroundColor': '#3142AF'},
+    'warlock': {'name': 'Warlock', 'backgroundColor': '#542877'},
+    'warrior': {'name': 'Warrior', 'backgroundColor': '#750F1E'}
   },
 
   own: {},
