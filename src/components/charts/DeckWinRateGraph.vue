@@ -2,10 +2,11 @@
 <script>
 
   import { Bar } from 'vue-chartjs'
+  import { mapGetters } from 'vuex'
 
   export default Bar.extend({
-    props: ['decks'],
     computed: {
+      ...mapGetters(['deckStats', 'className', 'generateDeckTitle']),
       chartData () {
         let labels = []
         let datasetGlobal = {
@@ -19,15 +20,13 @@
           data: []
         }
 
-        for (let idDeck in this.decks) {
-          if (!this.decks.hasOwnProperty(idDeck)) continue
-          const deck = this.decks[idDeck]
-          const gamesList = this.$store.getters.getGamesWithDeck(idDeck)
-          const played = gamesList.length
-          if (played === 0) continue
-          labels.push(this.getDeckTitle(deck))
-          datasetGlobal.data.push(this.$store.getters.getWinPercentWithDeck(idDeck))
-          datasetRecent.data.push(this.$store.getters.getWinPercentWithDeck(idDeck, true))
+        for (let idDeck in this.deckStats) {
+          if (!this.deckStats.hasOwnProperty(idDeck)) continue
+          const deck = this.deckStats[idDeck]
+          if (deck['playedWith'] === 0) continue
+          labels.push(this.generateDeckTitle(deck))
+          datasetGlobal.data.push(deck['winPercentWith'])
+          datasetRecent.data.push(deck['winPercentWithRecent'])
         }
 
         return { labels: labels, datasets: [datasetGlobal, datasetRecent] }
@@ -36,15 +35,6 @@
         return {
           legend: { display: true }
         }
-      }
-    },
-    methods: {
-      getClassName (id) {
-        return this.$store.getters.className(id)
-      },
-      getDeckTitle (deck) {
-        const className = this.getClassName(deck.type.hsClass)
-        return deck.name + ' (' + className + ' ' + deck.type.name + ')'
       }
     },
     mounted () {

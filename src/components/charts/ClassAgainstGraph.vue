@@ -5,28 +5,19 @@
   import { mapGetters } from 'vuex'
 
   export default Pie.extend({
-    props: ['history'],
     computed: {
-      ...mapGetters(['classes']),
+      ...mapGetters(['classStats']),
       chartData () {
         let labels = []
         let dataList = []
         let backgrounds = []
-        let countClasses = this.classes
-        for (let hsClass in countClasses) {
-          if (countClasses.hasOwnProperty(hsClass)) {
-            labels.push(countClasses[hsClass]['name'])
-            countClasses[hsClass]['played'] = 0
-          }
-        }
-        for (let i = 0; i < this.history.length; i++) {
-          countClasses[this.history[i].opponent.hsClass]['played']++
-        }
-        for (let hsClass in countClasses) {
-          if (countClasses.hasOwnProperty(hsClass)) {
-            dataList.push(countClasses[hsClass]['played'])
-            backgrounds.push(countClasses[hsClass]['backgroundColor'])
-          }
+
+        for (let idClass in this.classStats) {
+          if (!this.classStats.hasOwnProperty(idClass)) continue
+          const hsClass = this.classStats[idClass]
+          labels.push(hsClass['name'])
+          dataList.push(hsClass['playedVs'])
+          backgrounds.push(hsClass['backgroundColor'])
         }
 
         let dataset = {
