@@ -72,7 +72,7 @@ const getters = {
     return state.types.filter(type => { return type[filter] === value })
   },
   getTypesWithClass: (state, getters) => (hsClass) => {
-    return getters.getTypesFiltered('hcClass', hsClass)
+    return getters.getTypesFiltered('hsClass', hsClass)
   },
   getTypesWithArchetype: (state, getters) => (archetype) => {
     return getters.getTypesFiltered('archetype', archetype)
