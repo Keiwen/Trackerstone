@@ -47,57 +47,27 @@
       }
     },
     computed: {
-      ...mapGetters(['types', 'archetypes']),
+      ...mapGetters(['sortList', 'typesStats']),
       typesList () {
         switch (this.sortBy) {
           case 'star':
-            return this.typesTopFirst
+            return this.sortList(this.typesStats, 'top').reverse()
           case 'winscore':
-            return this.getTypesByWinScoreAgainst()
+            return this.sortList(this.typesStats, 'winScoreVs').reverse()
           case 'winrate':
-            return this.getTypesByWinrateAgainst()
+            return this.sortList(this.typesStats, 'winPercentVs').reverse()
           case 'winrateRecent':
-            return this.getTypesByWinrateAgainst(true)
+            return this.sortList(this.typesStats, 'winPercentVsRecent').reverse()
           case 'hsClass':
-            return this.getTypesByClass()
+            return this.sortList(this.typesStats, 'hsClass', true)
           default:
-            return this.types
+            return this.typesStats
         }
-      },
-      typesTopFirst () {
-        const top = this.$store.getters.getTypesOnTop()
-        const noTop = this.$store.getters.getTypesOnTop(false)
-        return top.concat(noTop)
       }
     },
     methods: {
       remove (id) {
         this.$store.commit(storeMut.REMOVE_DECKTYPE, id)
-      },
-      getEnhancedTypes (recent) {
-        let typeEnhanced = []
-        for (let i = 0; i < this.types.length; i++) {
-          let type = this.types[i]
-          type.winPercentVs = this.$store.getters.getWinPercentVsType(type.id, recent)
-          type.winScoreVs = this.$store.getters.getWinScoreVsType(type.id)
-          typeEnhanced.push(type)
-        }
-        return typeEnhanced
-      },
-      getTypesByWinrateAgainst (recent) {
-        return this.getEnhancedTypes(recent).sort(function (a, b) {
-          return a.winPercentVs > b.winPercentVs
-        }).reverse()
-      },
-      getTypesByWinScoreAgainst () {
-        return this.getEnhancedTypes().sort(function (a, b) {
-          return a.winScoreVs > b.winScoreVs
-        }).reverse()
-      },
-      getTypesByClass () {
-        return this.getEnhancedTypes().sort(function (a, b) {
-          return a.hsClass.localeCompare(b.hsClass)
-        })
       }
     }
   }
