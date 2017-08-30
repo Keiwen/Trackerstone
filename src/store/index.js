@@ -34,6 +34,19 @@ export default new Vuex.Store({
         }
       }
       return stats
+    },
+    deckStats: (state, getters) => {
+      // clone classes to manipulate it, or it will change state directly
+      let stats = JSON.parse(JSON.stringify(getters.own))
+      for (let idDeck in stats) {
+        if (stats.hasOwnProperty(idDeck)) {
+          stats[idDeck]['playedWith'] = getters.getGamesWithDeck(idDeck).length
+          stats[idDeck]['wonWith'] = getters.getGamesWonWithDeck(idDeck).length
+          stats[idDeck]['playedWithRecent'] = getters.getGamesWithDeck(idDeck, true).length
+          stats[idDeck]['wonWithRecent'] = getters.getGamesWonWithDeck(idDeck, true).length
+        }
+      }
+      return stats
     }
   },
   actions: {
