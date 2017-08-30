@@ -24,12 +24,7 @@
   import ClassAgainstGraph from '@/components/charts/ClassAgainstGraph'
 
   export default {
-    components: {SerieStarsEvolGraph, SerieRankEvolGraph, ClassAgainstGraph},
-    computed: {
-      history () {
-        return this.$store.getters.getGamesList()
-      }
-    }
+    components: {SerieStarsEvolGraph, SerieRankEvolGraph, ClassAgainstGraph}
   }
 
 </script>
