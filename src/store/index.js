@@ -56,8 +56,12 @@ export default new Vuex.Store({
       let stats = JSON.parse(JSON.stringify(getters.types))
       for (let i = 0; i < stats.length; i++) {
         const idType = stats[i].id
+        stats[i]['playedVs'] = getters.getGamesVsType(idType).length
+        stats[i]['wonVs'] = getters.getGamesWonVsType(idType).length
         stats[i]['winPercentVs'] = getters.getWinPercentVsType(idType)
         stats[i]['winScoreVs'] = getters.getWinScoreVsType(idType)
+        stats[i]['playedVsRecent'] = getters.getGamesVsType(idType, true).length
+        stats[i]['wonVsRecent'] = getters.getGamesWonVsType(idType, true).length
         stats[i]['winPercentVsRecent'] = getters.getWinPercentVsType(idType, true)
       }
       return stats
