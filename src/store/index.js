@@ -43,6 +43,7 @@ export default new Vuex.Store({
           stats[idDeck]['playedWith'] = getters.getGamesWithDeck(idDeck).length
           stats[idDeck]['wonWith'] = getters.getGamesWonWithDeck(idDeck).length
           stats[idDeck]['winPercentWith'] = getters.getWinPercentWithDeck(idDeck)
+          stats[idDeck]['winScoreWith'] = getters.getWinScoreWithDeck(idDeck)
           stats[idDeck]['playedWithRecent'] = getters.getGamesWithDeck(idDeck, true).length
           stats[idDeck]['wonWithRecent'] = getters.getGamesWonWithDeck(idDeck, true).length
           stats[idDeck]['winPercentWithRecent'] = getters.getWinPercentWithDeck(idDeck, true)
