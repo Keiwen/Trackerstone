@@ -2,10 +2,10 @@
     <div>
         <h4>{{ generateDeckTitle(deck) }}</h4>
         <p>
-            Won {{ getDeckGamesWonCount() }} / {{ getDeckGamesPlayedCount() }}
+            Won {{ deck.wonWith }} / {{ deck.playedWith }}
             <i>
-                ({{ getDeckWinPercent() }} % global, {{ getDeckWinPercent(true) }} % last {{ getDeckGamesPlayedCount(true) }} games)
-                - score {{ getDeckWinScore() }}
+                ({{ deck.winPercentWith }} % global, {{ deck.winPercentWithRecent }} % last {{ deck.playedWithRecent }} games)
+                - score {{ deck.winScoreWith }}
             </i>
         </p>
     </div>
@@ -17,23 +17,9 @@
   import { mapGetters } from 'vuex'
 
   export default {
-    props: ['deck', 'idDeck'],
+    props: ['deck'],
     computed: {
-      ...mapGetters(['generateDeckTitle', 'getGamesWithDeck', 'getGamesWonWithDeck', 'getWinPercentWithDeck', 'getWinScoreWithDeck'])
-    },
-    methods: {
-      getDeckGamesPlayedCount (recent) {
-        return this.getGamesWithDeck(this.idDeck, recent).length
-      },
-      getDeckGamesWonCount (recent) {
-        return this.getGamesWonWithDeck(this.idDeck, recent).length
-      },
-      getDeckWinPercent (recent) {
-        return this.getWinPercentWithDeck(this.idDeck, recent)
-      },
-      getDeckWinScore (recent) {
-        return this.getWinScoreWithDeck(this.idDeck, recent)
-      }
+      ...mapGetters(['generateDeckTitle'])
     }
   }
 
