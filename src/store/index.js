@@ -21,7 +21,21 @@ const persistOptions = {
 }
 
 export default new Vuex.Store({
-//  getters,
+  getters: {
+    classStats: (state, getters) => {
+      // clone classes to manipulate it, or it will change state directly
+      let stats = JSON.parse(JSON.stringify(getters.classes))
+      for (let hsClass in stats) {
+        if (stats.hasOwnProperty(hsClass)) {
+          stats[hsClass]['playedWith'] = getters.getGamesWithClass(hsClass).length
+          stats[hsClass]['wonWith'] = getters.getGamesWonWithClass(hsClass).length
+          stats[hsClass]['playedVs'] = getters.getGamesVsClass(hsClass).length
+          stats[hsClass]['wonVs'] = getters.getGamesWonVsClass(hsClass).length
+        }
+      }
+      return stats
+    }
+  },
   actions: {
     win ({dispatch}) {
       dispatch('storeGame', true)
