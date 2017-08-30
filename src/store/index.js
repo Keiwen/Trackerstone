@@ -51,9 +51,33 @@ export default new Vuex.Store({
       }
       return stats
     },
+    typesStats: (state, getters) => {
+      // clone classes to manipulate it, or it will change state directly
+      let stats = JSON.parse(JSON.stringify(getters.types))
+      for (let i = 0; i < stats.length; i++) {
+        const idType = stats[i].id
+        stats[i]['winPercentVs'] = getters.getWinPercentVsType(idType)
+        stats[i]['winScoreVs'] = getters.getWinScoreVsType(idType)
+        stats[i]['winPercentVsRecent'] = getters.getWinPercentVsType(idType, true)
+      }
+      return stats
+    },
     generateDeckTitle: (state, getters) => (deck) => {
       const className = getters.className(deck.type.hsClass)
       return deck.name + ' (' + className + ' ' + deck.type.name + ')'
+    },
+    sortList: (state, getters) => (list, field, isString) => {
+      if (typeof isString === 'undefined') isString = false
+      let sorted = JSON.parse(JSON.stringify(list))
+      sorted = sorted.sort(function (a, b) {
+        if (isString) {
+          return a[field].localeCompare(b[field])
+        } else {
+          console.log('sort', a[field], b[field], a[field] > b[field])
+          return a[field] > b[field]
+        }
+      })
+      return sorted
     }
   },
   actions: {
