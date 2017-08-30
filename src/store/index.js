@@ -66,6 +66,10 @@ export default new Vuex.Store({
       const className = getters.className(deck.type.hsClass)
       return deck.name + ' (' + className + ' ' + deck.type.name + ')'
     },
+    generateTypeTitle: (state, getters) => (type) => {
+      const className = getters.className(type.hsClass)
+      return className + ' ' + type.name + ' (' + type.archetype + ')'
+    },
     sortList: (state, getters) => (list, field, isString) => {
       if (typeof isString === 'undefined') isString = false
       let sorted = JSON.parse(JSON.stringify(list))
