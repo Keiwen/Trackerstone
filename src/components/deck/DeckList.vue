@@ -41,7 +41,7 @@
       }
     },
     computed: {
-      ...mapGetters(['deckStats', 'types', 'recentNumberGames'])
+      ...mapGetters(['deckStats', 'recentNumberGames'])
     },
     methods: {
       pickType (type) {

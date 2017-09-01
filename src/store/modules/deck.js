@@ -96,7 +96,7 @@ const actions = {
 // ----------
 const mutations = {
   [types.ADD_DECK] (state, deckData) {
-    state.own[state.nextId] = deckData
+    Vue.set(state.own, state.nextId, deckData)
     state.nextId++
   },
   [types.REMOVE_DECK] (state, id) {
