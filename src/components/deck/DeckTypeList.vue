@@ -3,7 +3,9 @@
         <h2>Manage deck types</h2>
 
         Sort by:
-        <enhanced-check-radio :label="['Star', 'Class', 'Winrate vs', 'Win score vs']" :value="['star', 'hsClass', 'winrate', 'winscore']" name="deck_type_sort"
+        <enhanced-check-radio :label="['Star', 'Class', 'Played vs', 'Winrate vs', 'Win score vs']"
+                              :value="['star', 'hsClass', 'played', 'winrate', 'winscore']"
+                              name="deck_type_sort"
                               subClass="primary" :animate="true" :inline="true" v-model="sortBy" :rounded="true">
 
         </enhanced-check-radio>
@@ -52,6 +54,8 @@
         switch (this.sortBy) {
           case 'star':
             return this.sortList(this.typesStats, 'top').reverse()
+          case 'played':
+            return this.sortList(this.typesStats, 'playedVs').reverse()
           case 'winscore':
             return this.sortList(this.typesStats, 'winScoreVs').reverse()
           case 'winrate':
