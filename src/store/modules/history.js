@@ -127,6 +127,7 @@ const getters = {
     return getters.computeWinScore(played.length, percent)
   },
   // GAMES FILTERS >>>
+  // <<< GAMES STATS
   gamesPlayed: (state, getters) => { return getters.getGamesList().length },
   gamesWon: (state, getters) => { return getters.getGamesFiltered('won').length },
   gamesLoss: (state, getters) => (getters.gamesPlayed - getters.gamesWon),
@@ -139,6 +140,16 @@ const getters = {
   winScore: (state, getters) => {
     return getters.computeWinScore(getters.gamesPlayed, getters.winPercent)
   },
+  gamesPlayedRecent: (state, getters) => { return getters.getGamesList(true).length },
+  gamesWonRecent: (state, getters) => { return getters.getGamesWonAmong(getters.getGamesList(true)).length },
+  gamesLossRecent: (state, getters) => (getters.gamesPlayedRecent - getters.gamesWonRecent),
+  winRateRecent: (state, getters) => {
+    return (getters.winPercentRecent / 100)
+  },
+  winPercentRecent: (state, getters) => {
+    return getters.computeWinPercent(getters.gamesPlayedRecent, getters.gamesWonRecent)
+  },
+  // GAMES STATS >>>
   recentNumberGames: state => state.recentNumberGames
 }
 

@@ -40,23 +40,20 @@
   export default {
     components: {DeckPick, TypePick, SweetModal},
     computed: {
-      ...mapGetters(['gamesPlayed', 'winRate', 'current', 'opponent']),
+      ...mapGetters(['current', 'opponent', 'getGamesVsType', 'getGamesWonAmong', 'computeWinPercent']),
       gamesCurrentPlayedVs () {
-        if (this.opponent === {}) return 0
-        const gamesPlayedVs = this.$store.getters.getGamesVsType(this.opponent.id)
+        if (this.opponent === {}) return []
+        const gamesPlayedVs = this.getGamesVsType(this.opponent.id)
         return gamesPlayedVs.filter(game => {
           return game.deck.id === this.current.id
         })
       },
       gamesCurrentWonVs () {
-        if (this.opponent === {}) return 0
-        const gamesWonVs = this.$store.getters.getGamesWonVsType(this.opponent.id)
-        return gamesWonVs.filter(game => {
-          return game.deck.id === this.current.id
-        })
+        if (this.opponent === {}) return []
+        return this.getGamesWonAmong(this.gamesCurrentPlayedVs)
       },
       gamesCurrentWinpercentVs () {
-        return this.$store.getters.computeWinPercent(this.gamesCurrentPlayedVs.length, this.gamesCurrentWonVs.length)
+        return this.computeWinPercent(this.gamesCurrentPlayedVs.length, this.gamesCurrentWonVs.length)
       }
     },
     methods: {

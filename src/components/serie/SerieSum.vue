@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <h2>Serie</h2>
-        <p>Rank: {{ rank }} - {{ rankTitle }} // Stars: {{ stars }} (Chest: {{ highest }})</p>
+        <p>Rank: {{ rank }} - {{ currentRankTitle }} // Stars: {{ stars }} (Chest: {{ highest }})</p>
         <p>Next milestone: {{ nextMilestone}} - {{ milestoneTitle }} ({{ winsToMilestone }} wins needed)</p>
     </div>
 </template>
@@ -13,12 +13,13 @@
   export default {
     computed: {
       ...mapGetters(['rank', 'stars', 'highest', 'nextMilestone', 'winsToMilestone',
-        'gamesPlayed', 'gamesWon', 'winRate', 'current', 'opponent', 'recentNumberGames']),
-      rankTitle () {
-        return this.$store.getters.rankTitle()
+        'gamesPlayed', 'gamesWon', 'winRate', 'current', 'opponent', 'recentNumberGames',
+        'rankTitle']),
+      currentRankTitle () {
+        return this.rankTitle()
       },
       milestoneTitle () {
-        return this.$store.getters.rankTitle(this.nextMilestone)
+        return this.rankTitle(this.nextMilestone)
       }
     }
   }
