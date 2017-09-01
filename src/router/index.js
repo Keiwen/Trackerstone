@@ -6,6 +6,7 @@ import DeckTypeList from '@/components/deck/DeckTypeList'
 import DeckList from '@/components/deck/DeckList'
 import DeckChart from '@/components/deck/DeckChart'
 import SerieChart from '@/components/serie/SerieChart'
+import DeckTypeChart from '@/components/deck/DeckTypeChart'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/serieChart',
       name: 'serieChart',
       component: SerieChart
+    },
+    {
+      path: '/deckTypeChart',
+      name: 'deckTypeChart',
+      component: DeckTypeChart
     }
   ]
 })

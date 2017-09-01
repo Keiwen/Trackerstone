@@ -20,6 +20,8 @@
             </div>
         </div>
 
+        <br/><br/>
+        <router-link :to="{ name: 'deckTypeChart' }">See charts</router-link>
         <hr/>
 
         <deck-type-set />
