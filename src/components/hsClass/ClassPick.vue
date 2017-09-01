@@ -12,6 +12,7 @@
 
 <script>
 
+  import { mapGetters } from 'vuex'
   import { SweetModal } from 'sweet-modal-vue'
   import ClassSpread from './ClassSpread'
 
@@ -23,15 +24,13 @@
       }
     },
     computed: {
+      ...mapGetters(['className']),
       btnText () {
-        if (this.pick) return this.getClassName(this.pick)
+        if (this.pick) return this.className(this.pick)
         return 'Choose class...'
       }
     },
     methods: {
-      getClassName (id) {
-        return this.$store.getters.className(id)
-      },
       openClassSpread () {
         this.$refs.modalClassPick.open()
       },
