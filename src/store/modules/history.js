@@ -11,7 +11,7 @@ const state = {
   // a = multiplier
   // b = coef
   // first games doesn't count much, then score grows up to maximum
-  scoreCoef: 2000, // by 20 games, score will be 80 % of multiplier
+  scoreCoef: 300, // by 10 games, score will be 80 % of multiplier
   scoreMult: 2 // Winrate should be around 1/2, so multiply by 2 to give score with max ~ 100
 }
 
