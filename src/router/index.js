@@ -7,6 +7,7 @@ import DeckList from '@/components/deck/DeckList'
 import DeckChart from '@/components/deck/DeckChart'
 import SerieChart from '@/components/serie/SerieChart'
 import DeckTypeChart from '@/components/deck/DeckTypeChart'
+import Arena from '@/components/serie/Arena'
 
 Vue.use(Router)
 
@@ -16,6 +17,11 @@ export default new Router({
       path: '/',
       name: 'serie',
       component: Serie
+    },
+    {
+      path: '/arena',
+      name: 'arena',
+      component: Arena
     },
     {
       path: '/set',

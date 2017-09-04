@@ -6,21 +6,23 @@ import Vue from 'vue'
 // ----------
 const state = {
   CLASSES: {
-    '': {'name': 'None', 'backgroundColor': '#FFFFFF'},
-    'druid': {'name': 'Druid', 'backgroundColor': '#663E27'},
-    'hunter': {'name': 'Hunter', 'backgroundColor': '#1D6619'},
-    'mage': {'name': 'Mage', 'backgroundColor': '#2F6DAA'},
-    'paladin': {'name': 'Paladin', 'backgroundColor': '#BF761E'},
-    'priest': {'name': 'Priest', 'backgroundColor': '#DCD0E8'},
-    'rogue': {'name': 'Rogue', 'backgroundColor': '#33262A'},
-    'shaman': {'name': 'Shaman', 'backgroundColor': '#3142AF'},
-    'warlock': {'name': 'Warlock', 'backgroundColor': '#542877'},
-    'warrior': {'name': 'Warrior', 'backgroundColor': '#750F1E'}
+    '': {id: '', name: 'None', backgroundColor: '#FFFFFF'},
+    'druid': {id: 'druid', name: 'Druid', backgroundColor: '#663E27'},
+    'hunter': {id: 'hunter', name: 'Hunter', backgroundColor: '#1D6619'},
+    'mage': {id: 'mage', name: 'Mage', backgroundColor: '#2F6DAA'},
+    'paladin': {id: 'paladin', name: 'Paladin', backgroundColor: '#BF761E'},
+    'priest': {id: 'priest', name: 'Priest', backgroundColor: '#DCD0E8'},
+    'rogue': {id: 'rogue', name: 'Rogue', backgroundColor: '#33262A'},
+    'shaman': {id: 'shaman', name: 'Shaman', backgroundColor: '#3142AF'},
+    'warlock': {id: 'warlock', name: 'Warlock', backgroundColor: '#542877'},
+    'warrior': {id: 'warrior', name: 'Warrior', backgroundColor: '#750F1E'}
   },
 
   own: {},
   current: {},
   opponent: {},
+  currentArena: {},
+  opponentArena: {},
   archetypes: ['aggro', 'midrange', 'control', 'combo'],
   types: [
     {id: 1, name: 'Token', hsClass: 'druid', archetype: 'aggro', top: true, note: ''},
@@ -85,6 +87,8 @@ const getters = {
   },
   current: state => state.current,
   opponent: state => state.opponent,
+  currentArena: state => state.currentArena,
+  opponentArena: state => state.opponentArena,
   lastDeckChanged: state => state.lastDeckChanged,
   lastTypeChanged: state => state.lastTypeChanged
 }
@@ -125,6 +129,14 @@ const mutations = {
   },
   [types.CHOOSE_OPPONENT] (state, type) {
     state.opponent = type
+  },
+  [types.CHOOSE_DECK_ARENA] (state, id) {
+    if (typeof state.CLASSES[id] === 'undefined') return
+    state.currentArena = state.CLASSES[id]
+  },
+  [types.CHOOSE_OPPONENT_ARENA] (state, id) {
+    if (typeof state.CLASSES[id] === 'undefined') return
+    state.opponentArena = state.CLASSES[id]
   },
   [types.ADD_DECKARCHETYPE] (state, name) {
     state.archetypes.push(name)

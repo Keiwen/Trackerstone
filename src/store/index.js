@@ -31,6 +31,10 @@ export default new Vuex.Store({
           stats[hsClass]['wonWith'] = getters.getGamesWonWithClass(hsClass).length
           stats[hsClass]['playedVs'] = getters.getGamesVsClass(hsClass).length
           stats[hsClass]['wonVs'] = getters.getGamesWonVsClass(hsClass).length
+          stats[hsClass]['playedWithArena'] = getters.getArenaGamesWithClass(hsClass).length
+          stats[hsClass]['wonWithArena'] = getters.getArenaGamesWonWithClass(hsClass).length
+          stats[hsClass]['playedVsArena'] = getters.getArenaGamesVsClass(hsClass).length
+          stats[hsClass]['wonVsArena'] = getters.getArenaGamesWonVsClass(hsClass).length
         }
       }
       return stats
@@ -103,6 +107,30 @@ export default new Vuex.Store({
         opponent: state.deck.opponent
       }
       commit(types.ADD_HISTORY, historyData)
+    },
+    winArena ({dispatch, commit}) {
+      dispatch('storeArenaGame', true)
+    },
+    looseArena ({dispatch, commit}) {
+      dispatch('storeArenaGame', false)
+    },
+    closeArena ({dispatch, state, commit}) {
+      const completeData = {
+        win: state.serie.arenaWin,
+        loss: state.serie.arenaLoss,
+        hsClass: state.deck.currentArena.id
+      }
+      commit(types.COMPLETE_ARENA_HISTORY, completeData)
+    },
+    storeArenaGame ({dispatch, state, commit}, won) {
+      const historyData = {
+        arenaWin: state.serie.arenaWin,
+        arenaLoss: state.serie.arenaLoss,
+        won: won,
+        player: state.deck.currentArena,
+        opponent: state.deck.opponentArena
+      }
+      commit(types.ADD_ARENA_HISTORY, historyData)
     },
     resetState () {
       // call this.$store.dispatch('resetState') from a component action
