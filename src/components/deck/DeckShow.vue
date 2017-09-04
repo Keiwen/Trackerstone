@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="deckShow" :class="showDivClass">
         <h4>{{ generateDeckTitle(deck) }}</h4>
         <p>
             Won {{ deck.wonWith }} / {{ deck.playedWith }}
@@ -19,7 +19,14 @@
   export default {
     props: ['deck'],
     computed: {
-      ...mapGetters(['generateDeckTitle'])
+      ...mapGetters(['generateDeckTitle', 'lastDeckChanged']),
+      showDivClass () {
+        let divClass = ''
+        if (this.lastDeckChanged === this.deck.id) {
+          divClass += ' lastChange'
+        }
+        return divClass
+      }
     }
   }
 

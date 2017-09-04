@@ -57,9 +57,13 @@
       }
     },
     computed: {
-      ...mapGetters(['generateTypeTitle']),
+      ...mapGetters(['generateTypeTitle', 'lastTypeChanged']),
       showDivClass () {
-        return 'deckClass-' + this.type.hsClass + ' deckArchetype-' + this.type.archetype
+        let divClass = 'deckClass-' + this.type.hsClass + ' deckArchetype-' + this.type.archetype
+        if (this.lastTypeChanged === this.type.id) {
+          divClass += ' lastChange'
+        }
+        return divClass
       },
       starIconScale () {
         return (this.starIconHover) ? 2 : 1
