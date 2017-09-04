@@ -1,6 +1,7 @@
 # Trackerstone
 
 <a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it!</a> (Oh seems to have some issues with IE)
+Current verson is 0.3.0
 
 > Experiments with VueJS framework
 
@@ -13,6 +14,7 @@ Simple Hearthstone tracker. Just track your win and loss. On app you'll find:
 - stats against opponent's deck types
 - charts on rank progress, deck winrates
 - set notes on deck types
+- arena page
 
 Maybe one day this app will:
 - get a real design ;)
