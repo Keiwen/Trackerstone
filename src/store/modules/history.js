@@ -169,12 +169,13 @@ const getters = {
     return getters.getArenaGamesList(currentOnly, 'opponent.id', hsClass)
   },
   getArenaGamesWonVsClass: (state, getters) => (hsClass, currentOnly) => {
-    const played = getters.getArenaGamesVsClass(currentOnly, hsClass)
+    const played = getters.getArenaGamesVsClass(hsClass, currentOnly)
+    console.log(hsClass, played)
     return getters.getGamesWonAmong(played)
   },
   getArenaWinPercentVsClass: (state, getters) => (hsClass, currentOnly) => {
-    const played = getters.getArenaGamesVsClass(currentOnly, hsClass)
-    const won = getters.getArenaGamesWonVsClass(currentOnly, hsClass)
+    const played = getters.getArenaGamesVsClass(hsClass, currentOnly)
+    const won = getters.getArenaGamesWonVsClass(hsClass, currentOnly)
     return getters.computeWinPercent(played.length, won.length)
   },
   // GAMES FILTERS >>>
@@ -221,6 +222,15 @@ const getters = {
   arenaPlayed: (state, getters) => { return getters.getArenaList().length },
   arenaAverageWin: (state, getters) => {
     const arenaComplete = getters.getArenaList()
+    if (arenaComplete.length === 0) return 0
+    let totalWin = 0
+    for (let i = 0; i < arenaComplete.length; i++) {
+      totalWin += arenaComplete[i]['win']
+    }
+    return Math.round(totalWin / arenaComplete.length * 10) / 10
+  },
+  arenaAverageWinWithClass: (state, getters) => (hsClass) => {
+    const arenaComplete = getters.getArenaWithClass(hsClass)
     if (arenaComplete.length === 0) return 0
     let totalWin = 0
     for (let i = 0; i < arenaComplete.length; i++) {
