@@ -170,7 +170,6 @@ const getters = {
   },
   getArenaGamesWonVsClass: (state, getters) => (hsClass, currentOnly) => {
     const played = getters.getArenaGamesVsClass(hsClass, currentOnly)
-    console.log(hsClass, played)
     return getters.getGamesWonAmong(played)
   },
   getArenaWinPercentVsClass: (state, getters) => (hsClass, currentOnly) => {
