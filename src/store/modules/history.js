@@ -264,7 +264,7 @@ const getters = {
     return totalPrize
   },
   arenaAveragePrize: (state, getters) => (prize) => {
-    if (this.arenaWithPrize === 0) return 0
+    if (getters.arenaWithPrize === 0) return 0
     return Math.round(getters.arenaTotalPrize(prize) / getters.arenaWithPrize)
   },
 
