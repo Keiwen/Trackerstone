@@ -6,7 +6,7 @@
         <p>Gold prize: {{ totalGoldPrize }} total, {{ averageGoldPrize }} average</p>
         <p>Dust prize: {{ totalDustPrize }} total, {{ averageDustPrize }} average</p>
         <p>Gold balance: {{ getGoldBalance(true) }} including booster, {{ getGoldBalance() }} arena fee</p>
-        <router-link :to="{ name: 'arenaChart' }">See chart</router-link>
+        <router-link :to="{ name: 'arenaChart' }">See charts</router-link>
     </div>
 </template>
 

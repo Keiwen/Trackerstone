@@ -120,12 +120,12 @@ const getters = {
     return getters.getArenaGamesList(currentOnly, 'player.id', hsClass)
   },
   getArenaGamesWonWithClass: (state, getters) => (hsClass, currentOnly) => {
-    const played = getters.getArenaGamesWithClass(currentOnly, hsClass)
+    const played = getters.getArenaGamesWithClass(hsClass, currentOnly)
     return getters.getGamesWonAmong(played)
   },
   getArenaWinPercentWithClass: (state, getters) => (hsClass, currentOnly) => {
-    const played = getters.getArenaGamesWithClass(currentOnly, hsClass)
-    const won = getters.getArenaGamesWonWithClass(currentOnly, hsClass)
+    const played = getters.getArenaGamesWithClass(hsClass, currentOnly)
+    const won = getters.getArenaGamesWonWithClass(hsClass, currentOnly)
     return getters.computeWinPercent(played.length, won.length)
   },
   getArenaWithClass: (state, getters) => (hsClass) => {

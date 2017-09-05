@@ -6,7 +6,7 @@
             Last {{ recentGames.length }} games: {{ gamesWonRecent }} won ({{ winPercentRecent }} % winrate)
             <win-loss v-for="(game, gameIndex) in recentGames" :game="game" :key="gameIndex" />
         </p>
-        <router-link :to="{ name: 'serieChart' }">See chart</router-link>
+        <router-link :to="{ name: 'serieChart' }">See charts</router-link>
     </div>
 </template>
 
