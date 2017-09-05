@@ -279,8 +279,8 @@ const actions = {
   setLastArenaPrize ({dispatch, state, commit}, prizes) {
     if (state.completedArena.length === 0) return
     // check prizes set
-    if (typeof prizes.gold === 'undefined') prizes.gold = 0
-    if (typeof prizes.dust === 'undefined') prizes.dust = 0
+    if (typeof prizes.gold === 'undefined' || prizes.gold === '') prizes.gold = 0
+    if (typeof prizes.dust === 'undefined' || prizes.dust === '') prizes.dust = 0
     // check prizes format
     prizes.gold = parseInt(prizes.gold)
     prizes.dust = parseInt(prizes.dust)
