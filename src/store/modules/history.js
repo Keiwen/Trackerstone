@@ -253,7 +253,17 @@ const getters = {
 // Actions
 // ----------
 const actions = {
+  setLastArenaPrize ({dispatch, state, commit}, prizes) {
+    if (state.completedArena.length === 0) return
+    // check prizes set
+    if (typeof prizes.gold === 'undefined') prizes.gold = 0
+    if (typeof prizes.dust === 'undefined') prizes.dust = 0
+    // check prizes format
+    prizes.gold = parseInt(prizes.gold)
+    prizes.dust = parseInt(prizes.dust)
 
+    commit(types.SET_LAST_ARENA_PRIZE, prizes)
+  }
 }
 
 // ----------
@@ -277,6 +287,11 @@ const mutations = {
   },
   [types.COMPLETE_ARENA_HISTORY] (state, history) {
     state.completedArena.push(history)
+  },
+  [types.SET_LAST_ARENA_PRIZE] (state, prizePayload) {
+    let lastArena = state.completedArena.pop()
+    lastArena['prizes'] = prizePayload
+    state.completedArena.push(lastArena)
   }
 
 }
