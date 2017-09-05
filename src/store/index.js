@@ -35,6 +35,8 @@ export default new Vuex.Store({
           stats[hsClass]['wonWithArena'] = getters.getArenaGamesWonWithClass(hsClass).length
           stats[hsClass]['playedVsArena'] = getters.getArenaGamesVsClass(hsClass).length
           stats[hsClass]['wonVsArena'] = getters.getArenaGamesWonVsClass(hsClass).length
+          stats[hsClass]['completeWithArena'] = getters.getArenaWithClass(hsClass).length
+          stats[hsClass]['averageWinWithArena'] = getters.arenaAverageWinWithClass(hsClass)
         }
       }
       return stats
