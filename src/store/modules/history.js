@@ -245,6 +245,29 @@ const getters = {
     }
     return maxWin
   },
+  arenaWithPrize: (state, getters) => {
+    const arenaComplete = getters.getArenaList()
+    let arenaCount = 0
+    for (let i = 0; i < arenaComplete.length; i++) {
+      if (typeof arenaComplete[i]['prizes'] === 'undefined') continue
+      arenaCount++
+    }
+    return arenaCount
+  },
+  arenaTotalPrize: (state, getters) => (prize) => {
+    const arenaComplete = getters.getArenaList()
+    let totalPrize = 0
+    for (let i = 0; i < arenaComplete.length; i++) {
+      if (typeof arenaComplete[i]['prizes'] === 'undefined') continue
+      totalPrize += arenaComplete[i]['prizes'][prize]
+    }
+    return totalPrize
+  },
+  arenaAveragePrize: (state, getters) => (prize) => {
+    if (this.arenaWithPrize === 0) return 0
+    return Math.round(getters.arenaTotalPrize(prize) / getters.arenaWithPrize)
+  },
+
   // GAMES STATS >>>
   recentNumberGames: state => state.recentNumberGames
 }
