@@ -2,10 +2,11 @@
 <script>
 
   import { Bar } from 'vue-chartjs'
+  import { mapGetters } from 'vuex'
 
   export default Bar.extend({
-    props: ['decks'],
     computed: {
+      ...mapGetters(['deckStats', 'className', 'generateDeckTitle']),
       chartData () {
         let labels = []
         let dataset = {
@@ -14,13 +15,12 @@
           data: []
         }
 
-        for (let idDeck in this.decks) {
-          if (!this.decks.hasOwnProperty(idDeck)) continue
-          const deck = this.decks[idDeck]
-          const score = this.$store.getters.getWinScoreWithDeck(idDeck)
-          if (score < 0) continue
-          labels.push(this.getDeckTitle(deck))
-          dataset.data.push(score)
+        for (let idDeck in this.deckStats) {
+          if (!this.deckStats.hasOwnProperty(idDeck)) continue
+          const deck = this.deckStats[idDeck]
+          if (deck['winScoreWith'] < 0) continue
+          labels.push(this.generateDeckTitle(deck))
+          dataset.data.push(deck['winScoreWith'])
         }
 
         return { labels: labels, datasets: [dataset] }
@@ -29,15 +29,6 @@
         return {
           legend: { display: false }
         }
-      }
-    },
-    methods: {
-      getClassName (id) {
-        return this.$store.getters.className(id)
-      },
-      getDeckTitle (deck) {
-        const className = this.getClassName(deck.type.hsClass)
-        return deck.name + ' (' + className + ' ' + deck.type.name + ')'
       }
     },
     mounted () {

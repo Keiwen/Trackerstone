@@ -6,21 +6,23 @@ import Vue from 'vue'
 // ----------
 const state = {
   CLASSES: {
-    '': {'name': 'None'},
-    'druid': {'name': 'Druid'},
-    'hunter': {'name': 'Hunter'},
-    'mage': {'name': 'Mage'},
-    'paladin': {'name': 'Paladin'},
-    'priest': {'name': 'Priest'},
-    'rogue': {'name': 'Rogue'},
-    'shaman': {'name': 'Shaman'},
-    'warlock': {'name': 'Warlock'},
-    'warrior': {'name': 'Warrior'}
+    '': {id: '', name: 'None', backgroundColor: '#FFFFFF'},
+    'druid': {id: 'druid', name: 'Druid', backgroundColor: '#663E27'},
+    'hunter': {id: 'hunter', name: 'Hunter', backgroundColor: '#1D6619'},
+    'mage': {id: 'mage', name: 'Mage', backgroundColor: '#2F6DAA'},
+    'paladin': {id: 'paladin', name: 'Paladin', backgroundColor: '#BF761E'},
+    'priest': {id: 'priest', name: 'Priest', backgroundColor: '#DCD0E8'},
+    'rogue': {id: 'rogue', name: 'Rogue', backgroundColor: '#33262A'},
+    'shaman': {id: 'shaman', name: 'Shaman', backgroundColor: '#3142AF'},
+    'warlock': {id: 'warlock', name: 'Warlock', backgroundColor: '#542877'},
+    'warrior': {id: 'warrior', name: 'Warrior', backgroundColor: '#750F1E'}
   },
 
   own: {},
   current: {},
   opponent: {},
+  currentArena: {},
+  opponentArena: {},
   archetypes: ['aggro', 'midrange', 'control', 'combo'],
   types: [
     {id: 1, name: 'Token', hsClass: 'druid', archetype: 'aggro', top: true, note: ''},
@@ -49,7 +51,9 @@ const state = {
     {id: 24, name: 'DK lock', hsClass: 'warlock', archetype: 'control', top: false, note: ''}
   ],
   nextId: 1,
-  nextTypeId: 25
+  nextTypeId: 25,
+  lastDeckChanged: 0,
+  lastTypeChanged: 0
 
 }
 
@@ -72,7 +76,7 @@ const getters = {
     return state.types.filter(type => { return type[filter] === value })
   },
   getTypesWithClass: (state, getters) => (hsClass) => {
-    return getters.getTypesFiltered('hcClass', hsClass)
+    return getters.getTypesFiltered('hsClass', hsClass)
   },
   getTypesWithArchetype: (state, getters) => (archetype) => {
     return getters.getTypesFiltered('archetype', archetype)
@@ -82,7 +86,11 @@ const getters = {
     return getters.getTypesFiltered('top', top)
   },
   current: state => state.current,
-  opponent: state => state.opponent
+  opponent: state => state.opponent,
+  currentArena: state => state.currentArena,
+  opponentArena: state => state.opponentArena,
+  lastDeckChanged: state => state.lastDeckChanged,
+  lastTypeChanged: state => state.lastTypeChanged
 }
 
 // ----------
@@ -96,16 +104,19 @@ const actions = {
 // ----------
 const mutations = {
   [types.ADD_DECK] (state, deckData) {
-    state.own[state.nextId] = deckData
+    Vue.set(state.own, state.nextId, deckData)
+    state.lastDeckChanged = state.nextId
     state.nextId++
   },
   [types.REMOVE_DECK] (state, id) {
     Vue.delete(state.own, id)
+    state.lastDeckChanged = id
     if (state.current.id === id) {
       state.current = {}
     }
   },
   [types.SET_OWN_DECKLIST] (state, deckList) {
+    state.lastDeckChanged = 0
     state.own = deckList
   },
   [types.SET_DECK_NEXTID] (state, nextId) {
@@ -119,6 +130,14 @@ const mutations = {
   [types.CHOOSE_OPPONENT] (state, type) {
     state.opponent = type
   },
+  [types.CHOOSE_DECK_ARENA] (state, id) {
+    if (typeof state.CLASSES[id] === 'undefined') return
+    state.currentArena = state.CLASSES[id]
+  },
+  [types.CHOOSE_OPPONENT_ARENA] (state, id) {
+    if (typeof state.CLASSES[id] === 'undefined') return
+    state.opponentArena = state.CLASSES[id]
+  },
   [types.ADD_DECKARCHETYPE] (state, name) {
     state.archetypes.push(name)
   },
@@ -130,10 +149,12 @@ const mutations = {
   },
   [types.ADD_DECKTYPE] (state, type) {
     type.id = state.nextTypeId
+    state.lastTypeChanged = type.id
     state.nextTypeId++
     state.types.push(type)
   },
   [types.SET_DECKTYPES] (state, deckTypes) {
+    state.lastTypeChanged = 0
     state.types = deckTypes
   },
   [types.REMOVE_DECKTYPE] (state, id) {
@@ -142,6 +163,7 @@ const mutations = {
         object.splice(index, 1)
       }
     })
+    state.lastTypeChanged = id
     if (state.opponent.id === id) {
       state.opponent = {}
     }
@@ -149,6 +171,7 @@ const mutations = {
   [types.SET_DECKTYPE_NAME] (state, payload) {
     state.types.forEach(function (type, index, object) {
       if (type.id === payload.id) {
+        state.lastTypeChanged = type.id
         type.name = payload.name
       }
     })
@@ -156,6 +179,7 @@ const mutations = {
   [types.SET_DECKTYPE_NOTE] (state, payload) {
     state.types.forEach(function (type, index, object) {
       if (type.id === payload.id) {
+        state.lastTypeChanged = type.id
         type.note = payload.note
       }
     })
@@ -163,6 +187,7 @@ const mutations = {
   [types.SWITCH_DECKTYPE_TOP] (state, id) {
     state.types.forEach(function (type, index, object) {
       if (type.id === id) {
+        state.lastTypeChanged = type.id
         type.top = !type.top
       }
     })

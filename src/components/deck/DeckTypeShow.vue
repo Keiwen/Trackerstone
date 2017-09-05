@@ -6,7 +6,7 @@
             </div>
             <div class="col-xs-8">
                 <h4>
-                    {{ getClassName(type.hsClass) }} {{ type.name }} ({{ type.archetype }})
+                    {{ generateTypeTitle(type) }}
                 </h4>
             </div>
             <div class="starIcon col-xs-2" @click="switchTop()" @mouseover="hoverStarIcon()" @mouseout="hoverStarIcon()" >
@@ -15,10 +15,10 @@
             </div>
         </div>
         <p>
-            Won {{ getGamesWonVsCount() }} / {{ getGamesPlayedVsCount() }} against
+            Won {{ type.wonVs }} / {{ type.playedVs }} against
             <i>
-                ({{ getWinPercentVs() }} % global, {{ getWinPercentVs(true) }} % last {{ getGamesPlayedVsCount(true) }} games)
-                 - score {{ getWinScoreVs() }}
+                ({{ type.winPercentVs }} % global, {{ type.winPercentVsRecent }} % last {{ type.playedVsRecent }} games)
+                 - score {{ type.winScoreVs }}
             </i>
         </p>
 
@@ -43,6 +43,7 @@
 
   import * as storeMut from '@/store/mutation-types'
   import { SweetModal } from 'sweet-modal-vue'
+  import { mapGetters } from 'vuex'
 
   export default {
     components: { SweetModal },
@@ -56,8 +57,13 @@
       }
     },
     computed: {
+      ...mapGetters(['generateTypeTitle', 'lastTypeChanged']),
       showDivClass () {
-        return 'deckClass-' + this.type.hsClass + ' deckArchetype-' + this.type.archetype
+        let divClass = 'deckClass-' + this.type.hsClass + ' deckArchetype-' + this.type.archetype
+        if (this.lastTypeChanged === this.type.id) {
+          divClass += ' lastChange'
+        }
+        return divClass
       },
       starIconScale () {
         return (this.starIconHover) ? 2 : 1
@@ -67,21 +73,6 @@
       }
     },
     methods: {
-      getClassName (id) {
-        return this.$store.getters.className(id)
-      },
-      getGamesPlayedVsCount (recent) {
-        return this.$store.getters.getGamesVsType(this.type.id, recent).length
-      },
-      getGamesWonVsCount (recent) {
-        return this.$store.getters.getGamesWonVsType(this.type.id, recent).length
-      },
-      getWinPercentVs (recent) {
-        return this.$store.getters.getWinPercentVsType(this.type.id, recent)
-      },
-      getWinScoreVs (recent) {
-        return this.$store.getters.getWinScoreVsType(this.type.id, recent)
-      },
       hoverStarIcon () {
         this.starIconHover = !this.starIconHover
       },

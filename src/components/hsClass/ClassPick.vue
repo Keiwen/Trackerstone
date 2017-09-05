@@ -1,6 +1,6 @@
 <template>
     <span>
-        <button class="btn btn-default" @click="openClassSpread()">{{ btnText }}</button>
+        <button class="btn btn-default" @click="openClassSpread()" :disabled="disabled">{{ btnText }}</button>
 
         <sweet-modal ref="modalClassPick" overlay-theme="dark" title="Pick class">
             <class-spread @pick-class="classPicked" />
@@ -12,27 +12,28 @@
 
 <script>
 
+  import { mapGetters } from 'vuex'
   import { SweetModal } from 'sweet-modal-vue'
   import ClassSpread from './ClassSpread'
 
   export default {
     components: { SweetModal, ClassSpread },
+    props: ['initialPick', 'disabled'],
     data () {
       return {
         pick: ''
       }
     },
     computed: {
+      ...mapGetters(['className']),
       btnText () {
-        if (this.pick) return this.getClassName(this.pick)
+        if (this.pick) return this.className(this.pick)
         return 'Choose class...'
       }
     },
     methods: {
-      getClassName (id) {
-        return this.$store.getters.className(id)
-      },
       openClassSpread () {
+        if (this.disabled) return
         this.$refs.modalClassPick.open()
       },
       classPicked (key) {
@@ -40,6 +41,9 @@
         this.$refs.modalClassPick.close()
         this.$emit('pick-class', key)
       }
+    },
+    mounted: function () {
+      if (typeof this.initialPick !== 'undefined') this.pick = this.initialPick
     }
   }
 

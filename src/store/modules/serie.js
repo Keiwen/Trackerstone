@@ -38,10 +38,16 @@ const state = {
   BONUS_STAR: 1,
   RANK_BONUSCANCELED: 5,
 
+  ARENA_MAX_WIN: 12,
+  ARENA_MAX_LOSS: 3,
+
   rank: 25,
   stars: 0,
   winStreak: 0,
-  highest: 25
+  highest: 25,
+  arenaWin: 0,
+  arenaLoss: 0,
+  arenaOpen: false
 
 }
 
@@ -105,7 +111,10 @@ const getters = {
       }
     }
     return totalStars
-  }
+  },
+  arenaWin: state => state.arenaWin,
+  arenaLoss: state => state.arenaLoss,
+  arenaOpen: state => state.arenaOpen
 }
 
 // ----------
@@ -152,6 +161,26 @@ const actions = {
     if (typeof number === 'undefined') number = 1 // default is 1 loss
     commit(types.STOP_WIN_STREAK)
     dispatch('earnStar', -number)
+  },
+  openArena ({commit, state}) {
+    commit(types.OPEN_ARENA)
+  },
+  closeArena ({commit, state}) {
+    commit(types.CLOSE_ARENA)
+  },
+  winArena ({dispatch, commit, state}) {
+    if (!state.arenaOpen) return
+    commit(types.ADD_ARENA_WIN)
+    if (state.arenaWin >= state.ARENA_MAX_WIN) {
+      dispatch('closeArena')
+    }
+  },
+  looseArena ({dispatch, commit, state}) {
+    if (!state.arenaOpen) return
+    commit(types.ADD_ARENA_LOSS)
+    if (state.arenaLoss >= state.ARENA_MAX_LOSS) {
+      dispatch('closeArena')
+    }
   },
   reset ({dispatch, commit, state}) {
     const bonusStar = 25 - state.highest
@@ -217,6 +246,20 @@ const mutations = {
     state.rank = 25
     state.stars = 0
     state.winstreak = 0
+  },
+  [types.OPEN_ARENA] (state) {
+    state.arenaWin = 0
+    state.arenaLoss = 0
+    state.arenaOpen = true
+  },
+  [types.CLOSE_ARENA] (state) {
+    state.arenaOpen = false
+  },
+  [types.ADD_ARENA_WIN] (state) {
+    state.arenaWin++
+  },
+  [types.ADD_ARENA_LOSS] (state) {
+    state.arenaLoss++
   }
 
 }

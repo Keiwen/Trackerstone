@@ -5,9 +5,8 @@
   import { mapGetters } from 'vuex'
 
   export default Line.extend({
-    props: ['history'],
     computed: {
-      ...mapGetters(['rank', 'highest']),
+      ...mapGetters(['rank', 'highest', 'getGamesList']),
       chartData () {
         let labels = []
         let dataset = {
@@ -18,9 +17,10 @@
           data: []
         }
 
-        for (let i = 0; i < this.history.length; i++) {
+        const history = this.getGamesList()
+        for (let i = 0; i < history.length; i++) {
           labels.push(i)
-          dataset.data.push(this.history[i].rank)
+          dataset.data.push(history[i].rank)
         }
         labels.push('current')
         dataset.data.push(this.rank)
