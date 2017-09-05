@@ -1,11 +1,11 @@
 <template>
-    <div>
-        <h4>{{ deck.name }} ({{ getClassName(deck.type.hsClass) }} {{ deck.type.name }})</h4>
+    <div class="deckShow" :class="showDivClass">
+        <h4>{{ generateDeckTitle(deck) }}</h4>
         <p>
-            Won {{ getDeckGamesWonCount() }} / {{ getDeckGamesPlayedCount() }}
+            Won {{ deck.wonWith }} / {{ deck.playedWith }}
             <i>
-                ({{ getDeckWinPercent() }} % global, {{ getDeckWinPercent(true) }} % last {{ getDeckGamesPlayedCount(true) }} games)
-                - score {{ getDeckWinScore() }}
+                ({{ deck.winPercentWith }} % global, {{ deck.winPercentWithRecent }} % last {{ deck.playedWithRecent }} games)
+                - score {{ deck.winScoreWith }}
             </i>
         </p>
     </div>
@@ -14,23 +14,18 @@
 
 <script>
 
+  import { mapGetters } from 'vuex'
+
   export default {
-    props: ['deck', 'idDeck'],
-    methods: {
-      getClassName (id) {
-        return this.$store.getters.className(id)
-      },
-      getDeckGamesPlayedCount (recent) {
-        return this.$store.getters.getGamesWithDeck(this.idDeck, recent).length
-      },
-      getDeckGamesWonCount (recent) {
-        return this.$store.getters.getGamesWonWithDeck(this.idDeck, recent).length
-      },
-      getDeckWinPercent (recent) {
-        return this.$store.getters.getWinPercentWithDeck(this.idDeck, recent)
-      },
-      getDeckWinScore (recent) {
-        return this.$store.getters.getWinScoreWithDeck(this.idDeck, recent)
+    props: ['deck'],
+    computed: {
+      ...mapGetters(['generateDeckTitle', 'lastDeckChanged']),
+      showDivClass () {
+        let divClass = ''
+        if (this.lastDeckChanged === this.deck.id) {
+          divClass += ' lastChange'
+        }
+        return divClass
       }
     }
   }

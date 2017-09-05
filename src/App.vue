@@ -8,6 +8,8 @@
             <router-link :to="{ name: 'deckTypesList' }">Manage deck types</router-link>
             -
             <router-link :to="{ name: 'deckList' }">Manage decks</router-link>
+            -
+            <router-link :to="{ name: 'arena' }">Arena</router-link>
         </div>
         <img src="./assets/logo.png" style="height: 150px">
         <router-view></router-view>

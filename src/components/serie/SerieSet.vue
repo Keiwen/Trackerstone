@@ -1,10 +1,10 @@
 <template>
     <div class="container-fluid">
         <h2>Set serie data</h2>
-        <label>Rank: </label><input type="number" v-model="rank"/>
-        <label>Stars: </label><input type="number" v-model="stars"/>
-        <label>Win streak: </label><input type="number" v-model="winStreak"/>
-        <label>Chest: </label><input type="number" v-model="highest"/>
+        <label>Rank: </label><input type="number" v-model="newRank"/>
+        <label>Stars: </label><input type="number" v-model="newStars"/>
+        <label>Win streak: </label><input type="number" v-model="newWinStreak"/>
+        <label>Chest: </label><input type="number" v-model="newHighest"/>
         <hr/>
         <button @click="set()" class="btn btn-success">Ok</button>
     </div>
@@ -14,23 +14,27 @@
 <script>
 
   import * as storeMut from '@/store/mutation-types'
+  import { mapGetters } from 'vuex'
 
   export default {
     data () {
       return {
-        rank: 25,
-        stars: 0,
-        highest: 25,
-        winStreak: 0
+        newRank: 25,
+        newStars: 0,
+        newHighest: 25,
+        newWinStreak: 0
       }
+    },
+    computed: {
+      ...mapGetters(['rank', 'stars', 'highest', 'winStreak'])
     },
     methods: {
       set () {
         const dataSet = {
-          rank: this.rank,
-          stars: this.stars,
-          highest: this.highest,
-          winStreak: this.winStreak
+          rank: this.newRank,
+          stars: this.newStars,
+          highest: this.newHighest,
+          winStreak: this.newWinStreak
         }
         this.$store.commit(storeMut.SET_SERIE_DATA, dataSet)
         this.redirectToSerie()
@@ -40,10 +44,10 @@
       }
     },
     mounted: function () {
-      this.rank = this.$store.getters.rank
-      this.stars = this.$store.getters.stars
-      this.highest = this.$store.getters.highest
-      this.winStreak = this.$store.getters.winStreak
+      this.newRank = this.rank
+      this.newStars = this.stars
+      this.newHighest = this.highest
+      this.newWinStreak = this.winStreak
     }
   }
 

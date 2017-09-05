@@ -2,10 +2,10 @@
     <select v-model="pick" @change="pickType()">
         <option :value="{}">Undefined</option>
         <optgroup label="Stared">
-            <option v-for="type in typesTop" :value="type">{{ getClassName(type.hsClass) }} {{ type.name }} ({{ type.archetype }})</option>
+            <option v-for="type in getTypesOnTop()" :value="type">{{ generateTypeTitle(type) }}</option>
         </optgroup>
         <optgroup label="------">
-            <option v-for="type in typesNoTop" :value="type">{{ getClassName(type.hsClass) }} {{ type.name }} ({{ type.archetype }})</option>
+            <option v-for="type in getTypesOnTop(false)" :value="type">{{ generateTypeTitle(type) }}</option>
         </optgroup>
     </select>
 </template>
@@ -23,13 +23,7 @@
       }
     },
     computed: {
-      ...mapGetters(['types']),
-      typesTop () {
-        return this.$store.getters.getTypesOnTop()
-      },
-      typesNoTop () {
-        return this.$store.getters.getTypesOnTop(false)
-      }
+      ...mapGetters(['getTypesOnTop', 'generateTypeTitle'])
     },
     methods: {
       getClassName (id) {

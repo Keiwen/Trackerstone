@@ -2,11 +2,15 @@
     <div class="container">
         <div class="chart">
             <h2>Ranks</h2>
-            <serie-rank-evol-graph :history="history" :height="100" />
+            <serie-rank-evol-graph :height="100" />
         </div>
         <div class="chart">
             <h2>Total stars</h2>
-            <serie-stars-evol-graph :history="history" :height="100" />
+            <serie-stars-evol-graph :height="100" />
+        </div>
+        <div class="chart">
+            <h2>Class played against</h2>
+            <class-against-graph :height="100" />
         </div>
 
     </div>
@@ -17,14 +21,10 @@
 
   import SerieStarsEvolGraph from '@/components/charts/SerieStarsEvolGraph'
   import SerieRankEvolGraph from '@/components/charts/SerieRankEvolGraph'
+  import ClassAgainstGraph from '@/components/charts/ClassAgainstGraph'
 
   export default {
-    components: {SerieStarsEvolGraph, SerieRankEvolGraph},
-    computed: {
-      history () {
-        return this.$store.getters.getGamesList()
-      }
-    }
+    components: {SerieStarsEvolGraph, SerieRankEvolGraph, ClassAgainstGraph}
   }
 
 </script>

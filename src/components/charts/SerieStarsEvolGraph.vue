@@ -6,9 +6,8 @@
   import { mapGetters } from 'vuex'
 
   export default Line.extend({
-    props: ['history'],
     computed: {
-      ...mapGetters(['rank', 'stars']),
+      ...mapGetters(['rank', 'stars', 'getGamesList', 'getTotalStars']),
       chartData () {
         let labels = []
         let dataset = {
@@ -19,10 +18,10 @@
           data: []
         }
 
-        for (let i = 0; i < this.history.length; i++) {
+        const history = this.getGamesList()
+        for (let i = 0; i < history.length; i++) {
           labels.push(i)
-          const game = this.history[i]
-          const totalStars = this.getTotalStars(game.rank, game.stars)
+          const totalStars = this.getTotalStars(history[i].rank, history[i].stars)
           dataset.data.push(totalStars)
         }
         const totalStars = this.getTotalStars(this.rank, this.stars)
@@ -35,11 +34,6 @@
         return {
           legend: { display: false }
         }
-      }
-    },
-    methods: {
-      getTotalStars (rank, stars) {
-        return this.$store.getters.getTotalStars(rank, stars)
       }
     },
     mounted () {

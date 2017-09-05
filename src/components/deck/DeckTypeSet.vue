@@ -6,8 +6,7 @@
         <archetype-pick @pick-archetype="pickArchetype" />
         <label>Name: </label>
         <input type="text" v-model="newName" @keyup.enter="add()"/>
-        <label for="type_top">Star: </label>
-        <input type="checkbox" v-model="newTop" id="type_top"/>
+        <enhanced-check v-model="newTop" label="Star" :animate="true" class="starCheck" subClass="warning" />
         <button @click="add()" class="btn btn-success">Add</button>
     </div>
 </template>
@@ -18,9 +17,10 @@
   import * as storeMut from '@/store/mutation-types'
   import ClassPick from '@/components/hsClass/ClassPick'
   import ArchetypePick from './ArchetypePick.vue'
+  import { EnhancedCheck } from 'vue-enhanced-check'
 
   export default {
-    components: {ClassPick, ArchetypePick},
+    components: {ClassPick, ArchetypePick, EnhancedCheck},
     data () {
       return {
         newName: '',
@@ -48,3 +48,9 @@
   }
 
 </script>
+
+<style>
+    .starCheck {
+        display: inline-block;
+    }
+</style>

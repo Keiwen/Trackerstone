@@ -2,8 +2,8 @@
     <div class="container-fluid">
         <h2>Manage decks</h2>
         <div class="container-fluid">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" v-for="(deck, id) in own">
-                <deck-show :deck="deck" :idDeck="id" />
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" v-for="(deck, id) in deckStats">
+                <deck-show :deck="deck" />
                 <div>
                     <confirmation-modal @modal-confirm="remove(id)" modalText="Are you sure you want to delete this deck?"/>
                 </div>
@@ -41,7 +41,7 @@
       }
     },
     computed: {
-      ...mapGetters(['own', 'types', 'recentNumberGames'])
+      ...mapGetters(['deckStats', 'recentNumberGames'])
     },
     methods: {
       pickType (type) {
@@ -58,9 +58,6 @@
       },
       remove (id) {
         this.$store.commit(storeMut.REMOVE_DECK, id)
-      },
-      getClassName (id) {
-        return this.$store.getters.className(id)
       }
     }
   }
