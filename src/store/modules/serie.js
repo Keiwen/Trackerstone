@@ -114,6 +114,20 @@ const getters = {
     }
     return totalStars
   },
+  getSerieTimeProgress: state => {
+    let currentDate = new Date()
+    let lastDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0)
+    currentDate = currentDate.getDate()
+    lastDate = lastDate.getDate()
+    return Math.round(currentDate / lastDate * 100)
+  },
+  getSerieTimeLeft: state => {
+    let currentDate = new Date()
+    let lastDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0)
+    currentDate = currentDate.getDate()
+    lastDate = lastDate.getDate()
+    return lastDate - currentDate
+  },
   arenaWin: state => state.arenaWin,
   arenaLoss: state => state.arenaLoss,
   arenaOpen: state => state.arenaOpen,
