@@ -4,10 +4,10 @@
         <p>Rank: {{ rank }} - {{ currentRankTitle }} // Stars: {{ stars }} (Chest: {{ highest }})</p>
         <p>Next milestone: {{ nextMilestone}} - {{ milestoneTitle }} ({{ winsToMilestone }} wins needed)</p>
         <div class="serieTime">
-            <radial-progress-bar diameter="100"
+            <radial-progress-bar :diameter="100"
                                  :completed-steps="getSerieTimeProgress"
-                                 strokeWidth="10"
-                                 total-steps="100"
+                                 :strokeWidth="10"
+                                 :total-steps="100"
                                  startColor="#463C3B"
                                  stopColor="#D3921F"
                                  innerStrokeColor="#DDDDDD">
