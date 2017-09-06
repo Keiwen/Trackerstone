@@ -17,14 +17,35 @@
         color: black;
         font-weight: bold;
         margin: 15px 0;
+        -webkit-transition: 0.3s linear all;
+        -moz-transition: 0.3s linear all;
+        transition: 0.3s linear all;
+
+        &:hover {
+          margin-top: 5px;
+          -webkit-transition: all 0.15s linear;
+          -moz-transition:  all 0.15s linear;
+          transition: all 0.15s linear;
+        }
+
+        &:focus {
+          outline: none;
+        }
+
+        &:active {
+          transition: 0.3s linear all;
+          margin-top: 24px;
+          margin-bottom: 0;
+          -webkit-transition: all 0.15s linear;
+          -moz-transition:  all 0.15s linear;
+          transition: all 0.15s linear;
+        }
+
       }
 
       .aggro {
         background-color: $red-ts;
         box-shadow: 0 10px darken($red-ts, 10%);
-        -webkit-transition: 0.3s linear all;
-        -moz-transition: 0.3s linear all;
-        transition: 0.3s linear all;
 
         &::before {
           content: '';
@@ -39,10 +60,10 @@
 
         &:hover {
           box-shadow: 0 20px darken($red-ts, 10%);
-          margin-top: 5px;
-          -webkit-transition: all 0.15s linear;
-          -moz-transition:  all 0.15s linear;
-          transition: all 0.15s linear;
+        }
+
+        &:active {
+          box-shadow: 0 2px darken($red-ts, 10%);
         }
 
       }
@@ -50,9 +71,6 @@
       .midrange {
         background-color: $green-ts;
         box-shadow: 0 10px darken($green-ts, 10%);
-        -webkit-transition: 0.3s linear all;
-        -moz-transition: 0.3s linear all;
-        transition: 0.3s linear all;
 
         &::before {
           content: '';
@@ -67,19 +85,16 @@
 
         &:hover {
           box-shadow: 0 20px darken($green-ts, 10%);
-          margin-top: 5px;
-          -webkit-transition: all 0.15s linear;
-          -moz-transition:  all 0.15s linear;
-          transition: all 0.15s linear;
+        }
+
+        &:active {
+          box-shadow: 0 2px darken($green-ts, 10%);
         }
       }
 
       .control {
         background-color: $blue-ts;
         box-shadow: 0 10px darken($blue-ts, 10%);
-        -webkit-transition: 0.3s linear all;
-        -moz-transition: 0.3s linear all;
-        transition: 0.3s linear all;
 
         &::before {
           content: '';
@@ -94,19 +109,16 @@
 
         &:hover {
           box-shadow: 0 20px darken($blue-ts, 10%);
-          margin-top: 5px;
-          -webkit-transition: all 0.15s linear;
-          -moz-transition:  all 0.15s linear;
-          transition: all 0.15s linear;
+        }
+
+        &:active {
+          box-shadow: 0 2px darken($blue-ts, 10%);
         }
       }
 
       .combo {
         background-color: $orange-ts;
         box-shadow: 0 10px darken($orange-ts, 10%);
-        -webkit-transition: 0.3s linear all;
-        -moz-transition: 0.3s linear all;
-        transition: 0.3s linear all;
 
         &::before {
           content: '';
@@ -121,10 +133,10 @@
 
         &:hover {
           box-shadow: 0 20px darken($orange-ts, 10%);
-          margin-top: 5px;
-          -webkit-transition: all 0.15s linear;
-          -moz-transition:  all 0.15s linear;
-          transition: all 0.15s linear;
+        }
+
+        &:active {
+          box-shadow: 0 2px darken($orange-ts, 10%);
         }
       }
     }
