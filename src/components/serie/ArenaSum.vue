@@ -5,7 +5,7 @@
         <p>{{ arenaGamesWon }} total games won, {{ arenaGamesLoss }} loose ({{ arenaWinPercent }} % winrate)</p>
         <p>Gold prize: {{ totalGoldPrize }} total, {{ averageGoldPrize }} average</p>
         <p>Dust prize: {{ totalDustPrize }} total, {{ averageDustPrize }} average</p>
-        <p>Gold balance: {{ getGoldBalance(true) }} including booster, {{ getGoldBalance() }} arena fee</p>
+        <p>Gold balance: {{ getGoldBalance(true) }} refund with booster, {{ getGoldBalance() }} arena refund</p>
         <router-link :to="{ name: 'arenaChart' }">See charts</router-link>
     </div>
 </template>
