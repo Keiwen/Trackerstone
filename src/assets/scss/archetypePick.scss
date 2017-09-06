@@ -1,0 +1,131 @@
+.sweet-archetype {
+  .sweet-modal {
+    max-width: 960px;
+
+    .archetypePick {
+      border: 1px solid transparent;
+      cursor: pointer;
+
+      :hover {
+        border: 1px solid $orange-ts;
+      }
+
+      > div {
+        padding: 20px 0 20px 75px;
+        position: relative;
+        text-align: left;
+        color: black;
+        font-weight: bold;
+      }
+
+      .aggro {
+        background-color: $red-ts;
+        box-shadow: 0 10px darken($red-ts, 10%);
+        -webkit-transition: 0.15s linear all;
+        -moz-transition: 0.15s linear all;
+        transition: 0.15s linear all;
+
+        &::before {
+          content: '';
+          width: 60px;
+          height: 60px;
+          background: url('/static/style-aggro.svg') -10px -10px no-repeat;
+          position: absolute;
+          display: block;
+          top: 12px;
+          left: 20px;
+        }
+
+        &:hover {
+          box-shadow: 0 10px darken($red-ts, 10%);
+          margin-bottom: 5px;
+          -webkit-transition: all 0.15s linear;
+          -moz-transition:  all 0.15s linear;
+          transition: all 0.15s linear;
+        }
+
+      }
+
+      .midrange {
+        background-color: $green-ts;
+        box-shadow: 0 10px darken($green-ts, 10%);
+        -webkit-transition: 0.15s linear all;
+        -moz-transition: 0.15s linear all;
+        transition: 0.15s linear all;
+
+        &::before {
+          content: '';
+          width: 60px;
+          height: 60px;
+          background: url('/static/style-midrange.svg') -10px -10px no-repeat;
+          position: absolute;
+          display: block;
+          top: 12px;
+          left: 20px;
+        }
+
+        &:hover {
+          box-shadow: 0 10px darken($green-ts, 10%);
+          margin-bottom: 5px;
+          -webkit-transition: all 0.15s linear;
+          -moz-transition:  all 0.15s linear;
+          transition: all 0.15s linear;
+        }
+      }
+
+      .control {
+        background-color: $blue-ts;
+        box-shadow: 0 10px darken($blue-ts, 10%);
+        -webkit-transition: 0.15s linear all;
+        -moz-transition: 0.15s linear all;
+        transition: 0.15s linear all;
+
+        &::before {
+          content: '';
+          width: 57px;
+          height: 80px;
+          background: url("/static/style-control.svg") -9px 0 no-repeat;
+          position: absolute;
+          display: block;
+          top: 2px;
+          left: 20px;
+        }
+
+        &:hover {
+          box-shadow: 0 10px darken($blue-ts, 10%);
+          margin-bottom: 5px;
+          -webkit-transition: all 0.15s linear;
+          -moz-transition:  all 0.15s linear;
+          transition: all 0.15s linear;
+        }
+      }
+
+      .combo {
+        background-color: $orange-ts;
+        box-shadow: 0 10px darken($orange-ts, 10%);
+        -webkit-transition: 0.15s linear all;
+        -moz-transition: 0.15s linear all;
+        transition: 0.15s linear all;
+
+        &::before {
+          content: '';
+          width: 59px;
+          height: 70px;
+          background: url("/static/style-combo.svg") -12px 0 no-repeat;
+          position: absolute;
+          display: block;
+          top: 0;
+          left: 20px;
+        }
+
+        &:hover {
+          box-shadow: 0 10px darken($orange-ts, 10%);
+          margin-bottom: 5px;
+          -webkit-transition: all 0.15s linear;
+          -moz-transition:  all 0.15s linear;
+          transition: all 0.15s linear;
+        }
+      }
+    }
+  }
+}

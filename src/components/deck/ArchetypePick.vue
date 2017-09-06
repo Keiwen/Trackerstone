@@ -2,10 +2,10 @@
     <span>
         <button class="btn btn-default" @click="openArchetypeSpread()">{{ btnText }}</button>
 
-        <sweet-modal ref="modalArchetypePick" overlay-theme="dark" title="Pick archetype">
+        <sweet-modal class="sweet-archetype" ref="modalArchetypePick" overlay-theme="dark" title="Pick archetype">
             <div class="container-fluid">
-                <div class="col-xs-6 col-sm-3 archetypePick" v-for="archetype in archetypes">
-                    <div @click="archetypeClick(archetype)">
+                <div class="col-xs-12 col-sm-6 col-md-3 archetypePick" v-for="archetype in archetypes">
+                    <div :class="archetype" @click="archetypeClick(archetype)">
                         {{ archetype }}
                     </div>
                 </div>
@@ -50,13 +50,5 @@
 </script>
 
 <style>
-    .archetypePick {
-        border: 1px solid transparent;
-        cursor: pointer;
-    }
-
-    .archetypePick:hover {
-        border: 1px solid #D3921F;
-    }
 
 </style>
