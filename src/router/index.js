@@ -8,6 +8,7 @@ import DeckChart from '@/components/deck/DeckChart'
 import SerieChart from '@/components/serie/SerieChart'
 import DeckTypeChart from '@/components/deck/DeckTypeChart'
 import Arena from '@/components/serie/Arena'
+import ArenaChart from '@/components/serie/ArenaChart'
 
 Vue.use(Router)
 
@@ -47,6 +48,11 @@ export default new Router({
       path: '/serieChart',
       name: 'serieChart',
       component: SerieChart
+    },
+    {
+      path: '/arenaChart',
+      name: 'arenaChart',
+      component: ArenaChart
     },
     {
       path: '/deckTypeChart',

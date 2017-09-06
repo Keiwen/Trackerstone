@@ -1,12 +1,12 @@
 <template>
     <span>
-        <button class="btn btn-default" @click="openArchetypeSpread()">{{ btnText }}</button>
+        <button class="btn btn-default" @click="openArchetypeSpread()">{{ btnText | capitalize }}</button>
 
         <sweet-modal class="sweet-archetype" ref="modalArchetypePick" overlay-theme="dark" title="Pick archetype">
             <div class="container-fluid">
                 <div class="col-xs-12 col-sm-6 col-md-3 archetypePick" v-for="archetype in archetypes">
                     <div :class="archetype" @click="archetypeClick(archetype)">
-                        {{ archetype }}
+                        {{ archetype | capitalize }}
                     </div>
                 </div>
             </div>

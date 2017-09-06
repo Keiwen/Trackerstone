@@ -15,6 +15,7 @@
 
         <div class="arenaClose" v-else>
             <p>Arena closed</p>
+            <arena-prize></arena-prize>
             <arena-stats/>
             <div class="newArena">
                 <label>Class: </label>
@@ -33,11 +34,12 @@
   import ArenaSum from './ArenaSum'
   import ArenaDuel from './ArenaDuel'
   import ArenaStats from './ArenaStats'
+  import ArenaPrize from './ArenaPrize'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
   import ClassPick from '@/components/hsClass/ClassPick'
 
   export default {
-    components: {ArenaSum, ArenaDuel, ArenaStats, ConfirmationModal, ClassPick},
+    components: {ArenaSum, ArenaDuel, ArenaStats, ArenaPrize, ConfirmationModal, ClassPick},
     data () {
       return {
         newClass: ''

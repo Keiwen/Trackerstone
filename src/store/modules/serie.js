@@ -40,6 +40,8 @@ const state = {
 
   ARENA_MAX_WIN: 12,
   ARENA_MAX_LOSS: 3,
+  ARENA_FEE: 150,
+  BOOSTER_COST: 100,
 
   rank: 25,
   stars: 0,
@@ -114,7 +116,9 @@ const getters = {
   },
   arenaWin: state => state.arenaWin,
   arenaLoss: state => state.arenaLoss,
-  arenaOpen: state => state.arenaOpen
+  arenaOpen: state => state.arenaOpen,
+  arenaFee: state => state.ARENA_FEE,
+  boosterCost: state => state.BOOSTER_COST
 }
 
 // ----------

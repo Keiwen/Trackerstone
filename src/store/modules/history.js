@@ -120,12 +120,12 @@ const getters = {
     return getters.getArenaGamesList(currentOnly, 'player.id', hsClass)
   },
   getArenaGamesWonWithClass: (state, getters) => (hsClass, currentOnly) => {
-    const played = getters.getArenaGamesWithClass(currentOnly, hsClass)
+    const played = getters.getArenaGamesWithClass(hsClass, currentOnly)
     return getters.getGamesWonAmong(played)
   },
   getArenaWinPercentWithClass: (state, getters) => (hsClass, currentOnly) => {
-    const played = getters.getArenaGamesWithClass(currentOnly, hsClass)
-    const won = getters.getArenaGamesWonWithClass(currentOnly, hsClass)
+    const played = getters.getArenaGamesWithClass(hsClass, currentOnly)
+    const won = getters.getArenaGamesWonWithClass(hsClass, currentOnly)
     return getters.computeWinPercent(played.length, won.length)
   },
   getArenaWithClass: (state, getters) => (hsClass) => {
@@ -169,12 +169,12 @@ const getters = {
     return getters.getArenaGamesList(currentOnly, 'opponent.id', hsClass)
   },
   getArenaGamesWonVsClass: (state, getters) => (hsClass, currentOnly) => {
-    const played = getters.getArenaGamesVsClass(currentOnly, hsClass)
+    const played = getters.getArenaGamesVsClass(hsClass, currentOnly)
     return getters.getGamesWonAmong(played)
   },
   getArenaWinPercentVsClass: (state, getters) => (hsClass, currentOnly) => {
-    const played = getters.getArenaGamesVsClass(currentOnly, hsClass)
-    const won = getters.getArenaGamesWonVsClass(currentOnly, hsClass)
+    const played = getters.getArenaGamesVsClass(hsClass, currentOnly)
+    const won = getters.getArenaGamesWonVsClass(hsClass, currentOnly)
     return getters.computeWinPercent(played.length, won.length)
   },
   // GAMES FILTERS >>>
@@ -228,6 +228,15 @@ const getters = {
     }
     return Math.round(totalWin / arenaComplete.length * 10) / 10
   },
+  arenaAverageWinWithClass: (state, getters) => (hsClass) => {
+    const arenaComplete = getters.getArenaWithClass(hsClass)
+    if (arenaComplete.length === 0) return 0
+    let totalWin = 0
+    for (let i = 0; i < arenaComplete.length; i++) {
+      totalWin += arenaComplete[i]['win']
+    }
+    return Math.round(totalWin / arenaComplete.length * 10) / 10
+  },
   arenaMaxWin: (state, getters) => {
     const arenaComplete = getters.getArenaList()
     let maxWin = 0
@@ -236,6 +245,29 @@ const getters = {
     }
     return maxWin
   },
+  arenaWithPrize: (state, getters) => {
+    const arenaComplete = getters.getArenaList()
+    let arenaCount = 0
+    for (let i = 0; i < arenaComplete.length; i++) {
+      if (typeof arenaComplete[i]['prizes'] === 'undefined') continue
+      arenaCount++
+    }
+    return arenaCount
+  },
+  arenaTotalPrize: (state, getters) => (prize) => {
+    const arenaComplete = getters.getArenaList()
+    let totalPrize = 0
+    for (let i = 0; i < arenaComplete.length; i++) {
+      if (typeof arenaComplete[i]['prizes'] === 'undefined') continue
+      totalPrize += arenaComplete[i]['prizes'][prize]
+    }
+    return totalPrize
+  },
+  arenaAveragePrize: (state, getters) => (prize) => {
+    if (getters.arenaWithPrize === 0) return 0
+    return Math.round(getters.arenaTotalPrize(prize) / getters.arenaWithPrize)
+  },
+
   // GAMES STATS >>>
   recentNumberGames: state => state.recentNumberGames
 }
@@ -244,7 +276,17 @@ const getters = {
 // Actions
 // ----------
 const actions = {
+  setLastArenaPrize ({dispatch, state, commit}, prizes) {
+    if (state.completedArena.length === 0) return
+    // check prizes set
+    if (typeof prizes.gold === 'undefined' || prizes.gold === '') prizes.gold = 0
+    if (typeof prizes.dust === 'undefined' || prizes.dust === '') prizes.dust = 0
+    // check prizes format
+    prizes.gold = parseInt(prizes.gold)
+    prizes.dust = parseInt(prizes.dust)
 
+    commit(types.SET_LAST_ARENA_PRIZE, prizes)
+  }
 }
 
 // ----------
@@ -268,6 +310,11 @@ const mutations = {
   },
   [types.COMPLETE_ARENA_HISTORY] (state, history) {
     state.completedArena.push(history)
+  },
+  [types.SET_LAST_ARENA_PRIZE] (state, prizePayload) {
+    let lastArena = state.completedArena.pop()
+    lastArena['prizes'] = prizePayload
+    state.completedArena.push(lastArena)
   }
 
 }
