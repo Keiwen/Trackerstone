@@ -36,9 +36,6 @@
       }
     },
     methods: {
-      getClassName (id) {
-        return this.$store.getters.className(id)
-      },
       openTypeSpread () {
         this.$refs.modalTypePick.open()
       },

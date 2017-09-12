@@ -36,7 +36,7 @@
       }
     },
     computed: {
-      ...mapGetters(['types', 'classes', 'generateTypeTitle', 'getTypesWithClass', 'getTypesOnTop']),
+      ...mapGetters(['classes', 'generateTypeTitle', 'getTypesWithClass', 'getTypesOnTop']),
       sortLabels () {
         let labels = ['All']
         for (let hsClass in this.classes) {
