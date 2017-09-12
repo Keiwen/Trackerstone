@@ -10,7 +10,11 @@ import createLogger from '../../node_modules/vuex/src/plugins/logger'
 import * as types from './mutation-types'
 
 import persistedState from 'vuex-persistedstate'
-// tried to store in cookie with import Cookie from 'vue-cookie' but not well updated
+// tried to store in cookie with import Cookie from 'vue-cookie' but too many datas
+// cookie values are limited ot 4 096 characters. Default store is around 10 000
+// we could split store in different part and cookie, but
+// considering variable length of deck type as simple example, should be really complex
+// keep local storage for now
 
 Vue.use(Vuex)
 
