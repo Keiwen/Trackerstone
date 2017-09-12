@@ -12,7 +12,7 @@
         <router-link :to="{ name: 'deckChart' }">See charts</router-link>
         <hr/>
         <label>Type: </label>
-        <type-pick @pick-type="pickType" />
+        <deck-type-pick @pick-type="pickType" />
         <label>Name (opt): </label><input type="text" v-model="newName" @keyup.enter="add()"/>
         <button @click="add()" class="btn btn-success">Add</button>
 
@@ -28,12 +28,12 @@
 
   import { mapGetters } from 'vuex'
   import * as storeMut from '@/store/mutation-types'
-  import TypePick from './TypePick'
+  import DeckTypePick from './DeckTypePick'
   import DeckShow from './DeckShow'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
 
   export default {
-    components: {TypePick, DeckShow, ConfirmationModal},
+    components: {DeckTypePick, DeckShow, ConfirmationModal},
     data () {
       return {
         newType: {},

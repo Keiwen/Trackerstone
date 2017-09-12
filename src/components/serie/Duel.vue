@@ -9,7 +9,7 @@
             </div>
             <div class="col-md-6">
                 <h3>Opponent deck</h3>
-                <type-pick @pick-type="pickOpponentType" :initialPick="opponent" />
+                <deck-type-pick @pick-type="pickOpponentType" :initialPick="opponent" />
                 <span @click="showNote()">
                     <icon name="info-circle" :scale="2" class="infoNote" :class="{'noted': opponent.note}"></icon>
                 </span>
@@ -34,11 +34,11 @@
   import * as storeMut from '@/store/mutation-types'
   import { mapGetters, mapActions } from 'vuex'
   import DeckPick from '@/components/deck/DeckPick'
-  import TypePick from '@/components/deck/TypePick'
+  import DeckTypePick from '@/components/deck/DeckTypePick'
   import { SweetModal } from 'sweet-modal-vue'
 
   export default {
-    components: {DeckPick, TypePick, SweetModal},
+    components: {DeckPick, DeckTypePick, SweetModal},
     computed: {
       ...mapGetters(['current', 'opponent', 'getGamesVsType', 'getGamesWonAmong', 'computeWinPercent']),
       gamesCurrentPlayedVs () {
