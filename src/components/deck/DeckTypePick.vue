@@ -1,21 +1,27 @@
 <template>
-    <select v-model="pick" @change="pickType()">
-        <option :value="{}">Undefined</option>
-        <optgroup label="Stared">
-            <option v-for="type in getTypesOnTop()" :value="type">{{ generateTypeTitle(type) }}</option>
-        </optgroup>
-        <optgroup label="------">
-            <option v-for="type in getTypesOnTop(false)" :value="type">{{ generateTypeTitle(type) }}</option>
-        </optgroup>
-    </select>
+    <span>
+        <button class="btn btn-default" @click="openTypeSpread()">{{ btnText }}</button>
+
+        <sweet-modal ref="modalTypePick" overlay-theme="dark" title="Pick type">
+            <deck-type-spread @pick-type="typePicked"></deck-type-spread>
+        </sweet-modal>
+
+    </span>
+
+
+
+
 </template>
 
 
 <script>
 
   import { mapGetters } from 'vuex'
+  import { SweetModal } from 'sweet-modal-vue'
+  import DeckTypeSpread from './DeckTypeSpread'
 
   export default {
+    components: { SweetModal, DeckTypeSpread },
     props: ['initialPick'],
     data () {
       return {
@@ -23,14 +29,23 @@
       }
     },
     computed: {
-      ...mapGetters(['getTypesOnTop', 'generateTypeTitle'])
+      ...mapGetters(['generateTypeTitle']),
+      btnText () {
+        if (this.pick.name) return this.generateTypeTitle(this.pick)
+        return 'Choose type...'
+      }
     },
     methods: {
       getClassName (id) {
         return this.$store.getters.className(id)
       },
-      pickType () {
-        this.$emit('pick-type', this.pick)
+      openTypeSpread () {
+        this.$refs.modalTypePick.open()
+      },
+      typePicked (key) {
+        this.pick = key
+        this.$refs.modalTypePick.close()
+        this.$emit('pick-type', key)
       }
     },
     mounted: function () {

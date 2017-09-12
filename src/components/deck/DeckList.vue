@@ -16,10 +16,6 @@
         <label>Name (opt): </label><input type="text" v-model="newName" @keyup.enter="add()"/>
         <button @click="add()" class="btn btn-success">Add</button>
 
-        <br/><br/>
-        <router-link :to="{ name: 'deckTypesList' }">Manage deck types</router-link>
-
-
     </div>
 </template>
 
