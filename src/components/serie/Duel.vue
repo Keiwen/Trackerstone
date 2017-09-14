@@ -4,8 +4,6 @@
             <div class="col-md-6">
                 <h3>Current deck</h3>
                 <deck-pick/>
-                <br/>
-                <router-link :to="{ name: 'deckList' }">Manage decks</router-link>
             </div>
             <div class="col-md-6">
                 <h3>Opponent deck</h3>
