@@ -15,6 +15,7 @@
 <script>
 
   import * as storeMut from '@/store/mutation-types'
+  import { mapActions } from 'vuex'
   import ClassPick from '@/components/hsClass/ClassPick'
   import ArchetypePick from './ArchetypePick.vue'
   import { EnhancedCheck } from 'vue-enhanced-check'
@@ -30,6 +31,7 @@
       }
     },
     methods: {
+      ...mapActions(['addSuccess']),
       add () {
         this.$store.commit(storeMut.ADD_DECKTYPE, {
           name: this.newName,
@@ -37,6 +39,7 @@
           archetype: this.newArchetype,
           top: this.newTop
         })
+        this.addSuccess('Deck type added')
       },
       pickClass (pick) {
         this.newClass = pick

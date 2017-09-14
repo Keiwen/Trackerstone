@@ -22,7 +22,7 @@
 
 <script>
 
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   import * as storeMut from '@/store/mutation-types'
   import DeckTypePick from './DeckTypePick'
   import DeckShow from './DeckShow'
@@ -40,6 +40,7 @@
       ...mapGetters(['deckStats', 'recentNumberGames'])
     },
     methods: {
+      ...mapActions(['addSuccess']),
       pickType (type) {
         this.newType = type
       },
@@ -51,6 +52,7 @@
         this.$store.commit(storeMut.ADD_DECK, deckData)
         this.newType = {}
         this.newName = ''
+        this.addSuccess('Deck added')
       },
       remove (id) {
         this.$store.commit(storeMut.REMOVE_DECK, id)

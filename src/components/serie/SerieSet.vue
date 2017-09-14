@@ -14,7 +14,7 @@
 <script>
 
   import * as storeMut from '@/store/mutation-types'
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     data () {
@@ -29,6 +29,7 @@
       ...mapGetters(['rank', 'stars', 'highest', 'winStreak'])
     },
     methods: {
+      ...mapActions(['addSuccess']),
       set () {
         const dataSet = {
           rank: this.newRank,
@@ -37,6 +38,7 @@
           winStreak: this.newWinStreak
         }
         this.$store.commit(storeMut.SET_SERIE_DATA, dataSet)
+        this.addSuccess('Serie data set')
         this.redirectToSerie()
       },
       redirectToSerie () {
