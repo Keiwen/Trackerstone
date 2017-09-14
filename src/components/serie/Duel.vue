@@ -24,8 +24,11 @@
         <div>
             <p>{{ gamesCurrentPlayedVs.length }} similar games played ({{ gamesCurrentWinpercentVs }} % won)</p>
         </div>
-        <button @click="win()" class="btn btn-success">Win <icon name="thumbs-up" /></button>
-        <button @click="loose()" class="btn btn-warning">Loss <icon name="thumbs-down" /></button>
+
+        <div class="duelButtons">
+            <button @click="win()" class="btn btn-success">Win <icon name="thumbs-up" /></button>
+            <button @click="loose()" class="btn btn-warning">Loss <icon name="thumbs-down" /></button>
+        </div>
     </div>
 </template>
 
@@ -68,3 +71,9 @@
   }
 
 </script>
+
+<style>
+    .duelButtons {
+        margin-top: 25px;
+    }
+</style>
