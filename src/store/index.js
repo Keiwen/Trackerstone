@@ -121,6 +121,9 @@ export default new Vuex.Store({
         case (state.serie.arenaWin === 0):
           dispatch('addInfo', 'The honor is safe')
           break
+        case (state.serie.arenaWin === 2):
+          dispatch('addInfo', 'Another random reward earned')
+          break
         case (state.serie.arenaWin === 4):
           dispatch('addInfo', 'Card pack refunded')
           break
