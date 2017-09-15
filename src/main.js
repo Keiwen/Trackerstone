@@ -29,6 +29,7 @@ const toastrConfig = {
   progressBar: true,
   hideDuration: 500,
   closeButton: false,
+  showMethod: 'flipInY',
   hideMethod: 'rotateOutUpRight'
 }
 
