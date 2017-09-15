@@ -6,6 +6,7 @@
         <p>
             <win-loss v-for="(game, gameIndex) in currentGames" :game="game" :key="gameIndex" />
         </p>
+        <p>{{ arenaKeyTitle() }} key</p>
     </div>
 </template>
 
@@ -17,7 +18,15 @@
   export default {
     components: {WinLoss},
     computed: {
-      ...mapGetters(['arenaGamesWonCurrent', 'arenaGamesLossCurrent', 'arenaWinPercentCurrent', 'getArenaGamesList', 'arenaWin', 'arenaLoss']),
+      ...mapGetters([
+        'arenaGamesWonCurrent',
+        'arenaGamesLossCurrent',
+        'arenaWinPercentCurrent',
+        'getArenaGamesList',
+        'arenaWin',
+        'arenaLoss',
+        'arenaKeyTitle'
+      ]),
       currentGames () {
         if (this.isNewArena) return []
         return this.getArenaGamesList(true)

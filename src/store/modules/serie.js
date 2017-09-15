@@ -32,6 +32,21 @@ const state = {
     1: {'title': 'Innkeeper', 'stars': 5},
     0: {'title': 'Legend', 'stars': 0}
   },
+  ARENA_KEYS: {
+    0: {'title': 'Novice', 'rewards': 2},
+    1: {'title': 'Apprentice', 'rewards': 2},
+    2: {'title': 'Journeyman', 'rewards': 2},
+    3: {'title': 'Copper', 'rewards': 3},
+    4: {'title': 'Silver', 'rewards': 3},
+    5: {'title': 'Gold', 'rewards': 3},
+    6: {'title': 'Platinum', 'rewards': 3},
+    7: {'title': 'Diamond', 'rewards': 3},
+    8: {'title': 'Champion', 'rewards': 4},
+    9: {'title': 'Ruby', 'rewards': 4},
+    10: {'title': 'Frostborn', 'rewards': 4},
+    11: {'title': 'Molten', 'rewards': 4},
+    12: {'title': 'Lightforge', 'rewards': 5}
+  },
   MILESTONES: [25, 20, 15, 10, 5, 0],
   RANK_LOSSCOUNT: 20,
   WIN_STREAK: 3,
@@ -130,6 +145,10 @@ const getters = {
   },
   arenaWin: state => state.arenaWin,
   arenaLoss: state => state.arenaLoss,
+  arenaKeyTitle: state => (winCount) => {
+    if (typeof winCount === 'undefined') winCount = state.arenaWin
+    return state.ARENA_KEYS[winCount]['title']
+  },
   arenaOpen: state => state.arenaOpen,
   arenaFee: state => state.ARENA_FEE,
   boosterCost: state => state.BOOSTER_COST
