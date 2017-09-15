@@ -115,10 +115,31 @@ export default new Vuex.Store({
       }
       commit(types.ADD_HISTORY, historyData)
     },
-    winArena ({dispatch, commit}) {
+    winArena ({dispatch, state, commit}) {
+      // messages: win count not yet updated!
+      switch (true) {
+        case (state.serie.arenaWin === 0):
+          dispatch('addInfo', 'The honor is safe')
+          break
+        case (state.serie.arenaWin === 4):
+          dispatch('addInfo', 'Card pack refunded')
+          break
+        case (state.serie.arenaWin === 6):
+          dispatch('addInfo', 'Arena fee refunded')
+          break
+        case (state.serie.arenaWin === 7):
+          dispatch('addInfo', 'Another random reward earned')
+          break
+      }
       dispatch('storeArenaGame', true)
     },
-    looseArena ({dispatch, commit}) {
+    looseArena ({dispatch, state, commit}) {
+      // messages: loss count not yet updated!
+      switch (true) {
+        case (state.serie.arenaLoss === 1):
+          dispatch('addInfo', 'Last chance!')
+          break
+      }
       dispatch('storeArenaGame', false)
     },
     closeArena ({dispatch, state, commit}) {
@@ -128,6 +149,17 @@ export default new Vuex.Store({
         hsClass: state.deck.currentArena.id
       }
       commit(types.COMPLETE_ARENA_HISTORY, completeData)
+      switch (true) {
+        case (state.serie.arenaWin === 0):
+          dispatch('addInfo', 'How lame man!')
+          break
+        case (state.serie.arenaWin < 3):
+          dispatch('addInfo', 'A little more effort!')
+          break
+        case (state.serie.arenaWin === 12):
+          dispatch('addInfo', 'Wonderful!')
+          break
+      }
     },
     storeArenaGame ({dispatch, state, commit}, won) {
       const historyData = {
