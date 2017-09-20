@@ -6,7 +6,7 @@
 
   export default Line.extend({
     computed: {
-      ...mapGetters(['getArenaList', 'className', 'arenaFee', 'boosterCost']),
+      ...mapGetters(['getArenaList', 'className', 'arenaFee', 'cardPackCost']),
       chartData () {
         let labels = []
         let dataset = {
@@ -16,8 +16,8 @@
           borderColor: 'rgba(234, 198, 18, 1)',
           data: []
         }
-        let datasetBooster = {
-          label: 'Refund with booster',
+        let datasetCardPack = {
+          label: 'Refund with card pack',
           fill: false,
           backgroundColor: '#7A4325',
           borderColor: '#7A4325',
@@ -36,11 +36,11 @@
           if (typeof history[i]['prizes'] === 'undefined') continue
           labels.push(i + ' - ' + this.className(history[i]['hsClass']))
           dataset.data.push(history[i]['prizes']['gold'])
-          datasetBooster.data.push(this.arenaFee - this.boosterCost)
+          datasetCardPack.data.push(this.arenaFee - this.cardPackCost)
           datasetFee.data.push(this.arenaFee)
         }
 
-        return { labels: labels, datasets: [dataset, datasetBooster, datasetFee] }
+        return { labels: labels, datasets: [dataset, datasetCardPack, datasetFee] }
       }
     },
     mounted () {
