@@ -53,10 +53,12 @@ export default new Vuex.Store({
         if (stats.hasOwnProperty(idDeck)) {
           stats[idDeck]['playedWith'] = getters.getGamesWithDeck(idDeck).length
           stats[idDeck]['wonWith'] = getters.getGamesWonWithDeck(idDeck).length
+          stats[idDeck]['lossWith'] = stats[idDeck]['playedWith'] - stats[idDeck]['wonWith']
           stats[idDeck]['winPercentWith'] = getters.getWinPercentWithDeck(idDeck)
           stats[idDeck]['winScoreWith'] = getters.getWinScoreWithDeck(idDeck)
           stats[idDeck]['playedWithRecent'] = getters.getGamesWithDeck(idDeck, true).length
           stats[idDeck]['wonWithRecent'] = getters.getGamesWonWithDeck(idDeck, true).length
+          stats[idDeck]['lossWithRecent'] = stats[idDeck]['playedWithRecent'] - stats[idDeck]['wonWithRecent']
           stats[idDeck]['winPercentWithRecent'] = getters.getWinPercentWithDeck(idDeck, true)
         }
       }
@@ -69,10 +71,12 @@ export default new Vuex.Store({
         const idType = stats[i].id
         stats[i]['playedVs'] = getters.getGamesVsType(idType).length
         stats[i]['wonVs'] = getters.getGamesWonVsType(idType).length
+        stats[i]['lossVs'] = stats[i]['playedVs'] - stats[i]['wonVs']
         stats[i]['winPercentVs'] = getters.getWinPercentVsType(idType)
         stats[i]['winScoreVs'] = getters.getWinScoreVsType(idType)
         stats[i]['playedVsRecent'] = getters.getGamesVsType(idType, true).length
         stats[i]['wonVsRecent'] = getters.getGamesWonVsType(idType, true).length
+        stats[i]['lossVsRecent'] = stats[i]['playedVsRecent'] - stats[i]['wonVsRecent']
         stats[i]['winPercentVsRecent'] = getters.getWinPercentVsType(idType, true)
       }
       return stats

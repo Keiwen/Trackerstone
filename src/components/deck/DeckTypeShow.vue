@@ -15,11 +15,13 @@
             </div>
         </div>
         <p>
-            Won {{ type.wonVs }} / {{ type.playedVs }} against
+            {{ type.wonVs }} - {{ type.lossVs }} against
             <i>
                 ({{ type.winPercentVs }} % global, {{ type.winPercentVsRecent }} % last {{ type.playedVsRecent }} games)
-                 - score {{ type.winScoreVs }}
             </i>
+        </p>
+        <p>
+            Score {{ type.winScoreVs }}
         </p>
 
         <sweet-modal ref="modalEdit" modal-theme="dark" title="Edit type">
@@ -101,7 +103,7 @@
 <style lang="scss">
     .deckTypeShow {
         padding-top: 20px;
-        min-height: 120px;
+        min-height: 130px;
     }
 
     .starIcon,.editIcon {

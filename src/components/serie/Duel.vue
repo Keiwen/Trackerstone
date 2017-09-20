@@ -20,7 +20,7 @@
             </div>
         </div>
         <div>
-            <p>{{ gamesCurrentPlayedVs.length }} similar games played ({{ gamesCurrentWinpercentVs }} % won)</p>
+            <p>Similar games played: {{ gamesCurrentWonVs.length }} - {{ gamesCurrentLossVsCount }} ({{ gamesCurrentWinpercentVs }} % won)</p>
         </div>
 
         <div class="duelButtons">
@@ -52,6 +52,9 @@
       gamesCurrentWonVs () {
         if (this.opponent === {}) return []
         return this.getGamesWonAmong(this.gamesCurrentPlayedVs)
+      },
+      gamesCurrentLossVsCount () {
+        return this.gamesCurrentPlayedVs.length - this.gamesCurrentWonVs.length
       },
       gamesCurrentWinpercentVs () {
         return this.computeWinPercent(this.gamesCurrentPlayedVs.length, this.gamesCurrentWonVs.length)

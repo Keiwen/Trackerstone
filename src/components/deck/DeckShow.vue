@@ -2,11 +2,13 @@
     <div class="deckShow" :class="showDivClass">
         <h4>{{ generateDeckTitle(deck) }}</h4>
         <p>
-            Won {{ deck.wonWith }} / {{ deck.playedWith }}
+            {{ deck.wonWith }} - {{ deck.lossWith }}
             <i>
                 ({{ deck.winPercentWith }} % global, {{ deck.winPercentWithRecent }} % last {{ deck.playedWithRecent }} games)
-                - score {{ deck.winScoreWith }}
             </i>
+        </p>
+        <p>
+            Score {{ deck.winScoreWith }}
         </p>
     </div>
 </template>
@@ -33,6 +35,12 @@
 </script>
 
 <style>
+
+    .deckShow {
+        padding-top: 20px;
+        min-height: 130px;
+    }
+
 
 
 </style>

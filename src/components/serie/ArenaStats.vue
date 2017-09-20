@@ -1,8 +1,8 @@
 <template>
     <div class="container-fluid">
         <h3>Stats</h3>
-        <p v-if="!isNewArena">{{ arenaGamesWonCurrent }} won / {{ arenaGamesLossCurrent }} loss ({{ arenaWinPercentCurrent }} % winrate)</p>
-        <p v-else>0 won / 0 loss (0 % winrate)</p>
+        <p v-if="!isNewArena">Record: {{ arenaGamesWonCurrent }} - {{ arenaGamesLossCurrent }} ({{ arenaWinPercentCurrent }} % winrate)</p>
+        <p v-else>Record: 0 - 0 (0 % winrate)</p>
         <p>
             <win-loss v-for="(game, gameIndex) in currentGames" :game="game" :key="gameIndex" />
         </p>
