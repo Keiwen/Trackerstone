@@ -100,13 +100,24 @@
 
 </script>
 
-<style>
+<style lang="scss">
 
     .deckShow {
         padding-top: 20px;
         min-height: 130px;
     }
 
+    .editIcon {
+        cursor: pointer;
+        padding-bottom: 1em;
+        &:hover {
+             padding-bottom: 0;
+        }
+    }
+
+    .noted {
+        color: #C6AA37;
+    }
 
 
 </style>
