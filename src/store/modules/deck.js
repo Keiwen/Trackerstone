@@ -168,6 +168,14 @@ const mutations = {
       state.opponent = {}
     }
   },
+  [types.SET_DECK] (state, payload) {
+    const idDeck = parseInt(payload.id)
+    if (typeof state.own[idDeck] === 'undefined') return
+    state.lastDeckChanged = idDeck
+    if (typeof payload.name !== 'undefined') state.own[idDeck]['name'] = payload.name
+    if (typeof payload.note !== 'undefined') state.own[idDeck]['note'] = payload.note
+    if (typeof payload.exportCode !== 'undefined') state.own[idDeck]['exportCode'] = payload.exportCode
+  },
   [types.SET_DECKTYPE_NAME] (state, payload) {
     state.types.forEach(function (type, index, object) {
       if (type.id === payload.id) {

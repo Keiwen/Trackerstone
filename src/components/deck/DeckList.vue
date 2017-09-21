@@ -14,6 +14,7 @@
         <label>Type: </label>
         <deck-type-pick @pick-type="pickType" />
         <label>Name (opt): </label><input type="text" v-model="newName" @keyup.enter="add()"/>
+        <label>Export code (opt): </label><input type="text" v-model="newExportCode" @keyup.enter="add()"/>
         <button @click="add()" class="btn btn-success">Add</button>
 
     </div>
@@ -33,7 +34,8 @@
     data () {
       return {
         newType: {},
-        newName: ''
+        newName: '',
+        newExportCode: ''
       }
     },
     computed: {
@@ -47,11 +49,14 @@
       add () {
         const deckData = {
           type: this.newType,
-          name: this.newName
+          name: this.newName,
+          exportCode: this.newExportCode,
+          note: ''
         }
         this.$store.commit(storeMut.ADD_DECK, deckData)
         this.newType = {}
         this.newName = ''
+        this.newExportCode = ''
         this.addSuccess('Deck added')
       },
       remove (id) {
