@@ -54,8 +54,8 @@
       return {
         starIconHover: false,
         editIconHover: false,
-        newName: this.type.name,
-        newNote: this.type.note
+        newName: '',
+        newNote: ''
       }
     },
     computed: {
@@ -85,6 +85,8 @@
         this.editIconHover = !this.editIconHover
       },
       editType () {
+        this.newName = this.type.name
+        this.newNote = this.type.note
         this.$refs.modalEdit.open()
       },
       confirmEdit () {
