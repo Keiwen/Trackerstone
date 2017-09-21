@@ -55,9 +55,9 @@
     data () {
       return {
         editIconHover: false,
-        newName: this.deck.name,
-        newNote: this.deck.note,
-        newExportCode: this.deck.exportCode
+        newName: '',
+        newNote: '',
+        newExportCode: ''
       }
     },
     computed: {
@@ -78,6 +78,9 @@
         this.editIconHover = !this.editIconHover
       },
       editDeck () {
+        this.newName = this.deck.name
+        this.newNote = this.deck.note
+        this.newExportCode = this.deck.exportCode
         this.$refs.modalEdit.open()
       },
       confirmEdit () {
