@@ -4,6 +4,15 @@
             <div class="col-md-6">
                 <h3>Current deck</h3>
                 <deck-pick/>
+                <span @click="showDeckNote()">
+                    <icon name="info-circle" :scale="2" class="infoNote" :class="{'noted': current.note}"></icon>
+                </span>
+
+                <sweet-modal ref="modalDeckNote" modal-theme="dark" title="Deck note">
+                    <pre v-if="current.note">{{ current.note }}</pre>
+                    <p v-else><i>No note stored for this deck</i></p>
+                </sweet-modal>
+
             </div>
             <div class="col-md-6">
                 <h3>Opponent deck</h3>
@@ -65,6 +74,9 @@
       pickOpponentType (type) {
         this.$store.commit(storeMut.CHOOSE_OPPONENT, type)
       },
+      showDeckNote () {
+        this.$refs.modalDeckNote.open()
+      },
       showNote () {
         this.$refs.modalNote.open()
       }
@@ -76,5 +88,9 @@
 <style>
     .duelButtons {
         margin-top: 25px;
+    }
+
+    .infoNote {
+        cursor: pointer;
     }
 </style>
