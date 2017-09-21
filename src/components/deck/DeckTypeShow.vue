@@ -21,12 +21,15 @@
           </div>
         </div>
         <p>
-            Won {{ type.wonVs }} / {{ type.playedVs }} against
+            {{ type.wonVs }} - {{ type.lossVs }} against
             <i>
                 ({{ type.winPercentVs }} % global, {{ type.winPercentVsRecent }} % last {{ type.playedVsRecent }} games)
-                 - score {{ type.winScoreVs }}
             </i>
         </p>
+        <p>
+            Score {{ type.winScoreVs }}
+        </p>
+
         <sweet-modal ref="modalEdit" modal-theme="dark" title="Edit type">
             <div class="form-group">
                 <label for="newName">Name:</label>
@@ -56,8 +59,8 @@
       return {
         starIconHover: false,
         editIconHover: false,
-        newName: this.type.name,
-        newNote: this.type.note
+        newName: '',
+        newNote: ''
       }
     },
     computed: {
@@ -87,6 +90,8 @@
         this.editIconHover = !this.editIconHover
       },
       editType () {
+        this.newName = this.type.name
+        this.newNote = this.type.note
         this.$refs.modalEdit.open()
       },
       confirmEdit () {

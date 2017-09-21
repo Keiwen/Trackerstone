@@ -10,8 +10,11 @@
                 <class-pick @pick-class="pickOpponentClass" :initialPick="opponentArena.id" />
             </div>
         </div>
-        <button @click="winArena()" class="btn btn-success">Win <icon name="thumbs-up" /></button>
-        <button @click="looseArena()" class="btn btn-warning">Loss <icon name="thumbs-down" /></button>
+
+        <div class="duelButtons">
+            <button @click="winArena()" class="btn btn-success">Win <icon name="thumbs-up" /></button>
+            <button @click="looseArena()" class="btn btn-warning">Loss <icon name="thumbs-down" /></button>
+        </div>
     </div>
 </template>
 

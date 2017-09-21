@@ -38,9 +38,10 @@
       }
     },
     methods: {
-      ...mapActions(['setLastArenaPrize']),
+      ...mapActions(['setLastArenaPrize', 'addSuccess']),
       storeArenaPrize () {
         this.setLastArenaPrize({gold: this.newGoldPrize, dust: this.newDustPrize})
+        this.addSuccess('Arena prizes saved')
       }
     },
     mounted: function () {

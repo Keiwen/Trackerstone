@@ -1,11 +1,12 @@
 <template>
     <div class="container-fluid">
         <h2>Arena</h2>
-        <p>Completed: {{ arenaPlayed }} - average {{ arenaAverageWin }} won (max reached: {{ arenaMaxWin }})</p>
-        <p>{{ arenaGamesWon }} total games won, {{ arenaGamesLoss }} loose ({{ arenaWinPercent }} % winrate)</p>
+        <p>{{ arenaPlayed }} completed</p>
+        <p>{{ arenaAverageWin }} win average (max reached: {{ arenaMaxWin }})</p>
+        <p>Combined record: {{ arenaGamesWon }} - {{ arenaGamesLoss }} ({{ arenaWinPercent }} % winrate)</p>
         <p>Gold prize: {{ totalGoldPrize }} total, {{ averageGoldPrize }} average</p>
         <p>Dust prize: {{ totalDustPrize }} total, {{ averageDustPrize }} average</p>
-        <p>Gold balance: {{ getGoldBalance(true) }} refund with booster, {{ getGoldBalance() }} arena refund</p>
+        <p>Gold balance: {{ getGoldBalance(true) }} refund with card pack, {{ getGoldBalance() }} arena refund</p>
         <router-link :to="{ name: 'arenaChart' }">See charts</router-link>
     </div>
 </template>
@@ -20,7 +21,7 @@
         'arenaGamesWon', 'arenaGamesLoss', 'arenaWinPercent',
         'arenaPlayed', 'arenaAverageWin', 'arenaMaxWin',
         'arenaWithPrize', 'arenaTotalPrize', 'arenaAveragePrize',
-        'arenaFee', 'boosterCost'
+        'arenaFee', 'cardPackCost'
       ]),
       totalGoldPrize () {
         return this.arenaTotalPrize('gold')
@@ -36,9 +37,9 @@
       }
     },
     methods: {
-      getGoldBalance (includeBooster) {
+      getGoldBalance (includeCardPack) {
         let engageCost = this.arenaFee
-        if (includeBooster) engageCost -= this.boosterCost
+        if (includeCardPack) engageCost -= this.cardPackCost
         return this.totalGoldPrize - (this.arenaWithPrize * engageCost)
       }
     }

@@ -5,7 +5,6 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import Icon from 'vue-awesome/components/Icon'
-import VueCookie from 'vue-cookie'
 import VueAnalytics from 'vue-analytics'
 import 'vue-awesome/icons'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -16,7 +15,6 @@ import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
 Vue.config.productionTip = false
 
 Vue.component('icon', Icon)
-Vue.use(VueCookie)
 Vue.use(VueAnalytics, {
   id: 'UA-101315491-1',
   router,
@@ -31,6 +29,7 @@ const toastrConfig = {
   progressBar: true,
   hideDuration: 500,
   closeButton: false,
+  showMethod: 'flipInY',
   hideMethod: 'rotateOutUpRight'
 }
 

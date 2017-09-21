@@ -12,13 +12,10 @@
         <router-link :to="{ name: 'deckChart' }">See charts</router-link>
         <hr/>
         <label>Type: </label>
-        <type-pick @pick-type="pickType" />
+        <deck-type-pick @pick-type="pickType" />
         <label>Name (opt): </label><input type="text" v-model="newName" @keyup.enter="add()"/>
+        <label>Export code (opt): </label><input type="text" v-model="newExportCode" @keyup.enter="add()"/>
         <button @click="add()" class="btn btn-success">Add</button>
-
-        <br/><br/>
-        <router-link :to="{ name: 'deckTypesList' }">Manage deck types</router-link>
-
 
     </div>
 </template>
@@ -26,35 +23,41 @@
 
 <script>
 
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   import * as storeMut from '@/store/mutation-types'
-  import TypePick from './TypePick'
+  import DeckTypePick from './DeckTypePick'
   import DeckShow from './DeckShow'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
 
   export default {
-    components: {TypePick, DeckShow, ConfirmationModal},
+    components: {DeckTypePick, DeckShow, ConfirmationModal},
     data () {
       return {
         newType: {},
-        newName: ''
+        newName: '',
+        newExportCode: ''
       }
     },
     computed: {
       ...mapGetters(['deckStats', 'recentNumberGames'])
     },
     methods: {
+      ...mapActions(['addSuccess']),
       pickType (type) {
         this.newType = type
       },
       add () {
         const deckData = {
           type: this.newType,
-          name: this.newName
+          name: this.newName,
+          exportCode: this.newExportCode,
+          note: ''
         }
         this.$store.commit(storeMut.ADD_DECK, deckData)
         this.newType = {}
         this.newName = ''
+        this.newExportCode = ''
+        this.addSuccess('Deck added')
       },
       remove (id) {
         this.$store.commit(storeMut.REMOVE_DECK, id)
