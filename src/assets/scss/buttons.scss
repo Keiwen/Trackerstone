@@ -6,14 +6,15 @@
   // border-bottom: 3px solid darkgrey!important;
   position: relative;
   box-shadow: 0 3px darken(darkgrey, 10%);
+  margin-top: 8px;
+  margin-bottom: 10px;
 
   &:hover {
-    padding-top: 3px;
     -webkit-transition: all 0.15s linear;
     -moz-transition:  all 0.15s linear;
     transition: all 0.15s linear;
-    padding-bottom: 10px;
     box-shadow: 0 8px darken(darkgrey, 10%);
+    margin-top: 4px;
   }
 }
 
@@ -28,7 +29,8 @@
 
       &:hover {
         background-color: $red-ts;
-        box-shadow: 0 -3px lighten($red-ts, 10%);
+        box-shadow: 0 6px lighten($red-ts, 10%);
+        margin-bottom: 4px;
       }
   }
 
