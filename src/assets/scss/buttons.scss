@@ -6,7 +6,7 @@
   // border-bottom: 3px solid darkgrey!important;
   position: relative;
   box-shadow: 0 3px darken(darkgrey, 10%);
-  margin-top: 8px;
+  margin-top: 4px;
   margin-bottom: 10px;
 
   &:hover {
@@ -14,13 +14,19 @@
     -moz-transition:  all 0.15s linear;
     transition: all 0.15s linear;
     box-shadow: 0 8px darken(darkgrey, 10%);
-    margin-top: 4px;
+    margin-top: 0px;
   }
 }
 
   .btn-success {
       border-color: $green-ts!important;
       box-shadow: 0 3px darken($green-ts, 10%);
+
+      &:hover {
+        background-color: $green-ts;
+        box-shadow: 0 6px lighten($green-ts, 10%);
+        margin-bottom: 4px;
+      }
   }
 
   .btn-danger {
@@ -37,6 +43,12 @@
   .btn-default {
     border-color: $orange-ts!important;
     box-shadow: 0 3px darken($orange-ts, 5%);
+
+    &:hover {
+      background-color: $orange-ts;
+      box-shadow: 0 6px lighten($orange-ts, 5%);
+      margin-bottom: 4px;
+    }
   }
 
 
