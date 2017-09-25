@@ -17,6 +17,21 @@
     margin-top: 0px;
     margin-bottom: 4px;
   }
+
+  &:focus {
+    outline: none!important;
+  }
+
+  &:active {
+    box-shadow: 0 1px darken(darkgrey, 10%);
+    outline: none;
+    margin-top: 6px;
+    margin-bottom: -3px;
+    -webkit-transition: all 0.05s linear;
+    -moz-transition:  all 0.05s linear;
+    transition: all 0.05s linear;
+  }
+
 }
 
   .btn-success {
@@ -26,6 +41,10 @@
       &:hover {
         background-color: $green-ts!important;
         box-shadow: 0 6px darken($green-ts, 10%);
+      }
+
+      &:active {
+        box-shadow: 0 2px darken($green-ts, 10%);
       }
   }
 
@@ -37,6 +56,10 @@
         background-color: $red-ts!important;
         box-shadow: 0 6px darken($red-ts, 10%);
       }
+
+      &:active {
+        box-shadow: 0 2px darken($red-ts, 10%);
+      }
   }
 
   .btn-default {
@@ -47,6 +70,10 @@
       background-color: lighten($orange-ts, 10%)!important;
       box-shadow: 0 6px darken($orange-ts, 5%);
     }
+
+    &:active {
+      box-shadow: 0 2px darken($orange-ts, 5%);
+    }
   }
 
   .btn-warning {
@@ -56,6 +83,10 @@
     &:hover {
       background-color: lighten($orange-ts, 5%)!important;
       box-shadow: 0 6px darken($orange-ts, 5%);
+    }
+
+    &:active {
+      box-shadow: 0 2px darken($orange-ts, 5%);
     }
   }
 
