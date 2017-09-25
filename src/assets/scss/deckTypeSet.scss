@@ -1,6 +1,18 @@
 /* ** Deck Type Set ** */
+.deckTypeSet {
+        .starCheck {
+            display: inline-block;
+        }
 
+        button {
+                margin-top: -5px;
 
-    .starCheck {
-        display: inline-block;
-    }
+                &:hover {
+                        margin-top: -8px;
+                }
+
+                &:active {
+                        margin-top: 0px;
+                }
+        }
+}
