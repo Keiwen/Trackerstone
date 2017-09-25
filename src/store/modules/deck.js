@@ -20,7 +20,7 @@ const state = {
 
   own: {},
   current: {},
-  opponent: {},
+  opponent: 0,
   currentArena: {},
   opponentArena: {},
   archetypes: ['aggro', 'midrange', 'control', 'combo'],
@@ -86,7 +86,16 @@ const getters = {
     return getters.getTypesFiltered('top', top)
   },
   current: state => state.current,
-  opponent: state => state.opponent,
+  opponent: state => {
+    let opponentType = {}
+    for (let i = 0; i < state.types.length; i++) {
+      if (state.types[i].id === state.opponent) {
+        opponentType = state.types[i]
+        break
+      }
+    }
+    return opponentType
+  },
   currentArena: state => state.currentArena,
   opponentArena: state => state.opponentArena,
   lastDeckChanged: state => state.lastDeckChanged,
@@ -128,6 +137,7 @@ const mutations = {
     state.current.id = parseInt(id)
   },
   [types.CHOOSE_OPPONENT] (state, type) {
+    if (typeof type === 'object') type = type.id
     state.opponent = type
   },
   [types.CHOOSE_DECK_ARENA] (state, id) {
@@ -164,8 +174,8 @@ const mutations = {
       }
     })
     state.lastTypeChanged = id
-    if (state.opponent.id === id) {
-      state.opponent = {}
+    if (state.opponent === id) {
+      state.opponent = 0
     }
   },
   [types.SET_DECK] (state, payload) {
