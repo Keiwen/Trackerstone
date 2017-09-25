@@ -85,7 +85,10 @@ const getters = {
     if (typeof top === 'undefined') top = true
     return getters.getTypesFiltered('top', top)
   },
-  current: state => state.current,
+  current: state => {
+    if (typeof state.own[state.current] === 'undefined') return {}
+    return state.own[state.current]
+  },
   opponent: state => {
     let opponentType = {}
     for (let i = 0; i < state.types.length; i++) {
@@ -120,8 +123,8 @@ const mutations = {
   [types.REMOVE_DECK] (state, id) {
     Vue.delete(state.own, id)
     state.lastDeckChanged = id
-    if (state.current.id === id) {
-      state.current = {}
+    if (state.current === id) {
+      state.current = 0
     }
   },
   [types.SET_OWN_DECKLIST] (state, deckList) {
@@ -133,8 +136,7 @@ const mutations = {
   },
   [types.CHOOSE_DECK] (state, id) {
     if (typeof state.own[id] === 'undefined') return
-    state.current = state.own[id]
-    state.current.id = parseInt(id)
+    state.current = parseInt(id)
   },
   [types.CHOOSE_OPPONENT] (state, type) {
     if (typeof type === 'object') type = type.id
