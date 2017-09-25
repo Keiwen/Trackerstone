@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Serie from '@/components/serie/Serie'
-import SerieSet from '@/components/serie/SerieSet'
+import Settings from '@/components/settings/Settings'
 import DeckTypeList from '@/components/deck/DeckTypeList'
 import DeckList from '@/components/deck/DeckList'
 import DeckChart from '@/components/deck/DeckChart'
@@ -25,9 +25,9 @@ export default new Router({
       component: Arena
     },
     {
-      path: '/set',
-      name: 'serieSet',
-      component: SerieSet
+      path: '/settings',
+      name: 'settings',
+      component: Settings
     },
     {
       path: '/deckTypes',

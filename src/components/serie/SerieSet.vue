@@ -5,8 +5,8 @@
         <label>Stars: </label><input type="number" v-model="newStars"/>
         <label>Win streak: </label><input type="number" v-model="newWinStreak"/>
         <label>Chest: </label><input type="number" v-model="newHighest"/>
-        <hr/>
-        <button @click="set()" class="btn btn-success">Ok</button>
+        <br/>
+        <button @click="set()" class="btn btn-success btn-setting">Ok</button>
     </div>
 </template>
 
@@ -54,3 +54,10 @@
   }
 
 </script>
+
+<style>
+    .btn-setting {
+        margin-top: 20px;
+    }
+
+</style>
