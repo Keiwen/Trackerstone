@@ -2,7 +2,7 @@
 
 <a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it!</a> (Oh seems to have some issues with IE)
 
-Current version is 0.3.5
+Current version is 0.4.0
 
 > Experiments with VueJS framework
 
@@ -18,7 +18,7 @@ Simple Hearthstone tracker. Just track your win and loss. On app you'll find:
 - arena page
 
 Maybe one day this app will:
-- get a real design ;)
+- Full design ;)
 - MOAR CHARTS!!! CHARTS EVERYWHERE!!!
 - get a lot of pink unicorned stuff
 
@@ -36,5 +36,12 @@ npm run build
 
 # build for production and view the bundle analyzer report
 npm run build --report
+```
+If issue with node-sass on npm-install
+``` bash
+rm -rf node_modules
+rm package-lock.json
+npm cache clean --force
+npm install
 ```
 
