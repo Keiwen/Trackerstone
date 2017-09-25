@@ -2,7 +2,7 @@
     <div>
         <div class="container-fluid deckTypeList">
             <div class="col-xs-6 col-sm-4 deckTypeFiltered" v-for="type in typesFiltered" @click="pickType(type)">
-                {{ generateTypeTitle(type) }}
+                <deck-type-show-simple :type="type"></deck-type-show-simple>
             </div>
         </div>
 
@@ -27,9 +27,10 @@
 
   import { mapGetters } from 'vuex'
   import { EnhancedCheckRadio } from 'vue-enhanced-check'
+  import DeckTypeShowSimple from './DeckTypeShowSimple'
 
   export default {
-    components: {EnhancedCheckRadio},
+    components: {EnhancedCheckRadio, DeckTypeShowSimple},
     data () {
       return {
         sortBy: ''
