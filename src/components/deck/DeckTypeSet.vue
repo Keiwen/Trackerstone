@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid deckTypeSet">
         <label>Class: </label>
         <class-pick @pick-class="pickClass" />
         <label>Archetype: </label>
@@ -53,7 +53,4 @@
 </script>
 
 <style>
-    .starCheck {
-        display: inline-block;
-    }
 </style>
