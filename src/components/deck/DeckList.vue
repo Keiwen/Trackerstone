@@ -11,11 +11,26 @@
         </div>
         <router-link :to="{ name: 'deckChart' }">See charts</router-link>
         <hr/>
-        <label>Type: </label>
-        <deck-type-pick @pick-type="pickType" />
-        <label>Name (opt): </label><input type="text" v-model="newName" @keyup.enter="add()"/>
-        <label>Export code (opt): </label><input type="text" v-model="newExportCode" @keyup.enter="add()"/>
-        <button @click="add()" class="btn btn-success">Add</button>
+        <div class="settingForm manageForm">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 align-col">
+              <label>Type: </label>
+              <deck-type-pick @pick-type="pickType" />
+            </div>
+            <div class="col-xs-12 col-sm-12 align-col">
+              <label>Name (opt): </label>
+              <input type="text" v-model="newName" @keyup.enter="add()"/>
+            </div>
+            <div class="col-xs-12 col-sm-12 align-col">
+              <label>Export code (opt): </label>
+              <input type="text" v-model="newExportCode" @keyup.enter="add()"/>
+            </div>
+            <div class="col-xs-12 col-sm-12 align-col">
+              <button @click="add()" class="btn btn-success">Add</button>
+            </div>
+          </div>
+        </div>
+
 
     </div>
 </template>

@@ -1,0 +1,32 @@
+/* ** Forms ** */
+.settingForm {
+  max-width: 600px;
+  margin: 0 auto !important;
+
+  .align-col {
+    margin-bottom: 15px;
+    text-align: left;
+    margin-top: 15px;
+  }
+
+  .starCheck {
+    display: inline-block;
+    margin-top: -8px;
+  }
+
+  button {
+    margin-top: -4px;
+
+    &:hover {
+      margin-top: -8px;
+    }
+
+    &:active {
+      margin-top: -1px;
+    }
+  }
+}
+
+.manageForm {
+  max-width: 350px;
+}
