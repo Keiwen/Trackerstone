@@ -20,7 +20,7 @@ const state = {
 
   own: {},
   current: {},
-  opponent: {},
+  opponent: 0,
   currentArena: {},
   opponentArena: {},
   archetypes: ['aggro', 'midrange', 'control', 'combo'],
@@ -85,8 +85,20 @@ const getters = {
     if (typeof top === 'undefined') top = true
     return getters.getTypesFiltered('top', top)
   },
-  current: state => state.current,
-  opponent: state => state.opponent,
+  current: state => {
+    if (typeof state.own[state.current] === 'undefined') return {}
+    return state.own[state.current]
+  },
+  opponent: state => {
+    let opponentType = {}
+    for (let i = 0; i < state.types.length; i++) {
+      if (state.types[i].id === state.opponent) {
+        opponentType = state.types[i]
+        break
+      }
+    }
+    return opponentType
+  },
   currentArena: state => state.currentArena,
   opponentArena: state => state.opponentArena,
   lastDeckChanged: state => state.lastDeckChanged,
@@ -111,8 +123,8 @@ const mutations = {
   [types.REMOVE_DECK] (state, id) {
     Vue.delete(state.own, id)
     state.lastDeckChanged = id
-    if (state.current.id === id) {
-      state.current = {}
+    if (state.current === id) {
+      state.current = 0
     }
   },
   [types.SET_OWN_DECKLIST] (state, deckList) {
@@ -124,10 +136,10 @@ const mutations = {
   },
   [types.CHOOSE_DECK] (state, id) {
     if (typeof state.own[id] === 'undefined') return
-    state.current = state.own[id]
-    state.current.id = parseInt(id)
+    state.current = parseInt(id)
   },
   [types.CHOOSE_OPPONENT] (state, type) {
+    if (typeof type === 'object') type = type.id
     state.opponent = type
   },
   [types.CHOOSE_DECK_ARENA] (state, id) {
@@ -164,8 +176,8 @@ const mutations = {
       }
     })
     state.lastTypeChanged = id
-    if (state.opponent.id === id) {
-      state.opponent = {}
+    if (state.opponent === id) {
+      state.opponent = 0
     }
   },
   [types.SET_DECK] (state, payload) {

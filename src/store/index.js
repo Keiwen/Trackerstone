@@ -109,13 +109,13 @@ export default new Vuex.Store({
     loose ({dispatch}) {
       dispatch('storeGame', false)
     },
-    storeGame ({dispatch, state, commit}, won) {
+    storeGame ({dispatch, state, commit, getters}, won) {
       const historyData = {
         rank: state.serie.rank,
         stars: state.serie.stars,
         won: won,
-        deck: state.deck.current,
-        opponent: state.deck.opponent
+        deck: getters.current,
+        opponent: getters.opponent
       }
       commit(types.ADD_HISTORY, historyData)
     },

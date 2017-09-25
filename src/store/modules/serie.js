@@ -100,6 +100,22 @@ const getters = {
     stars -= state.stars
     return stars
   },
+  starsInMilestone: (state, getters) => {
+    if (state.rank === 0) return 0
+    const nextMilestone = getters.nextMilestone
+    let prevMilestone = 25
+    for (let i = state.MILESTONES.length - 1; i > 0; i--) {
+      if (state.MILESTONES[i] === nextMilestone) {
+        prevMilestone = state.MILESTONES[i - 1]
+        break
+      }
+    }
+    let stars = 1
+    for (let i = prevMilestone; i > nextMilestone; i--) {
+      stars += state.RANKS[i]['stars']
+    }
+    return stars
+  },
   winsToMilestone: (state, getters) => {
     if (state.rank === 0) return 0
     const starsToMilestone = getters.starsToMilestone
