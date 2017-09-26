@@ -5,12 +5,12 @@ module.exports = {
   build: {
     env: require('./prod.env'),
     //replace dist by docs to generate github page
-    index: path.resolve(__dirname, '../dist/index.html'),
+    index: path.resolve(__dirname, '../docs/index.html'),
     //replace dist by docs to generate github page
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsRoot: path.resolve(__dirname, '../docs'),
     assetsSubDirectory: 'static',
-    //replace / by ./ to generate github page
-    assetsPublicPath: '/',
+    //replace / by /Trackerstone/ to generate github page
+    assetsPublicPath: '/Trackerstone/',
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.
