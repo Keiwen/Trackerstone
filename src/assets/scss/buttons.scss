@@ -105,15 +105,25 @@
 //background color
 .enhancedCheck input[type="radio"] + label[data-v-feefc70c], .enhancedCheck input[type="checkbox"] + label[data-v-feefc70c], .enhancedCheck input[type="radio"] + label[data-v-0a3be451], .enhancedCheck input[type="checkbox"] + label[data-v-0a3be451] {
   background-color: $second-bg;
+  color: lighten($main-color,10%);
   &:hover{
         border: 1px solid $main-color;
+        background-color: $main-color;
+        color: $orange-ts;
+        -webkit-transition: all ease 0.5s;
+        transition: all ease 0.5s;
   }
 }
+
 
 //not checked
 .enhancedCheck.enhancedCheck-primary input[type="radio"]:not(:checked) + label[data-v-0a3be451]:hover, .enhancedCheck.enhancedCheck-primary input[type="checkbox"]:not(:checked) + label[data-v-0a3be451]:hover {
   &:hover{
         border: 1px solid $main-color;
+        background-color:$main-color;
+        color: $orange-ts;
+        -webkit-transition: all ease 0.8s;
+        transition: all ease 0.8s;
   }
 }
 
