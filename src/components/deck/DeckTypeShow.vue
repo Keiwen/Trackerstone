@@ -106,3 +106,52 @@
   }
 
 </script>
+
+
+<style lang="scss">
+    .deckTypeContainer {
+        .deckTypeShow {
+            .profil {
+                background: url('../../assets/charac_skins.jpg') 0 0 no-repeat;
+            }
+        }
+        .deckClass {
+            &-druid .profil {
+                background-position: -32px 0;
+            }
+
+            &-hunter .profil {
+                background-position: -32px -70px;
+            }
+
+            &-mage .profil {
+                background-position: -32px -140px;
+            }
+
+            &-paladin .profil {
+                background-position: -32px -210px;
+            }
+
+            &-priest .profil {
+                background-position: -32px -280px;
+            }
+
+            &-rogue .profil {
+                background-position: -32px -350px;
+            }
+
+            &-shaman .profil {
+                background-position: -32px -420px;
+            }
+
+            &-warlock .profil {
+                background-position: -32px -490px;
+            }
+
+            &-warrior .profil {
+                background-position: -32px -560px;
+            }
+        }
+    }
+
+</style>
