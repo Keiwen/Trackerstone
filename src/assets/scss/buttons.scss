@@ -115,9 +115,10 @@
   }
 }
 
-
 //not checked
-.enhancedCheck.enhancedCheck-primary input[type="radio"]:not(:checked) + label[data-v-0a3be451]:hover, .enhancedCheck.enhancedCheck-primary input[type="checkbox"]:not(:checked) + label[data-v-0a3be451]:hover {
+.enhancedCheck.enhancedCheck-primary input[type="radio"]:not(:checked) + label[data-v-0a3be451], .enhancedCheck.enhancedCheck-primary input[type="checkbox"]:not(:checked) + label[data-v-0a3be451],
+.enhancedCheck.enhancedCheck-warning input[type="radio"]:not(:checked) + label[data-v-feefc70c], .enhancedCheck.enhancedCheck-warning input[type="checkbox"]:not(:checked) + label[data-v-feefc70c]
+{
   &:hover{
         border: 1px solid $main-color;
         background-color:$main-color;
