@@ -102,8 +102,36 @@
 
 // ** radio buttons ** //
 
+//background color
 .enhancedCheck input[type="radio"] + label[data-v-feefc70c], .enhancedCheck input[type="checkbox"] + label[data-v-feefc70c], .enhancedCheck input[type="radio"] + label[data-v-0a3be451], .enhancedCheck input[type="checkbox"] + label[data-v-0a3be451] {
-background-color: $second-bg;
+  background-color: $second-bg;
+  &:hover{
+        border: 1px solid $main-color;
+  }
+}
+
+//not checked
+.enhancedCheck.enhancedCheck-primary input[type="radio"]:not(:checked) + label[data-v-0a3be451]:hover, .enhancedCheck.enhancedCheck-primary input[type="checkbox"]:not(:checked) + label[data-v-0a3be451]:hover {
+  &:hover{
+        border: 1px solid $main-color;
+  }
+}
+
+//rounded icon
+.enhancedCheck input[type="radio"]:not(:checked) + label[data-v-0a3be451]:hover:before, .enhancedCheck input[type="radio"]:checked + label[data-v-0a3be451]:before {
+    content: "\25CF" !important;
+    font-size: 24px;
+    line-height: 27px;
+}
+
+//checked
+.enhancedCheck.enhancedCheck-primary input[type="radio"]:checked + label[data-v-0a3be451]:before, .enhancedCheck.enhancedCheck-primary input[type="checkbox"]:checked + label[data-v-0a3be451]:before {
+    background: $main-color;
+    color: $orange-ts;
+
+    &:hover{
+          border: 1px solid $main-color;
+    }
 }
 
 
