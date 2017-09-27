@@ -1,7 +1,7 @@
 .hero {
     display:block;
     width: 150px; height: 150px;
-    background: url('/static/classes_sprite.png') -75px -75px no-repeat;
+//    background: url('../../assets/classes_sprite.png') 0 0 no-repeat;
     cursor: pointer;
     padding: 75px;
     -ms-transform: scale(0.8); /* IE 9 */
@@ -21,41 +21,6 @@
   -webkit-transition: 0.5s;
   transition: 0.5s;
   box-shadow:inset 0px 0px 1px 6px white, 1px 1px 10px 0 rgba(1,1,1,0.5);
-}
-
-.hero-warrior {
-  background-position:-375px -675px;
-}
-
-.hero-shaman {
-  background-position: -675px -75px;
-}
-
-.hero-rogue {
-  background-position: -675px -675px;
-}
-
-.hero-paladin {
-  background-position: -675px -375px;
-}
-
-.hero-hunter {
-}
-
-.hero-druid {
-  background-position:-375px -375px;
-}
-
-.hero-warlock {
-  background-position: -375px -75px;
-}
-
-.hero-mage {
-  background-position: -75px -375px;
-}
-
-.hero-priest {
-  background-position: -75px -675px;
 }
 
 .hero-label {
