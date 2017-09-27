@@ -99,6 +99,14 @@
     box-shadow: 0 2px darken($orange-ts, 5%);
   }
 }
+
+// ** radio buttons ** //
+
+.enhancedCheck input[type="radio"] + label[data-v-feefc70c], .enhancedCheck input[type="checkbox"] + label[data-v-feefc70c], .enhancedCheck input[type="radio"] + label[data-v-0a3be451], .enhancedCheck input[type="checkbox"] + label[data-v-0a3be451] {
+background-color: $second-bg;
+}
+
+
 // ** Selection class buttons ** //
 .btn-class.btn-pick {
   position: relative;
