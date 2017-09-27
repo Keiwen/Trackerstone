@@ -51,3 +51,48 @@
   }
 
 </script>
+
+<style lang="scss">
+    .btn-class.btn-pick {
+        &::before {
+            background: url('../../assets/icones_classes.png') 0 0 no-repeat;
+        }
+
+        &.hunter::before {
+            background-position: -40px -40px;
+        }
+
+        &.warlock::before {
+            background-position: -160px -40px;
+        }
+
+        &.shaman::before {
+            background-position: -280px -40px;
+        }
+
+        &.mage::before {
+            background-position: -40px -160px;
+        }
+
+        &.druid::before {
+            background-position: -160px -160px;
+        }
+
+        &.paladin::before {
+            background-position: -280px -160px;
+        }
+
+        &.priest::before {
+            background-position: -40px -280px;
+        }
+
+        &.warrior::before {
+            background-position: -160px -280px;
+        }
+
+        &.rogue::before {
+            background-position: -280px -280px;
+        }
+
+    }
+</style>
