@@ -2,7 +2,7 @@
 
 <a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it!</a> (Oh seems to have some issues with IE)
 
-Current version is 0.4.0
+Current version is 0.5.0 with a first design!
 
 > Experiments with VueJS framework
 
