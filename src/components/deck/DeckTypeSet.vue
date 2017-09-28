@@ -14,7 +14,7 @@
             <input type="text" v-model="newName" @keyup.enter="add()"/>
         </div>
         <div class="col-xs-12 col-sm-6 align-col">
-              <enhanced-check v-model="newTop" label="Star" :animate="true" class="starCheck" subClass="warning" />
+              <enhanced-check v-model="newTop" label="Favorite" :animate="true" class="starCheck" subClass="warning" />
               <button @click="add()" class="btn btn-success">Add</button>
         </div>
       </div>
