@@ -10,9 +10,7 @@
   background-color:$main-bg;
 
   &:hover {
-    -webkit-transition: all 0.15s linear;
-    -moz-transition: all 0.15s linear;
-    transition: all 0.15s linear;
+    @include transition(all 0.15s linear);
     box-shadow: 0 8px darken(darkgrey, 10%);
     margin-top: 0;
     margin-bottom: 4px;
@@ -27,18 +25,14 @@
     outline: none;
     margin-top: 6px;
     margin-bottom: -3px;
-    -webkit-transition: all 0.05s linear;
-    -moz-transition: all 0.05s linear;
-    transition: all 0.05s linear;
+    @include transition(all 0.15s linear);
   }
 
   &[disabled] {
     margin-top: 8px;
 
     &:hover {
-      -webkit-transition: none!important;
-      -moz-transition: none!important;
-      transition: none!important;
+      @include transition(none!important);
     }
   }
 }
@@ -110,8 +104,7 @@
         border: 1px solid $main-color;
         background-color: $main-color;
         color: $orange-ts;
-        -webkit-transition: all ease 0.6s;
-        transition: all ease 0.6s;
+        @include transition(all ease 0.6s);
   }
 }
 
@@ -123,8 +116,7 @@
         border: 1px solid $main-color;
         background-color:$main-color;
         color: $orange-ts;
-        -webkit-transition: all ease 0.6s;
-        transition: all ease 0.6s;
+        @include transition(all ease 0.6s);
   }
 }
 
@@ -172,12 +164,9 @@
     display: block;
     width: 80px;
     height: 80px;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
+    @include transition(0.5s);
+    @include transform(scale(0.65));
     border-radius: 50%;
-    -ms-transform: scale(0.65);
-    -webkit-transform: scale(0.65);
-    transform: scale(0.65);
     left: -74px;
     top: -25px;
   }

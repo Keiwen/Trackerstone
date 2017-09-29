@@ -166,8 +166,7 @@
         position: absolute;
         top: 10px;
         left: 8px;
-        -webkit-transition: 0.3s ease;
-        transition: 0.3s ease;
+        @include transition(0.3s ease);
         color: $white;
       }
 
@@ -182,8 +181,7 @@
         position: absolute;
         top: 10px;
         right: 8px;
-        -webkit-transition: 0.3s ease;
-        transition: 0.3s ease;
+        @include transition(0.3s ease);
         color: $white;
       }
 
