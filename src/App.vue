@@ -16,7 +16,7 @@
         <cookie-law theme="dark-lime" message="This website uses local navigator storage to save and load data."></cookie-law>
         <footer>
           <p>
-            Trackerstone<span> - Version 1.0</span> <span> - Conception Keiwen & Gverrier</span>
+            <a href="https://github.com/Keiwen/Trackerstone" target="_blank">Trackerstone</a><span> - Version 1.0</span> <span> - Conception Keiwen & Gverrier</span>
           </p>
         </footer>
     </div>

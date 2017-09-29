@@ -21,9 +21,11 @@ body {
       padding: 15px 0;
 
       p {
-        color: $orange-ts;
         margin: 0;
-
+        a{
+          color: $orange-ts;
+          text-decoration: none;
+        }
         &::before {
           content:'';
         }
