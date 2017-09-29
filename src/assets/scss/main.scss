@@ -2,6 +2,8 @@
 /* Main Style */
 body {
   background-color: $main-bg!important;
+  padding-bottom: 50px !important;
+  position: relative;
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -9,6 +11,27 @@ body {
     text-align: center;
     color: $main-color;
     padding-top: 60px;
+
+    footer {
+      position: absolute;
+      bottom:0;
+      width: 100%;
+      color: $white;
+      background-color: $brown-ts;
+      padding: 15px 0;
+
+      p {
+        color: $orange-ts;
+        margin: 0;
+
+        &::before {
+          content:'';
+        }
+        span {
+          color: $white;
+        }
+      }
+    }
   }
 
 }

@@ -14,6 +14,11 @@
         <img src="./assets/logo.png" style="height: 150px">
         <router-view></router-view>
         <cookie-law theme="dark-lime" message="This website uses local navigator storage to save and load data."></cookie-law>
+        <footer>
+          <p>
+            Trackerstone<span> - Version 1.0</span> <span> - Conception Keiwen & Gverrier</span>
+          </p>
+        </footer>
     </div>
 </template>
 
