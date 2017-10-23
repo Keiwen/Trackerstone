@@ -19,7 +19,7 @@ const state = {
   },
 
   own: {},
-  current: {},
+  current: 0,
   opponent: 0,
   currentArena: {},
   opponentArena: {},
@@ -87,7 +87,9 @@ const getters = {
   },
   current: state => {
     if (typeof state.own[state.current] === 'undefined') return {}
-    return state.own[state.current]
+    let currentDeck = state.own[state.current]
+    currentDeck.id = state.current
+    return currentDeck
   },
   opponent: state => {
     let opponentType = {}
