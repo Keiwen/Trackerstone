@@ -103,6 +103,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    switchWildMode ({commit}) {
+      commit(types.SWITCH_WILD_MODE)
+    },
     win ({dispatch}) {
       dispatch('storeGame', true)
     },

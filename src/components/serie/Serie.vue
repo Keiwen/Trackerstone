@@ -1,6 +1,7 @@
 <template>
     <div>
         <serie-sum/>
+        <button class="btn btn-default btn-wildmode" :class="wildMode ? 'btn-wildSerie' : 'btn-standardSerie'" @click="switchWildMode()">{{ switchWildModeBtnText }}</button>
         <hr/>
         <duel/>
         <serie-stats/>
@@ -15,7 +16,7 @@
 
 
 <script>
-  import { mapActions } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   import SerieSum from './SerieSum'
   import Duel from './Duel'
   import SerieStats from './SerieStats'
@@ -23,8 +24,14 @@
 
   export default {
     components: {SerieSum, Duel, SerieStats, ConfirmationModal},
+    computed: {
+      ...mapGetters(['wildMode']),
+      switchWildModeBtnText () {
+        return (this.wildMode) ? 'Wild serie' : 'Standard serie'
+      }
+    },
     methods: {
-      ...mapActions(['reset'])
+      ...mapActions(['reset', 'switchWildMode'])
     }
   }
 

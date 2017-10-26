@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <h2>Serie</h2>
-        <p>Rank: {{ rank }} - {{ currentRankTitle }} // Stars: {{ stars }} (Chest: {{ highest }})</p>
+        <p>Rank: {{ wildMode ? rankWild : rank }} - {{ currentRankTitle }} // Stars: {{ wildMode ? starsWild : stars }} (Chest: {{ highest }})</p>
         <p>Next milestone: {{ nextMilestone}} - {{ milestoneTitle }} ({{ winsToMilestone }} wins needed)</p>
         <div class="serieTime">
             <radial-progress-bar :diameter="100"
@@ -14,13 +14,13 @@
                 <p>Next<br/>milestone</p>
             </radial-progress-bar>
             <radial-progress-bar :diameter="100"
-                                 :completed-steps="25 - rank"
+                                 :completed-steps="25 - (wildMode ? rankWild : rank)"
                                  :strokeWidth="10"
                                  :total-steps="25"
                                  startColor="#463C3B"
                                  stopColor="#D3921F"
                                  innerStrokeColor="#DDDDDD">
-                <p>Rank<br/>{{ rank }}</p>
+                <p>Rank<br/>{{ wildMode ? rankWild : rank }}</p>
             </radial-progress-bar>
             <radial-progress-bar :diameter="100"
                                  :completed-steps="getSerieTimeProgress"
@@ -46,7 +46,8 @@
       ...mapGetters(['rank', 'stars', 'highest', 'nextMilestone', 'winsToMilestone',
         'gamesPlayed', 'gamesWon', 'winRate', 'current', 'opponent', 'recentNumberGames',
         'rankTitle', 'getSerieTimeProgress', 'getSerieTimeLeft',
-        'starsInMilestone', 'starsToMilestone']),
+        'starsInMilestone', 'starsToMilestone',
+        'rankWild', 'starsWild', 'wildMode']),
       currentRankTitle () {
         return this.rankTitle()
       },
