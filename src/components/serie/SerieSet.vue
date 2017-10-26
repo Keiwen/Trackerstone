@@ -1,12 +1,28 @@
 <template>
     <div class="container-fluid">
         <h2>Set serie data</h2>
-        <label>Rank: </label><input type="number" v-model="newRank"/>
-        <label>Stars: </label><input type="number" v-model="newStars"/>
-        <label>Win streak: </label><input type="number" v-model="newWinStreak"/>
-        <label>Rank wild: </label><input type="number" v-model="newRankWild"/>
-        <label>Stars wild: </label><input type="number" v-model="newStarsWild"/>
-        <label>Win streak wild: </label><input type="number" v-model="newWinStreakWild"/>
+
+        <div class="col-md-6">
+          <div class="panel panel-default">
+              <div class="panel-heading">Standard</div>
+              <div class="panel-body">
+                <label>Rank: </label><input type="number" v-model="newRank"/>
+                <label>Stars: </label><input type="number" v-model="newStars"/>
+                <label>Win streak: </label><input type="number" v-model="newWinStreak"/>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-default">
+              <div class="panel-heading">Wild</div>
+              <div class="panel-body">
+                <label>Rank: </label><input type="number" v-model="newRankWild"/>
+                <label>Stars: </label><input type="number" v-model="newStarsWild"/>
+                <label>Win streak: </label><input type="number" v-model="newWinStreakWild"/>
+              </div>
+          </div>
+        </div>
+
         <label>Chest: </label><input type="number" v-model="newHighest"/>
         <br/>
         <button @click="set()" class="btn btn-success btn-setting">Ok</button>
