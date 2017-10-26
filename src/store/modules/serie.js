@@ -142,7 +142,7 @@ const getters = {
   stars: state => state.stars,
   starsWild: state => state.starsWild,
   winStreak: state => state.winStreak,
-  winStreakWild: state => state.winStreak,
+  winStreakWild: state => state.winStreakWild,
   highest: state => state.highest,
   getTotalStars: state => (rank, starsInRank) => {
     if (typeof rank === 'undefined') rank = state.wildMode ? state.rankWild : state.rank
@@ -269,7 +269,7 @@ const mutations = {
     if (typeof data.winStreak === 'undefined') data.winStreak = 0
     if (typeof data.rankWild === 'undefined') data.rank = 25
     if (typeof data.starsWild === 'undefined') data.stars = 0
-    if (typeof data.winStreakWild === 'undefined') data.winStreak = 0
+    if (typeof data.winStreakWild === 'undefined') data.winStreakWild = 0
     if (typeof data.highest === 'undefined') data.highest = data.rank
 
     // rank between 0 and 25
