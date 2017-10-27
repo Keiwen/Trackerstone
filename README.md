@@ -2,14 +2,14 @@
 
 <a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it!</a> (Oh, seems to have some issues with IE)
 
-Current version is 0.6.1 with wild serie!
+Current version is 0.6.2 with wild serie and winrate by hour!
 
 > Experiments with VueJS framework
 
 Simple Hearthstone tracker. Just track your win and loss. On app you'll find:
-- your current rank and star
+- your current rank and star (standard/wild)
 - how many win needed 'til next rank milestone
-- global winrate
+- global winrate, detail by hours of play
 - winrate with each deck
 - persist data in local browser storage
 - stats against opponent's deck types
