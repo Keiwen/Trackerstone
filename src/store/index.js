@@ -122,7 +122,8 @@ export default new Vuex.Store({
         opponent: getters.opponent,
         gameDate: {
           fullDate: dateNow,
-          day: dateNow.getDay(),
+          dayInMonth: dateNow.getDate(),
+          dayInWeek: dateNow.getDay(),
           hour: dateNow.getHours()
         }
       }
