@@ -2,7 +2,7 @@
 
 <a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it!</a> (Oh, seems to have some issues with IE)
 
-Current version is 0.6.0 with wild serie!
+Current version is 0.6.1 with wild serie!
 
 > Experiments with VueJS framework
 
