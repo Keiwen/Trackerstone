@@ -1,23 +1,29 @@
 <template>
-    <div class="container-fluid settingForm choseForm">
+    <div class="container-fluid manageForm choseForm">
       <div class="row">
-        <div class="col-xs-12 col-sm-6 align-col">
-          <label>Class: </label>
-          <class-pick @pick-class="pickClass" />
+        <div class="col-xs-6">
+          <class-pick @pick-class="pickClass" id="pickClass" />
         </div>
-        <div class="col-xs-12 col-sm-6 align-col">
-            <label>Archetype: </label>
-            <archetype-pick @pick-archetype="pickArchetype" />
-        </div>
-        <div class="col-xs-12 col-sm-6 align-col">
-            <label>Name: </label>
-            <input type="text" v-model="newName" @keyup.enter="add()"/>
-        </div>
-        <div class="col-xs-12 col-sm-6 align-col">
-              <enhanced-check v-model="newTop" label="Star" :animate="true" class="starCheck" subClass="warning" />
-              <button @click="add()" class="btn btn-success">Add</button>
+        <div class="col-xs-6">
+          <archetype-pick @pick-archetype="pickClass" id="pickArchetype" />
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <input type="text" class="form-control" v-model="newName" @keyup.enter="add()" placeholder="Deck type name"/>
+        </div>
+        <div class="col-xs-6">
+          <enhanced-check v-model="newTop" label="Star" :animate="true" class="starCheck" subClass="warning" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <button @click="add()" class="btn btn-success">Add deck type</button>
+        </div>
+      </div>
+
     </div>
 </template>
 
@@ -62,5 +68,8 @@
 
 </script>
 
-<style>
+<style lang="scss">
+    .manageForm .row {
+      margin-bottom: 15px;
+    }
 </style>

@@ -1,20 +1,27 @@
 <template>
-    <div class="container-fluid">
-        <h2>Manage decks</h2>
-        <div class="container-fluid">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" v-for="(deck, id) in deckStats">
-                <deck-show :deck="deck" />
-                <div>
-                    <confirmation-modal @modal-confirm="remove(id)" modalText="Are you sure you want to delete this deck?"/>
-                </div>
-            </div>
+
+      <div class="container-fluid manageForm choseForm">
+        <div class="row">
+          <div class="col-xs-12">
+            <deck-type-pick @pick-type="pickType" />
+          </div>
         </div>
-        <router-link :to="{ name: 'deckChart' }">See charts</router-link>
-        <hr/>
 
-        <deck-set></deck-set>
+        <div class="row">
+          <div class="col-xs-12">
+            <input type="text" class="form-control" v-model="newName" @keyup.enter="add()" placeholder="Deck name (opt.)"/>
+          </div>
+        </div>
 
-    </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <input type="text" class="form-control" v-model="newExportCode" @keyup.enter="add()" placeholder="Export code (opt.)"/>
+          </div>
+        </div>
+
+        <button @click="add()" class="btn btn-success">Add deck</button>
+
+      </div>
 </template>
 
 
@@ -24,11 +31,10 @@
   import * as storeMut from '@/store/mutation-types'
   import DeckTypePick from './DeckTypePick'
   import DeckShow from './DeckShow'
-  import DeckSet from './DeckSet'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
 
   export default {
-    components: {DeckTypePick, DeckShow, DeckSet, ConfirmationModal},
+    components: {DeckTypePick, DeckShow, ConfirmationModal},
     data () {
       return {
         newType: {},
@@ -66,6 +72,8 @@
 </script>
 
 
-<style>
-
+<style lang="scss">
+    .manageForm .row {
+      margin-bottom: 15px;
+    }
 </style>
