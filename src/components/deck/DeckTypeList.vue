@@ -26,8 +26,6 @@
 
         <deck-type-set />
 
-        <br/><br/>
-
     </div>
 </template>
 
