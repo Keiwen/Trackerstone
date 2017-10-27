@@ -2,10 +2,10 @@
     <div class="container-fluid manageForm choseForm">
       <div class="row">
         <div class="col-xs-6">
-          <class-pick @pick-class="pickClass" id="pickClass" />
+          <class-pick @pick-class="pickClass" />
         </div>
         <div class="col-xs-6">
-          <archetype-pick @pick-archetype="pickClass" id="pickArchetype" />
+          <archetype-pick @pick-archetype="pickArchetype" />
         </div>
       </div>
 
@@ -49,6 +49,7 @@
     methods: {
       ...mapActions(['addSuccess']),
       add () {
+        console.log('add type', this.newName, this.newClass, this.newArchetype)
         this.$store.commit(storeMut.ADD_DECKTYPE, {
           name: this.newName,
           hsClass: this.newClass,
