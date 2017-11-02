@@ -169,7 +169,7 @@ const getters = {
     let lastDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0)
     currentDate = currentDate.getDate()
     lastDate = lastDate.getDate()
-    return lastDate - currentDate
+    return lastDate - currentDate + 1
   },
   arenaWin: state => state.arenaWin,
   arenaLoss: state => state.arenaLoss,
