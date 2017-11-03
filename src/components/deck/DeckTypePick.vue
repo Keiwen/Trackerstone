@@ -12,7 +12,6 @@
 
 
 <script>
-
   import { mapGetters } from 'vuex'
   import { SweetModal } from 'sweet-modal-vue'
   import DeckTypeSpread from './DeckTypeSpread'
@@ -46,5 +45,4 @@
       if (typeof this.initialPick !== 'undefined') this.pick = this.initialPick
     }
   }
-
 </script>

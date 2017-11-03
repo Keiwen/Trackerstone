@@ -75,7 +75,6 @@
 
 
 <script>
-
   import * as storeMut from '@/store/mutation-types'
   import { mapGetters, mapActions } from 'vuex'
 
@@ -124,7 +123,6 @@
       this.newHighest = this.highest
     }
   }
-
 </script>
 
 <style>

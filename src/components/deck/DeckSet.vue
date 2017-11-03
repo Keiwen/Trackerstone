@@ -26,7 +26,6 @@
 
 
 <script>
-
   import { mapGetters, mapActions } from 'vuex'
   import * as storeMut from '@/store/mutation-types'
   import DeckTypePick from './DeckTypePick'
@@ -68,7 +67,6 @@
       }
     }
   }
-
 </script>
 
 

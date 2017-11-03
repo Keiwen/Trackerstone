@@ -8,7 +8,6 @@
 
 
 <script>
-
   import { mapGetters } from 'vuex'
   import ClassCard from './ClassCard'
 
@@ -29,5 +28,4 @@
       }
     }
   }
-
 </script>

@@ -22,7 +22,6 @@
 
 
 <script>
-
   import ClassAgainstArenaGraph from '@/components/charts/ClassAgainstArenaGraph'
   import ArenaWonEvolGraph from '@/components/charts/ArenaWonEvolGraph'
   import ArenaGoldEvolGraph from '@/components/charts/ArenaGoldEvolGraph'
@@ -31,5 +30,4 @@
   export default {
     components: {ClassAgainstArenaGraph, ArenaWonEvolGraph, ArenaGoldEvolGraph, ArenaClassesGraph}
   }
-
 </script>

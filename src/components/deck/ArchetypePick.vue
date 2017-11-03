@@ -17,7 +17,6 @@
 
 
 <script>
-
   import { mapGetters } from 'vuex'
   import { SweetModal } from 'sweet-modal-vue'
 
@@ -46,7 +45,6 @@
       }
     }
   }
-
 </script>
 
 <style lang="scss">

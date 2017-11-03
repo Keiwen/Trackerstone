@@ -12,7 +12,6 @@
 
 
 <script>
-
   import { mapGetters } from 'vuex'
   import * as storeMut from '@/store/mutation-types'
   import { SweetModal } from 'sweet-modal-vue'
@@ -46,5 +45,4 @@
       }
     }
   }
-
 </script>

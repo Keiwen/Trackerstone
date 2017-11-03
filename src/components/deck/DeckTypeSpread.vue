@@ -24,7 +24,6 @@
 
 
 <script>
-
   import { mapGetters } from 'vuex'
   import { EnhancedCheckRadio } from 'vue-enhanced-check'
   import DeckTypeShowSimple from './DeckTypeShowSimple'
@@ -71,7 +70,6 @@
       }
     }
   }
-
 </script>
 
 <style scoped lang="scss">

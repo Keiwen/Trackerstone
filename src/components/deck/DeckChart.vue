@@ -14,12 +14,10 @@
 
 
 <script>
-
   import DeckWinRateGraph from '@/components/charts/DeckWinRateGraph'
   import DeckWinScoreGraph from '@/components/charts/DeckWinScoreGraph'
 
   export default {
     components: {DeckWinRateGraph, DeckWinScoreGraph}
   }
-
 </script>

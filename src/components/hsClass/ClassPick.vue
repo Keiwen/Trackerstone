@@ -10,7 +10,6 @@
 
 
 <script>
-
   import { mapGetters } from 'vuex'
   import { SweetModal } from 'sweet-modal-vue'
   import ClassSpread from './ClassSpread'
@@ -49,7 +48,6 @@
       if (typeof this.initialPick !== 'undefined') this.pick = this.initialPick
     }
   }
-
 </script>
 
 <style lang="scss">

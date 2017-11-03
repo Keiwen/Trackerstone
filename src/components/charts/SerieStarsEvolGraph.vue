@@ -1,7 +1,5 @@
 
-
 <script>
-
   import { Line } from 'vue-chartjs'
   import { mapGetters } from 'vuex'
 
@@ -40,5 +38,4 @@
       this.renderChart(this.chartData, this.options)
     }
   })
-
 </script>

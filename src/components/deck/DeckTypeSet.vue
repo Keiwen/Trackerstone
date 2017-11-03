@@ -29,7 +29,6 @@
 
 
 <script>
-
   import * as storeMut from '@/store/mutation-types'
   import { mapActions } from 'vuex'
   import ClassPick from '@/components/hsClass/ClassPick'
@@ -66,7 +65,6 @@
       }
     }
   }
-
 </script>
 
 <style lang="scss">

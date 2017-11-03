@@ -8,7 +8,6 @@
 
 
 <script>
-
   export default {
     props: ['classKey', 'hsClass'],
     computed: {
@@ -22,7 +21,6 @@
       }
     }
   }
-
 </script>
 
 <style lang="scss">

@@ -14,12 +14,10 @@
 
 
 <script>
-
   import DeckTypeAgainstGraph from '@/components/charts/DeckTypeAgainstGraph'
   import DeckTypeWonAgainstGraph from '@/components/charts/DeckTypeWonAgainstGraph'
 
   export default {
     components: {DeckTypeAgainstGraph, DeckTypeWonAgainstGraph}
   }
-
 </script>

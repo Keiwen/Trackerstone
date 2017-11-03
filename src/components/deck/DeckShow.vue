@@ -44,7 +44,6 @@
 
 
 <script>
-
   import * as storeMut from '@/store/mutation-types'
   import { SweetModal } from 'sweet-modal-vue'
   import { mapGetters } from 'vuex'
@@ -97,7 +96,6 @@
       }
     }
   }
-
 </script>
 
 <style lang="scss">

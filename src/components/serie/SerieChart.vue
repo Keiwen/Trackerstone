@@ -23,7 +23,6 @@
 
 
 <script>
-
   import SerieStarsEvolGraph from '@/components/charts/SerieStarsEvolGraph'
   import SerieRankEvolGraph from '@/components/charts/SerieRankEvolGraph'
   import ClassAgainstGraph from '@/components/charts/ClassAgainstGraph'
@@ -32,5 +31,4 @@
   export default {
     components: {SerieStarsEvolGraph, SerieRankEvolGraph, ClassAgainstGraph, WinPercentByHourGraph}
   }
-
 </script>

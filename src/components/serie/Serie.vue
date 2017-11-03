@@ -34,5 +34,4 @@
       ...mapActions(['reset', 'switchWildMode'])
     }
   }
-
 </script>

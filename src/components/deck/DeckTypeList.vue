@@ -31,7 +31,6 @@
 
 
 <script>
-
   import { mapGetters } from 'vuex'
   import * as storeMut from '@/store/mutation-types'
   import DeckTypeShow from './DeckTypeShow'
@@ -75,7 +74,6 @@
       }
     }
   }
-
 </script>
 
 
