@@ -11,11 +11,6 @@
         <div>
             <fieldset>
                 <legend>Sort by:</legend>
-                <enhanced-check-radio :label="sortLabels"
-                                      :value="sortValues"
-                                      name="deck_type_sort"
-                                      subClass="primary" :animate="true" :inline="true" v-model="sortBy" :rounded="true">
-                </enhanced-check-radio>
             </fieldset>
         </div>
 
@@ -25,11 +20,10 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  import { EnhancedCheckRadio } from 'vue-enhanced-check'
   import DeckTypeShowSimple from './DeckTypeShowSimple'
 
   export default {
-    components: {EnhancedCheckRadio, DeckTypeShowSimple},
+    components: {DeckTypeShowSimple},
     data () {
       return {
         sortBy: ''

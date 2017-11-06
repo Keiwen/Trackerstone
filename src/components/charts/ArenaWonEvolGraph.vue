@@ -29,7 +29,7 @@
           scales: {
             yAxes: [{
               ticks: {
-//                reverse: true,
+                // reverse: true,
                 min: 0,
                 max: 12
               }

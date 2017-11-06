@@ -14,7 +14,8 @@
           <input type="text" class="form-control" v-model="newName" @keyup.enter="add()" placeholder="Deck type name"/>
         </div>
         <div class="col-xs-6">
-          <enhanced-check v-model="newTop" label="Star" :animate="true" class="starCheck" subClass="warning" />
+		  <input type="checkbox" id="newTop" value="true" v-model="newTop">
+		  <label for="newTop">Star</label>
         </div>
       </div>
 
@@ -33,10 +34,9 @@
   import { mapActions } from 'vuex'
   import ClassPick from '@/components/hsClass/ClassPick'
   import ArchetypePick from './ArchetypePick.vue'
-  import { EnhancedCheck } from 'vue-enhanced-check'
 
   export default {
-    components: {ClassPick, ArchetypePick, EnhancedCheck},
+    components: {ClassPick, ArchetypePick},
     data () {
       return {
         newName: '',
