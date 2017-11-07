@@ -1,6 +1,32 @@
-# pwats
+# Trackerstone
 
-> A Vue.js project
+<a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it on web browser!</a> and get mobile app (see below)! (Oh, seems to have some issues with IE)
+
+Current version is 0.7.0 as Progressive Web App !!
+
+> Please note that this project is an experiment with VueJS framework and Progressive Web App, maintained on free-time without guarantee :)
+
+Simple Hearthstone tracker. Just track your win and loss. On app you'll find:
+- your current rank and star (standard/wild)
+- how many win needed 'til next rank milestone
+- global winrate, detail by hours of play
+- winrate with each deck
+- persist data in local browser storage
+- stats against opponent's deck types
+- charts on rank progress, deck winrates
+- set notes on deck types
+- arena tracker (and gold refund)
+
+Maybe one day this app will:
+- be mobile first designed
+- have a full design ;)
+- get MOAR CHARTS!!! CHARTS EVERYWHERE!!!
+- get a lot of pink unicorned stuff
+
+## Mobile app
+Trackerstone is a Progressive Web Application, meaning that it's design to work both on web browser and mobile app.
+With your mobile device, go on <a target="_blank" href="https://keiwen.github.io/Trackerstone/">application page</a>, then open the menu and select "add to home screen". Now just click on the Trackerstone icon on your device to open a fullscreen application!
+Mobile app orientation is landscape defined, as you should use Hearthstone game landscape as well.
 
 ## Build Setup
 
@@ -16,12 +42,11 @@ npm run build
 
 # build for production and view the bundle analyzer report
 npm run build --report
-
-# run unit tests
-npm run unit
-
-# run all tests
-npm test
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+If issue with node-sass on npm-install
+``` bash
+rm -rf node_modules
+rm package-lock.json
+npm cache clean --force
+npm install
+```
