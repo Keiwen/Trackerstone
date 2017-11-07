@@ -4,7 +4,7 @@
 
 Current version is 0.6.2 with wild serie and winrate by hour!
 
-> Experiments with VueJS framework
+> Experiments with VueJS framework and Progressive Web App
 
 Simple Hearthstone tracker. Just track your win and loss. On app you'll find:
 - your current rank and star (standard/wild)
@@ -18,7 +18,8 @@ Simple Hearthstone tracker. Just track your win and loss. On app you'll find:
 - arena page
 
 Maybe one day this app will:
-- Full design ;)
+- be available as mobile application!! OMG!!!
+- full design ;)
 - MOAR CHARTS!!! CHARTS EVERYWHERE!!!
 - get a lot of pink unicorned stuff
 
