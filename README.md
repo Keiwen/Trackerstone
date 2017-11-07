@@ -4,11 +4,7 @@
 
 Current version is 0.7.0 as Progressive Web App !!
 
-<<<<<<< HEAD
 > Please note that this project is an experiment with VueJS framework and Progressive Web App, maintained on free-time without guarantee :)
-=======
-> Experiments with VueJS framework and Progressive Web App
->>>>>>> master
 
 Simple Hearthstone tracker. Just track your win and loss. On app you'll find:
 - your current rank and star (standard/wild)
@@ -22,16 +18,10 @@ Simple Hearthstone tracker. Just track your win and loss. On app you'll find:
 - arena tracker (and gold refund)
 
 Maybe one day this app will:
-<<<<<<< HEAD
 - *known issue*: filter deck type by star is broken
 - be mobile first designed
 - have a full design ;)
 - get MOAR CHARTS!!! CHARTS EVERYWHERE!!!
-=======
-- be available as mobile application!! OMG!!!
-- full design ;)
-- MOAR CHARTS!!! CHARTS EVERYWHERE!!!
->>>>>>> master
 - get a lot of pink unicorned stuff
 
 ## Mobile app
