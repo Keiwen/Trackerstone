@@ -3,16 +3,11 @@
         <h2>Manage deck types</h2>
 
         Sort by:
-		<input type="radio" id="star" value="star" v-model="sortBy">
-		<label for="star">Star</label>
-		<input type="radio" id="hsClass" value="hsClass" v-model="sortBy">
-		<label for="hsClass">Class</label>
-		<input type="radio" id="played" value="played" v-model="sortBy">
-		<label for="played">Played vs</label>
-		<input type="radio" id="winrate" value="winrate" v-model="sortBy">
-		<label for="winrate">Winrate vs</label>
-		<input type="radio" id="winscore" value="winscore" v-model="sortBy">
-		<label for="winscore">Win score vs</label>
+        <enhanced-check-radio :label="['Star', 'Class', 'Played vs', 'Winrate vs', 'Win score vs']"
+                              :value="['star', 'hsClass', 'played', 'winrate', 'winscore']"
+        					  name="deck_type_sort"
+        					  subClass="primary" :animate="true" :inline="true" v-model="sortBy" :rounded="true">
+        </enhanced-check-radio>
 
         <div class="container-fluid">
             <div class="deckTypeContainer col-xs-12 col-sm-6 col-md-4 col-lg-3" v-for="type in typesList">
@@ -39,9 +34,10 @@
   import DeckTypeShow from './DeckTypeShow'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
   import DeckTypeSet from './DeckTypeSet'
+  import { EnhancedCheckRadio } from 'vue-enhanced-check'
 
   export default {
-    components: {DeckTypeShow, ConfirmationModal, DeckTypeSet},
+    components: {DeckTypeShow, ConfirmationModal, DeckTypeSet, EnhancedCheckRadio},
     data () {
       return {
         typeEnhanced: [],
