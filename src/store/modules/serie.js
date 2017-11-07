@@ -189,14 +189,15 @@ const actions = {
   earnStar ({commit, state}, number) {
     if (typeof number === 'undefined') number = 1 // default is earn 1 star
     let mult = 1
-    const rank = state.wildMode ? state.rankWild : state.rank
-    const stars = state.wildMode ? state.starsWild : state.stars
+    let rank = state.wildMode ? state.rankWild : state.rank
     if (number < 0) {
       if (rank > state.RANK_LOSSCOUNT) return // check if loss counted for current rank
       mult = -1
       number = -number // keep number absolute to iterate
     }
     for (let i = 0; i < number; i++) {
+      rank = state.wildMode ? state.rankWild : state.rank
+      let stars = state.wildMode ? state.starsWild : state.stars
       if (stars === 0 && mult < 0) {
         // decrease when no star on rank
         commit(types.DECREASE_RANK)
