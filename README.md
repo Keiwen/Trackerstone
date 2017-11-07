@@ -18,6 +18,7 @@ Simple Hearthstone tracker. Just track your win and loss. On app you'll find:
 - arena tracker (and gold refund)
 
 Maybe one day this app will:
+- *known issue*: filter deck type by star is broken
 - be mobile first designed
 - have a full design ;)
 - get MOAR CHARTS!!! CHARTS EVERYWHERE!!!
