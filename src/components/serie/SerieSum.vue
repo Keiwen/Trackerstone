@@ -3,6 +3,7 @@
         <h2>Serie</h2>
         <p>Rank: {{ wildMode ? rankWild : rank }} - {{ currentRankTitle }} // Stars: {{ wildMode ? starsWild : stars }} (Chest: {{ highest }})</p>
         <p>Next milestone: {{ nextMilestone}} - {{ milestoneTitle }} ({{ winsToMilestone }} wins needed)</p>
+        <p>{{ getSerieTimeLeft }} days left</p>
         <div class="serieTime">
         </div>
     </div>
