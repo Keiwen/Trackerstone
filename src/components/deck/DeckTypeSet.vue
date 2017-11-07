@@ -48,7 +48,6 @@
     methods: {
       ...mapActions(['addSuccess']),
       add () {
-        console.log('add type', this.newName, this.newClass, this.newArchetype)
         this.$store.commit(storeMut.ADD_DECKTYPE, {
           name: this.newName,
           hsClass: this.newClass,
