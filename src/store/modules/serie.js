@@ -358,10 +358,10 @@ const mutations = {
     state.highest = 25
     state.rank = 25
     state.stars = 0
-    state.winstreak = 0
+    state.winStreak = 0
     state.rankWild = 25
     state.starsWild = 0
-    state.winstreakWild = 0
+    state.winStreakWild = 0
   },
   [types.OPEN_ARENA] (state) {
     state.arenaWin = 0
