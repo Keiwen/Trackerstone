@@ -1,6 +1,6 @@
 # Trackerstone
 
-<a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it on web browser!</a> and get mobile app (see below)! (Oh, seems to have some issues with IE)
+<a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it on web browser</a> and get mobile app (see below)! (Oh, seems to have some issues with IE)
 
 Current version is 0.7.0 as Progressive Web App !!
 
@@ -25,8 +25,16 @@ Maybe one day this app will:
 - get a lot of pink unicorned stuff
 
 ## Mobile app
-Trackerstone is a Progressive Web Application, meaning that it's design to work both on web browser and mobile app.
-With your mobile device, go on <a target="_blank" href="https://keiwen.github.io/Trackerstone/">application page</a>, then open the menu and select "add to home screen". Now just click on the Trackerstone icon on your device to open a fullscreen application!
+Trackerstone is a Progressive Web Application, meaning that it's designed to work both on web browser and mobile app.
+
+With your mobile device, go on <a target="_blank" href="https://keiwen.github.io/Trackerstone/">Trackerstone page</a>, then:
+
+1) You have a smart browser, it will ask you by itself if you want to add Trackerstone.
+
+2) Basic way: open the menu and select "add to home screen".
+
+Now you can just click on the Trackerstone icon on your device to open a fullscreen application!
+
 Mobile app orientation is landscape defined, as you should use Hearthstone game landscape as well.
 
 ## Build Setup
