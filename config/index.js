@@ -12,6 +12,8 @@ module.exports = {
     assetsRoot: path.resolve(__dirname, '../docs'),
     assetsSubDirectory: 'static',
     //replace / by /Trackerstone/ to generate github page
+    //wanna try locally? get your local path instead, like /C:/nodejs/projects/trackerstone/docs/
+    //then open index.html in a web browser
     assetsPublicPath: '/Trackerstone/',
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
