@@ -7,11 +7,11 @@
       </span>
 
       <menu class="nav navbar-nav">
-        <menu-link label="Track serie" routeName="serie"></menu-link>
-        <menu-link label="Manage deck types" routeName="deckTypesList"></menu-link>
-        <menu-link label="Manage decks" routeName="deckList"></menu-link>
-        <menu-link label="Arena" routeName="arena"></menu-link>
-        <menu-link label="Settings" routeName="settings"></menu-link>
+        <menu-link label="Track serie" routeName="serie" iconName="trophy"></menu-link>
+        <menu-link label="Manage deck types" routeName="deckTypesList" iconName="list"></menu-link>
+        <menu-link label="Manage decks" routeName="deckList" iconName="th-large"></menu-link>
+        <menu-link label="Arena" routeName="arena" iconName="gift"></menu-link>
+        <menu-link label="Settings" routeName="settings" iconName="cog"></menu-link>
       </menu>
 
     </div>

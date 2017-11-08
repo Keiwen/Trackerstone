@@ -1,5 +1,6 @@
 <template>
   <menuitem>
+    <icon :name="iconName" class="visible-xs" scale="2" />
     <router-link :to="{ name: routeName }">{{ label }}</router-link>
   </menuitem>
 </template>
@@ -10,6 +11,10 @@
       label: {
         type: String,
         default: 'Menu'
+      },
+      iconName: {
+        type: String,
+        default: 'bars'
       },
       routeName: {
         type: String
@@ -35,6 +40,10 @@
       border-bottom: 1px solid #000000;
     }
 
+    @media (max-width: 767px) {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
   }
   & .fa-icon {
     margin: auto;
