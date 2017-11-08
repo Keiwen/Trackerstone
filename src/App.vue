@@ -1,17 +1,6 @@
 <template>
     <div id="app">
-        <div>
-            <router-link :to="{ name: 'serie' }">Track serie</router-link>
-            -
-            <router-link :to="{ name: 'deckTypesList' }">Manage deck types</router-link>
-            -
-            <router-link :to="{ name: 'deckList' }">Manage decks</router-link>
-            -
-            <router-link :to="{ name: 'arena' }">Arena</router-link>
-            -
-            <router-link :to="{ name: 'settings' }">Settings</router-link>
-        </div>
-        <img src="./assets/logo.png" style="height: 150px">
+        <topbar></topbar>
         <router-view></router-view>
         <cookie-law theme="dark-lime" message="This website uses local navigator storage to save and load data."></cookie-law>
     </div>
@@ -19,11 +8,12 @@
 
 <script>
   import CookieLaw from 'vue-cookie-law'
+  import Topbar from '@/components/Topbar/Topbar'
   import { mapGetters, mapActions } from 'vuex'
 
   export default {
     name: 'app',
-    components: { CookieLaw },
+    components: { CookieLaw, Topbar },
     computed: {
       ...mapGetters(['messageBag'])
     },
