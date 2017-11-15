@@ -34,6 +34,9 @@
 
         <div class="duelButtons">
             <button @click="win()" class="btn btn-success">Win <icon name="thumbs-up" /></button>
+            <span class="winstreakIcon">
+                <icon name="fire" v-if="isOnWinStreak" class="text-danger" />
+            </span>
             <button @click="loose()" class="btn btn-warning">Loss <icon name="thumbs-down" /></button>
         </div>
     </div>
@@ -50,7 +53,10 @@
   export default {
     components: {DeckPick, DeckTypePick, SweetModal},
     computed: {
-      ...mapGetters(['current', 'opponent', 'getGamesVsType', 'getGamesWonAmong', 'computeWinPercent']),
+      ...mapGetters([
+        'current', 'opponent', 'getGamesVsType', 'getGamesWonAmong',
+        'computeWinPercent', 'isOnWinStreak'
+      ]),
       gamesCurrentPlayedVs () {
         if (this.opponent === {}) return []
         const gamesPlayedVs = this.getGamesVsType(this.opponent.id)
@@ -95,5 +101,10 @@
 
     .infoNote {
         cursor: pointer;
+    }
+
+    .winstreakIcon {
+        display: inline-block;
+        width: 20px;
     }
 </style>

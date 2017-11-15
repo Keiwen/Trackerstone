@@ -157,6 +157,10 @@ const getters = {
     }
     return totalStars
   },
+  isOnWinStreak: state => {
+    let currentWinStreak = state.wildMode ? state.winStreakWild : state.winStreak
+    return currentWinStreak >= state.WIN_STREAK
+  },
   getSerieTimeProgress: state => {
     let currentDate = new Date()
     let lastDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0)
