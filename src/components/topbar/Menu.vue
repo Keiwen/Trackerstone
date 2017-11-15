@@ -7,9 +7,9 @@
       </span>
 
       <menu class="nav navbar-nav">
-        <menu-link label="Track serie" routeName="serie"></menu-link>
-        <menu-link label="Manage deck types" routeName="deckTypesList"></menu-link>
-        <menu-link label="Manage decks" routeName="deckList"></menu-link>
+        <menu-link label="Serie" routeName="serie"></menu-link>
+        <menu-link label="Deck types" routeName="deckTypesList"></menu-link>
+        <menu-link label="Decks" routeName="deckList"></menu-link>
         <menu-link label="Arena" routeName="arena"></menu-link>
         <menu-link label="Settings" routeName="settings"></menu-link>
       </menu>
