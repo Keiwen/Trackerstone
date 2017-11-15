@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <div class="container">
-            <div class="col-md-6">
+            <div class="col-xs-6">
                 <h3>Current deck</h3>
                 <deck-pick/>
                 <span @click="showDeckNote()">
@@ -14,7 +14,7 @@
                 </sweet-modal>
 
             </div>
-            <div class="col-md-6">
+            <div class="col-xs-6">
                 <h3>Opponent deck</h3>
                 <deck-type-pick @pick-type="pickOpponentType" :initialPick="opponent" />
                 <span @click="showNote()">
@@ -28,7 +28,7 @@
 
             </div>
         </div>
-        <div>
+        <div class="container">
             <p>Similar games played: {{ gamesCurrentWonVs.length }} - {{ gamesCurrentLossVsCount }} ({{ gamesCurrentWinpercentVs }} % won)</p>
         </div>
 
@@ -84,9 +84,13 @@
   }
 </script>
 
-<style>
+<style lang="scss">
     .duelButtons {
-        margin-top: 25px;
+        margin-top: 10px;
+        button {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
     }
 
     .infoNote {
