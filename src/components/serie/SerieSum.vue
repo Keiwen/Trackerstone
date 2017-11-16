@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid">
-        <div class="serieTime row">
+        <div class="gamemodeSum serieSum row">
             <div class="col-xs-4">
                 <div class="col-xs-4">
                     <progress-circle :completed-steps="25 - (wildMode ? rankWild : rank)"
@@ -84,19 +84,3 @@
     }
   }
 </script>
-
-
-<style>
-    .circle-progress-container {
-        display: inline-block;
-    }
-    .serieTime .col-xs-4,.col-xs-8 {
-        padding-right: 0;
-        padding-left: 0;
-    }
-    p.innerProgressCircle {
-        margin-top: 8px;
-        font-size: 25px;
-        display: block;
-    }
-</style>

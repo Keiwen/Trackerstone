@@ -1,0 +1,27 @@
+.duelButtons {
+  margin-top: 10px;
+  button {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+.infoNote {
+  cursor: pointer;
+}
+
+.winstreakIcon {
+  display: inline-block;
+  width: 20px;
+}
+
+
+.gamemodeSum .col-xs-4,.col-xs-8 {
+  padding-right: 0;
+  padding-left: 0;
+}
+.gamemodeSum p.innerProgressCircle {
+  margin-top: 8px;
+  font-size: 25px;
+  display: block;
+}

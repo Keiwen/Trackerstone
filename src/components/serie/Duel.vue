@@ -89,22 +89,3 @@
     }
   }
 </script>
-
-<style lang="scss">
-    .duelButtons {
-        margin-top: 10px;
-        button {
-            margin-left: 20px;
-            margin-right: 20px;
-        }
-    }
-
-    .infoNote {
-        cursor: pointer;
-    }
-
-    .winstreakIcon {
-        display: inline-block;
-        width: 20px;
-    }
-</style>
