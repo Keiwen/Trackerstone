@@ -1,21 +1,23 @@
 <template>
     <div class="container-fluid">
-        <h2>Arena</h2>
+        <h3>Stats</h3>
         <p>{{ arenaPlayed }} completed</p>
         <p>{{ arenaAverageWin }} win average (max reached: {{ arenaMaxWin }})</p>
         <p>Combined record: {{ arenaGamesWon }} - {{ arenaGamesLoss }} ({{ arenaWinPercent }} % winrate)</p>
         <p>Gold prize: {{ totalGoldPrize }} total, {{ averageGoldPrize }} average</p>
         <p>Dust prize: {{ totalDustPrize }} total, {{ averageDustPrize }} average</p>
         <p>Gold balance: {{ getGoldBalance(true) }} refund with card pack, {{ getGoldBalance() }} arena refund</p>
-        <router-link :to="{ name: 'arenaChart' }">See charts</router-link>
+        <see-chart-button routeName="arenaChart" />
     </div>
 </template>
 
 
 <script>
   import { mapGetters } from 'vuex'
+  import SeeChartButton from '@/components/charts/SeeChartButton'
 
   export default {
+    components: {SeeChartButton},
     computed: {
       ...mapGetters([
         'arenaGamesWon', 'arenaGamesLoss', 'arenaWinPercent',

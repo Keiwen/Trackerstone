@@ -18,8 +18,7 @@
             </div>
         </div>
 
-        <br/><br/>
-        <router-link :to="{ name: 'deckTypeChart' }">See charts</router-link>
+        <see-chart-button routeName="deckTypeChart" />
         <hr/>
 
         <deck-type-set />
@@ -35,9 +34,10 @@
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
   import DeckTypeSet from './DeckTypeSet'
   import { EnhancedCheckRadio } from 'vue-enhanced-check'
+  import SeeChartButton from '@/components/charts/SeeChartButton'
 
   export default {
-    components: {DeckTypeShow, ConfirmationModal, DeckTypeSet, EnhancedCheckRadio},
+    components: {DeckTypeShow, ConfirmationModal, DeckTypeSet, EnhancedCheckRadio, SeeChartButton},
     data () {
       return {
         typeEnhanced: [],
