@@ -1,46 +1,38 @@
 <template>
     <div class="container-fluid">
-        <h2>Arena</h2>
-        <p>{{ arenaPlayed }} completed</p>
-        <p>{{ arenaAverageWin }} win average (max reached: {{ arenaMaxWin }})</p>
-        <p>Combined record: {{ arenaGamesWon }} - {{ arenaGamesLoss }} ({{ arenaWinPercent }} % winrate)</p>
-        <p>Gold prize: {{ totalGoldPrize }} total, {{ averageGoldPrize }} average</p>
-        <p>Dust prize: {{ totalDustPrize }} total, {{ averageDustPrize }} average</p>
-        <p>Gold balance: {{ getGoldBalance(true) }} refund with card pack, {{ getGoldBalance() }} arena refund</p>
-        <router-link :to="{ name: 'arenaChart' }">See charts</router-link>
+        <h3>Stats</h3>
+        <p v-if="!isNewArena">Record: {{ arenaGamesWonCurrent }} - {{ arenaGamesLossCurrent }} ({{ arenaWinPercentCurrent }} % winrate)</p>
+        <p v-else>Record: 0 - 0 (0 % winrate)</p>
+        <p>
+            <win-loss v-for="(game, gameIndex) in currentGames" :game="game" :key="gameIndex" />
+        </p>
+        <p>{{ arenaKeyTitle() }} key</p>
     </div>
 </template>
 
 
 <script>
   import { mapGetters } from 'vuex'
+  import WinLoss from './WinLoss'
 
   export default {
+    components: {WinLoss},
     computed: {
       ...mapGetters([
-        'arenaGamesWon', 'arenaGamesLoss', 'arenaWinPercent',
-        'arenaPlayed', 'arenaAverageWin', 'arenaMaxWin',
-        'arenaWithPrize', 'arenaTotalPrize', 'arenaAveragePrize',
-        'arenaFee', 'cardPackCost'
+        'arenaGamesWonCurrent',
+        'arenaGamesLossCurrent',
+        'arenaWinPercentCurrent',
+        'getArenaGamesList',
+        'arenaWin',
+        'arenaLoss',
+        'arenaKeyTitle'
       ]),
-      totalGoldPrize () {
-        return this.arenaTotalPrize('gold')
+      currentGames () {
+        if (this.isNewArena) return []
+        return this.getArenaGamesList(true)
       },
-      averageGoldPrize () {
-        return this.arenaAveragePrize('gold')
-      },
-      totalDustPrize () {
-        return this.arenaTotalPrize('dust')
-      },
-      averageDustPrize () {
-        return this.arenaAveragePrize('dust')
-      }
-    },
-    methods: {
-      getGoldBalance (includeCardPack) {
-        let engageCost = this.arenaFee
-        if (includeCardPack) engageCost -= this.cardPackCost
-        return this.totalGoldPrize - (this.arenaWithPrize * engageCost)
+      isNewArena () {
+        return (this.arenaWin === 0 && this.arenaLoss === 0)
       }
     }
   }
