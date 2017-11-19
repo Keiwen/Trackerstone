@@ -2,6 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import 'bootstrap/dist/css/bootstrap.css'
+import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
+import '../static/flickity.css'
 import App from './App'
 import router from './router'
 import store from './store'
@@ -10,7 +12,6 @@ import VueAnalytics from 'vue-analytics'
 import 'vue-awesome/icons'
 import 'chart.js'
 import CxltToastr from 'cxlt-vue2-toastr'
-import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
 
 Vue.config.productionTip = false
 
