@@ -42,21 +42,37 @@ export default new Router({
     {
       path: '/deckChart',
       name: 'deckChart',
+      meta: {
+        chartRoute: true,
+        backRoute: 'deckList'
+      },
       component: DeckChart
     },
     {
       path: '/serieChart',
       name: 'serieChart',
+      meta: {
+        chartRoute: true,
+        backRoute: 'serie'
+      },
       component: SerieChart
     },
     {
       path: '/arenaChart',
       name: 'arenaChart',
+      meta: {
+        chartRoute: true,
+        backRoute: 'arena'
+      },
       component: ArenaChart
     },
     {
       path: '/deckTypeChart',
       name: 'deckTypeChart',
+      meta: {
+        chartRoute: true,
+        backRoute: 'deckTypesList'
+      },
       component: DeckTypeChart
     }
   ]

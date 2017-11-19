@@ -1,18 +1,28 @@
 
+.tsCharts {
+  margin-top: -70px;
+}
+
 .chart {
-    // background-color: $brown-ts;
-    background-color: $brown-ts;
-    border-radius: 25px;
-    padding: 20px;
-    margin-bottom: 20px;
+  // background-color: $brown-ts;
+  // border-radius: 25px;
 
-    h2 {
-      //color: $orange-ts;
-     // border-bottom: 1px solid $orange-ts;
-      color: $orange-ts;
-      border-bottom: 1px solid $orange-ts;
-      margin-top: 0;
-      padding-bottom: 15px;
-    }
+  h3 {
+    color: $orange-ts;
+    border-bottom: 1px solid $orange-ts;
+    margin-top: 0;
+    padding: 5px;
+    margin-bottom: 0;
+  }
 
+  i {
+    // margin-bottom: 0;
+  }
+
+}
+
+.routerBack {
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
