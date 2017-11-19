@@ -16,7 +16,7 @@
             </div>
             <div class="carousel-cell chart">
                 <h3>Win percent by hour</h3>
-                <win-percent-by-hour-graph :height="180" />
+                <win-percent-by-hour-graph :height="160" />
                 <i>Point radius represents number of games</i>
             </div>
         </flickity>
