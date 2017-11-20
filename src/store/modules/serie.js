@@ -157,6 +157,10 @@ const getters = {
     }
     return totalStars
   },
+  isOnWinStreak: state => {
+    let currentWinStreak = state.wildMode ? state.winStreakWild : state.winStreak
+    return currentWinStreak >= state.WIN_STREAK
+  },
   getSerieTimeProgress: state => {
     let currentDate = new Date()
     let lastDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0)
@@ -217,7 +221,7 @@ const actions = {
     const rank = state.wildMode ? state.rankWild : state.rank
     const winStreak = state.wildMode ? state.winStreakWild : state.winStreak
     if (rank > state.RANK_BONUSCANCELED) {
-      if ((winStreak) >= state.WIN_STREAK) {
+      if (state.isOnWinStreak) {
         bonusStar = number
       } else if ((number + winStreak) >= state.WIN_STREAK) {
         bonusStar = number - state.WIN_STREAK + 1 + winStreak

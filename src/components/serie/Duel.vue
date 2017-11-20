@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <div class="container">
-            <div class="col-md-6">
+            <div class="col-xs-6">
                 <h3>Current deck</h3>
                 <deck-pick/>
                 <span @click="showDeckNote()">
@@ -14,7 +14,7 @@
                 </sweet-modal>
 
             </div>
-            <div class="col-md-6">
+            <div class="col-xs-6">
                 <h3>Opponent deck</h3>
                 <deck-type-pick @pick-type="pickOpponentType" :initialPick="opponent" />
                 <span @click="showNote()">
@@ -28,12 +28,15 @@
 
             </div>
         </div>
-        <div>
+        <div class="container">
             <p>Similar games played: {{ gamesCurrentWonVs.length }} - {{ gamesCurrentLossVsCount }} ({{ gamesCurrentWinpercentVs }} % won)</p>
         </div>
 
         <div class="duelButtons">
             <button @click="win()" class="btn btn-success">Win <icon name="thumbs-up" /></button>
+            <span class="winstreakIcon">
+                <icon name="fire" v-if="isOnWinStreak" class="text-danger" />
+            </span>
             <button @click="loose()" class="btn btn-warning">Loss <icon name="thumbs-down" /></button>
         </div>
     </div>
@@ -50,7 +53,10 @@
   export default {
     components: {DeckPick, DeckTypePick, SweetModal},
     computed: {
-      ...mapGetters(['current', 'opponent', 'getGamesVsType', 'getGamesWonAmong', 'computeWinPercent']),
+      ...mapGetters([
+        'current', 'opponent', 'getGamesVsType', 'getGamesWonAmong',
+        'computeWinPercent', 'isOnWinStreak'
+      ]),
       gamesCurrentPlayedVs () {
         if (this.opponent === {}) return []
         const gamesPlayedVs = this.getGamesVsType(this.opponent.id)
@@ -83,13 +89,3 @@
     }
   }
 </script>
-
-<style>
-    .duelButtons {
-        margin-top: 25px;
-    }
-
-    .infoNote {
-        cursor: pointer;
-    }
-</style>

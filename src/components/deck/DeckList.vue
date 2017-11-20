@@ -9,7 +9,9 @@
                 </div>
             </div>
         </div>
-        <router-link :to="{ name: 'deckChart' }">See charts</router-link>
+
+        <br/>
+        <see-chart-button routeName="deckChart" />
         <hr/>
 
         <deck-set></deck-set>
@@ -25,9 +27,10 @@
   import DeckShow from './DeckShow'
   import DeckSet from './DeckSet'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
+  import SeeChartButton from '@/components/charts/SeeChartButton'
 
   export default {
-    components: {DeckTypePick, DeckShow, DeckSet, ConfirmationModal},
+    components: {DeckTypePick, DeckShow, DeckSet, ConfirmationModal, SeeChartButton},
     data () {
       return {
         newType: {},

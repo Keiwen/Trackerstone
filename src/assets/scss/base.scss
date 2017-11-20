@@ -2,8 +2,15 @@
 
 hr {
   border-top: 1px dotted $main-color !important;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 body {
   padding-bottom: 25px;
+}
+
+h3 {
+  margin-top: 10px;
+  font-size: 20px;
 }

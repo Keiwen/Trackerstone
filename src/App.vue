@@ -1,7 +1,13 @@
 <template>
     <div id="app">
-        <topbar></topbar>
+        <topbar v-if="showTopbar"></topbar>
         <router-view></router-view>
+
+        <button @click="routerBack()" class="btn btn-info routerBack" v-if="!showTopbar">
+            <icon name="step-backward" />
+            Back
+        </button>
+
         <cookie-law theme="dark-lime" message="This website uses local navigator storage to save and load data."></cookie-law>
     </div>
 </template>
@@ -15,7 +21,11 @@
     name: 'app',
     components: { CookieLaw, Topbar },
     computed: {
-      ...mapGetters(['messageBag'])
+      ...mapGetters(['messageBag']),
+      showTopbar () {
+        if (this.$route.meta && this.$route.meta.chartRoute) return false
+        return true
+      }
     },
     watch: {
       messageBag: function (newValue, oldValue) {
@@ -48,7 +58,14 @@
       }
     },
     methods: {
-      ...mapActions(['nextMessage'])
+      ...mapActions(['nextMessage']),
+      routerBack () {
+        if (this.$route.meta && this.$route.meta.backRoute) {
+          this.$router.push({name: this.$route.meta.backRoute})
+        } else {
+          this.$router.go(-1)
+        }
+      }
     }
   }
 </script>

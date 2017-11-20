@@ -4,6 +4,7 @@
         <hr/>
         <div class="arenaOpen" v-if="arenaOpen">
             <arena-duel/>
+            <hr/>
             <arena-stats/>
             <hr/>
             <confirmation-modal
@@ -14,14 +15,18 @@
         </div>
 
         <div class="arenaClose" v-else>
-            <p>Arena closed</p>
+            <h3>Arena closed</h3>
             <arena-prize></arena-prize>
-            <arena-stats/>
-            <div class="newArena">
-                <label>Class: </label>
-                <class-pick @pick-class="pickClass" />
-                <button @click="newArena()" class="btn btn-success" :disabled="!newClass">Enter arena</button>
+            <div class="newArena container">
+                <div class="col-xs-6">
+                    <class-pick @pick-class="pickClass" />
+                </div>
+                <div class="col-xs-6">
+                    <button @click="newArena()" class="btn btn-success" :disabled="!newClass">Enter arena</button>
+                </div>
             </div>
+            <hr/>
+            <arena-stats/>
         </div>
 
     </div>

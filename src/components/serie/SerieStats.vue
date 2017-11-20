@@ -6,7 +6,7 @@
             Last {{ recentGames.length }} games: {{ gamesWonRecent }} - {{ gamesLossRecent }} ({{ winPercentRecent }} % winrate)
             <win-loss v-for="(game, gameIndex) in recentGames" :game="game" :key="gameIndex" />
         </p>
-        <router-link :to="{ name: 'serieChart' }">See charts</router-link>
+        <see-chart-button routeName="serieChart" />
     </div>
 </template>
 
@@ -14,9 +14,10 @@
 <script>
   import { mapGetters } from 'vuex'
   import WinLoss from './WinLoss'
+  import SeeChartButton from '@/components/charts/SeeChartButton'
 
   export default {
-    components: {WinLoss},
+    components: {WinLoss, SeeChartButton},
     computed: {
       ...mapGetters(['gamesPlayed', 'gamesWon', 'gamesLoss', 'winPercent', 'getGamesList', 'gamesWonRecent', 'gamesLossRecent', 'winPercentRecent']),
       recentGames () {
