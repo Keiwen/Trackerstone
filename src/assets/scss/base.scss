@@ -14,3 +14,34 @@ h3 {
   margin-top: 10px;
   font-size: 20px;
 }
+
+table {
+  text-align: center;
+  margin: auto;
+  td,th {
+    padding: 5px;
+    border: 1px solid $orange-ts50;
+  }
+  tr:hover td {
+    background-color: #EEEEEE;
+  }
+  th {
+    text-align: center;
+    color: $black;
+    // first col th (first row is overloaded below)
+    background: linear-gradient(to left, $white, $secondary-light);
+  }
+  tr:first-child th {
+    // first row th
+    background: linear-gradient(to top, $white, $secondary-light);
+  }
+  tr.midheader th {
+    // first row th
+    background: linear-gradient(to top, $white, $secondary-light);
+  }
+  td {
+    &.nocell {
+      border: none;
+    }
+  }
+}
