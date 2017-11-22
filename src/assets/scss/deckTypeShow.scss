@@ -17,8 +17,8 @@
 
   .deckTypeShow {
       min-height: 120px;
-      background: white;
-      border: 1px solid black;
+      background: $white;
+      border: 1px solid $black;
 
     .profil {
       width: 100%;
@@ -27,7 +27,7 @@
 //      background: url('../../assets/charac_skins.jpg') 0 0 no-repeat;
 
       h4 {
-        color: white;
+        color: $white;
         top: 36px;
         z-index: 4;
         position: absolute;
