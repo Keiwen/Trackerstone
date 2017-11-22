@@ -12,6 +12,7 @@
         <menu-link label="Decks" routeName="deckList"></menu-link>
         <menu-link label="Arena" routeName="arena"></menu-link>
         <menu-link label="Settings" routeName="settings"></menu-link>
+        <menu-link label="Hints" routeName="hints"></menu-link>
       </menu>
 
     </div>
