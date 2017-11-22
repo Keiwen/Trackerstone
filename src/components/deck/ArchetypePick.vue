@@ -4,7 +4,7 @@
 
         <sweet-modal class="sweet-archetype" ref="modalArchetypePick" overlay-theme="dark" title="Pick archetype">
             <div class="container-fluid">
-                <div class="col-xs-12 col-sm-12 col-md-3 archetypePick" v-for="archetype in archetypes">
+                <div class="col-xs-6 col-md-3 archetypePick" v-for="archetype in archetypes">
                     <div :class="archetype" @click="archetypeClick(archetype)">
                         {{ archetype | capitalize }}
                     </div>
