@@ -1,0 +1,21 @@
+{
+  "name": "Trackerstone",
+  "short_name": "Trackerstone",
+  "icons": [
+    {
+      "src": "/Trackerstone/static/img/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/Trackerstone/static/img/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/Trackerstone/",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#FFFFFF",
+  "theme_color": "#463C3B"
+}

@@ -19,7 +19,7 @@ const state = {
   },
 
   own: {},
-  current: {},
+  current: 0,
   opponent: 0,
   currentArena: {},
   opponentArena: {},
@@ -48,10 +48,11 @@ const state = {
     {id: 21, name: 'Quest', hsClass: 'mage', archetype: 'combo', top: false, note: ''},
     {id: 22, name: 'DK Kazakus', hsClass: 'priest', archetype: 'control', top: false, note: ''},
     {id: 23, name: 'Jade elemental', hsClass: 'shaman', archetype: 'midrange', top: false, note: ''},
-    {id: 24, name: 'DK lock', hsClass: 'warlock', archetype: 'control', top: false, note: ''}
+    {id: 24, name: 'DK lock', hsClass: 'warlock', archetype: 'control', top: false, note: ''},
+    {id: 25, name: 'DK elemental', hsClass: 'mage', archetype: 'midrange', top: true, note: ''}
   ],
   nextId: 1,
-  nextTypeId: 25,
+  nextTypeId: 26,
   lastDeckChanged: 0,
   lastTypeChanged: 0
 
@@ -87,7 +88,9 @@ const getters = {
   },
   current: state => {
     if (typeof state.own[state.current] === 'undefined') return {}
-    return state.own[state.current]
+    let currentDeck = state.own[state.current]
+    currentDeck.id = state.current
+    return currentDeck
   },
   opponent: state => {
     let opponentType = {}

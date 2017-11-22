@@ -8,7 +8,6 @@
 
 
 <script>
-
   export default {
     props: ['classKey', 'hsClass'],
     computed: {
@@ -22,74 +21,49 @@
       }
     }
   }
-
 </script>
 
 <style lang="scss">
-@import '../../assets/scss/_import.scss'
+@import '../../assets/scss/_import.scss';
 
-/*.hero {
-    display:block;
-    width: 150px; height: 150px;
-    background: url('../../assets/classes_sprite.png') -75px -75px no-repeat;
-    cursor: pointer;
-    padding: 75px;
-    -ms-transform: scale(0.8); IE 9
-    -webkit-transform: scale(0.8);
-    transform: scale(0.8);
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    border-radius: 50%;
-    box-shadow:inset 0px 0px 1px 6px white, 2px 2px 10px 0 rgba(1,1,1,0.5);
-    box-shadow:3px 3px 15px 0 rgba(1,1,1,0.5);
-}
+    .hero {
+        background: url('../../assets/classes_sprite.png') 0 0 no-repeat;
+    }
 
-.hero:hover {
-  -ms-transform: scale(1); IE 9
-  -webkit-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
+    .hero-warrior {
+        background-position:-375px -675px;
+    }
 
-.hero-warrior {
-  background-position:-375px -675px;
-}
+    .hero-shaman {
+        background-position: -675px -75px;
+    }
 
-.hero-shaman {
-  background-position: -675px -75px;
-}
+    .hero-rogue {
+        background-position: -675px -675px;
+    }
 
-.hero-rogue {
-  background-position: -675px -675px;
-}
+    .hero-paladin {
+        background-position: -675px -375px;
+    }
 
-.hero-paladin {
-  background-position: -675px -375px;
-}
+    .hero-hunter {
+        background-position: -75px -75px;
+    }
 
-.hero-hunter {
-}
+    .hero-druid {
+        background-position:-375px -375px;
+    }
 
-.hero-druid {
-  background-position:-375px -375px;
-}
+    .hero-warlock {
+        background-position: -375px -75px;
+    }
 
-.hero-warlock {
-  background-position: -375px -75px;
-}
+    .hero-mage {
+        background-position: -75px -375px;
+    }
 
-.hero-mage {
-  background-position: -75px -375px;
-}
-
-.hero-priest {
-  background-position: -75px -675px;
-}
-
-.hero-label {
-  cursor:pointer;
-}*/
-
+    .hero-priest {
+        background-position: -75px -675px;
+    }
 
 </style>

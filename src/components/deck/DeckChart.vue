@@ -1,25 +1,27 @@
 <template>
     <div class="container">
-        <div class="chart">
-            <h2>Winrates</h2>
-            <deck-win-rate-graph :height="100" />
-        </div>
-        <div class="chart">
-            <h2>Win score</h2>
-            <deck-win-score-graph :height="100" />
-        </div>
+
+        <flickity ref="arenaCharts" :options="{'wrapAround': true}" class="tsCharts">
+            <div class="carousel-cell chart">
+                <h3>Winrates</h3>
+                <deck-win-rate-graph :height="180" />
+            </div>
+            <div class="carousel-cell chart">
+                <h3>Win score</h3>
+                <deck-win-score-graph :height="180" />
+            </div>
+        </flickity>
 
     </div>
 </template>
 
 
 <script>
-
+  import Flickity from 'vue-flickity'
   import DeckWinRateGraph from '@/components/charts/DeckWinRateGraph'
   import DeckWinScoreGraph from '@/components/charts/DeckWinScoreGraph'
 
   export default {
-    components: {DeckWinRateGraph, DeckWinScoreGraph}
+    components: {Flickity, DeckWinRateGraph, DeckWinScoreGraph}
   }
-
 </script>

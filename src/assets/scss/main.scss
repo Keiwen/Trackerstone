@@ -4,13 +4,6 @@ body {
   background-color: $main-bg!important;
   padding-bottom: 50px !important;
   position: relative;
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: $main-color;
-    padding-top: 60px;
 
     footer {
       position: absolute;
@@ -36,4 +29,11 @@ body {
     }
   }
 
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: $main-color;
+  margin-top: 55px;
 }

@@ -9,43 +9,28 @@
                 </div>
             </div>
         </div>
-        <router-link :to="{ name: 'deckChart' }">See charts</router-link>
-        <hr/>
-        <div class="settingForm manageForm">
-          <div class="row">
-            <div class="col-xs-12 col-sm-12 align-col">
-              <label>Type: </label>
-              <deck-type-pick @pick-type="pickType" />
-            </div>
-            <div class="col-xs-12 col-sm-12 align-col">
-              <label>Name (opt): </label>
-              <input type="text" v-model="newName" @keyup.enter="add()"/>
-            </div>
-            <div class="col-xs-12 col-sm-12 align-col">
-              <label>Export code (opt): </label>
-              <input type="text" v-model="newExportCode" @keyup.enter="add()"/>
-            </div>
-            <div class="col-xs-12 col-sm-12 align-col">
-              <button @click="add()" class="btn btn-success">Add</button>
-            </div>
-          </div>
-        </div>
 
+        <br/>
+        <see-chart-button routeName="deckChart" />
+        <hr/>
+
+        <deck-set></deck-set>
 
     </div>
 </template>
 
 
 <script>
-
   import { mapGetters, mapActions } from 'vuex'
   import * as storeMut from '@/store/mutation-types'
   import DeckTypePick from './DeckTypePick'
   import DeckShow from './DeckShow'
+  import DeckSet from './DeckSet'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
+  import SeeChartButton from '@/components/charts/SeeChartButton'
 
   export default {
-    components: {DeckTypePick, DeckShow, ConfirmationModal},
+    components: {DeckTypePick, DeckShow, DeckSet, ConfirmationModal, SeeChartButton},
     data () {
       return {
         newType: {},
@@ -79,7 +64,6 @@
       }
     }
   }
-
 </script>
 
 

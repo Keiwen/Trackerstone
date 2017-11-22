@@ -4,7 +4,6 @@
 
 
 <script>
-
   export default {
     props: ['game'],
     computed: {
@@ -14,7 +13,6 @@
       }
     }
   }
-
 </script>
 
 

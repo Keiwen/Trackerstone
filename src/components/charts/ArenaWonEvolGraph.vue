@@ -1,6 +1,5 @@
 
 <script>
-
   import { Line } from 'vue-chartjs'
   import { mapGetters } from 'vuex'
 
@@ -30,7 +29,7 @@
           scales: {
             yAxes: [{
               ticks: {
-//                reverse: true,
+                // reverse: true,
                 min: 0,
                 max: 12
               }
@@ -44,5 +43,4 @@
       this.renderChart(this.chartData, this.options)
     }
   })
-
 </script>

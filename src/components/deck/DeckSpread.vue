@@ -13,7 +13,6 @@
 
 
 <script>
-
   import { mapGetters } from 'vuex'
   import DeckShowSimple from './DeckShowSimple'
 
@@ -28,7 +27,6 @@
       }
     }
   }
-
 </script>
 
 <style scoped lang="scss">

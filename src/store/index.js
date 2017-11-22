@@ -103,6 +103,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    switchWildMode ({commit}) {
+      commit(types.SWITCH_WILD_MODE)
+    },
     win ({dispatch}) {
       dispatch('storeGame', true)
     },
@@ -110,12 +113,19 @@ export default new Vuex.Store({
       dispatch('storeGame', false)
     },
     storeGame ({dispatch, state, commit, getters}, won) {
+      const dateNow = new Date()
       const historyData = {
         rank: state.serie.rank,
         stars: state.serie.stars,
         won: won,
         deck: getters.current,
-        opponent: getters.opponent
+        opponent: getters.opponent,
+        gameDate: {
+          fullDate: dateNow,
+          dayInMonth: dateNow.getDate(),
+          dayInWeek: dateNow.getDay(),
+          hour: dateNow.getHours()
+        }
       }
       commit(types.ADD_HISTORY, historyData)
     },
@@ -169,12 +179,19 @@ export default new Vuex.Store({
       }
     },
     storeArenaGame ({dispatch, state, commit}, won) {
+      const dateNow = new Date()
       const historyData = {
         arenaWin: state.serie.arenaWin,
         arenaLoss: state.serie.arenaLoss,
         won: won,
         player: state.deck.currentArena,
-        opponent: state.deck.opponentArena
+        opponent: state.deck.opponentArena,
+        gameDate: {
+          fullDate: dateNow,
+          dayInMonth: dateNow.getDate(),
+          dayInWeek: dateNow.getDay(),
+          hour: dateNow.getHours()
+        }
       }
       commit(types.ADD_ARENA_HISTORY, historyData)
     },

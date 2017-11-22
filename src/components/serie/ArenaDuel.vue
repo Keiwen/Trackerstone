@@ -1,18 +1,24 @@
 <template>
     <div class="container-fluid">
+
         <div class="container">
-            <div class="col-md-6">
+            <div class="col-xs-6">
                 <h3>Current class</h3>
                 <class-pick :initialPick="currentArena.id" :disabled="true"/>
             </div>
-            <div class="col-md-6">
+            <div class="col-xs-6">
                 <h3>Opponent class</h3>
                 <class-pick @pick-class="pickOpponentClass" :initialPick="opponentArena.id" />
             </div>
         </div>
 
+        <div class="container">
+            <p></p>
+        </div>
+
         <div class="duelButtons">
             <button @click="winArena()" class="btn btn-success">Win <icon name="thumbs-up" /></button>
+            <span class="winstreakIcon"></span>
             <button @click="looseArena()" class="btn btn-warning">Loss <icon name="thumbs-down" /></button>
         </div>
     </div>
@@ -37,5 +43,4 @@
       }
     }
   }
-
 </script>

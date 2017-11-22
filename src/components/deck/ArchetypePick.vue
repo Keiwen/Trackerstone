@@ -17,7 +17,6 @@
 
 
 <script>
-
   import { mapGetters } from 'vuex'
   import { SweetModal } from 'sweet-modal-vue'
 
@@ -46,9 +45,30 @@
       }
     }
   }
-
 </script>
 
-<style>
+<style lang="scss">
+    .aggro {
+        &::before {
+            background: url('../../assets/style-aggro.svg') -10px -10px no-repeat;
+        }
+    }
 
+    .midrange {
+        &::before {
+            background: url('../../assets/style-midrange.svg') -10px -10px no-repeat;
+        }
+    }
+
+    .control {
+        &::before {
+            background: url('../../assets/style-control.svg') -9px 0 no-repeat;
+        }
+    }
+
+    .combo {
+        &::before {
+            background: url('../../assets/style-combo.svg') -12px 0 no-repeat;
+        }
+    }
 </style>

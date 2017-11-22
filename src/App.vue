@@ -1,18 +1,13 @@
 <template>
     <div id="app">
-        <div>
-            <router-link :to="{ name: 'serie' }">Track serie</router-link>
-            -
-            <router-link :to="{ name: 'deckTypesList' }">Manage deck types</router-link>
-            -
-            <router-link :to="{ name: 'deckList' }">Manage decks</router-link>
-            -
-            <router-link :to="{ name: 'arena' }">Arena</router-link>
-            -
-            <router-link :to="{ name: 'settings' }">Settings</router-link>
-        </div>
-        <img src="./assets/logo.png" style="height: 150px">
+        <topbar v-if="showTopbar"></topbar>
         <router-view></router-view>
+
+        <button @click="routerBack()" class="btn btn-info routerBack" v-if="!showTopbar">
+            <icon name="step-backward" />
+            Back
+        </button>
+
         <cookie-law theme="dark-lime" message="This website uses local navigator storage to save and load data."></cookie-law>
         <footer>
           <p>
@@ -24,13 +19,18 @@
 
 <script>
   import CookieLaw from 'vue-cookie-law'
+  import Topbar from '@/components/Topbar/Topbar'
   import { mapGetters, mapActions } from 'vuex'
 
   export default {
     name: 'app',
-    components: { CookieLaw },
+    components: { CookieLaw, Topbar },
     computed: {
-      ...mapGetters(['messageBag'])
+      ...mapGetters(['messageBag']),
+      showTopbar () {
+        if (this.$route.meta && this.$route.meta.chartRoute) return false
+        return true
+      }
     },
     watch: {
       messageBag: function (newValue, oldValue) {
@@ -63,7 +63,14 @@
       }
     },
     methods: {
-      ...mapActions(['nextMessage'])
+      ...mapActions(['nextMessage']),
+      routerBack () {
+        if (this.$route.meta && this.$route.meta.backRoute) {
+          this.$router.push({name: this.$route.meta.backRoute})
+        } else {
+          this.$router.go(-1)
+        }
+      }
     }
   }
 </script>

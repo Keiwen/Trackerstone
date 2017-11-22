@@ -5,11 +5,9 @@
         Sort by:
         <enhanced-check-radio :label="['Star', 'Class', 'Played vs', 'Winrate vs', 'Win score vs']"
                               :value="['star', 'hsClass', 'played', 'winrate', 'winscore']"
-                              name="deck_type_sort"
-                              subClass="primary" :animate="true" :inline="true" v-model="sortBy" :rounded="true">
-
+        					  name="deck_type_sort"
+        					  subClass="primary" :animate="true" :inline="true" v-model="sortBy" :rounded="true">
         </enhanced-check-radio>
-
 
         <div class="container-fluid">
             <div class="deckTypeContainer col-xs-12 col-sm-6 col-md-4 col-lg-3" v-for="type in typesList">
@@ -20,29 +18,26 @@
             </div>
         </div>
 
-        <br/><br/>
-        <router-link :to="{ name: 'deckTypeChart' }">See charts</router-link>
+        <see-chart-button routeName="deckTypeChart" />
         <hr/>
 
         <deck-type-set />
-
-        <br/><br/>
 
     </div>
 </template>
 
 
 <script>
-
   import { mapGetters } from 'vuex'
   import * as storeMut from '@/store/mutation-types'
   import DeckTypeShow from './DeckTypeShow'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
   import DeckTypeSet from './DeckTypeSet'
   import { EnhancedCheckRadio } from 'vue-enhanced-check'
+  import SeeChartButton from '@/components/charts/SeeChartButton'
 
   export default {
-    components: {DeckTypeShow, ConfirmationModal, DeckTypeSet, EnhancedCheckRadio},
+    components: {DeckTypeShow, ConfirmationModal, DeckTypeSet, EnhancedCheckRadio, SeeChartButton},
     data () {
       return {
         typeEnhanced: [],
@@ -77,7 +72,6 @@
       }
     }
   }
-
 </script>
 
 

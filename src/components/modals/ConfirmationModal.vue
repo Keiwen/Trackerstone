@@ -11,7 +11,6 @@
 
 
 <script>
-
   import { SweetModal } from 'sweet-modal-vue'
 
   export default {
@@ -76,7 +75,6 @@
       }
     }
   }
-
 </script>
 
 <style scoped>

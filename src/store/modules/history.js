@@ -4,7 +4,9 @@ import * as types from '../mutation-types'
 // Initial state
 // ----------
 const state = {
+  wildMode: false,
   history: [],
+  historyWild: [],
   historyArena: [],
   completedArena: [],
   recentNumberGames: 10,
@@ -21,6 +23,7 @@ const state = {
 // Getters
 // ----------
 const getters = {
+  wildMode: state => state.wildMode,
   getGamesFilteredFromHistory: state => (history, filter, value, numberOfGames) => {
     if (typeof numberOfGames === 'undefined') numberOfGames = 0
     const historySliced = history.slice(-numberOfGames)
@@ -36,7 +39,8 @@ const getters = {
     })
   },
   getGamesFiltered: (state, getters) => (filter, value, numberOfGames) => {
-    return getters.getGamesFilteredFromHistory(state.history, filter, value, numberOfGames)
+    const history = (state.wildMode) ? state.historyWild : state.history
+    return getters.getGamesFilteredFromHistory(history, filter, value, numberOfGames)
   },
   getLastGamesFiltered: (state, getters) => (numberOfGames, filter, value) => {
     let history = getters.getGamesFiltered(filter, value)
@@ -295,12 +299,21 @@ const actions = {
 const mutations = {
   [types.RESET_HISTORY] (state) {
     state.history = []
+    state.historyWild = []
   },
   [types.SET_HISTORY] (state, history) {
-    state.history = history
+    if (state.wildMode) {
+      state.historyWild = history
+    } else {
+      state.history = history
+    }
   },
   [types.ADD_HISTORY] (state, history) {
-    state.history.push(history)
+    if (state.wildMode) {
+      state.historyWild.push(history)
+    } else {
+      state.history.push(history)
+    }
   },
   [types.SET_ARENA_HISTORY] (state, history) {
     state.historyArena = history
@@ -315,6 +328,9 @@ const mutations = {
     let lastArena = state.completedArena.pop()
     lastArena['prizes'] = prizePayload
     state.completedArena.push(lastArena)
+  },
+  [types.SWITCH_WILD_MODE] (state) {
+    state.wildMode = !state.wildMode
   }
 
 }

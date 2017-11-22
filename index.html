@@ -1,23 +1,51 @@
-<!DOCTYPE html prefix="og: http://ogp.me/ns#">
-<html>
-<head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
     <meta charset="utf-8">
-    <title>Trackerstone</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Trackerstone</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/favicon-16x16.png">
+    <!--[if IE]><link rel="shortcut icon" href="/static/img/icons/favicon.ico"><![endif]-->
+    <!-- Add to home screen for Android and modern mobile browsers -->
+    <link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath %>static/manifest.json">
+    <meta name="theme-color" content="#4DBA87">
+
 
     <!-- OG meta tags -->
     <meta property="og:title" content="Trackerstone" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://keiwen.github.io/Trackerstone/#/" />
-    <meta property="og:image" content="/static/favicon.ico" />
+    <meta property="og:image" content="https://keiwen.github.io/Trackerstone/static/img/icons/favicon.ico" />
 
     <meta property="og:description" content="Simple Hearthstone tool to track win and loss and get stats" />
     <meta property="og:locale" content="en_US" />
 
     <meta name="description" content="Simple Hearthstone tool to track win and loss and get stats" />
 
-    <link rel="icon" href="/static/favicon.ico" />
-</head>
-<body>
-<div id="app"></div>
-</body>
+    <link rel="icon" href="https://keiwen.github.io/Trackerstone/static/img/icons/favicon.ico" />
+
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Trackerstone">
+    <link rel="apple-touch-icon" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/apple-touch-icon-152x152.png">
+    <!-- Add to home screen for Windows -->
+    <meta name="msapplication-TileImage" content="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/msapplication-icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    <% for (var chunk of webpack.chunks) {
+        for (var file of chunk.files) {
+          if (file.match(/\.(js|css)$/)) { %>
+    <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
+  </head>
+  <body>
+    <noscript>
+      This is your fallback content in case JavaScript fails to load.
+    </noscript>
+    <div id="app"></div>
+    <!-- Todo: only include in production -->
+    <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
+    <!-- built files will be auto injected -->
+  </body>
 </html>

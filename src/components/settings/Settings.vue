@@ -14,7 +14,6 @@
 
 
 <script>
-
   import SerieSet from '@/components/serie/SerieSet'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
 
@@ -26,5 +25,4 @@
       }
     }
   }
-
 </script>

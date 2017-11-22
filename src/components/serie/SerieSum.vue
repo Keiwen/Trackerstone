@@ -1,36 +1,54 @@
 <template>
     <div class="container-fluid">
-        <h2>Serie</h2>
-        <p>Rank: {{ rank }} - {{ currentRankTitle }} // Stars: {{ stars }} (Chest: {{ highest }})</p>
-        <p>Next milestone: {{ nextMilestone}} - {{ milestoneTitle }} ({{ winsToMilestone }} wins needed)</p>
-        <div class="serieTime">
-            <radial-progress-bar :diameter="100"
-                                 :completed-steps="starsInMilestone - starsToMilestone"
-                                 :strokeWidth="10"
-                                 :total-steps="starsInMilestone"
-                                 startColor="#1F2F4B"
-                                 stopColor="#599CE9"
-                                 innerStrokeColor="#DDDDDD">
-                <p>Next<br/>milestone</p>
-            </radial-progress-bar>
-            <radial-progress-bar :diameter="100"
-                                 :completed-steps="25 - rank"
-                                 :strokeWidth="10"
-                                 :total-steps="25"
-                                 startColor="#463C3B"
-                                 stopColor="#D3921F"
-                                 innerStrokeColor="#DDDDDD">
-                <p>Rank<br/>{{ rank }}</p>
-            </radial-progress-bar>
-            <radial-progress-bar :diameter="100"
-                                 :completed-steps="getSerieTimeProgress"
-                                 :strokeWidth="10"
-                                 :total-steps="100"
-                                 startColor="#505050"
-                                 stopColor="#C0C0C0"
-                                 innerStrokeColor="#DDDDDD">
-                <p>{{ getSerieTimeLeft }}<br/>days left</p>
-            </radial-progress-bar>
+        <div class="gamemodeSum serieSum row">
+            <div class="col-xs-4">
+                <div class="col-xs-4">
+                    <progress-circle :completed-steps="25 - (wildMode ? rankWild : rank)"
+                                     :total-steps="25"
+                                     :diameter="progressCircleDiameter"
+                                     startColor="#463C3B"
+                                     stopColor="#D3921F"
+                                     circleColor="#DDDDDD">
+                        <p class="innerProgressCircle">{{ wildMode ? rankWild : rank }}</p>
+                    </progress-circle>
+                </div>
+                <div class="col-xs-8">
+                    <h4>Rank</h4>
+                    <p>{{ currentRankTitle }}<br/>{{ currentStars }} star<span v-if="currentStars > 1">s</span></p>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="col-xs-4">
+                    <progress-circle :completed-steps="starsInMilestone - starsToMilestone"
+                                     :total-steps="starsInMilestone"
+                                     :diameter="progressCircleDiameter"
+                                     startColor="#1F2F4B"
+                                     stopColor="#599CE9"
+                                     circleColor="#DDDDDD">
+                        <p class="innerProgressCircle">{{ nextMilestone}}</p>
+                    </progress-circle>
+                </div>
+                <div class="col-xs-8">
+                    <h4>Next milestone</h4>
+                    <p>{{ milestoneTitle }}<br/>{{ winsToMilestone }} wins needed</p>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="col-xs-4">
+                    <progress-circle :completed-steps="getSerieTimeProgress"
+                                     :total-steps="100"
+                                     :diameter="progressCircleDiameter"
+                                     startColor="#505050"
+                                     stopColor="#C0C0C0"
+                                     circleColor="#DDDDDD">
+                        <p class="innerProgressCircle">{{ getSerieTimeLeft}}</p>
+                    </progress-circle>
+                </div>
+                <div class="col-xs-8">
+                    <h4>Days left</h4>
+                    <p>Current chest<br/>{{ highest }}</p>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -38,31 +56,31 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  import RadialProgressBar from 'vue-radial-progress'
+  import { ProgressCircle } from 'vue-progress-circle'
 
   export default {
-    components: { RadialProgressBar },
+    components: {ProgressCircle},
+    data () {
+      return {
+        progressCircleDiameter: 70
+      }
+    },
     computed: {
       ...mapGetters(['rank', 'stars', 'highest', 'nextMilestone', 'winsToMilestone',
         'gamesPlayed', 'gamesWon', 'winRate', 'current', 'opponent', 'recentNumberGames',
         'rankTitle', 'getSerieTimeProgress', 'getSerieTimeLeft',
-        'starsInMilestone', 'starsToMilestone']),
+        'starsInMilestone', 'starsToMilestone',
+        'rankWild', 'starsWild', 'wildMode'
+      ]),
       currentRankTitle () {
         return this.rankTitle()
+      },
+      currentStars () {
+        return this.wildMode ? this.starsWild : this.stars
       },
       milestoneTitle () {
         return this.rankTitle(this.nextMilestone)
       }
     }
   }
-
 </script>
-
-
-<style>
-    .radial-progress-container {
-        margin-left: auto;
-        margin-right: auto;
-        display: inline-block;
-    }
-</style>
