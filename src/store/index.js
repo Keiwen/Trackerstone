@@ -96,7 +96,11 @@ export default new Vuex.Store({
         if (isString) {
           return a[field].localeCompare(b[field])
         } else {
-          return a[field] > b[field]
+          switch (true) {
+            case a[field] > b[field]: return -1
+            case a[field] < b[field]: return 1
+            default: return 0
+          }
         }
       })
       return sorted
