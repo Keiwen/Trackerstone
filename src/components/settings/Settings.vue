@@ -1,14 +1,15 @@
 <template>
     <div class="container-fluid">
-        <serie-set></serie-set>
-        <hr/>
 
+        <h3>Serie data</h3>
+        <serie-set></serie-set>
+
+        <hr/>
         <confirmation-modal
                 @modal-confirm="hardReset()"
                 modalText="You will loose all your data. Are you sure to continue?"
                 buttonText="Reset to default data" iconName=""
         />
-
     </div>
 </template>
 

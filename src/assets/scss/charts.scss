@@ -8,22 +8,14 @@
   min-height: 250px;
 }
 
-.tsCarousel .chart,.hint,.setting {
-  // background-color: $brown-ts;
-  // border-radius: 25px;
-
+.tsCarousel .chart,.hint {
   h3 {
     color: $orange-ts;
     border-bottom: 1px solid $orange-ts;
     margin-top: 0;
     padding: 5px;
-    margin-bottom: 0;
+    margin-bottom: 5px;
   }
-
-  i {
-    // margin-bottom: 0;
-  }
-
 }
 
 .routerBack {
