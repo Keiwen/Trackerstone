@@ -1,7 +1,7 @@
 <template>
     <div class="container">
 
-        <flickity ref="arenaCharts" :options="{'wrapAround': true}" class="tsCharts">
+        <flickity ref="deckTypeCharts" :options="{'wrapAround': true}" class="tsCarousel tsCharts">
             <div class="carousel-cell chart">
                 <h3>Deck types most played against</h3>
                 <deck-type-against-graph :height="180" />

@@ -3,12 +3,12 @@
   margin-top: -55px;
 }
 
-.tsHints .hint {
+.tsCarousel .carousel-cell {
   width: 100%;
   min-height: 250px;
 }
 
-.chart,.hint {
+.tsCarousel .chart,.hint,.setting {
   // background-color: $brown-ts;
   // border-radius: 25px;
 
@@ -32,6 +32,6 @@
   left: 0;
 }
 
-.hint table {
+.tsHints .hint table {
   margin-top: 10px;
 }

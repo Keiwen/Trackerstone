@@ -1,7 +1,7 @@
 <template>
     <div class="container">
 
-        <flickity ref="tsHints" :options="{'wrapAround': true}" class="tsHints">
+        <flickity ref="tsHints" :options="{'wrapAround': true}" class="tsCarousel tsHints">
             <div class="carousel-cell hint">
                 <h3>Starting hand card probability</h3>
                 <hint-card-probability></hint-card-probability>

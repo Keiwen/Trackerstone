@@ -1,7 +1,7 @@
 <template>
     <div class="container">
 
-        <flickity ref="arenaCharts" :options="{'wrapAround': true}" class="tsCharts">
+        <flickity ref="serieCharts" :options="{'wrapAround': true}" class="tsCarousel tsCharts">
             <div class="carousel-cell chart">
                 <h3>Ranks</h3>
                 <serie-rank-evol-graph :height="180" />
