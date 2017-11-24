@@ -29,7 +29,19 @@
             </div>
             <div class="form-group">
                 <label for="newExportCode">Export code:</label>
-                <input type="text" id="newExportCode" class="form-control" v-model="newExportCode" @keyup.enter="confirmEdit()"/>
+                <div class="input-group">
+                    <input type="text" id="newExportCode" class="form-control"
+                           v-model="newExportCode" @keyup.enter="confirmEdit()"
+                           aria-describedby="deckEdit-copy"/>
+                    <span class="input-group-btn">
+                        <button type="button"
+                                v-clipboard:copy="newExportCode"
+                                v-clipboard:success="onClipboardSuccess"
+                                v-tooltip.notrigger.bottom="{ content: 'Copied!', visible: clipboardSuccess }">
+                            <icon name="clipboard" />
+                        </button>
+                    </span>
+                </div>
             </div>
             <div class="form-group">
                 <label for="newNote">Note:</label>
@@ -56,7 +68,8 @@
         editIconHover: false,
         newName: '',
         newNote: '',
-        newExportCode: ''
+        newExportCode: '',
+        clipboardSuccess: false
       }
     },
     computed: {
@@ -93,6 +106,13 @@
       },
       cancelEdit () {
         this.$refs.modalEdit.close()
+      },
+      onClipboardSuccess () {
+        this.clipboardSuccess = true
+        setTimeout(this.onClipboardOut, 1000)
+      },
+      onClipboardOut () {
+        this.clipboardSuccess = false
       }
     }
   }
@@ -116,6 +136,5 @@
     .noted {
         color: #C6AA37;
     }
-
 
 </style>
