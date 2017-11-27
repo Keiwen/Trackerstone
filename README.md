@@ -6,6 +6,12 @@ Current version is 0.7.6 as Progressive Web App !!
 
 > Please note that this project is an experiment with VueJS framework and Progressive Web App, maintained on free-time without guarantee :)
 
+## Samples
+![Serie](https://raw.githubusercontent.com/Keiwen/Trackerstone/master/samples/small/serie.png)
+![Graph](https://raw.githubusercontent.com/Keiwen/Trackerstone/master/samples/small/graph.png)
+![Arena](https://raw.githubusercontent.com/Keiwen/Trackerstone/master/samples/small/arena.png)
+
+## Features
 Simple Hearthstone tracker. Just track your win and loss. On app you'll find:
 - your current rank and star (standard/wild)
 - how many win needed 'til next rank milestone
