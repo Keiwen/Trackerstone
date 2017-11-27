@@ -65,9 +65,9 @@
                 </div>
             </div>
 
-            <button @click="set()" class="btn btn-success btn-setting">Save</button>
-
         </form>
+
+        <button @click="set()" class="btn btn-success btn-setting">Save</button>
 
     </div>
 </template>
@@ -106,10 +106,6 @@
         }
         this.$store.commit(storeMut.SET_SERIE_DATA, dataSet)
         this.addSuccess('Serie data set')
-        this.redirectToSerie()
-      },
-      redirectToSerie () {
-        this.$router.push({ name: 'serie' })
       }
     },
     mounted: function () {
