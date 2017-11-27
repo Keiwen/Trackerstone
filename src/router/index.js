@@ -9,6 +9,7 @@ import SerieChart from '@/components/serie/SerieChart'
 import DeckTypeChart from '@/components/deck/DeckTypeChart'
 import Arena from '@/components/serie/Arena'
 import ArenaChart from '@/components/serie/ArenaChart'
+import HintMain from '@/components/hint/HintMain'
 
 Vue.use(Router)
 
@@ -74,6 +75,11 @@ export default new Router({
         backRoute: 'deckTypesList'
       },
       component: DeckTypeChart
+    },
+    {
+      path: '/hints',
+      name: 'hints',
+      component: HintMain
     }
   ]
 })

@@ -3,7 +3,12 @@
   margin-top: -55px;
 }
 
-.chart {
+.tsHints .hint {
+  width: 100%;
+  min-height: 250px;
+}
+
+.chart,.hint {
   // background-color: $brown-ts;
   // border-radius: 25px;
 
@@ -25,4 +30,8 @@
   position: fixed;
   bottom: 0;
   left: 0;
+}
+
+.hint table {
+  margin-top: 10px;
 }
