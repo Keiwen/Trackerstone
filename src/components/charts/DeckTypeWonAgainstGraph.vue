@@ -10,7 +10,7 @@
         let labels = []
         let dataLists = []
 
-        const typesSorted = this.sortList(this.typesStats, 'playedVs').reverse().slice(0, 10)
+        const typesSorted = this.sortList(this.typesStats, 'playedVs').slice(0, 10)
 
         for (let i = 0; i < typesSorted.length; i++) {
           const type = typesSorted[i]

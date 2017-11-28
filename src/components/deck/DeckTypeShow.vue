@@ -32,12 +32,16 @@
 
         <sweet-modal ref="modalEdit" modal-theme="dark" title="Edit type">
             <div class="form-group">
-                <label for="newName">Name:</label>
-                <input type="text" id="newName" class="form-control" v-model="newName" @keyup.enter="confirmEdit()"/>
+                <label class="control-label col-xs-4" for="newName">Name:</label>
+                <div class="col-xs-8">
+                    <input type="text" id="newName" class="form-control" v-model="newName" @keyup.enter="confirmEdit()"/>
+                </div>
             </div>
             <div class="form-group">
-                <label for="newNote">Note:</label>
-                <textarea id="newNote" rows="5" col="50" class="form-control" v-model="newNote"/>
+                <label class="control-label col-xs-4" for="newNote">Note:</label>
+                <div class="col-xs-8">
+                    <textarea id="newNote" rows="3" col="50" class="form-control" v-model="newNote"/>
+                </div>
             </div>
             <button slot="button" @click="confirmEdit()" class="btn btn-success">Save <icon name="save" /></button>
             <button slot="button" @click="cancelEdit()" class="btn btn-default">Cancel <icon name="times" /></button>

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
 
-        <flickity ref="arenaCharts" :options="{'wrapAround': true}" class="tsCharts">
+        <flickity ref="arenaCharts" :options="{'wrapAround': true}" class="tsCarousel tsCharts">
             <div class="carousel-cell chart">
                 <h3>Class played against</h3>
                 <class-against-arena-graph :height="180" />

@@ -3,27 +3,19 @@
   margin-top: -55px;
 }
 
-.tsHints .hint {
+.tsCarousel .carousel-cell {
   width: 100%;
   min-height: 250px;
 }
 
-.chart,.hint {
-  // background-color: $brown-ts;
-  // border-radius: 25px;
-
+.tsCarousel .chart,.tip {
   h3 {
     color: $orange-ts;
     border-bottom: 1px solid $orange-ts;
     margin-top: 0;
     padding: 5px;
-    margin-bottom: 0;
+    margin-bottom: 5px;
   }
-
-  i {
-    // margin-bottom: 0;
-  }
-
 }
 
 .routerBack {
@@ -32,6 +24,6 @@
   left: 0;
 }
 
-.hint table {
+.tsTips .tip table {
   margin-top: 10px;
 }

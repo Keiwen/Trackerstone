@@ -1,7 +1,7 @@
 <template>
     <div class="container">
 
-        <flickity ref="arenaCharts" :options="{'wrapAround': true}" class="tsCharts">
+        <flickity ref="deckCharts" :options="{'wrapAround': true}" class="tsCarousel tsCharts">
             <div class="carousel-cell chart">
                 <h3>Winrates</h3>
                 <deck-win-rate-graph :height="180" />

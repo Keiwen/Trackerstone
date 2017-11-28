@@ -50,15 +50,15 @@
       typesList () {
         switch (this.sortBy) {
           case 'star':
-            return this.sortList(this.typesStats, 'top').reverse()
+            return this.sortList(this.typesStats, 'top')
           case 'played':
-            return this.sortList(this.typesStats, 'playedVs').reverse()
+            return this.sortList(this.typesStats, 'playedVs')
           case 'winscore':
-            return this.sortList(this.typesStats, 'winScoreVs').reverse()
+            return this.sortList(this.typesStats, 'winScoreVs')
           case 'winrate':
-            return this.sortList(this.typesStats, 'winPercentVs').reverse()
+            return this.sortList(this.typesStats, 'winPercentVs')
           case 'winrateRecent':
-            return this.sortList(this.typesStats, 'winPercentVsRecent').reverse()
+            return this.sortList(this.typesStats, 'winPercentVsRecent')
           case 'hsClass':
             return this.sortList(this.typesStats, 'hsClass', true)
           default:

@@ -24,16 +24,32 @@
 
         <sweet-modal ref="modalEdit" modal-theme="dark" title="Edit deck">
             <div class="form-group">
-                <label for="newName">Name:</label>
-                <input type="text" id="newName" class="form-control" v-model="newName" @keyup.enter="confirmEdit()"/>
+                <label class="control-label col-xs-4" for="newName">Name:</label>
+                <div class="col-xs-8">
+                    <input type="text" id="newName" class="form-control" v-model="newName" @keyup.enter="confirmEdit()"/>
+                </div>
             </div>
             <div class="form-group">
-                <label for="newExportCode">Export code:</label>
-                <input type="text" id="newExportCode" class="form-control" v-model="newExportCode" @keyup.enter="confirmEdit()"/>
+                <label for="newExportCode" class="control-label col-xs-4">Export code:</label>
+                <div class="input-group col-xs-8">
+                    <input type="text" id="newExportCode" class="form-control"
+                           v-model="newExportCode" @keyup.enter="confirmEdit()"
+                           aria-describedby="deckEdit-copy"/>
+                    <span class="input-group-btn">
+                        <button type="button"
+                                v-clipboard:copy="newExportCode"
+                                v-clipboard:success="onClipboardSuccess"
+                                v-tooltip.notrigger.bottom="{ content: 'Copied!', visible: clipboardSuccess }">
+                            <icon name="clipboard" />
+                        </button>
+                    </span>
+                </div>
             </div>
             <div class="form-group">
-                <label for="newNote">Note:</label>
-                <textarea id="newNote" rows="5" col="50" class="form-control" v-model="newNote"/>
+                <label for="newNote" class="control-label col-xs-4">Note:</label>
+                <div class="col-xs-8">
+                    <textarea id="newNote" rows="3" col="50" class="form-control" v-model="newNote"/>
+                </div>
             </div>
             <button slot="button" @click="confirmEdit()" class="btn btn-success">Save <icon name="save" /></button>
             <button slot="button" @click="cancelEdit()" class="btn btn-default">Cancel <icon name="times" /></button>
@@ -56,7 +72,8 @@
         editIconHover: false,
         newName: '',
         newNote: '',
-        newExportCode: ''
+        newExportCode: '',
+        clipboardSuccess: false
       }
     },
     computed: {
@@ -93,6 +110,13 @@
       },
       cancelEdit () {
         this.$refs.modalEdit.close()
+      },
+      onClipboardSuccess () {
+        this.clipboardSuccess = true
+        setTimeout(this.onClipboardOut, 1000)
+      },
+      onClipboardOut () {
+        this.clipboardSuccess = false
       }
     }
   }
@@ -116,6 +140,5 @@
     .noted {
         color: #C6AA37;
     }
-
 
 </style>

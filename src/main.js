@@ -4,6 +4,7 @@ import Vue from 'vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
 import '../static/flickity.css'
+import 'vue-directive-tooltip/css/index.css'
 import App from './App'
 import router from './router'
 import store from './store'
@@ -12,6 +13,8 @@ import VueAnalytics from 'vue-analytics'
 import 'vue-awesome/icons'
 import 'chart.js'
 import CxltToastr from 'cxlt-vue2-toastr'
+import VueClipboard from 'vue-clipboard2'
+import VueDirectiveTooltip from 'vue-directive-tooltip'
 
 Vue.config.productionTip = false
 
@@ -35,6 +38,12 @@ const toastrConfig = {
 }
 
 Vue.use(CxltToastr, toastrConfig)
+Vue.use(VueClipboard)
+Vue.use(VueDirectiveTooltip, {
+  placement: 'bottom',
+  class: 'ts-tooltip',
+  triggers: ['hover']
+})
 
 // FILTERS
 Vue.filter('capitalize', function (value) {

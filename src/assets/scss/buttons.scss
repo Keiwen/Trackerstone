@@ -201,3 +201,18 @@
     }
   }
 }
+
+// ** input group buttons ** //
+.input-group-btn {
+  padding: 0;
+  & button {
+    background-color: #ccc;
+    color: black;
+    border: 1px solid #aaa;
+    padding: 8px 12px;
+    &:last-child {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
+}

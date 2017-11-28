@@ -15,7 +15,7 @@ const state = {
   // a = multiplier
   // b = coef
   // first games doesn't count much, then score grows up to maximum
-  scoreCoef: 300, // by 10 games, score will be 80 % of multiplier
+  scoreCoef: 30, // by 5 games, score will be 80 % of multiplier
   scoreMult: 2 // Winrate should be around 1/2, so multiply by 2 to give score with max ~ 100
 }
 
@@ -273,7 +273,8 @@ const getters = {
   },
 
   // GAMES STATS >>>
-  recentNumberGames: state => state.recentNumberGames
+  recentNumberGames: state => state.recentNumberGames,
+  scoreCoef: state => state.scoreCoef
 }
 
 // ----------
@@ -331,6 +332,16 @@ const mutations = {
   },
   [types.SWITCH_WILD_MODE] (state) {
     state.wildMode = !state.wildMode
+  },
+  [types.SET_RECENT_GAMES_NUMBER] (state, gameNumber) {
+    if (gameNumber > 1) {
+      state.recentNumberGames = gameNumber
+    }
+  },
+  [types.SET_SCORE_COEF] (state, scoreCoef) {
+    if (scoreCoef > 1) {
+      state.scoreCoef = scoreCoef
+    }
   }
 
 }
