@@ -152,6 +152,20 @@ const getters = {
     const percent = getters.getWinPercentVsType(idType, recentOnly)
     return getters.computeWinScore(played.length, percent)
   },
+  getGamesWithArchetype: (state, getters) => (archetype, recentOnly) => {
+    return getters.getGamesList(recentOnly, 'deck.type.archetype', archetype)
+  },
+  getGamesWonWithArchetype: (state, getters) => (archetype, recentOnly) => {
+    const played = getters.getGamesWithClass(archetype, recentOnly)
+    return getters.getGamesWonAmong(played)
+  },
+  getGamesVsArchetype: (state, getters) => (archetype, recentOnly) => {
+    return getters.getGamesList(recentOnly, 'opponent.archetype', archetype)
+  },
+  getGamesWonVsArchetype: (state, getters) => (archetype, recentOnly) => {
+    const played = getters.getGamesVsClass(archetype, recentOnly)
+    return getters.getGamesWonAmong(played)
+  },
   getGamesVsClass: (state, getters) => (hsClass, recentOnly) => {
     return getters.getGamesList(recentOnly, 'opponent.hsClass', hsClass)
   },

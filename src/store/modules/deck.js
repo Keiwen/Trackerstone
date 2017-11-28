@@ -23,7 +23,12 @@ const state = {
   opponent: 0,
   currentArena: {},
   opponentArena: {},
-  archetypes: ['aggro', 'midrange', 'control', 'combo'],
+  archetypes: {
+    'aggro': {id: 'aggro', name: 'Aggro'},
+    'midrange': {id: 'midrange', name: 'Midrange'},
+    'control': {id: 'control', name: 'Control'},
+    'combo': {id: 'combo', name: 'Combo'}
+  },
   types: [
     {id: 1, name: 'Token', hsClass: 'druid', archetype: 'aggro', top: true, note: ''},
     {id: 2, name: 'Dragon', hsClass: 'priest', archetype: 'midrange', top: false, note: ''},
@@ -152,15 +157,6 @@ const mutations = {
   [types.CHOOSE_OPPONENT_ARENA] (state, id) {
     if (typeof state.CLASSES[id] === 'undefined') return
     state.opponentArena = state.CLASSES[id]
-  },
-  [types.ADD_DECKARCHETYPE] (state, name) {
-    state.archetypes.push(name)
-  },
-  [types.SET_DECKARCHETYPES] (state, deckArcheypes) {
-    state.archetypes = deckArcheypes
-  },
-  [types.REMOVE_DECKARCHETYPE] (state, name) {
-    state.archetypes.splice(state.archetypes.indexOf(name), 1)
   },
   [types.ADD_DECKTYPE] (state, type) {
     type.id = state.nextTypeId

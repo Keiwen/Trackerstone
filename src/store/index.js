@@ -47,7 +47,7 @@ export default new Vuex.Store({
       return stats
     },
     deckStats: (state, getters) => {
-      // clone classes to manipulate it, or it will change state directly
+      // clone decks to manipulate it, or it will change state directly
       let stats = JSON.parse(JSON.stringify(getters.own))
       for (let idDeck in stats) {
         if (stats.hasOwnProperty(idDeck)) {
@@ -65,7 +65,7 @@ export default new Vuex.Store({
       return stats
     },
     typesStats: (state, getters) => {
-      // clone classes to manipulate it, or it will change state directly
+      // clone types to manipulate it, or it will change state directly
       let stats = JSON.parse(JSON.stringify(getters.types))
       for (let i = 0; i < stats.length; i++) {
         const idType = stats[i].id
@@ -78,6 +78,19 @@ export default new Vuex.Store({
         stats[i]['wonVsRecent'] = getters.getGamesWonVsType(idType, true).length
         stats[i]['lossVsRecent'] = stats[i]['playedVsRecent'] - stats[i]['wonVsRecent']
         stats[i]['winPercentVsRecent'] = getters.getWinPercentVsType(idType, true)
+      }
+      return stats
+    },
+    archetypesStats: (state, getters) => {
+      // clone archetypes to manipulate it, or it will change state directly
+      let stats = JSON.parse(JSON.stringify(getters.archetypes))
+      for (let archetype in stats) {
+        if (stats.hasOwnProperty(archetype)) {
+          stats[archetype]['playedWith'] = getters.getGamesWithArchetype(archetype).length
+          stats[archetype]['wonWith'] = getters.getGamesWonWithArchetype(archetype).length
+          stats[archetype]['playedVs'] = getters.getGamesVsArchetype(archetype).length
+          stats[archetype]['wonVs'] = getters.getGamesWonVsArchetype(archetype).length
+        }
       }
       return stats
     },
