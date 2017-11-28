@@ -78,6 +78,11 @@ const getters = {
       return game['won'] === true
     })
   },
+  getGamesVsWithDeck: (state, getters) => (gamesList, idDeck) => {
+    return gamesList.filter(game => {
+      return game['deck']['id'] === idDeck
+    })
+  },
   computeWinPercent: state => (playedCount, wonCount) => {
     if (playedCount === 0) return 0
     return Math.round((wonCount / playedCount) * 100)
