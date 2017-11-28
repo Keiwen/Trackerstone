@@ -24,10 +24,10 @@ const state = {
   currentArena: {},
   opponentArena: {},
   archetypes: {
-    'aggro': {id: 'aggro', name: 'Aggro'},
-    'midrange': {id: 'midrange', name: 'Midrange'},
-    'control': {id: 'control', name: 'Control'},
-    'combo': {id: 'combo', name: 'Combo'}
+    'aggro': {id: 'aggro', backgroundColor: '#D43F3A'},
+    'midrange': {id: 'midrange', backgroundColor: '#4CAE4C'},
+    'control': {id: 'control', backgroundColor: '#089FA0'},
+    'combo': {id: 'combo', backgroundColor: '#D3921F'}
   },
   types: [
     {id: 1, name: 'Token', hsClass: 'druid', archetype: 'aggro', top: true, note: ''},
