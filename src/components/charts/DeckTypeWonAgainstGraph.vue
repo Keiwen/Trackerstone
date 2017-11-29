@@ -4,21 +4,34 @@
   import { mapGetters } from 'vuex'
 
   export default Bubble.extend({
+    props: {
+      currentOnly: {
+        type: Boolean,
+        default: false
+      }
+    },
+    watch: {
+      currentOnly: function () {
+        this.renderChart(this.chartData, this.options)
+      }
+    },
     computed: {
-      ...mapGetters(['classStats', 'typesStats', 'generateTypeTitle', 'sortList']),
+      ...mapGetters(['classStats', 'typesStats', 'generateTypeTitle', 'sortList', 'current']),
       chartData () {
         let labels = []
         let dataLists = []
 
-        const typesSorted = this.sortList(this.typesStats, 'playedVs').slice(0, 10)
+        const sortField = this.currentOnly ? 'playedVsCurrent' : 'playedVs'
+        const percentField = this.currentOnly ? 'winPercentVsCurrent' : 'winPercentVs'
+        const typesSorted = this.sortList(this.typesStats, sortField).slice(0, 10)
 
         for (let i = 0; i < typesSorted.length; i++) {
           const type = typesSorted[i]
-          if (type['playedVs'] === 0) continue
+          if (type[sortField] === 0) continue
           labels.push(this.generateTypeTitle(type))
           dataLists.push({
             label: this.generateTypeTitle(type),
-            data: [{x: type['playedVs'], y: type['winPercentVs'], r: 10}],
+            data: [{x: type[sortField], y: type[percentField], r: 10}],
             backgroundColor: this.classStats[type['hsClass']]['backgroundColor']
           })
         }
