@@ -7,7 +7,6 @@
   box-shadow: 0 3px darken(darkgrey, 10%);
   margin-top: 4px;
   margin-bottom: 10px;
-  background-color:$main-bg;
 
   &:hover {
     @include transition(all 0.15s linear);
@@ -66,7 +65,6 @@
 }
 
 .btn-default {
-  background-color: $main-bg!important;
   border-color: $orange-ts!important;
   box-shadow: 0 3px darken($orange-ts, 5%);
 
