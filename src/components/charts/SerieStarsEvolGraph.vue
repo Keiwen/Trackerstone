@@ -31,10 +31,14 @@
         let lastId = 0
         for (let i = 0; i < history.length; i++) {
           lastId = history[i].deck.id
-          if (this.currentOnly && lastId !== this.current.id) continue
           labels.push(i)
-          const totalStars = this.getTotalStars(history[i].rank, history[i].stars)
-          dataset.data.push(totalStars)
+          if (this.currentOnly && lastId !== this.current.id) {
+            // set non current deck point to 0 to follow evolution in the serie
+            dataset.data.push(0)
+          } else {
+            const totalStars = this.getTotalStars(history[i].rank, history[i].stars)
+            dataset.data.push(totalStars)
+          }
         }
         // do not display current stars if currentOnly while current didnt play last game
         if (!this.currentOnly || lastId === this.current.id) {
