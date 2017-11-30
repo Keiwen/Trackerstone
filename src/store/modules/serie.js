@@ -215,13 +215,13 @@ const actions = {
       }
     }
   },
-  win ({dispatch, commit, state}, number) {
+  win ({dispatch, commit, state, getters}, number) {
     if (typeof number === 'undefined') number = 1 // default is 1 win
     let bonusStar = 0
     const rank = state.wildMode ? state.rankWild : state.rank
     const winStreak = state.wildMode ? state.winStreakWild : state.winStreak
     if (rank > state.RANK_BONUSCANCELED) {
-      if (state.isOnWinStreak) {
+      if (getters.isOnWinStreak) {
         bonusStar = number
       } else if ((number + winStreak) >= state.WIN_STREAK) {
         bonusStar = number - state.WIN_STREAK + 1 + winStreak
