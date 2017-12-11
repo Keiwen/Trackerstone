@@ -1,22 +1,27 @@
-.hero {
-    display:block;
-    width: 150px; height: 150px;
-//    background: url('../../assets/classes_sprite.png') 0 0 no-repeat;
-    cursor: pointer;
-    padding: 75px;
-    @include transition(0.5s);
+.class-spread {
+  padding: 0;
+  .hero {
+      display:block;
+      width: 25px; height: 25px;
+      margin: 0 auto;
+  //    background: url('../../assets/classes_sprite.png') 0 0 no-repeat;
+      cursor: pointer;
+      padding: 40px;
+      margin-bottom: -14px;
+      @include transition(0.5s);
+      @include transform(scale(0.6));
+      border-radius: 50%;
+      // box-shadow:inset 0px 0px 1px 6px $white, 1px 1px 8px 0 rgba(1,1,1,0.5);
+      /*box-shadow:3px 3px 15px 0 rgba(1,1,1,0.5);*/
+  }
+
+  .hero:hover {
     @include transform(scale(0.8));
-    border-radius: 50%;
-    box-shadow:inset 0px 0px 1px 6px $white, 1px 1px 8px 0 rgba(1,1,1,0.5);
-    /*box-shadow:3px 3px 15px 0 rgba(1,1,1,0.5);*/
-}
+    @include transition(0.5s);
+  }
 
-.hero:hover {
-  @include transform(scale(1));
-  @include transition(0.5s);
-  box-shadow:inset 0px 0px 1px 6px $white, 1px 1px 10px 0 rgba(1,1,1,0.5);
-}
+  .hero-label {
+    cursor:pointer;
+  }
 
-.hero-label {
-  cursor:pointer;
 }

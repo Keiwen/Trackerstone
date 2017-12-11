@@ -27,43 +27,44 @@
 @import '../../assets/scss/_import.scss';
 
     .hero {
-        background: url('../../assets/classes_sprite.png') 0 0 no-repeat;
+        // background: url('../../assets/classes_sprite.png') 0 0 no-repeat;
+        background: url('../../assets/icones_classes.png') 0 0 no-repeat;
     }
 
     .hero-warrior {
-        background-position:-375px -675px;
+        background-position: -160px -280px;
     }
 
     .hero-shaman {
-        background-position: -675px -75px;
+        background-position: -280px -40px;
     }
 
     .hero-rogue {
-        background-position: -675px -675px;
+        background-position: -280px -280px;
     }
 
     .hero-paladin {
-        background-position: -675px -375px;
+        background-position: -280px -160px;
     }
 
     .hero-hunter {
-        background-position: -75px -75px;
+        background-position: -40px -40px;
     }
 
     .hero-druid {
-        background-position:-375px -375px;
+        background-position: -160px -160px;
     }
 
     .hero-warlock {
-        background-position: -375px -75px;
+        background-position: -160px -40px;
     }
 
     .hero-mage {
-        background-position: -75px -375px;
+        background-position: -40px -160px;
     }
 
     .hero-priest {
-        background-position: -75px -675px;
+        background-position: -40px -280px;
     }
 
 </style>
