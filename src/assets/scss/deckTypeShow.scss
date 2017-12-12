@@ -16,27 +16,28 @@
   }
 
   .deckTypeShow {
-      min-height: 120px;
+      max-height: 95px;
       background-color: $second-bg;
       background: $white;
       border: 1px solid $black;
 
     .profil {
-      width: 100%;
-      height: 58px;
+      width: 95px;
+      height: 95px;
       display: inline-block;
+      position: absolute;
 //      background: url('../../assets/charac_skins.jpg') 0 0 no-repeat;
 
-      h4 {
-        color: $white;
-        top: 36px;
-        z-index: 4;
-        position: absolute;
-        margin: 0 auto;
-        text-align: center;
-        width: 100%;
-        min-width: 220px;
-      }
+      // h4 {
+      //   color: $white;
+      //   top: 36px;
+      //   z-index: 4;
+      //   position: absolute;
+      //   margin: 0 auto;
+      //   text-align: center;
+      //   width: 100%;
+      //   min-width: 220px;
+      // }
 
       &::after {
         content: '';

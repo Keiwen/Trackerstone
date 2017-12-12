@@ -8,10 +8,11 @@
             </div>
             <div class="col-xs-8">
               <div class="profil">
+              </div>
+              
                 <h4>
                     {{ generateTypeTitle(type) }}
                 </h4>
-              </div>
             </div>
             <div class="col-xs-2">
             <div class="starIcon" @click="switchTop()" @mouseover="hoverStarIcon()" @mouseout="hoverStarIcon()">
