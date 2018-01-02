@@ -1,143 +1,141 @@
 /* ** Deck Type Show ** */
+.deckTypeContent {
+  padding: 0; //TODO add correct padding container
 
-.deckTypeContainer {
-  margin-bottom: 15px;
+  .deckTypeContainer {
+    margin-bottom: 15px;
 
-  .deckTypeShow + div {
-    .btn-danger {
-      padding-left: 30px;
+    .deckTypeShow + div {
+      .btn-danger {
+        padding-left: 30px;
 
-      .fa-icon {
-        position: absolute;
-        left: 8px;
-        top: 8px;
-      }
-    }
-  }
-
-  .deckTypeShow {
-      max-height: 95px;
-      background-color: $second-bg;
-      background: $white;
-      border: 1px solid $black;
-
-    .profil {
-      width: 80px;
-      height: 80px;
-      display: inline-block;
-      position: absolute;
-//      background: url('../../assets/charac_skins.jpg') 0 0 no-repeat;
-
-      // h4 {
-      //   color: $white;
-      //   top: 36px;
-      //   z-index: 4;
-      //   position: absolute;
-      //   margin: 0 auto;
-      //   text-align: center;
-      //   width: 100%;
-      //   min-width: 220px;
-      // }
-    }
-  }
-
-  .deckArchetype {
-    &-aggro {
-      -webkit-box-shadow: inset 0px -6px 0px 0px $red-ts;
-      -moz-box-shadow: inset 0px -6px 0px 0px $red-ts;
-      box-shadow: inset 0px -6px 0px 0px $red-ts;
-    }
-
-    &-control {
-      -webkit-box-shadow: inset 0px -6px 0px 0px $blue-ts;
-      -moz-box-shadow: inset 0px -6px 0px 0px $blue-ts;
-      box-shadow: inset 0px -6px 0px 0px $blue-ts;
-    }
-
-    &-midrange {
-      -webkit-box-shadow: inset 0px -6px 0px 0px $green-ts;
-      -moz-box-shadow: inset 0px -6px 0px 0px $green-ts;
-      box-shadow: inset 0px -6px 0px 0px $green-ts;
-    }
-
-    &-combo {
-      -webkit-box-shadow: inset 0px -6px 0px 0px $orange-ts;
-      -moz-box-shadow: inset 0px -6px 0px 0px $orange-ts;
-      box-shadow: inset 0px -6px 0px 0px $orange-ts;
-    }
-
-  }
-
-  .deckTypeShow {
-
-    .row {
-      margin: 0;
-
-      > div {
-        padding: 0;
-      }
-
-      .col-xs-2 {
-        background-color: $black;
-
-        > div {
-          margin: 0 auto;
-          position: relative;
-          width: 30px;
-          height: 58px;
+        .fa-icon {
+          position: absolute;
+          left: 8px;
+          top: 8px;
         }
       }
     }
-    // p {
-    //   padding-top: 15px;
-    // }
 
-    .editIcon,
-    .starIcon {
-      cursor: pointer;
-      padding-bottom: 1em;
+    .deckTypeShow {
+      max-height: 95px;
+      background-color: $second-bg;
 
-      &:hover {
-        padding-bottom: 0;
-      }
-    }
-
-    .editIcon {
-      svg {
+      .profil {
+        width: 80px;
+        height: 80px;
+        display: inline-block;
         position: absolute;
-        top: 10px;
-        left: 8px;
-        @include transition(0.3s ease);
-        color: $white;
-      }
-
-      &:hover svg {
-        top: 2px;
-        left: 3px;
-      }
-    }
-
-    .starIcon {
-      svg {
-        position: absolute;
-        top: 10px;
-        right: 8px;
-        @include transition(0.3s ease);
-        color: $white;
-      }
-
-      &:hover svg {
-        top: 2px;
-        right: 0;
+        left: -44px;
+        z-index: 10; //      background: url('../../assets/charac_skins.jpg') 0 0 no-repeat;
+        // h4 {
+        //   color: $white;
+        //   top: 36px;
+        //   z-index: 4;
+        //   position: absolute;
+        //   margin: 0 auto;
+        //   text-align: center;
+        //   width: 100%;
+        //   min-width: 220px;
+        // }
       }
     }
 
-    .stared {
-      color: $orange-ts!important;
+    .deckArchetype {
+      &-aggro {
+        -webkit-box-shadow: inset 0 -6px 0 0 $red-ts;
+        -moz-box-shadow: inset 0 -6px 0 0 $red-ts;
+        box-shadow: inset 0 -6px 0 0 $red-ts;
+      }
+
+      &-control {
+        -webkit-box-shadow: inset 0 -6px 0 0 $blue-ts;
+        -moz-box-shadow: inset 0 -6px 0 0 $blue-ts;
+        box-shadow: inset 0 -6px 0 0 $blue-ts;
+      }
+
+      &-midrange {
+        -webkit-box-shadow: inset 0 -6px 0 0 $green-ts;
+        -moz-box-shadow: inset 0 -6px 0 0 $green-ts;
+        box-shadow: inset 0 -6px 0 0 $green-ts;
+      }
+
+      &-combo {
+        -webkit-box-shadow: inset 0 -6px 0 0 $orange-ts;
+        -moz-box-shadow: inset 0 -6px 0 0 $orange-ts;
+        box-shadow: inset 0 -6px 0 0 $orange-ts;
+      }
     }
 
-    .noted {
-      color: $orange-ts!important;
+    .deckTypeShow {
+      .row {
+        margin: 0;
+
+        > div {
+          padding: 0;
+        }
+
+        .col-xs-2 {
+          background-color: $black;
+
+          > div {
+            margin: 0 auto;
+            position: relative;
+            width: 30px;
+            height: 58px;
+          }
+        }
+      }
+      // p {
+      //   padding-top: 15px;
+      // }
+      .editIcon,
+      .starIcon {
+        cursor: pointer;
+        padding-bottom: 1em;
+
+        &:hover {
+          padding-bottom: 0;
+        }
+      }
+
+      .editIcon {
+        svg {
+          position: absolute;
+          top: 10px;
+          left: 8px;
+          @include transition(0.3s ease);
+          color: $white;
+        }
+
+        &:hover svg {
+          top: 2px;
+          left: 3px;
+        }
+      }
+
+      .starIcon {
+        svg {
+          position: absolute;
+          top: 10px;
+          right: 8px;
+          @include transition(0.3s ease);
+          color: $white;
+        }
+
+        &:hover svg {
+          top: 2px;
+          right: 0;
+        }
+      }
+
+      .stared {
+        color: $orange-ts!important;
+      }
+
+      .noted {
+        color: $orange-ts!important;
+      }
     }
   }
 }

@@ -9,7 +9,7 @@
         					  subClass="primary" :animate="true" :inline="true" v-model="sortBy" :rounded="true">
         </enhanced-check-radio>
 
-        <div class="container-fluid">
+        <div class="container-fluid deckTypeContent">
             <div class="deckTypeContainer col-xs-6 col-sm-6 col-md-4 col-lg-3" v-for="type in typesList">
                 <deck-type-show :type="type" />
                 <div>

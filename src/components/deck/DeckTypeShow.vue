@@ -115,17 +115,6 @@
         .deckTypeShow {
             .profil {
                 background: url('../../assets/icones_classes.png') 0 0 no-repeat;
-
-                &:after {
-                  content : "";
-                  background: black;
-                  width: 80px;
-                  height: 80px;
-                  display: block;
-                  opacity: 0.2;
-                  top:0;
-                  left:0;
-                }
             }
         }
         .deckClass {
