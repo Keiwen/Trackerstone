@@ -4,6 +4,17 @@
   import { mapGetters } from 'vuex'
 
   export default Pie.extend({
+    props: {
+      currentOnly: {
+        type: Boolean,
+        default: false
+      }
+    },
+    watch: {
+      currentOnly: function () {
+        this.renderChart(this.chartData, this.options)
+      }
+    },
     computed: {
       ...mapGetters(['classStats']),
       chartData () {
@@ -15,7 +26,7 @@
           if (!this.classStats.hasOwnProperty(idClass)) continue
           const hsClass = this.classStats[idClass]
           labels.push(hsClass['name'])
-          dataList.push(hsClass['playedVs'])
+          dataList.push(this.currentOnly ? hsClass['playedVsCurrent'] : hsClass['playedVs'])
           backgrounds.push(hsClass['backgroundColor'])
         }
 

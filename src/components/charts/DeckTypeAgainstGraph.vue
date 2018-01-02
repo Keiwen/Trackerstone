@@ -4,6 +4,17 @@
   import { mapGetters } from 'vuex'
 
   export default Pie.extend({
+    props: {
+      currentOnly: {
+        type: Boolean,
+        default: false
+      }
+    },
+    watch: {
+      currentOnly: function () {
+        this.renderChart(this.chartData, this.options)
+      }
+    },
     computed: {
       ...mapGetters(['classStats', 'typesStats', 'generateTypeTitle', 'sortList']),
       chartData () {
@@ -11,13 +22,14 @@
         let dataList = []
         let backgrounds = []
 
-        const typesSorted = this.sortList(this.typesStats, 'playedVs').slice(0, 10)
+        const sortField = this.currentOnly ? 'playedVsCurrent' : 'playedVs'
+        const typesSorted = this.sortList(this.typesStats, sortField).slice(0, 10)
 
         for (let i = 0; i < typesSorted.length; i++) {
           const type = typesSorted[i]
-          if (type['playedVs'] === 0) continue
+          if (type[sortField] === 0) continue
           labels.push(this.generateTypeTitle(type))
-          dataList.push(type['playedVs'])
+          dataList.push(type[sortField])
           backgrounds.push(this.classStats[type['hsClass']]['backgroundColor'])
         }
 

@@ -5,9 +5,14 @@
 
   export default Bubble.extend({
     props: {
-      weekend: {
+      currentOnly: {
         type: Boolean,
         default: false
+      }
+    },
+    watch: {
+      currentOnly: function () {
+        this.renderChart(this.chartData, this.options)
       }
     },
     methods: {
@@ -29,7 +34,7 @@
       }
     },
     computed: {
-      ...mapGetters(['getGamesList']),
+      ...mapGetters(['getGamesList', 'current']),
       chartData () {
         const history = this.getGamesList()
         let hours = []
@@ -42,6 +47,7 @@
         // split history in hour range
         for (let i = 0; i < history.length; i++) {
           if (!history[i].gameDate) continue
+          if (this.currentOnly && history[i].deck.id !== this.current.id) continue
           const dayInWeek = history[i].gameDate.dayInWeek
           if (dayInWeek === 0 || dayInWeek === 6) {
             hoursWeekend[history[i].gameDate.hour].gameCount++

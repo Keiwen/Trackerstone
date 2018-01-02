@@ -4,9 +4,9 @@
 
         <sweet-modal class="sweet-archetype" ref="modalArchetypePick" overlay-theme="dark" title="Pick archetype">
             <div class="container-fluid">
-                <div class="col-xs-6 col-md-3 archetypePick" v-for="archetype in archetypes">
-                    <div :class="archetype" @click="archetypeClick(archetype)">
-                        {{ archetype | capitalize }}
+                <div class="col-xs-6 col-md-3 archetypePick" v-for="archetype in archetypesStats">
+                    <div :class="archetype.id" @click="archetypeClick(archetype.id)">
+                        {{ archetype.id | capitalize }}
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
       }
     },
     computed: {
-      ...mapGetters(['archetypes']),
+      ...mapGetters(['archetypesStats']),
       btnText () {
         if (this.pick) return this.pick
         return 'Choose archetype...'
