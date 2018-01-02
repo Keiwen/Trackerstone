@@ -9,7 +9,6 @@
             <div class="col-xs-8">
               <div class="profil">
               </div>
-              
                 <h4>
                     {{ generateTypeTitle(type) }}
                 </h4>
@@ -115,44 +114,55 @@
     .deckTypeContainer {
         .deckTypeShow {
             .profil {
-                background: url('../../assets/charac_skins.jpg') 0 0 no-repeat;
+                background: url('../../assets/icones_classes.png') 0 0 no-repeat;
+
+                &:after {
+                  content : "";
+                  background: black;
+                  width: 80px;
+                  height: 80px;
+                  display: block;
+                  opacity: 0.2;
+                  top:0;
+                  left:0;
+                }
             }
         }
         .deckClass {
             &-druid .profil {
-                background-position: -32px 0;
+                background-position: -160px -161px
             }
 
             &-hunter .profil {
-                background-position: -32px -70px;
+                background-position: -40px -40px;
             }
 
             &-mage .profil {
-                background-position: -32px -140px;
+                background-position: -40px -161px;
             }
 
             &-paladin .profil {
-                background-position: -32px -210px;
+                background-position: -281px -160px;
             }
 
             &-priest .profil {
-                background-position: -32px -280px;
+                background-position: -40px -281px;
             }
 
             &-rogue .profil {
-                background-position: -32px -350px;
+                background-position: -281px -281px;
             }
 
             &-shaman .profil {
-                background-position: -32px -420px;
+                background-position: -280px -40px;
             }
 
             &-warlock .profil {
-                background-position: -32px -490px;
+                background-position: -160px -40px;
             }
 
             &-warrior .profil {
-                background-position: -32px -560px;
+                background-position: -160px -281px;
             }
         }
     }
