@@ -22,12 +22,15 @@
       background-color: $second-bg;
 
       .profil {
-        width: 80px;
-        height: 80px;
+        width: 150px;
+        height: 150px;
         display: inline-block;
         position: absolute;
-        left: -44px;
-        z-index: 10; //      background: url('../../assets/charac_skins.jpg') 0 0 no-repeat;
+        left: -42%;
+        top: -27px;
+        transform: scale(0.64);
+
+        //      background: url('../../assets/charac_skins.jpg') 0 0 no-repeat;
         // h4 {
         //   color: $white;
         //   top: 36px;

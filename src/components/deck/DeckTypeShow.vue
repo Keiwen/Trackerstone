@@ -114,44 +114,44 @@
     .deckTypeContainer {
         .deckTypeShow {
             .profil {
-                background: url('../../assets/icones_classes.png') 0 0 no-repeat;
+                background: url('../../assets/classes_sprite.png') 0 0 no-repeat;
             }
         }
         .deckClass {
             &-druid .profil {
-                background-position: -160px -161px
+                background-position: -375px -376px;
             }
 
             &-hunter .profil {
-                background-position: -40px -40px;
+                background-position: -75px -75px;
             }
 
             &-mage .profil {
-                background-position: -40px -161px;
+                background-position: -75px -375px;
             }
 
             &-paladin .profil {
-                background-position: -281px -160px;
+                background-position: -675px -375px;
             }
 
             &-priest .profil {
-                background-position: -40px -281px;
+                background-position: -75px -675px;
             }
 
             &-rogue .profil {
-                background-position: -281px -281px;
+                background-position: -675px -675px;
             }
 
             &-shaman .profil {
-                background-position: -280px -40px;
+                background-position: -675px -75px;
             }
 
             &-warlock .profil {
-                background-position: -160px -40px;
+                background-position: -375px -75px;
             }
 
             &-warrior .profil {
-                background-position: -160px -281px;
+                background-position: -375px -675px;
             }
         }
     }
