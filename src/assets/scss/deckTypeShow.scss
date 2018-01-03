@@ -1,6 +1,6 @@
 /* ** Deck Type Show ** */
 .deckTypeContent {
-  padding: 0; //TODO add correct padding container
+  padding: 0;
 
   .deckTypeContainer {
     margin-bottom: 15px;
@@ -23,6 +23,13 @@
       height: 95px;
       background-color: $second-bg;
       border-radius: 50px 0 0 50px;
+
+      h4 {
+        font-family: 'Changa One', cursive;
+        text-transform: uppercase;
+        text-align: left;
+        padding-left: 8px;
+      }
 
       .profil {
         width: 150px;
