@@ -4,6 +4,8 @@
 
   .deckTypeContainer {
     margin-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
 
     .deckTypeShow + div {
       .btn-danger {
@@ -18,15 +20,16 @@
     }
 
     .deckTypeShow {
-      max-height: 95px;
+      height: 95px;
       background-color: $second-bg;
+      border-radius: 50px 0 0 50px;
 
       .profil {
         width: 150px;
         height: 150px;
         display: inline-block;
         position: absolute;
-        left: -42%;
+        left: -30%;
         top: -27px;
         transform: scale(0.64);
 
@@ -46,27 +49,27 @@
 
     .deckArchetype {
       &-aggro {
-        -webkit-box-shadow: inset 0 -6px 0 0 $red-ts;
-        -moz-box-shadow: inset 0 -6px 0 0 $red-ts;
-        box-shadow: inset 0 -6px 0 0 $red-ts;
+        -webkit-box-shadow: inset -12px 0 0 0 $red-ts;
+        -moz-box-shadow: inset -12px 0 0 0 $red-ts;
+        box-shadow: inset -12px 0 0 0 $red-ts;
       }
 
       &-control {
-        -webkit-box-shadow: inset 0 -6px 0 0 $blue-ts;
-        -moz-box-shadow: inset 0 -6px 0 0 $blue-ts;
-        box-shadow: inset 0 -6px 0 0 $blue-ts;
+        -webkit-box-shadow: inset -12px 0 0 0 $blue-ts;
+        -moz-box-shadow: inset -12px 0 0 0 $blue-ts;
+        box-shadow: inset -12px 0 0 0 $blue-ts;
       }
 
       &-midrange {
-        -webkit-box-shadow: inset 0 -6px 0 0 $green-ts;
-        -moz-box-shadow: inset 0 -6px 0 0 $green-ts;
-        box-shadow: inset 0 -6px 0 0 $green-ts;
+        -webkit-box-shadow: inset -12px 0 0 0 $green-ts;
+        -moz-box-shadow: inset -12px 0 0 0 $green-ts;
+        box-shadow: inset -12px 0 0 0 $green-ts;
       }
 
       &-combo {
-        -webkit-box-shadow: inset 0 -6px 0 0 $orange-ts;
-        -moz-box-shadow: inset 0 -6px 0 0 $orange-ts;
-        box-shadow: inset 0 -6px 0 0 $orange-ts;
+        -webkit-box-shadow: inset -12px 0 0 0 $orange-ts;
+        -moz-box-shadow: inset -12px 0 0 0 $orange-ts;
+        box-shadow: inset -12px 0 0 0 $orange-ts;
       }
     }
 

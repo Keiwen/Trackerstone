@@ -1,24 +1,24 @@
 <template>
     <div class="deckTypeShow" :class="showDivClass">
         <div class="row">
-            <div class="col-xs-2">
-              <div class="editIcon" @click="editType()" @mouseover="hoverEditIcon()" @mouseout="hoverEditIcon()" >
+            <div class="col-xs-4">
+              <!-- <div class="editIcon" @click="editType()" @mouseover="hoverEditIcon()" @mouseout="hoverEditIcon()" >
                   <icon name="pencil-square-o" :class="{'noted': type.note}" :scale="editIconScale" />
-              </div>
+              </div> -->
+                <div class="profil">
+                </div>
             </div>
             <div class="col-xs-8">
-              <div class="profil">
-              </div>
                 <h4>
                     {{ generateTypeTitle(type) }}
                 </h4>
             </div>
-            <div class="col-xs-2">
-            <div class="starIcon" @click="switchTop()" @mouseover="hoverStarIcon()" @mouseout="hoverStarIcon()">
-                <icon name="star" v-if="type.top" class="stared" :scale="starIconScale" />
-                <icon name="star-o" v-else :scale="starIconScale" />
-            </div>
-          </div>
+            <!-- <div class="col-xs-2">
+                    <div class="starIcon" @click="switchTop()" @mouseover="hoverStarIcon()" @mouseout="hoverStarIcon()">
+                        <icon name="star" v-if="type.top" class="stared" :scale="starIconScale" />
+                        <icon name="star-o" v-else :scale="starIconScale" />
+                    </div>
+                </div> -->
         </div>
         <p>
             {{ type.wonVs }} - {{ type.lossVs }} against
