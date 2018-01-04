@@ -165,7 +165,7 @@ export default new Vuex.Store({
       // messages: win count not yet updated!
       switch (true) {
         case (state.serie.arenaWin === 0):
-          dispatch('addInfo', 'The honor is safe')
+          dispatch('addInfo', 'Honor is safe')
           break
         case (state.serie.arenaWin === 2):
           dispatch('addInfo', 'Another random reward earned')
@@ -200,7 +200,7 @@ export default new Vuex.Store({
       commit(types.COMPLETE_ARENA_HISTORY, completeData)
       switch (true) {
         case (state.serie.arenaWin === 0):
-          dispatch('addInfo', 'How lame man!')
+          dispatch('addInfo', 'Come on man!')
           break
         case (state.serie.arenaWin < 3):
           dispatch('addInfo', 'A little more effort!')
