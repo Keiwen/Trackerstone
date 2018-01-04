@@ -2,7 +2,7 @@
     <span>
         <button class="btn btn-default btn-class" :class="btnClass" @click="openClassSpread()" :disabled="disabled">{{ btnText }}</button>
         <sweet-modal ref="modalClassPick" overlay-theme="dark" title="Pick class">
-            <class-spread @pick-class="classPicked" />
+            <class-spread @pick-class="classPicked" :allowNone="allowNone" />
         </sweet-modal>
     </span>
 
@@ -16,7 +16,20 @@
 
   export default {
     components: { SweetModal, ClassSpread },
-    props: ['initialPick', 'disabled'],
+    props: {
+      initialPick: {
+        type: String,
+        default: ''
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      allowNone: {
+        type: Boolean,
+        default: false
+      }
+    },
     data () {
       return {
         pick: ''
