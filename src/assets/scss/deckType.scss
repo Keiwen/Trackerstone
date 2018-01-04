@@ -162,3 +162,23 @@
     }
   }
 }
+
+.deckTypeFiltered {
+  height: 50px;
+  line-height: 50px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid #D3921F;
+  }
+
+  .deckTypeShowSimple {
+    display: inline-block;
+    line-height: 1.5;
+    vertical-align: middle;
+  }
+}
+
+.deckTypeList {
+  margin-bottom: 20px;
+}

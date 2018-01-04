@@ -74,17 +74,5 @@
 </script>
 
 <style scoped lang="scss">
-    .deckTypeFiltered {
-        min-height: 60px;
-        border: 1px solid transparent;
-        cursor: pointer;
-        &:hover {
-            border: 1px solid #D3921F;
-        }
-    }
-
-    .deckTypeList {
-        margin-bottom: 20px;
-    }
 
 </style>
