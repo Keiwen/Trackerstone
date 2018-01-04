@@ -6,7 +6,12 @@
             </div>
         </div>
 
-        <router-link :to="{ name: 'deckList' }">Manage decks</router-link>
+        <hr/>
+        <div class="col-xs-6">
+        </div>
+        <div class="col-xs-6">
+            <router-link :to="{ name: 'deckList' }">Manage decks</router-link>
+        </div>
 
     </div>
 </template>
@@ -29,18 +34,3 @@
   }
 </script>
 
-<style scoped lang="scss">
-    .deckFiltered {
-        min-height: 60px;
-        border: 1px solid transparent;
-        cursor: pointer;
-        &:hover {
-            border: 1px solid #D3921F;
-        }
-    }
-
-    .deckList {
-        margin-bottom: 20px;
-    }
-
-</style>
