@@ -1,0 +1,6 @@
+{
+ "types": [
+   {"timeAdded": 100, "name": "Test1", "hsClass": "druid", "archetype": "aggro", "top": true, "note": ""},
+   {"timeAdded": 100, "name": "Test2", "hsClass": "mage", "archetype": "combo", "top": true, "note": ""}
+  ]
+}
