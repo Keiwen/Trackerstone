@@ -59,7 +59,8 @@ const state = {
   nextId: 1,
   nextTypeId: 26,
   lastDeckChanged: 0,
-  lastTypeChanged: 0
+  lastTypeChanged: 0,
+  lastDeckTypeUpdate: 1515180000000
 
 }
 
@@ -110,13 +111,27 @@ const getters = {
   currentArena: state => state.currentArena,
   opponentArena: state => state.opponentArena,
   lastDeckChanged: state => state.lastDeckChanged,
-  lastTypeChanged: state => state.lastTypeChanged
+  lastTypeChanged: state => state.lastTypeChanged,
+  lastDeckTypeUpdate: state => state.lastDeckTypeUpdate
 }
 
 // ----------
 // Actions
 // ----------
 const actions = {
+  loadDeckTypeUpdate ({dispatch}) {
+    return new Promise((resolve, reject) => {
+      Vue.http.get('https://keiwen.github.io/Trackerstone/static/dtus.json').then(
+        (response) => {
+          resolve(response.body)
+        },
+        (response) => {
+          reject(response)
+          dispatch('addError', 'Cannot retrieve deck types data from server')
+        }
+      )
+    })
+  }
 }
 
 // ----------
@@ -210,6 +225,9 @@ const mutations = {
         type.top = !type.top
       }
     })
+  },
+  [types.UPDATE_DTUS_TIME] (state) {
+    state.lastDeckTypeUpdate = Date.now()
   }
 }
 
