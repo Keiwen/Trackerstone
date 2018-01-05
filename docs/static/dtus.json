@@ -1,6 +1,31 @@
 {
  "types": [
-   {"timeAdded": 100, "name": "Test1", "hsClass": "druid", "archetype": "aggro", "top": true, "note": ""},
-   {"timeAdded": 100, "name": "Test2", "hsClass": "mage", "archetype": "combo", "top": true, "note": ""}
-  ]
+   {"timeAdded": 1515180000000, "name": "Cube", "hsClass": "warlock", "archetype": "control", "top": true},
+   {"timeAdded": 1515180000000, "name": "Tempo Keleseth", "hsClass": "rogue", "archetype": "midrange", "top": true},
+   {"timeAdded": 1515180000000, "name": "Razakus", "hsClass": "priest", "archetype": "control", "top": true},
+   {"timeAdded": 1515180000000, "name": "Aggro", "hsClass": "paladin", "archetype": "aggro", "top": true},
+   {"timeAdded": 1515180000000, "name": "Dragon", "hsClass": "priest", "archetype": "midrange", "top": true},
+   {"timeAdded": 1515180000000, "name": "Secret", "hsClass": "mage", "archetype": "control", "top": true},
+   {"timeAdded": 1515180000000, "name": "Jade", "hsClass": "druid", "archetype": "combo", "top": true},
+   {"timeAdded": 1515180000000, "name": "Face", "hsClass": "hunter", "archetype": "aggro", "top": true},
+   {"timeAdded": 1515180000000, "name": "Zoolock", "hsClass": "warlock", "archetype": "aggro", "top": false},
+   {"timeAdded": 1515180000000, "name": "Murloc", "hsClass": "paladin", "archetype": "aggro", "top": false},
+   {"timeAdded": 1515180000000, "name": "Aggro", "hsClass": "druid", "archetype": "aggro", "top": false},
+   {"timeAdded": 1515180000000, "name": "Big", "hsClass": "priest", "archetype": "midrange", "top": false},
+   {"timeAdded": 1515180000000, "name": "Spell", "hsClass": "hunter", "archetype": "midrange", "top": false},
+   {"timeAdded": 1515180000000, "name": "Big spell", "hsClass": "mage", "archetype": "midrange", "top": false},
+   {"timeAdded": 1515180000000, "name": "Kingsbane", "hsClass": "rogue", "archetype": "midrange", "top": false},
+   {"timeAdded": 1515180000000, "name": "Exodia", "hsClass": "mage", "archetype": "combo", "top": false},
+   {"timeAdded": 1515180000000, "name": "Pirate", "hsClass": "warrior", "archetype": "aggro", "top": false},
+   {"timeAdded": 1515180000000, "name": "Evolve", "hsClass": "shaman", "archetype": "midrange", "top": false},
+   {"timeAdded": 1515180000000, "name": "Miracle", "hsClass": "rogue", "archetype": "combo", "top": false},
+   {"timeAdded": 1515180000000, "name": "Big", "hsClass": "druid", "archetype": "midrange", "top": false},
+   {"timeAdded": 1515180000000, "name": "Control", "hsClass": "warrior", "archetype": "control", "top": false},
+   {"timeAdded": 1515180000000, "name": "Rinlock", "hsClass": "warlock", "archetype": "midrange", "top": false},
+   {"timeAdded": 1515180000000, "name": "Mill", "hsClass": "rogue", "archetype": "combo", "top": false},
+   {"timeAdded": 1515180000000, "name": "Overload", "hsClass": "shaman", "archetype": "midrange", "top": false},
+   {"timeAdded": 1515180000000, "name": "Freeze", "hsClass": "mage", "archetype": "control", "top": false},
+   {"timeAdded": 1515180000000, "name": "Sulfura", "hsClass": "warrior", "archetype": "control", "top": false},
+   {"timeAdded": 1515180000000, "name": "DK elemental", "hsClass": "mage", "archetype": "midrange", "top": false}
+ ]
 }
