@@ -30,6 +30,15 @@
 
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" v-for="(newDeckType, index) in loadedDeckTypes">
                     <div class="col-xs-4">{{ generateTypeTitle(newDeckType) }}</div>
+                    <div class="col-xs-2">
+                        <enhanced-check v-model="newDeckType.top" label="Star" :animate="true" class="starCheck" subClass="warning" />
+                    </div>
+                    <div class="col-xs-3">
+                        <enhanced-toggle labelOn="Add" labelOff="Ignore"
+                                         styleOn="success" styleOff="danger"
+                                         v-model="newDeckType.toAdd" :rounded="true" >
+                        </enhanced-toggle>
+                    </div>
                     <div class="col-xs-3">
                         <button class="btn btn-info" type="button" v-tooltip.bottom="{ html: 'tooltipContent'+index }">
                             <span class="badge">{{ getTypesWithClass(newDeckType.hsClass).length }}</span> stored
@@ -42,15 +51,6 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <enhanced-check v-model="newDeckType.top" label="Star" :animate="true" class="starCheck" subClass="warning" />
-                    </div>
-                    <div class="col-xs-3">
-                        <enhanced-toggle labelOn="Add" labelOff="Ignore"
-                                         styleOn="success" styleOff="danger"
-                                         v-model="newDeckType.toAdd" :rounded="true" >
-                        </enhanced-toggle>
                     </div>
                 </div>
 
