@@ -9,15 +9,15 @@
 
 <script>
   export default {
-    props: ['classKey', 'hsClass'],
+    props: ['hsClass'],
     computed: {
       heroClass () {
-        return 'hero-' + this.classKey
+        return 'hero-' + this.hsClass.id
       }
     },
     methods: {
       heroClick () {
-        this.$emit('hero-click', this.classKey)
+        this.$emit('hero-click', this.hsClass.id)
       }
     }
   }

@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid class-spread">
         <div class="col-xs-3 col-sm-3" v-for="(hsClass, key) in classes" v-if="key || allowNone">
-            <class-card :classKey="key" :hsClass="hsClass" @hero-click="pickClass" />
+            <class-card :hsClass="hsClass" @hero-click="pickClass" />
         </div>
     </div>
 </template>
