@@ -10,6 +10,7 @@ Current version is 0.7.9 as Progressive Web App !!
 ![Serie](https://raw.githubusercontent.com/Keiwen/Trackerstone/master/samples/small/serie.png)
 ![Graph](https://raw.githubusercontent.com/Keiwen/Trackerstone/master/samples/small/graph.png)
 ![Arena](https://raw.githubusercontent.com/Keiwen/Trackerstone/master/samples/small/arena.png)
+![DTUS](https://raw.githubusercontent.com/Keiwen/Trackerstone/master/samples/small/dtus.png)
 
 ## Features
 Simple Hearthstone tracker. Just track your win and loss. On app you'll find:
