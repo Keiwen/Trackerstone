@@ -5,6 +5,18 @@
         <serie-set></serie-set>
         <hr/>
 
+        <h3>Deck types update</h3>
+        <p><i>
+            On update page, you can check recently added deck types and
+            choose to add them or not in your stored list.
+            You'll need a connexion to load a remote file.
+        </i></p>
+        <router-link :to="{ name: 'dtus' }" class="btn btn-info">
+            Check deck types updates
+        </router-link>
+
+        <hr/>
+
         <h3>History data</h3>
         <history-set></history-set>
         <hr/>
