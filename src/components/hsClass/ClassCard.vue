@@ -1,5 +1,5 @@
 <template>
-  <div @click="heroClick()">
+  <div @click="heroClick()" class="class-card">
     <div class="hero" :class="heroClass" ></div>
     <span class="hero-label">{{ hsClass.name }}</span>
   </div>
