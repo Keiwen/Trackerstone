@@ -29,6 +29,8 @@
         text-transform: uppercase;
         text-align: left;
         padding-left: 8px;
+        margin-top: 5px;
+        margin-bottom: 5px;
       }
 
       .profil {
@@ -51,6 +53,22 @@
         //   width: 100%;
         //   min-width: 220px;
         // }
+      }
+
+      .stats {
+        font-size: 11px;
+        text-align: left;
+        text-transform: uppercase;
+        margin-left: 8px;
+      }
+
+      .score {
+        text-transform: uppercase;
+        font-weight: bold;
+        position: absolute;
+        top:45px;
+        left: 0;
+        font-size: 12px;
       }
     }
 

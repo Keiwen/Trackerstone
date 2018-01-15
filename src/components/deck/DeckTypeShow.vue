@@ -12,6 +12,21 @@
                 <h4>
                     {{ generateTypeTitle(type) }}
                 </h4>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <p class="stats">
+                        {{ type.wonVs }} - {{ type.lossVs }} against<br/>
+                        {{ type.winPercentVs }} % global<br/>
+                        {{ type.winPercentVsRecent }} % last<br/>
+                        {{ type.playedVsRecent }} games
+                    </p>
+                  </div>
+                  <div class="col-xs-6">
+                    <p class="score">
+                      Score : {{ type.winScoreVs }}
+                    </p>
+                  </div>
+                </div>
             </div>
             <!-- <div class="col-xs-2">
                     <div class="starIcon" @click="switchTop()" @mouseover="hoverStarIcon()" @mouseout="hoverStarIcon()">
@@ -20,16 +35,6 @@
                     </div>
                 </div> -->
         </div>
-        <p>
-            {{ type.wonVs }} - {{ type.lossVs }} against
-            <i>
-                ({{ type.winPercentVs }} % global, {{ type.winPercentVsRecent }} % last {{ type.playedVsRecent }} games)
-            </i>
-        </p>
-        <p>
-            Score {{ type.winScoreVs }}
-        </p>
-
         <sweet-modal ref="modalEdit" modal-theme="dark" title="Edit type">
             <div class="form-group">
                 <label class="control-label col-xs-4" for="newName">Name:</label>
