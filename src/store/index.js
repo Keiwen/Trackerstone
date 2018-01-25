@@ -36,8 +36,12 @@ export default new Vuex.Store({
         if (stats.hasOwnProperty(hsClass)) {
           stats[hsClass]['playedWith'] = getters.getGamesWithClass(hsClass).length
           stats[hsClass]['wonWith'] = getters.getGamesWonWithClass(hsClass).length
-          stats[hsClass]['playedVs'] = getters.getGamesVsClass(hsClass).length
-          stats[hsClass]['wonVs'] = getters.getGamesWonVsClass(hsClass).length
+          const playedVs = getters.getGamesVsClass(hsClass)
+          stats[hsClass]['playedVs'] = playedVs.length
+          stats[hsClass]['playedVsCurrent'] = getters.getGamesVsWithDeck(playedVs, getters.current.id).length
+          const wonVs = getters.getGamesWonVsClass(hsClass)
+          stats[hsClass]['wonVs'] = wonVs.length
+          stats[hsClass]['wonVsCurrent'] = getters.getGamesVsWithDeck(wonVs, getters.current.id).length
           stats[hsClass]['playedWithArena'] = getters.getArenaGamesWithClass(hsClass).length
           stats[hsClass]['wonWithArena'] = getters.getArenaGamesWonWithClass(hsClass).length
           stats[hsClass]['playedVsArena'] = getters.getArenaGamesVsClass(hsClass).length
@@ -49,7 +53,7 @@ export default new Vuex.Store({
       return stats
     },
     deckStats: (state, getters) => {
-      // clone classes to manipulate it, or it will change state directly
+      // clone decks to manipulate it, or it will change state directly
       let stats = JSON.parse(JSON.stringify(getters.own))
       for (let idDeck in stats) {
         if (stats.hasOwnProperty(idDeck)) {
@@ -67,19 +71,43 @@ export default new Vuex.Store({
       return stats
     },
     typesStats: (state, getters) => {
-      // clone classes to manipulate it, or it will change state directly
+      // clone types to manipulate it, or it will change state directly
       let stats = JSON.parse(JSON.stringify(getters.types))
       for (let i = 0; i < stats.length; i++) {
         const idType = stats[i].id
-        stats[i]['playedVs'] = getters.getGamesVsType(idType).length
-        stats[i]['wonVs'] = getters.getGamesWonVsType(idType).length
+        const playedVs = getters.getGamesVsType(idType)
+        stats[i]['playedVs'] = playedVs.length
+        stats[i]['playedVsCurrent'] = getters.getGamesVsWithDeck(playedVs, getters.current.id).length
+        const wonVs = getters.getGamesWonVsType(idType)
+        stats[i]['wonVs'] = wonVs.length
+        stats[i]['wonVsCurrent'] = getters.getGamesVsWithDeck(wonVs, getters.current.id).length
         stats[i]['lossVs'] = stats[i]['playedVs'] - stats[i]['wonVs']
-        stats[i]['winPercentVs'] = getters.getWinPercentVsType(idType)
-        stats[i]['winScoreVs'] = getters.getWinScoreVsType(idType)
+        stats[i]['lossVsCurrent'] = stats[i]['playedVsCurrent'] - stats[i]['wonVsCurrent']
+        stats[i]['winPercentVs'] = getters.computeWinPercent(stats[i]['playedVs'], stats[i]['wonVs'])
+        stats[i]['winScoreVs'] = getters.computeWinScore(stats[i]['playedVs'], stats[i]['winPercentVs'])
+        stats[i]['winPercentVsCurrent'] = getters.computeWinPercent(stats[i]['playedVsCurrent'], stats[i]['wonVsCurrent'])
+        stats[i]['winScoreVsCurrent'] = getters.computeWinScore(stats[i]['playedVsCurrent'], stats[i]['winPercentVsCurrent'])
         stats[i]['playedVsRecent'] = getters.getGamesVsType(idType, true).length
         stats[i]['wonVsRecent'] = getters.getGamesWonVsType(idType, true).length
         stats[i]['lossVsRecent'] = stats[i]['playedVsRecent'] - stats[i]['wonVsRecent']
         stats[i]['winPercentVsRecent'] = getters.getWinPercentVsType(idType, true)
+      }
+      return stats
+    },
+    archetypesStats: (state, getters) => {
+      // clone archetypes to manipulate it, or it will change state directly
+      let stats = JSON.parse(JSON.stringify(getters.archetypes))
+      for (let archetype in stats) {
+        if (stats.hasOwnProperty(archetype)) {
+          stats[archetype]['playedWith'] = getters.getGamesWithArchetype(archetype).length
+          stats[archetype]['wonWith'] = getters.getGamesWonWithArchetype(archetype).length
+          const playedVs = getters.getGamesVsArchetype(archetype)
+          stats[archetype]['playedVs'] = playedVs.length
+          stats[archetype]['playedVsCurrent'] = getters.getGamesVsWithDeck(playedVs, getters.current.id).length
+          const wonVs = getters.getGamesWonVsArchetype(archetype)
+          stats[archetype]['wonVs'] = wonVs.length
+          stats[archetype]['wonVsCurrent'] = getters.getGamesVsWithDeck(wonVs, getters.current.id).length
+        }
       }
       return stats
     },
@@ -147,7 +175,7 @@ export default new Vuex.Store({
       // messages: win count not yet updated!
       switch (true) {
         case (state.serie.arenaWin === 0):
-          dispatch('addInfo', 'The honor is safe')
+          dispatch('addInfo', 'Honor is safe')
           break
         case (state.serie.arenaWin === 2):
           dispatch('addInfo', 'Another random reward earned')
@@ -182,7 +210,7 @@ export default new Vuex.Store({
       commit(types.COMPLETE_ARENA_HISTORY, completeData)
       switch (true) {
         case (state.serie.arenaWin === 0):
-          dispatch('addInfo', 'How lame man!')
+          dispatch('addInfo', 'Come on man!')
           break
         case (state.serie.arenaWin < 3):
           dispatch('addInfo', 'A little more effort!')

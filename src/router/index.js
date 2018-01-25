@@ -10,6 +10,7 @@ import DeckTypeChart from '@/components/deck/DeckTypeChart'
 import Arena from '@/components/serie/Arena'
 import ArenaChart from '@/components/serie/ArenaChart'
 import TipsMain from '@/components/tips/TipsMain'
+import DeckTypeUpdateList from '@/components/settings/DeckTypeUpdateList'
 
 Vue.use(Router)
 
@@ -80,6 +81,11 @@ export default new Router({
       path: '/tips',
       name: 'tips',
       component: TipsMain
+    },
+    {
+      path: '/dtus',
+      name: 'dtus',
+      component: DeckTypeUpdateList
     }
   ]
 })

@@ -4,8 +4,19 @@
   import { mapGetters } from 'vuex'
 
   export default Line.extend({
+    props: {
+      currentOnly: {
+        type: Boolean,
+        default: false
+      }
+    },
+    watch: {
+      currentOnly: function () {
+        this.renderChart(this.chartData, this.options)
+      }
+    },
     computed: {
-      ...mapGetters(['rank', 'highest', 'getGamesList']),
+      ...mapGetters(['rank', 'highest', 'getGamesList', 'current']),
       chartData () {
         let labels = []
         let dataset = {
@@ -17,12 +28,22 @@
         }
 
         const history = this.getGamesList()
+        let lastId = 0
         for (let i = 0; i < history.length; i++) {
+          lastId = history[i].deck.id
           labels.push(i)
-          dataset.data.push(history[i].rank)
+          if (this.currentOnly && lastId !== this.current.id) {
+            // set non current deck point to 25 (bottom) to follow evolution in the serie
+            dataset.data.push(25)
+          } else {
+            dataset.data.push(history[i].rank)
+          }
         }
-        labels.push('current')
-        dataset.data.push(this.rank)
+        // do not display current rank if currentOnly while current didnt play last game
+        if (!this.currentOnly || lastId === this.current.id) {
+          labels.push('current')
+          dataset.data.push(this.rank)
+        }
 
         return { labels: labels, datasets: [dataset] }
       },

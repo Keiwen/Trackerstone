@@ -23,38 +23,46 @@ const state = {
   opponent: 0,
   currentArena: {},
   opponentArena: {},
-  archetypes: ['aggro', 'midrange', 'control', 'combo'],
+  archetypes: {
+    'aggro': {id: 'aggro', backgroundColor: '#D43F3A'},
+    'midrange': {id: 'midrange', backgroundColor: '#4CAE4C'},
+    'control': {id: 'control', backgroundColor: '#089FA0'},
+    'combo': {id: 'combo', backgroundColor: '#D3921F'}
+  },
   types: [
-    {id: 1, name: 'Token', hsClass: 'druid', archetype: 'aggro', top: true, note: ''},
-    {id: 2, name: 'Dragon', hsClass: 'priest', archetype: 'midrange', top: false, note: ''},
-    {id: 3, name: 'Quest', hsClass: 'rogue', archetype: 'combo', top: false, note: ''},
-    {id: 4, name: 'Evolve', hsClass: 'shaman', archetype: 'midrange', top: true, note: ''},
-    {id: 5, name: 'Face', hsClass: 'hunter', archetype: 'aggro', top: true, note: ''},
-    {id: 6, name: 'Freeze', hsClass: 'mage', archetype: 'control', top: false, note: ''},
+    {id: 1, name: 'Cube', hsClass: 'warlock', archetype: 'control', top: true, note: ''},
+    {id: 2, name: 'Tempo Keleseth', hsClass: 'rogue', archetype: 'midrange', top: true, note: ''},
+    {id: 3, name: 'Razakus', hsClass: 'priest', archetype: 'control', top: true, note: ''},
+    {id: 4, name: 'Aggro', hsClass: 'paladin', archetype: 'aggro', top: true, note: ''},
+    {id: 5, name: 'Dragon', hsClass: 'priest', archetype: 'midrange', top: true, note: ''},
+    {id: 6, name: 'Secret', hsClass: 'mage', archetype: 'control', top: true, note: ''},
     {id: 7, name: 'Jade', hsClass: 'druid', archetype: 'combo', top: true, note: ''},
-    {id: 8, name: 'Mid-Range', hsClass: 'hunter', archetype: 'midrange', top: false, note: ''},
-    {id: 9, name: 'Mid-Range', hsClass: 'paladin', archetype: 'midrange', top: false, note: ''},
-    {id: 10, name: 'Miracle', hsClass: 'rogue', archetype: 'combo', top: true, note: ''},
-    {id: 11, name: 'DK Taunt', hsClass: 'druid', archetype: 'midrange', top: true, note: ''},
-    {id: 12, name: 'Murloc', hsClass: 'paladin', archetype: 'aggro', top: true, note: ''},
-    {id: 13, name: 'Overload', hsClass: 'shaman', archetype: 'aggro', top: false, note: ''},
-    {id: 14, name: 'Pirate', hsClass: 'warrior', archetype: 'aggro', top: true, note: ''},
-    {id: 15, name: 'Quest', hsClass: 'priest', archetype: 'midrange', top: false, note: ''},
-    {id: 16, name: 'Quest', hsClass: 'warrior', archetype: 'control', top: false, note: ''},
-    {id: 17, name: 'Ramp', hsClass: 'druid', archetype: 'midrange', top: false, note: ''},
-    {id: 18, name: 'Silence', hsClass: 'priest', archetype: 'midrange', top: false, note: ''},
-    {id: 19, name: 'Secret', hsClass: 'mage', archetype: 'midrange', top: true, note: ''},
-    {id: 20, name: 'Zoolock', hsClass: 'warlock', archetype: 'aggro', top: false, note: ''},
-    {id: 21, name: 'Quest', hsClass: 'mage', archetype: 'combo', top: false, note: ''},
-    {id: 22, name: 'DK Kazakus', hsClass: 'priest', archetype: 'control', top: false, note: ''},
-    {id: 23, name: 'Jade elemental', hsClass: 'shaman', archetype: 'midrange', top: false, note: ''},
-    {id: 24, name: 'DK lock', hsClass: 'warlock', archetype: 'control', top: false, note: ''},
-    {id: 25, name: 'DK elemental', hsClass: 'mage', archetype: 'midrange', top: true, note: ''}
+    {id: 8, name: 'Face', hsClass: 'hunter', archetype: 'aggro', top: true, note: ''},
+    {id: 9, name: 'Zoolock', hsClass: 'warlock', archetype: 'aggro', top: false, note: ''},
+    {id: 10, name: 'Murloc', hsClass: 'paladin', archetype: 'aggro', top: false, note: ''},
+    {id: 11, name: 'Aggro', hsClass: 'druid', archetype: 'aggro', top: false, note: ''},
+    {id: 12, name: 'Big', hsClass: 'priest', archetype: 'midrange', top: false, note: ''},
+    {id: 13, name: 'Spell', hsClass: 'hunter', archetype: 'midrange', top: false, note: ''},
+    {id: 14, name: 'Big spell', hsClass: 'mage', archetype: 'midrange', top: false, note: ''},
+    {id: 15, name: 'Kingsbane', hsClass: 'rogue', archetype: 'midrange', top: false, note: ''},
+    {id: 16, name: 'Exodia', hsClass: 'mage', archetype: 'combo', top: false, note: ''},
+    {id: 17, name: 'Pirate', hsClass: 'warrior', archetype: 'aggro', top: false, note: ''},
+    {id: 18, name: 'Evolve', hsClass: 'shaman', archetype: 'midrange', top: false, note: ''},
+    {id: 19, name: 'Miracle', hsClass: 'rogue', archetype: 'combo', top: false, note: ''},
+    {id: 20, name: 'Big', hsClass: 'druid', archetype: 'midrange', top: false, note: ''},
+    {id: 21, name: 'Control', hsClass: 'warrior', archetype: 'control', top: false, note: ''},
+    {id: 22, name: 'Rinlock', hsClass: 'warlock', archetype: 'midrange', top: false, note: ''},
+    {id: 23, name: 'Mill', hsClass: 'rogue', archetype: 'combo', top: false, note: ''},
+    {id: 24, name: 'Overload', hsClass: 'shaman', archetype: 'midrange', top: false, note: ''},
+    {id: 25, name: 'Freeze', hsClass: 'mage', archetype: 'control', top: false, note: ''},
+    {id: 26, name: 'Sulfura', hsClass: 'warrior', archetype: 'control', top: false, note: ''},
+    {id: 27, name: 'DK elemental', hsClass: 'mage', archetype: 'midrange', top: false, note: ''}
   ],
   nextId: 1,
-  nextTypeId: 26,
+  nextTypeId: 28,
   lastDeckChanged: 0,
-  lastTypeChanged: 0
+  lastTypeChanged: 0,
+  lastDeckTypeUpdate: 1515180000000
 
 }
 
@@ -105,13 +113,27 @@ const getters = {
   currentArena: state => state.currentArena,
   opponentArena: state => state.opponentArena,
   lastDeckChanged: state => state.lastDeckChanged,
-  lastTypeChanged: state => state.lastTypeChanged
+  lastTypeChanged: state => state.lastTypeChanged,
+  lastDeckTypeUpdate: state => state.lastDeckTypeUpdate
 }
 
 // ----------
 // Actions
 // ----------
 const actions = {
+  loadDeckTypeUpdate ({dispatch}) {
+    return new Promise((resolve, reject) => {
+      Vue.http.get('https://keiwen.github.io/Trackerstone/static/dtus.json').then(
+        (response) => {
+          resolve(response.body)
+        },
+        (response) => {
+          reject(response)
+          dispatch('addError', 'Cannot retrieve deck types data from server')
+        }
+      )
+    })
+  }
 }
 
 // ----------
@@ -152,15 +174,6 @@ const mutations = {
   [types.CHOOSE_OPPONENT_ARENA] (state, id) {
     if (typeof state.CLASSES[id] === 'undefined') return
     state.opponentArena = state.CLASSES[id]
-  },
-  [types.ADD_DECKARCHETYPE] (state, name) {
-    state.archetypes.push(name)
-  },
-  [types.SET_DECKARCHETYPES] (state, deckArcheypes) {
-    state.archetypes = deckArcheypes
-  },
-  [types.REMOVE_DECKARCHETYPE] (state, name) {
-    state.archetypes.splice(state.archetypes.indexOf(name), 1)
   },
   [types.ADD_DECKTYPE] (state, type) {
     type.id = state.nextTypeId
@@ -214,6 +227,9 @@ const mutations = {
         type.top = !type.top
       }
     })
+  },
+  [types.UPDATE_DTUS_TIME] (state) {
+    state.lastDeckTypeUpdate = Date.now()
   }
 }
 

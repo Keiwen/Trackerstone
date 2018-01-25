@@ -8,6 +8,7 @@ import 'vue-directive-tooltip/css/index.css'
 import App from './App'
 import router from './router'
 import store from './store'
+import VueResource from 'vue-resource'
 import Icon from 'vue-awesome/components/Icon'
 import VueAnalytics from 'vue-analytics'
 import 'vue-awesome/icons'
@@ -18,6 +19,7 @@ import VueDirectiveTooltip from 'vue-directive-tooltip'
 
 Vue.config.productionTip = false
 
+Vue.use(VueResource)
 Vue.component('icon', Icon)
 Vue.use(VueAnalytics, {
   id: 'UA-101315491-1',

@@ -1,0 +1,200 @@
+/* ** Deck Type Show ** */
+.deckTypeContent {
+  padding: 0;
+
+  .deckTypeContainer {
+    margin-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    .deckTypeShow + div {
+      .btn-danger {
+        padding-left: 30px;
+
+        .fa-icon {
+          position: absolute;
+          left: 8px;
+          top: 8px;
+        }
+      }
+    }
+
+    .deckTypeShow {
+      height: 95px;
+      background-color: $second-bg;
+      border-radius: 50px 0 0 50px;
+
+      h4 {
+        font-family: 'Changa One', cursive;
+        text-transform: uppercase;
+        text-align: left;
+        padding-left: 8px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+
+      .profil {
+        width: 150px;
+        height: 150px;
+        display: inline-block;
+        position: absolute;
+        left: -30%;
+        top: -27px;
+        transform: scale(0.64);
+
+        //      background: url('../../assets/charac_skins.jpg') 0 0 no-repeat;
+        // h4 {
+        //   color: $white;
+        //   top: 36px;
+        //   z-index: 4;
+        //   position: absolute;
+        //   margin: 0 auto;
+        //   text-align: center;
+        //   width: 100%;
+        //   min-width: 220px;
+        // }
+      }
+
+      .deckTypeStats {
+        position: absolute;
+        top: 45px;
+        left: 0;
+      }
+
+      .stats {
+        font-size: 11px;
+        text-align: left;
+        text-transform: uppercase;
+        margin-left: 8px;
+        margin-bottom: 0;
+      }
+
+      .score {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 12px;
+        margin-bottom: 0;
+      }
+
+    }
+
+    .deckArchetype {
+      &-aggro {
+        -webkit-box-shadow: inset -12px 0 0 0 $red-ts;
+        -moz-box-shadow: inset -12px 0 0 0 $red-ts;
+        box-shadow: inset -12px 0 0 0 $red-ts;
+      }
+
+      &-control {
+        -webkit-box-shadow: inset -12px 0 0 0 $blue-ts;
+        -moz-box-shadow: inset -12px 0 0 0 $blue-ts;
+        box-shadow: inset -12px 0 0 0 $blue-ts;
+      }
+
+      &-midrange {
+        -webkit-box-shadow: inset -12px 0 0 0 $green-ts;
+        -moz-box-shadow: inset -12px 0 0 0 $green-ts;
+        box-shadow: inset -12px 0 0 0 $green-ts;
+      }
+
+      &-combo {
+        -webkit-box-shadow: inset -12px 0 0 0 $orange-ts;
+        -moz-box-shadow: inset -12px 0 0 0 $orange-ts;
+        box-shadow: inset -12px 0 0 0 $orange-ts;
+      }
+    }
+
+    .deckTypeShow {
+      .row {
+        margin: 0;
+
+        > div {
+          padding: 0;
+        }
+
+        .col-xs-2 {
+          background-color: $black;
+
+          > div {
+            margin: 0 auto;
+            position: relative;
+            width: 30px;
+            height: 58px;
+          }
+        }
+      }
+      // p {
+      //   padding-top: 15px;
+      // }
+      .editIcon,
+      .starIcon {
+        cursor: pointer;
+        padding-bottom: 1em;
+
+        &:hover {
+          padding-bottom: 0;
+        }
+      }
+
+      .editIcon {
+        svg {
+          position: absolute;
+          top: 10px;
+          left: 8px;
+          @include transition(0.3s ease);
+          color: $white;
+        }
+
+        &:hover svg {
+          top: 2px;
+          left: 3px;
+        }
+      }
+
+      .starIcon {
+        svg {
+          position: absolute;
+          top: 10px;
+          right: 8px;
+          @include transition(0.3s ease);
+          color: $white;
+        }
+
+        &:hover svg {
+          top: 2px;
+          right: 0;
+        }
+      }
+
+      .stared {
+        color: $orange-ts!important;
+      }
+
+      .noted {
+        color: $orange-ts!important;
+      }
+    }
+  }
+}
+
+.deckTypeFiltered,.deckFiltered {
+  height: 50px;
+  line-height: 50px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid #D3921F;
+  }
+
+  .deckTypeShowSimple,.deckShow {
+    display: inline-block;
+    line-height: 1.5;
+    vertical-align: middle;
+  }
+}
+
+.deckTypeList,.deckList {
+  margin-bottom: 20px;
+  height: 180px;
+  overflow-y: scroll;
+}

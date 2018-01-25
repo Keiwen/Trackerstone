@@ -2,7 +2,7 @@
 
 <a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it on web browser</a> and get mobile app (see below)! (Oh, seems to have some issues with IE)
 
-Current version is 0.7.6 as Progressive Web App !!
+Current version is 0.7.9 as Progressive Web App !!
 
 > Please note that this project is an experiment with VueJS framework and Progressive Web App, maintained on free-time without guarantee :)
 
@@ -10,6 +10,7 @@ Current version is 0.7.6 as Progressive Web App !!
 ![Serie](https://raw.githubusercontent.com/Keiwen/Trackerstone/master/samples/small/serie.png)
 ![Graph](https://raw.githubusercontent.com/Keiwen/Trackerstone/master/samples/small/graph.png)
 ![Arena](https://raw.githubusercontent.com/Keiwen/Trackerstone/master/samples/small/arena.png)
+![DTUS](https://raw.githubusercontent.com/Keiwen/Trackerstone/master/samples/small/dtus.png)
 
 ## Features
 Simple Hearthstone tracker. Just track your win and loss. On app you'll find:
@@ -21,12 +22,11 @@ Simple Hearthstone tracker. Just track your win and loss. On app you'll find:
 - stats against opponent's deck types
 - charts on rank progress, deck winrates
 - set notes on deck types
+- import deck types from server
 - arena tracker (and gold refund)
 
 Maybe one day this app will:
 - be fully mobile first designed
-- have a full design ;)
-- get MOAR CHARTS!!! CHARTS EVERYWHERE!!!
 - get a lot of pink unicorned stuff
 
 ## Mobile app
