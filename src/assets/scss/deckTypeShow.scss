@@ -55,21 +55,27 @@
         // }
       }
 
+      .deckTypeStats {
+        position: absolute;
+        top: 45px;
+        left: 0;
+      }
+
       .stats {
         font-size: 11px;
         text-align: left;
         text-transform: uppercase;
         margin-left: 8px;
+        margin-bottom: 0;
       }
 
       .score {
         text-transform: uppercase;
         font-weight: bold;
-        position: absolute;
-        top:45px;
-        left: 0;
         font-size: 12px;
+        margin-bottom: 0;
       }
+
     }
 
     .deckArchetype {

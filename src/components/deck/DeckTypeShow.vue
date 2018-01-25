@@ -2,31 +2,36 @@
     <div class="deckTypeShow" :class="showDivClass">
         <div class="row">
             <div class="col-xs-4">
-              <!-- <div class="editIcon" @click="editType()" @mouseover="hoverEditIcon()" @mouseout="hoverEditIcon()" >
-                  <icon name="pencil-square-o" :class="{'noted': type.note}" :scale="editIconScale" />
-              </div> -->
+                <!-- <div class="editIcon" @click="editType()" @mouseover="hoverEditIcon()" @mouseout="hoverEditIcon()" >
+                    <icon name="pencil-square-o" :class="{'noted': type.note}" :scale="editIconScale" />
+                </div> -->
                 <div class="profil">
                 </div>
             </div>
             <div class="col-xs-8">
                 <h4>
-                    {{ generateTypeTitle(type) }}
+                    {{ generateTypeTitleLimit(type) }}
                 </h4>
-                <div class="row">
-                  <div class="col-xs-6">
-                    <p class="stats">
-                        {{ type.wonVs }} - {{ type.lossVs }} against<br/>
-                        {{ type.winPercentVs }} % global<br/>
-                        {{ type.winPercentVsRecent }} % last<br/>
-                        {{ type.playedVsRecent }} games
-                    </p>
-                  </div>
-                  <div class="col-xs-6">
-                    <p class="score">
-                      Score : {{ type.winScoreVs }}
-                    </p>
-                  </div>
+                <div class="row deckTypeStats">
+                    <div class="col-xs-6">
+                        <p class="stats">
+                            {{ type.wonVs }} - {{ type.lossVs }} against<br/>
+                        </p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p class="score">
+                            Score : {{ type.winScoreVs }}
+                        </p>
+                    </div>
+                    <div class="col-xs-12">
+                        <p class="stats">
+                            {{ type.winPercentVs }} % global<br/>
+                            {{ type.winPercentVsRecent }} % last
+                            {{ type.playedVsRecent }} games
+                        </p>
+                    </div>
                 </div>
+
             </div>
             <!-- <div class="col-xs-2">
                     <div class="starIcon" @click="switchTop()" @mouseover="hoverStarIcon()" @mouseout="hoverStarIcon()">
@@ -72,7 +77,7 @@
       }
     },
     computed: {
-      ...mapGetters(['generateTypeTitle', 'lastTypeChanged']),
+      ...mapGetters(['generateTypeTitleLimit', 'lastTypeChanged']),
       showDivClass () {
         let divClass = 'deckClass-' + this.type.hsClass + ' deckArchetype-' + this.type.archetype
         if (this.lastTypeChanged === this.type.id) {
