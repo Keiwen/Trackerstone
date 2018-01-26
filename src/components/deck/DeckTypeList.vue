@@ -12,9 +12,6 @@
         <div class="container-fluid deckTypeContent">
             <div class="deckTypeContainer col-xs-6 col-sm-6 col-md-4 col-lg-3" v-for="type in typesList">
                 <deck-type-show :type="type" />
-                <div>
-                    <confirmation-modal @modal-confirm="remove(type.id)" modalText="Are you sure you want to remove this type?"/>
-                </div>
             </div>
         </div>
 
@@ -29,15 +26,13 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  import * as storeMut from '@/store/mutation-types'
   import DeckTypeShow from './DeckTypeShow'
-  import ConfirmationModal from '@/components/modals/ConfirmationModal'
   import DeckTypeSet from './DeckTypeSet'
   import { EnhancedCheckRadio } from 'vue-enhanced-check'
   import SeeChartButton from '@/components/charts/SeeChartButton'
 
   export default {
-    components: {DeckTypeShow, ConfirmationModal, DeckTypeSet, EnhancedCheckRadio, SeeChartButton},
+    components: {DeckTypeShow, DeckTypeSet, EnhancedCheckRadio, SeeChartButton},
     data () {
       return {
         typeEnhanced: [],
@@ -64,11 +59,6 @@
           default:
             return this.typesStats
         }
-      }
-    },
-    methods: {
-      remove (id) {
-        this.$store.commit(storeMut.REMOVE_DECKTYPE, id)
       }
     }
   }

@@ -1,46 +1,69 @@
 <template>
-    <div class="deckTypeShow" :class="showDivClass">
+    <div class="deckTypeShow" :class="showDivClass" @click="toggleActions()">
         <div class="row">
             <div class="col-xs-4">
-                <!-- <div class="editIcon" @click="editType()" @mouseover="hoverEditIcon()" @mouseout="hoverEditIcon()" >
-                    <icon name="pencil-square-o" :class="{'noted': type.note}" :scale="editIconScale" />
-                </div> -->
                 <div class="profil">
                 </div>
             </div>
             <div class="col-xs-8">
-                <h4>
-                    {{ generateTypeTitleLimit(type) }}
-                </h4>
-                <div class="row deckTypeStats">
-                    <div class="col-xs-6">
-                        <p class="stats">
-                            {{ type.wonVs }} - {{ type.lossVs }} against<br/>
-                        </p>
-                    </div>
-                    <div class="col-xs-6">
-                        <p class="score">
-                            Score : {{ type.winScoreVs }}
-                        </p>
-                    </div>
+                <div class="row">
                     <div class="col-xs-12">
-                        <p class="stats">
-                            {{ type.winPercentVs }} % global<br/>
-                            {{ type.winPercentVsRecent }} % last
-                            {{ type.playedVsRecent }} games
-                        </p>
+                        <h4>
+                            {{ generateTypeTitleLimit(type) }}
+                        </h4>
+                    </div>
+                </div>
+                <div class="col-xs-12 deckTypeStats">
+                    <div class="row">
+                        <div class="col-xs-1 editIcon">
+                            <icon name="pencil-square-o" v-if="type.note" class="noted" />
+                        </div>
+                        <div class="col-xs-9">
+                            <p>
+                                {{ type.wonVs }} - {{ type.lossVs }} against<br/>
+                            </p>
+                        </div>
+                        <div class="col-xs-1 starIcon">
+                            <icon name="star" v-if="type.top" class="stared" />
+                        </div>
+                        <div class="col-xs-1">
+                        </div>
                     </div>
                 </div>
 
             </div>
-            <!-- <div class="col-xs-2">
-                    <div class="starIcon" @click="switchTop()" @mouseover="hoverStarIcon()" @mouseout="hoverStarIcon()">
-                        <icon name="star" v-if="type.top" class="stared" :scale="starIconScale" />
-                        <icon name="star-o" v-else :scale="starIconScale" />
-                    </div>
-                </div> -->
         </div>
-        <sweet-modal ref="modalEdit" modal-theme="dark" title="Edit type">
+
+        <div class="deckTypeActions" v-if="showActions">
+            <div class="col-xs-4">
+                <button slot="button" class="btn btn-warning" @click="switchTop()">TOP</button>
+            </div>
+            <div class="col-xs-4">
+                <button slot="button" class="btn btn-info" @click="openDetail()">EDT</button>
+            </div>
+            <div class="col-xs-4">
+                <button slot="button" class="btn btn-danger" @click="promptConfirmDelete()">DEL</button>
+            </div>
+        </div>
+
+        <sweet-modal ref="modalDetail" modal-theme="dark" :title="generateTypeTitle(type)">
+            <div class="row">
+                <div class="col-xs-6">
+                    <p>
+                        Record against: {{ type.wonVs }} - {{ type.lossVs }}<br/>
+                        <span class="score">
+                            Score: {{ type.winScoreVs }}
+                        </span>
+                    </p>
+                </div>
+                <div class="col-xs-6">
+                    <p>
+                        {{ type.winPercentVs }} % global<br/>
+                        {{ type.winPercentVsRecent }} % last {{ type.playedVsRecent }} games
+                    </p>
+                </div>
+            </div>
+            <hr/>
             <div class="form-group">
                 <label class="control-label col-xs-4" for="newName">Name:</label>
                 <div class="col-xs-8">
@@ -53,9 +76,16 @@
                     <textarea id="newNote" rows="3" col="50" class="form-control" v-model="newNote"/>
                 </div>
             </div>
-            <button slot="button" @click="confirmEdit()" class="btn btn-success">Save <icon name="save" /></button>
-            <button slot="button" @click="cancelEdit()" class="btn btn-default">Cancel <icon name="times" /></button>
+            <button slot="button" @click="confirmEdit()" class="btn btn-success">Save changes <icon name="save" /></button>
+            <button slot="button" @click="cancelEdit()" class="btn btn-default">Close <icon name="times" /></button>
         </sweet-modal>
+
+        <sweet-modal icon="warning" ref="modalDelete" modal-theme="dark">
+            Are you sure you want to remove deck type {{ generateTypeTitle(type) }}?
+            <button slot="button" @click="remove()" class="btn btn-success">Confirm <icon name="trash" /></button>
+            <button slot="button" @click="cancelRemove()" class="btn btn-default">Cancel <icon name="times" /></button>
+        </sweet-modal>
+
     </div>
 </template>
 
@@ -70,50 +100,53 @@
     props: ['type'],
     data () {
       return {
-        starIconHover: false,
-        editIconHover: false,
+        showActions: false,
         newName: '',
         newNote: ''
       }
     },
     computed: {
-      ...mapGetters(['generateTypeTitleLimit', 'lastTypeChanged']),
+      ...mapGetters(['generateTypeTitle', 'generateTypeTitleLimit', 'lastTypeChanged']),
       showDivClass () {
         let divClass = 'deckClass-' + this.type.hsClass + ' deckArchetype-' + this.type.archetype
         if (this.lastTypeChanged === this.type.id) {
           divClass += ' lastChange'
         }
         return divClass
-      },
-      starIconScale () {
-        return (this.starIconHover) ? 2 : 1
-      },
-      editIconScale () {
-        return (this.editIconHover) ? 2 : 1
       }
     },
     methods: {
-      hoverStarIcon () {
-        this.starIconHover = !this.starIconHover
+      toggleActions () {
+        this.showActions = !this.showActions
       },
       switchTop () {
         this.$store.commit(storeMut.SWITCH_DECKTYPE_TOP, this.type.id)
+        this.toggleActions()
       },
-      hoverEditIcon () {
-        this.editIconHover = !this.editIconHover
-      },
-      editType () {
+      openDetail () {
         this.newName = this.type.name
         this.newNote = this.type.note
-        this.$refs.modalEdit.open()
+        this.$refs.modalDetail.open()
+        this.toggleActions()
       },
       confirmEdit () {
         this.$store.commit(storeMut.SET_DECKTYPE_NAME, {id: this.type.id, name: this.newName})
         this.$store.commit(storeMut.SET_DECKTYPE_NOTE, {id: this.type.id, note: this.newNote})
-        this.$refs.modalEdit.close()
+        this.$refs.modalDetail.close()
       },
       cancelEdit () {
-        this.$refs.modalEdit.close()
+        this.$refs.modalDetail.close()
+      },
+      promptConfirmDelete () {
+        this.$refs.modalDelete.open()
+        this.toggleActions()
+      },
+      remove () {
+        this.$refs.modalDelete.close()
+        this.$store.commit(storeMut.REMOVE_DECKTYPE, this.type.id)
+      },
+      cancelRemove () {
+        this.$refs.modalDelete.close()
       }
     }
   }
