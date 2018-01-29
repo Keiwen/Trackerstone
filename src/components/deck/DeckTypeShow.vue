@@ -1,11 +1,11 @@
 <template>
     <div class="deckTypeShow" :class="showDivClass" @click="toggleActions()">
         <div class="row">
-            <div class="col-xs-4">
+            <div class="col-xs-3">
                 <div class="profil">
                 </div>
             </div>
-            <div class="col-xs-8">
+            <div class="col-xs-9">
                 <div class="row">
                     <div class="col-xs-12">
                         <h4>
@@ -15,18 +15,16 @@
                 </div>
                 <div class="col-xs-12 deckTypeStats">
                     <div class="row">
-                        <div class="col-xs-1 editIcon">
+                        <!-- <div class="col-xs-1 editIcon">
                             <icon name="pencil-square-o" v-if="type.note" class="noted" />
-                        </div>
+                        </div> -->
                         <div class="col-xs-9">
                             <p>
                                 {{ type.wonVs }} - {{ type.lossVs }} against<br/>
                             </p>
                         </div>
-                        <div class="col-xs-1 starIcon">
+                        <div class="col-xs-3 starIcon">
                             <icon name="star" v-if="type.top" class="stared" />
-                        </div>
-                        <div class="col-xs-1">
                         </div>
                     </div>
                 </div>

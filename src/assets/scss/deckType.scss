@@ -20,7 +20,7 @@
     }
 
     .deckTypeShow {
-      height: 95px;
+      height: 60px;
       background-color: $second-bg;
       border-radius: 50px 0 0 50px;
 
@@ -28,7 +28,6 @@
         font-family: 'Changa One', cursive;
         text-transform: uppercase;
         text-align: left;
-        padding-left: 8px;
         margin-top: 5px;
         margin-bottom: 5px;
       }
@@ -38,9 +37,9 @@
         height: 150px;
         display: inline-block;
         position: absolute;
-        left: -30%;
-        top: -27px;
-        transform: scale(0.64);
+        left: -63%;
+        top: -45px;
+        transform: scale(0.4);
 
         //      background: url('../../assets/charac_skins.jpg') 0 0 no-repeat;
         // h4 {
@@ -57,7 +56,7 @@
 
       .deckTypeStats {
         position: absolute;
-        top: 75px;
+        top: 30px;
         left: 0;
       }
 
@@ -74,7 +73,7 @@
       }
 
       .deckTypeActions {
-        height: 95px;
+        height: 60px;
         width: 285px;
         background-color: rgba(0, 0, 0, 0.5);
         border-radius: 50px 0 0 50px;
@@ -137,6 +136,11 @@
 
       .stared {
         color: $orange-ts!important;
+        height: 22px;
+        width: 22px;
+        top: 0px;
+        position: absolute;
+        right: 7px;
       }
 
       .noted {
