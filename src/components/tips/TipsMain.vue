@@ -11,6 +11,10 @@
                 <tip-arena-run-percentage></tip-arena-run-percentage>
             </div>
             <div class="carousel-cell tip">
+                <h3>Ranked rewards</h3>
+                <tip-ranked-reward></tip-ranked-reward>
+            </div>
+            <div class="carousel-cell tip">
                 <h3>Arena rewards</h3>
                 <tip-arena-reward></tip-arena-reward>
             </div>
@@ -24,9 +28,10 @@
   import Flickity from 'vue-flickity'
   import TipCardProbability from '@/components/tips/TipCardProbability'
   import TipArenaRunPercentage from '@/components/tips/TipArenaRunPercentage'
+  import TipRankedReward from '@/components/tips/TipRankedReward'
   import TipArenaReward from '@/components/tips/TipArenaReward'
 
   export default {
-    components: {Flickity, TipCardProbability, TipArenaRunPercentage, TipArenaReward}
+    components: {Flickity, TipCardProbability, TipArenaRunPercentage, TipRankedReward, TipArenaReward}
   }
 </script>
