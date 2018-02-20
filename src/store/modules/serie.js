@@ -5,21 +5,21 @@ import * as types from '../mutation-types'
 // ----------
 const state = {
   RANKS: {
-    25: {'title': 'Angry Chicken', 'stars': 2},
-    24: {'title': 'Leper Gnome', 'stars': 2},
-    23: {'title': 'Argent Squire', 'stars': 2},
-    22: {'title': 'Murloc Raider', 'stars': 2},
-    21: {'title': 'Southsea Deckhand', 'stars': 2},
-    20: {'title': 'Shieldbearer', 'stars': 3},
-    19: {'title': 'Novice Engineer', 'stars': 3},
-    18: {'title': 'Sorcerer\'s Apprentice', 'stars': 3},
-    17: {'title': 'Tauren Warrior', 'stars': 3},
-    16: {'title': 'Questing Adventurer', 'stars': 3},
-    15: {'title': 'Silvermoon Guardian', 'stars': 4},
-    14: {'title': 'Raid Leader', 'stars': 4},
-    13: {'title': 'Dread Corsair', 'stars': 4},
-    12: {'title': 'Warsong Commander', 'stars': 4},
-    11: {'title': 'Big Game Hunter', 'stars': 4},
+    25: {'title': 'Angry Chicken', 'stars': 5},
+    24: {'title': 'Leper Gnome', 'stars': 5},
+    23: {'title': 'Argent Squire', 'stars': 5},
+    22: {'title': 'Murloc Raider', 'stars': 5},
+    21: {'title': 'Southsea Deckhand', 'stars': 5},
+    20: {'title': 'Shieldbearer', 'stars': 5},
+    19: {'title': 'Novice Engineer', 'stars': 5},
+    18: {'title': 'Sorcerer\'s Apprentice', 'stars': 5},
+    17: {'title': 'Tauren Warrior', 'stars': 5},
+    16: {'title': 'Questing Adventurer', 'stars': 5},
+    15: {'title': 'Silvermoon Guardian', 'stars': 5},
+    14: {'title': 'Raid Leader', 'stars': 5},
+    13: {'title': 'Dread Corsair', 'stars': 5},
+    12: {'title': 'Warsong Commander', 'stars': 5},
+    11: {'title': 'Big Game Hunter', 'stars': 5},
     10: {'title': 'Ogre Magi', 'stars': 5},
     9: {'title': 'Silver Hand Knight', 'stars': 5},
     8: {'title': 'Frostwolf Warlord', 'stars': 5},
@@ -257,10 +257,12 @@ const actions = {
     }
   },
   reset ({dispatch, commit, state}) {
-    const bonusStar = 25 - state.highest
+    // old reset: back to 25 and earn stars
+    // march 2018: loose 4 ranks
+    // const bonusStar = 25 - state.highest
     commit(types.RESET_SERIE)
     commit(types.RESET_HISTORY)
-    dispatch('earnStar', bonusStar)
+    // dispatch('earnStar', bonusStar)
   }
 }
 
@@ -360,11 +362,17 @@ const mutations = {
   },
   [types.RESET_SERIE] (state) {
     state.highest = 25
-    state.rank = 25
-    state.stars = 0
+    state.rank = state.rank + 4
+    if (state.rank > 25) {
+      state.rank = 25
+    }
+    // state.stars = 0
     state.winStreak = 0
-    state.rankWild = 25
-    state.starsWild = 0
+    state.rankWild = state.rankWild + 4
+    if (state.rankWild > 25) {
+      state.rankWild = 25
+    }
+    // state.starsWild = 0
     state.winStreakWild = 0
   },
   [types.OPEN_ARENA] (state) {
