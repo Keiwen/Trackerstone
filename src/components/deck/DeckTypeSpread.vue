@@ -11,7 +11,7 @@
             <class-pick @pick-class="pickClass" :allowNone="true" />
         </div>
         <div class="col-xs-6">
-            <router-link :to="{ name: 'deckTypesList' }">Manage deck types</router-link>
+            <a @click="goToManageDeckType">Manage deck types</a>
         </div>
 
     </div>
@@ -47,6 +47,12 @@
       },
       pickType (key) {
         this.$emit('pick-type', key)
+      },
+      goToManageDeckType () {
+        // do not use direct router link. We are in a modal,
+        // it will consider that we are still in a modal
+        // => scroll locked
+        this.$emit('goTo', 'deckTypesList')
       }
     }
   }

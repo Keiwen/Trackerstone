@@ -10,7 +10,7 @@
         <div class="col-xs-6">
         </div>
         <div class="col-xs-6">
-            <router-link :to="{ name: 'deckList' }">Manage decks</router-link>
+            <a @click="goToManageDeck">Manage decks</a>
         </div>
 
     </div>
@@ -29,6 +29,12 @@
     methods: {
       pickDeck (key) {
         this.$emit('pick-deck', key)
+      },
+      goToManageDeck () {
+        // do not use direct router link. We are in a modal,
+        // it will consider that we are still in a modal
+        // => scroll locked
+        this.$emit('goTo', 'deckList')
       }
     }
   }

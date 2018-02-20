@@ -3,7 +3,7 @@
         <button class="btn btn-default" @click="openDeckSpread()">{{ btnText }}</button>
 
         <sweet-modal ref="modalDeckPick" overlay-theme="dark" title="Pick deck">
-            <deck-spread @pick-deck="deckPicked"></deck-spread>
+            <deck-spread @pick-deck="deckPicked" @goTo="goToManageDeck"></deck-spread>
         </sweet-modal>
 
     </span>
@@ -37,6 +37,10 @@
     methods: {
       openDeckSpread () {
         this.$refs.modalDeckPick.open()
+      },
+      goToManageDeck (routeName) {
+        this.$refs.modalDeckPick.close()
+        this.$router.push({name: routeName})
       },
       deckPicked (key) {
         this.pick = key
