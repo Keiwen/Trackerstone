@@ -62,10 +62,12 @@ const state = {
   rank: 25,
   rankMax: 25,
   stars: 0,
+  starsMax: 0,
   winStreak: 0,
   rankWild: 25,
   rankWildMax: 25,
   starsWild: 0,
+  starsWildMax: 0,
   winStreakWild: 0,
   highest: 25,
   arenaWin: 0,
@@ -298,6 +300,8 @@ const mutations = {
     if (data.highest >= 0 && data.highest <= 25) state.highest = parseInt(data.highest)
     state.rankMax = state.rank
     state.rankWildMax = state.rankWild
+    state.starsMax = state.stars
+    state.starsWildMax = state.starsWild
   },
   [types.INCREASE_RANK] (state) {
     if (state.wildMode) {
@@ -306,14 +310,26 @@ const mutations = {
       state.starsWild = 1
       if (state.rankWild === 0) state.starsWild = 0 // no star in last level
       if (state.highest > state.rankWild) state.highest = state.rankWild // store highest rank reached
-      if (state.rankWildMax > state.rankWild) state.rankWildMax = state.rankWild // store max wild rank reached
+      if (state.rankWildMax > state.rankWild) {
+        // store max wild rank reached
+        state.rankWildMax = state.rankWild
+        state.starsWildMax = state.starsWild
+      } else if (state.rankWildMax === state.rankWild && state.starsWildMax < state.starsWild) {
+        state.starsWildMax = state.starsWild
+      }
     } else {
       if (state.rank === 0) return // max level
       state.rank--
       state.stars = 1
       if (state.rank === 0) state.stars = 0 // no star in last level
       if (state.highest > state.rank) state.highest = state.rank // store highest rank reached
-      if (state.rankMax > state.rank) state.rankMax = state.rank // store max classic rank reached
+      if (state.rankMax > state.rank) {
+        // store max rank reached
+        state.rankMax = state.rank
+        state.starsMax = state.stars
+      } else if (state.rankMax === state.rank && state.starsMax < state.stars) {
+        state.starsMax = state.stars
+      }
     }
   },
   [types.DECREASE_RANK] (state) {
@@ -334,10 +350,18 @@ const mutations = {
       if (state.rankWild === 0) return
       if (state.starsWild === state.RANKS[state.rankWild]['stars']) return // no more star if already max
       state.starsWild++
+      if (state.rankWildMax === state.rankWild && state.starsWildMax < state.starsWild) {
+        // stored max wild stars
+        state.starsWildMax = state.starsWild
+      }
     } else {
       if (state.rank === 0) return
       if (state.stars === state.RANKS[state.rank]['stars']) return // no more star if already max
       state.stars++
+      if (state.rankMax === state.rank && state.starsMax < state.stars) {
+        // stored max stars
+        state.starsMax = state.stars
+      }
     }
   },
   [types.REMOVE_STAR] (state) {
@@ -372,14 +396,14 @@ const mutations = {
       state.rank = 25
     }
     state.rankMax = state.rank
-    // state.stars = 0
+    state.stars = state.starsMax
     state.winStreak = 0
     state.rankWild = state.rankWildMax + 4
     if (state.rankWild > 25) {
       state.rankWild = 25
     }
     state.rankWildMax = state.rankWild
-    // state.starsWild = 0
+    state.starsWild = state.starsWildMax
     state.winStreakWild = 0
     state.highest = Math.min(state.rankMax, state.rankWildMax)
   },
