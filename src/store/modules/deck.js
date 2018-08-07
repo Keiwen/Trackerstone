@@ -28,6 +28,7 @@ const state = {
     'midrange': {id: 'midrange', backgroundColor: '#4CAE4C'},
     'control': {id: 'control', backgroundColor: '#089FA0'},
     'combo': {id: 'combo', backgroundColor: '#D3921F'}
+    // 'generic' archetype is reserved for untracked type
   },
   types: [
     {id: 1, name: 'Cube', hsClass: 'warlock', archetype: 'midrange', top: true, note: ''},
