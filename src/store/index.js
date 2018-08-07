@@ -127,14 +127,6 @@ export default new Vuex.Store({
       if (title.length < DECK_TITLE_LIMIT) return title
       return title.substring(0, DECK_TITLE_LIMIT - 4) + '...'
     },
-    generateTypeTitleLimit: (state, getters) => (type, archetype) => {
-      let title = getters.generateTypeTitle(type)
-      if (title.length < DECK_TITLE_LIMIT && archetype) return title
-      const className = getters.className(type.hsClass)
-      title = className + ' ' + type.name
-      if (title.length < DECK_TITLE_LIMIT) return title
-      return title.substring(0, DECK_TITLE_LIMIT - 4) + '...'
-    },
     sortList: (state, getters) => (list, field, isString) => {
       if (typeof isString === 'undefined') isString = false
       let sorted = JSON.parse(JSON.stringify(list))
