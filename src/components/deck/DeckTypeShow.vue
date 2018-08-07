@@ -33,13 +33,13 @@
 
             <div class="col-xs-12 deckTypeActions" v-if="showActions">
                 <div class="col-xs-4">
-                    <button slot="button" class="btn btn-warning" @click="switchTop()">TOP</button>
+                    <button slot="button" class="btn btn-warning" @click="switchTop()">Star</button>
                 </div>
                 <div class="col-xs-4">
-                    <button slot="button" class="btn btn-info" @click="openDetail()">EDT</button>
+                    <button slot="button" class="btn btn-info" @click="openDetail()">Edit</button>
                 </div>
                 <div class="col-xs-4">
-                    <button slot="button" class="btn btn-danger" @click="promptConfirmDelete()">DEL</button>
+                    <button slot="button" class="btn btn-danger" @click="promptConfirmDelete()">Delete</button>
                 </div>
             </div>
 
