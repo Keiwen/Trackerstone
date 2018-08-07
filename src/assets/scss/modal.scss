@@ -33,18 +33,18 @@
 }
 
 /* ####### NESTED MODALS ####### */
-.sweet-content-content {
-  .sweet-modal-overlay {
-    z-index: 9101;
-    position: fixed;
-    top: -10px;
-    left: -70px;
+// we had some issues with nested modals, misaligned.
+// On re-align, issue with blurry text.
+// library use translate transformation, so I remove every transform
+.sweet-modal {
+  width: 90%;
+  max-height: 90%;
+  top: 5%;
+  left: 5%;
+  transform: none;
+  -webkit-transform: none;
+  &.is-visible {
+    transform: none;
+    -webkit-transform: none;
   }
-}
-/* hmmm blurred text in modals with nest,
-and i found that translation with 49% instead of default's 50 fix it.
-Can't get it though... */
-.sweet-modal.is-visible {
-  -webkit-transform: translate(-49%, -49%);
-  transform: translate(-49%, -49%);
 }
