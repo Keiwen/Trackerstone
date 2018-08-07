@@ -2,7 +2,7 @@
 
 <a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it on web browser</a> and get mobile app (see below)! (Oh, seems to have some issues with IE)
 
-Current version is 0.7.12 with updates in rank system
+Current version is 0.7.13 with updates in rank system
 
 > Please note that this project is an experiment with VueJS framework and Progressive Web App, maintained on free-time without guarantee :)
 
