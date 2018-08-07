@@ -30,18 +30,19 @@
                 </div>
 
             </div>
-        </div>
 
-        <div class="deckTypeActions" v-if="showActions">
-            <div class="col-xs-4">
-                <button slot="button" class="btn btn-warning" @click="switchTop()">TOP</button>
+            <div class="col-xs-12 deckTypeActions" v-if="showActions">
+                <div class="col-xs-4">
+                    <button slot="button" class="btn btn-warning" @click="switchTop()">TOP</button>
+                </div>
+                <div class="col-xs-4">
+                    <button slot="button" class="btn btn-info" @click="openDetail()">EDT</button>
+                </div>
+                <div class="col-xs-4">
+                    <button slot="button" class="btn btn-danger" @click="promptConfirmDelete()">DEL</button>
+                </div>
             </div>
-            <div class="col-xs-4">
-                <button slot="button" class="btn btn-info" @click="openDetail()">EDT</button>
-            </div>
-            <div class="col-xs-4">
-                <button slot="button" class="btn btn-danger" @click="promptConfirmDelete()">DEL</button>
-            </div>
+
         </div>
 
         <sweet-modal ref="modalDetail" modal-theme="dark" :title="generateTypeTitle(type)">
