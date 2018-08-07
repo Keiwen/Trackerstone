@@ -33,13 +33,13 @@
       }
 
       .profil {
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
         display: inline-block;
         position: absolute;
-        left: -63%;
-        top: -45px;
-        transform: scale(0.4);
+        left: -12px;
+        top: -12px;
+        transform: scale(0.75);
 
         //      background: url('../../assets/charac_skins.jpg') 0 0 no-repeat;
         // h4 {
@@ -82,8 +82,7 @@
         left: 10px;
         z-index: 10;
         @media (min-width: 768px) {
-          left: 0;
-          width: calc(100% - 10px);
+          width: calc(100% - 20px);
         }
       }
 
