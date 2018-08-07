@@ -167,6 +167,10 @@
     line-height: 1.5;
     vertical-align: middle;
   }
+  &.genericDeckType {
+    font-style: italic;
+    color: #888888;
+  }
 }
 
 .deckTypeList,.deckList {

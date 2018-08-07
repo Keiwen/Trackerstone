@@ -1,6 +1,10 @@
 <template>
     <div>
         <div class="container-fluid deckTypeList">
+            <div class="col-xs-6 col-sm-4 deckTypeFiltered genericDeckType" v-if="sortBy" @click="pickType(genericTypeFromSortedClass)">
+                <deck-type-show-simple :type="genericTypeFromSortedClass"></deck-type-show-simple>
+            </div>
+
             <div class="col-xs-6 col-sm-4 deckTypeFiltered" v-for="type in typesFiltered" @click="pickType(type)">
                 <deck-type-show-simple :type="type"></deck-type-show-simple>
             </div>
@@ -31,7 +35,7 @@
       }
     },
     computed: {
-      ...mapGetters(['generateTypeTitle', 'getTypesWithClass', 'getTypesOnTop']),
+      ...mapGetters(['generateTypeTitle', 'getTypesWithClass', 'getTypesOnTop', 'getGenericType']),
       typesFiltered () {
         if (this.sortBy === '') {
           const typesTop = this.getTypesOnTop()
@@ -39,6 +43,10 @@
           return typesTop.concat(typesNoTop)
         }
         return this.getTypesWithClass(this.sortBy)
+      },
+      genericTypeFromSortedClass () {
+        if (!this.sortBy) return {}
+        return this.getGenericType(this.sortBy)
       }
     },
     methods: {

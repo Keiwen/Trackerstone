@@ -27,7 +27,7 @@
     computed: {
       ...mapGetters(['generateTypeTitle']),
       btnText () {
-        if (this.pick.name) return this.generateTypeTitle(this.pick)
+        if (this.pick.id) return this.generateTypeTitle(this.pick)
         return 'Choose type...'
       }
     },

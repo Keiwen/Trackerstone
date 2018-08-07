@@ -141,7 +141,12 @@ const getters = {
     return getters.getArenaList('hsClass', hsClass)
   },
   getGamesVsType: (state, getters) => (idType, recentOnly) => {
-    return getters.getGamesList(recentOnly, 'opponent.id', parseInt(idType))
+    if (Number.isInteger(idType) || idType > 0) {
+      // string as opponent id => generic type
+      // if id, force cast to int before search
+      idType = parseInt(idType)
+    }
+    return getters.getGamesList(recentOnly, 'opponent.id', idType)
   },
   getGamesWonVsType: (state, getters) => (idType, recentOnly) => {
     const played = getters.getGamesVsType(idType, recentOnly)

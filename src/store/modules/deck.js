@@ -87,6 +87,9 @@ const getters = {
   own: state => state.own,
   nextId: state => state.nextId,
   nextTypeId: state => state.nextTypeId,
+  getGenericType: (state, getters) => (className) => {
+    return {id: className, name: '', hsClass: className, archetype: 'generic', top: false, note: ''}
+  },
   getTypesFiltered: state => (filter, value) => {
     if (typeof value === 'undefined') value = true
     return state.types.filter(type => { return type[filter] === value })
@@ -107,8 +110,12 @@ const getters = {
     currentDeck.id = state.current
     return currentDeck
   },
-  opponent: state => {
+  opponent: (state, getters) => {
     let opponentType = {}
+    if (!Number.isInteger(state.opponent) && state.opponent.length > 0) {
+      // string as opponent id => generic type
+      return getters.getGenericType(state.opponent)
+    }
     for (let i = 0; i < state.types.length; i++) {
       if (state.types[i].id === state.opponent) {
         opponentType = state.types[i]
