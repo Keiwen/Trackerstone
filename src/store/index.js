@@ -25,6 +25,8 @@ const persistOptions = {
   key: 'trackerstone'
 }
 
+const DECK_TITLE_LIMIT = 30
+
 export default new Vuex.Store({
   getters: {
     classStats: (state, getters) => {
@@ -111,11 +113,19 @@ export default new Vuex.Store({
     },
     generateDeckTitle: (state, getters) => (deck) => {
       const className = getters.className(deck.type.hsClass)
-      return deck.name + ' (' + className + ' ' + deck.type.name + ')'
+      return deck.name + ' (' + deck.type.name + ' ' + className + ')'
     },
     generateTypeTitle: (state, getters) => (type) => {
       const className = getters.className(type.hsClass)
-      return className + ' ' + type.name + ' (' + type.archetype + ')'
+      return type.name + ' ' + className + ' (' + type.archetype + ')'
+    },
+    generateTypeTitleLimit: (state, getters) => (type, archetype) => {
+      let title = getters.generateTypeTitle(type)
+      if (title.length < DECK_TITLE_LIMIT && archetype) return title
+      const className = getters.className(type.hsClass)
+      title = type.name + ' ' + className
+      if (title.length < DECK_TITLE_LIMIT) return title
+      return title.substring(0, DECK_TITLE_LIMIT - 4) + '...'
     },
     sortList: (state, getters) => (list, field, isString) => {
       if (typeof isString === 'undefined') isString = false
