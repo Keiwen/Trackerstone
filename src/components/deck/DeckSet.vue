@@ -52,7 +52,6 @@
           this.addError('No type selected')
           return
         }
-        console.log(this.newType.id)
         const deckData = {
           type: this.newType,
           name: this.newName,
