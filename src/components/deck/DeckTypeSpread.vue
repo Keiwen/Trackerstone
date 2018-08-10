@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container-fluid deckTypeList">
-            <div class="col-xs-6 col-sm-4 deckTypeFiltered genericDeckType" v-if="sortBy" @click="pickType(genericTypeFromSortedClass)">
+            <div class="col-xs-6 col-sm-4 deckTypeFiltered genericDeckType" v-if="allowGenericPick && sortBy" @click="pickType(genericTypeFromSortedClass)">
                 <deck-type-show-simple :type="genericTypeFromSortedClass"></deck-type-show-simple>
             </div>
 
@@ -29,6 +29,12 @@
 
   export default {
     components: {DeckTypeShowSimple, ClassPick},
+    props: {
+      allowGenericPick: {
+        type: Boolean,
+        default: false
+      }
+    },
     data () {
       return {
         sortBy: ''

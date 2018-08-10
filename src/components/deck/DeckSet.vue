@@ -3,7 +3,7 @@
       <div class="container-fluid manageForm choseForm">
         <div class="row">
           <div class="col-xs-12">
-            <deck-type-pick @pick-type="pickType" />
+            <deck-type-pick @pick-type="pickType" :allowGenericPick="true" />
           </div>
         </div>
 

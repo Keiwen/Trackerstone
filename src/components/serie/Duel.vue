@@ -16,7 +16,7 @@
             </div>
             <div class="col-xs-6">
                 <h3>Opponent deck</h3>
-                <deck-type-pick @pick-type="pickOpponentType" :initialPick="opponent" />
+                <deck-type-pick @pick-type="pickOpponentType" :initialPick="opponent" :allowGenericPick="true" />
                 <span @click="showNote()">
                     <icon name="info-circle" :scale="2" class="infoNote" :class="{'noted': opponent.note}"></icon>
                 </span>

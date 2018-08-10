@@ -3,7 +3,7 @@
         <button class="btn btn-default" @click="openTypeSpread()">{{ btnText }}</button>
 
         <sweet-modal ref="modalTypePick" overlay-theme="dark" title="Pick type">
-            <deck-type-spread @pick-type="typePicked" @goTo="goToManageDeckType"></deck-type-spread>
+            <deck-type-spread :allowGenericPick="allowGenericPick" @pick-type="typePicked" @goTo="goToManageDeckType"></deck-type-spread>
         </sweet-modal>
 
     </span>
@@ -18,7 +18,15 @@
 
   export default {
     components: { SweetModal, DeckTypeSpread },
-    props: ['initialPick'],
+    props: {
+      initialPick: {
+        type: String
+      },
+      allowGenericPick: {
+        type: Boolean,
+        default: false
+      }
+    },
     data () {
       return {
         pick: {}
