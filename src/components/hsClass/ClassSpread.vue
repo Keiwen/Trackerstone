@@ -29,3 +29,10 @@
     }
   }
 </script>
+
+
+<style lang="scss">
+    .col-xs-3 {
+        width: 20%;
+    }
+</style>

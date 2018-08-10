@@ -43,6 +43,9 @@
   left: 5%;
   transform: none;
   -webkit-transform: none;
+  @media (max-width: 768px) {
+    height: 90%;
+  }
   &.is-visible {
     transform: none;
     -webkit-transform: none;
