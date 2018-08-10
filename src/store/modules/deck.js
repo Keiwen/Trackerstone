@@ -156,6 +156,7 @@ const actions = {
 // ----------
 const mutations = {
   [types.ADD_DECK] (state, deckData) {
+    deckData.id = state.nextId
     Vue.set(state.own, state.nextId, deckData)
     state.lastDeckChanged = state.nextId
     state.nextId++
