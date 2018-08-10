@@ -31,7 +31,7 @@
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
     .col-xs-3 {
         width: 20%;
     }
