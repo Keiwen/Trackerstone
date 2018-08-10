@@ -47,4 +47,14 @@
     transform: none;
     -webkit-transform: none;
   }
+
+  .sweet-content {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  &.is-alert .sweet-content {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
 }
