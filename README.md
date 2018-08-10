@@ -2,13 +2,14 @@
 
 <a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it on web browser</a> and get mobile app (see below)! (Oh, seems to have some issues with IE)
 
-Current version is 0.7.14 with generic types allowed for opponent (if type unknown or untracked)
+Current version is 0.8.0 with redesigned deck types and decks
 
 > Please note that this project is an experiment with VueJS framework and Progressive Web App, maintained on free-time without guarantee :)
 
 ## Samples
 ![Serie](https://raw.githubusercontent.com/Keiwen/Trackerstone/master/samples/small/serie.png)
 ![Graph](https://raw.githubusercontent.com/Keiwen/Trackerstone/master/samples/small/graph.png)
+![Deck types](https://raw.githubusercontent.com/Keiwen/Trackerstone/master/samples/small/decktypes.png)
 ![Arena](https://raw.githubusercontent.com/Keiwen/Trackerstone/master/samples/small/arena.png)
 ![DTUS](https://raw.githubusercontent.com/Keiwen/Trackerstone/master/samples/small/dtus.png)
 
