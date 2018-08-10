@@ -22,7 +22,7 @@
             Score {{ deck.winScoreWith }}
         </p>
 
-        <sweet-modal ref="modalEdit" modal-theme="dark" title="Edit deck">
+        <sweet-modal ref="modalEdit" modal-theme="dark" :title="generateDeckTitle(deck)">
             <div class="form-group">
                 <label class="control-label col-xs-4" for="newName">Name:</label>
                 <div class="col-xs-8">
@@ -48,7 +48,7 @@
             <div class="form-group">
                 <label for="newNote" class="control-label col-xs-4">Note:</label>
                 <div class="col-xs-8">
-                    <textarea id="newNote" rows="3" col="50" class="form-control" v-model="newNote"/>
+                    <textarea id="newNote" rows="2" col="50" class="form-control" v-model="newNote"/>
                 </div>
             </div>
             <button slot="button" @click="confirmEdit()" class="btn btn-success">Save <icon name="save" /></button>
