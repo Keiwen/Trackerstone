@@ -1,6 +1,5 @@
 <template>
     <div class="container-fluid">
-        <h2>Manage decks</h2>
         <div class="container-fluid deckContent">
             <div class="deckContainer col-xs-6 col-sm-6 col-md-4 col-lg-3" v-for="(deck, id) in deckStats">
                 <deck-show :deck="deck" />

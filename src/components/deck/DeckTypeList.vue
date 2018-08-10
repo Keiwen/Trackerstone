@@ -1,13 +1,13 @@
 <template>
     <div class="container-fluid">
-        <h2>Manage deck types</h2>
-
-        Sort by:
-        <enhanced-check-radio :label="['Star', 'Class', 'Played vs', 'Winrate vs', 'Win score vs']"
-                              :value="['star', 'hsClass', 'played', 'winrate', 'winscore']"
-        					  name="deck_type_sort"
-        					  subClass="primary" :animate="true" :inline="true" v-model="sortBy" :rounded="true">
-        </enhanced-check-radio>
+        <div class="row">
+            Sort by:
+            <enhanced-check-radio :label="['Star', 'Class', 'Played vs', 'Winrate vs', 'Win score vs']"
+                                  :value="['star', 'hsClass', 'played', 'winrate', 'winscore']"
+                                  name="deck_type_sort"
+                                  subClass="primary" :animate="true" :inline="true" v-model="sortBy" :rounded="true">
+            </enhanced-check-radio>
+        </div>
 
         <div class="container-fluid deckTypeContent">
             <div class="deckTypeContainer col-xs-6 col-sm-6 col-md-4 col-lg-3" v-for="type in typesList">
