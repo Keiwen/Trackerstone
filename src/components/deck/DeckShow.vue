@@ -1,5 +1,5 @@
 <template>
-    <div class="deckShow" :class="showDivClass">
+    <div class="deckShow" :class="showDivClass" @click="toggleActions()">
         <div class="row">
             <div class="col-xs-3">
                 <div class="profil"></div>
@@ -23,6 +23,15 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+
+        <div class="col-xs-12 deckActions" v-if="showActions">
+            <div class="col-xs-6">
+                <button slot="button" class="btn btn-info" @click="editDeck()">Edit</button>
+            </div>
+            <div class="col-xs-6">
+                <button slot="button" class="btn btn-danger" @click="promptConfirmDelete()">Delete</button>
             </div>
         </div>
 
@@ -76,6 +85,12 @@
             <button slot="button" @click="cancelEdit()" class="btn btn-default">Cancel <icon name="times" /></button>
         </sweet-modal>
 
+        <sweet-modal icon="warning" ref="modalDelete" modal-theme="dark">
+            Are you sure you want to remove deck {{ generateDeckTitle(deck) }}?
+            <button slot="button" @click="remove()" class="btn btn-success">Confirm <icon name="trash" /></button>
+            <button slot="button" @click="cancelRemove()" class="btn btn-default">Cancel <icon name="times" /></button>
+        </sweet-modal>
+
     </div>
 </template>
 
@@ -90,6 +105,7 @@
     props: ['deck'],
     data () {
       return {
+        showActions: false,
         newName: '',
         newNote: '',
         newExportCode: '',
@@ -100,6 +116,7 @@
       ...mapGetters(['generateDeckTitle', 'generateDeckTitleLimit', 'lastDeckChanged']),
       showDivClass () {
         let divClass = 'deckClass-' + this.deck.type.hsClass
+        console.log(this.lastDeckChanged, this.deck.id, this.deck)
         if (this.lastDeckChanged === this.deck.id) {
           divClass += ' lastChange'
         }
@@ -107,11 +124,15 @@
       }
     },
     methods: {
+      toggleActions () {
+        this.showActions = !this.showActions
+      },
       editDeck () {
         this.newName = this.deck.name
         this.newNote = this.deck.note
         this.newExportCode = this.deck.exportCode
         this.$refs.modalEdit.open()
+        // this.toggleActions()
       },
       confirmEdit () {
         this.$store.commit(storeMut.SET_DECK, {
@@ -131,6 +152,17 @@
       },
       onClipboardOut () {
         this.clipboardSuccess = false
+      },
+      promptConfirmDelete () {
+        this.$refs.modalDelete.open()
+        this.toggleActions()
+      },
+      remove () {
+        this.$refs.modalDelete.close()
+        this.$store.commit(storeMut.REMOVE_DECK, this.deck.id)
+      },
+      cancelRemove () {
+        this.$refs.modalDelete.close()
       }
     }
   }

@@ -54,9 +54,6 @@
         this.newName = ''
         this.newExportCode = ''
         this.addSuccess('Deck added')
-      },
-      remove (id) {
-        this.$store.commit(storeMut.REMOVE_DECK, id)
       }
     }
   }
