@@ -116,7 +116,6 @@
       ...mapGetters(['generateDeckTitle', 'generateDeckTitleLimit', 'lastDeckChanged']),
       showDivClass () {
         let divClass = 'deckClass-' + this.deck.type.hsClass
-        console.log(this.lastDeckChanged, this.deck.id, this.deck)
         if (this.lastDeckChanged === this.deck.id) {
           divClass += ' lastChange'
         }
