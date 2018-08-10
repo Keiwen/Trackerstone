@@ -23,14 +23,13 @@
 <script>
   import { mapGetters, mapActions } from 'vuex'
   import * as storeMut from '@/store/mutation-types'
-  import DeckTypePick from './DeckTypePick'
   import DeckShow from './DeckShow'
   import DeckSet from './DeckSet'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
   import SeeChartButton from '@/components/charts/SeeChartButton'
 
   export default {
-    components: {DeckTypePick, DeckShow, DeckSet, ConfirmationModal, SeeChartButton},
+    components: {DeckShow, DeckSet, ConfirmationModal, SeeChartButton},
     data () {
       return {
         newType: {},
