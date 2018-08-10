@@ -23,6 +23,23 @@
         </p>
 
         <sweet-modal ref="modalEdit" modal-theme="dark" :title="generateDeckTitle(deck)">
+            <div class="row">
+                <div class="col-xs-6">
+                    <p>
+                        Record: {{ deck.wonWith }} - {{ deck.lossWith }}<br/>
+                        <span class="score">
+                            Score: {{ deck.winScoreWith }}
+                        </span>
+                    </p>
+                </div>
+                <div class="col-xs-6">
+                    <p>
+                        {{ deck.winPercentWith }} % global<br/>
+                        {{ deck.winPercentWithRecent }} % last {{ deck.playedWithRecent }} games
+                    </p>
+                </div>
+            </div>
+            <hr/>
             <div class="form-group">
                 <label class="control-label col-xs-4" for="newName">Name:</label>
                 <div class="col-xs-8">
