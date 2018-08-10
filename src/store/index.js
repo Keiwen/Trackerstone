@@ -25,7 +25,7 @@ const persistOptions = {
   key: 'trackerstone'
 }
 
-const DECK_TITLE_LIMIT = 30
+const DECK_TITLE_LIMIT = 20
 
 export default new Vuex.Store({
   getters: {
@@ -111,21 +111,31 @@ export default new Vuex.Store({
       }
       return stats
     },
+    limitTitle: () => (title) => {
+      if (title.length <= DECK_TITLE_LIMIT) return title
+      return title.substring(0, DECK_TITLE_LIMIT - 1) + '...'
+    },
     generateDeckTitle: (state, getters) => (deck) => {
       const className = getters.className(deck.type.hsClass)
       return deck.name + ' (' + deck.type.name + ' ' + className + ')'
+    },
+    generateDeckTitleLimit: (state, getters) => (deck) => {
+      const title = getters.generateDeckTitle(deck)
+      return getters.limitTitle(title)
     },
     generateTypeTitle: (state, getters) => (type) => {
       const className = getters.className(type.hsClass)
       return type.name + ' ' + className + ' (' + type.archetype + ')'
     },
     generateTypeTitleLimit: (state, getters) => (type, archetype) => {
-      let title = getters.generateTypeTitle(type)
-      if (title.length < DECK_TITLE_LIMIT && archetype) return title
-      const className = getters.className(type.hsClass)
-      title = type.name + ' ' + className
-      if (title.length < DECK_TITLE_LIMIT) return title
-      return title.substring(0, DECK_TITLE_LIMIT - 4) + '...'
+      if (archetype) {
+        const title = getters.generateTypeTitle(type)
+        return getters.limitTitle(title)
+      } else {
+        const className = getters.className(type.hsClass)
+        const title = type.name + ' ' + className
+        return getters.limitTitle(title)
+      }
     },
     sortList: (state, getters) => (list, field, isString) => {
       if (typeof isString === 'undefined') isString = false
