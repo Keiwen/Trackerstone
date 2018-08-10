@@ -2,24 +2,22 @@
 
       <div class="container-fluid manageForm choseForm">
         <div class="row">
-          <div class="col-xs-12">
-            <deck-type-pick @pick-type="pickType" :allowGenericPick="true" />
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-xs-12">
+          <div class="col-xs-6">
             <input type="text" class="form-control" v-model="newName" @keyup.enter="add()" placeholder="Deck name (opt.)"/>
           </div>
-        </div>
-
-        <div class="row">
-          <div class="col-xs-12">
+          <div class="col-xs-6">
             <input type="text" class="form-control" v-model="newExportCode" @keyup.enter="add()" placeholder="Export code (opt.)"/>
           </div>
         </div>
 
-        <button @click="add()" class="btn btn-success">Add deck</button>
+        <div class="row">
+          <div class="col-xs-6">
+            <deck-type-pick @pick-type="pickType" :allowGenericPick="true" />
+          </div>
+          <div class="col-xs-6">
+            <button @click="add()" class="btn btn-success">Add deck</button>
+          </div>
+        </div>
 
       </div>
 </template>
@@ -45,11 +43,16 @@
       ...mapGetters(['deckStats', 'recentNumberGames'])
     },
     methods: {
-      ...mapActions(['addSuccess']),
+      ...mapActions(['addSuccess', 'addError']),
       pickType (type) {
         this.newType = type
       },
       add () {
+        if (!this.newType.id) {
+          this.addError('No type selected')
+          return
+        }
+        console.log(this.newType.id)
         const deckData = {
           type: this.newType,
           name: this.newName,
