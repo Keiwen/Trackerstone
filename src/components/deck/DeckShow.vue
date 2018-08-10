@@ -1,6 +1,6 @@
 <template>
-    <div class="deckShow" :class="showDivClass" @click="toggleActions()">
-        <div class="row">
+    <div class="deckShow" :class="showDivClass">
+        <div class="row" @click="openDetail()">
             <div class="col-xs-3">
                 <div class="profil"></div>
             </div>
@@ -26,17 +26,8 @@
             </div>
         </div>
 
-        <div class="col-xs-12 deckActions" v-if="showActions">
-            <div class="col-xs-6">
-                <button slot="button" class="btn btn-info" @click="editDeck()">Edit</button>
-            </div>
-            <div class="col-xs-6">
-                <button slot="button" class="btn btn-danger" @click="promptConfirmDelete()">Delete</button>
-            </div>
-        </div>
-
-        <sweet-modal ref="modalEdit" modal-theme="dark" :title="generateDeckTitle(deck)">
-            <div class="row">
+        <sweet-modal ref="modalDetail" modal-theme="dark" :title="generateDeckTitle(deck)">
+            <div class="row detailStats">
                 <div class="col-xs-6">
                     <p>
                         Record: {{ deck.wonWith }} - {{ deck.lossWith }}<br/>
@@ -81,8 +72,10 @@
                     <textarea id="newNote" rows="2" col="50" class="form-control" v-model="newNote"/>
                 </div>
             </div>
-            <button slot="button" @click="confirmEdit()" class="btn btn-success">Save <icon name="save" /></button>
+            <button slot="button" @click="promptConfirmDelete()" class="btn btn-danger away-button">Delete <icon name="trash" /></button>
+
             <button slot="button" @click="cancelEdit()" class="btn btn-default">Cancel <icon name="times" /></button>
+            <button slot="button" @click="confirmEdit()" class="btn btn-success">Save <icon name="save" /></button>
         </sweet-modal>
 
         <sweet-modal icon="warning" ref="modalDelete" modal-theme="dark">
@@ -105,7 +98,6 @@
     props: ['deck'],
     data () {
       return {
-        showActions: false,
         newName: '',
         newNote: '',
         newExportCode: '',
@@ -123,15 +115,11 @@
       }
     },
     methods: {
-      toggleActions () {
-        this.showActions = !this.showActions
-      },
-      editDeck () {
+      openDetail () {
         this.newName = this.deck.name
         this.newNote = this.deck.note
         this.newExportCode = this.deck.exportCode
-        this.$refs.modalEdit.open()
-        this.toggleActions()
+        this.$refs.modalDetail.open()
       },
       confirmEdit () {
         this.$store.commit(storeMut.SET_DECK, {
@@ -140,10 +128,10 @@
           note: this.newNote,
           exportCode: this.newExportCode
         })
-        this.$refs.modalEdit.close()
+        this.$refs.modalDetail.close()
       },
       cancelEdit () {
-        this.$refs.modalEdit.close()
+        this.$refs.modalDetail.close()
       },
       onClipboardSuccess () {
         this.clipboardSuccess = true
@@ -154,10 +142,10 @@
       },
       promptConfirmDelete () {
         this.$refs.modalDelete.open()
-        this.toggleActions()
       },
       remove () {
         this.$refs.modalDelete.close()
+        this.$refs.modalDetail.close()
         this.$store.commit(storeMut.REMOVE_DECK, this.deck.id)
       },
       cancelRemove () {

@@ -23,8 +23,26 @@
     padding-bottom: 5px;
     button {
       margin-left: 10px;
+      &.away-button {
+        float: left;
+        margin-right: 10px;
+        margin-left: 0;
+      }
     }
   }
+
+  .sweet-content {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    .detailStats >div >p {
+      margin-bottom: 0;
+    }
+  }
+  &.is-alert .sweet-content {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
 }
 
 /* ####### Popover/tooltip ####### */
@@ -50,14 +68,4 @@
     transform: none;
     -webkit-transform: none;
   }
-
-  .sweet-content {
-    padding-top: 5px;
-    padding-bottom: 5px;
-  }
-  &.is-alert .sweet-content {
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-
 }
