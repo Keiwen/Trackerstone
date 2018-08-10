@@ -12,6 +12,10 @@
       background-color: $second-bg;
       border-radius: 50px 0 0 50px;
 
+      &.lastChange {
+        border: 1px solid $orange-ts;
+      }
+
       h4 {
         font-family: 'Changa One', cursive;
         text-transform: uppercase;
@@ -25,8 +29,8 @@
         height: 100px;
         display: inline-block;
         position: absolute;
-        left: -12px;
-        top: -12px;
+        left: -13px;
+        top: -13px;
         transform: scale(0.75);
 
         //      background: url('../../assets/charac_skins.jpg') 0 0 no-repeat;

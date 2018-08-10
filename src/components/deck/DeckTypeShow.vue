@@ -126,7 +126,7 @@
         this.newName = this.type.name
         this.newNote = this.type.note
         this.$refs.modalDetail.open()
-        // this.toggleActions()
+        this.toggleActions()
       },
       confirmEdit () {
         this.$store.commit(storeMut.SET_DECKTYPE_NAME, {id: this.type.id, name: this.newName})
