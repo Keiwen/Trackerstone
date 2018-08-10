@@ -1,26 +1,30 @@
 <template>
     <div class="deckShow" :class="showDivClass">
         <div class="row">
-            <div class="editIcon col-xs-2" @click="editDeck()" @mouseover="hoverEditIcon()" @mouseout="hoverEditIcon()" >
-                <icon name="pencil-square-o" :class="{'noted': deck.note}" :scale="editIconScale" />
+            <div class="col-xs-3">
+                <div class="profil"></div>
             </div>
-            <div class="col-xs-8">
-                <h4>
-                    {{ generateDeckTitle(deck) }}
-                </h4>
-            </div>
-            <div class="col-xs-2">
+
+            <div class="col-xs-9">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h4>
+                            {{ generateDeckTitleLimit(deck) }}
+                        </h4>
+                    </div>
+                </div>
+                <div class="col-xs-12 deckStats">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p>
+                                {{ deck.wonWith }} - {{ deck.lossWith }}<br/>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <p>
-            {{ deck.wonWith }} - {{ deck.lossWith }}
-            <i>
-                ({{ deck.winPercentWith }} % global, {{ deck.winPercentWithRecent }} % last {{ deck.playedWithRecent }} games)
-            </i>
-        </p>
-        <p>
-            Score {{ deck.winScoreWith }}
-        </p>
 
         <sweet-modal ref="modalEdit" modal-theme="dark" :title="generateDeckTitle(deck)">
             <div class="row">
@@ -86,7 +90,6 @@
     props: ['deck'],
     data () {
       return {
-        editIconHover: false,
         newName: '',
         newNote: '',
         newExportCode: '',
@@ -94,22 +97,16 @@
       }
     },
     computed: {
-      ...mapGetters(['generateDeckTitle', 'lastDeckChanged']),
+      ...mapGetters(['generateDeckTitle', 'generateDeckTitleLimit', 'lastDeckChanged']),
       showDivClass () {
-        let divClass = ''
+        let divClass = 'deckClass-' + this.deck.type.hsClass
         if (this.lastDeckChanged === this.deck.id) {
           divClass += ' lastChange'
         }
         return divClass
-      },
-      editIconScale () {
-        return (this.editIconHover) ? 2 : 1
       }
     },
     methods: {
-      hoverEditIcon () {
-        this.editIconHover = !this.editIconHover
-      },
       editDeck () {
         this.newName = this.deck.name
         this.newNote = this.deck.note
@@ -140,22 +137,49 @@
 </script>
 
 <style lang="scss">
-
-    .deckShow {
-        padding-top: 20px;
-        min-height: 130px;
-    }
-
-    .editIcon {
-        cursor: pointer;
-        padding-bottom: 1em;
-        &:hover {
-             padding-bottom: 0;
+    .deckContainer {
+        .deckShow {
+            .profil {
+                background: url('../../assets/classes_sprite.png') 0 0 no-repeat;
+            }
         }
-    }
+        .deckClass {
+            &-druid .profil {
+                background-position: -375px -376px;
+            }
 
-    .noted {
-        color: #C6AA37;
+            &-hunter .profil {
+                background-position: -75px -75px;
+            }
+
+            &-mage .profil {
+                background-position: -75px -375px;
+            }
+
+            &-paladin .profil {
+                background-position: -675px -375px;
+            }
+
+            &-priest .profil {
+                background-position: -75px -675px;
+            }
+
+            &-rogue .profil {
+                background-position: -675px -675px;
+            }
+
+            &-shaman .profil {
+                background-position: -675px -75px;
+            }
+
+            &-warlock .profil {
+                background-position: -375px -75px;
+            }
+
+            &-warrior .profil {
+                background-position: -375px -675px;
+            }
+        }
     }
 
 </style>
