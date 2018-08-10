@@ -120,8 +120,12 @@ export default new Vuex.Store({
       return deck.name + ' (' + deck.type.name + ' ' + className + ')'
     },
     generateDeckTitleLimit: (state, getters) => (deck) => {
-      const title = getters.generateDeckTitle(deck)
-      return getters.limitTitle(title)
+      if (deck.name) {
+        return getters.limitTitle(deck.name)
+      } else {
+        const title = getters.generateDeckTitle(deck)
+        return getters.limitTitle(title)
+      }
     },
     generateTypeTitle: (state, getters) => (type) => {
       const className = getters.className(type.hsClass)
