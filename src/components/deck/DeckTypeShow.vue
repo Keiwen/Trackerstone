@@ -77,8 +77,8 @@
 
         <sweet-modal icon="warning" ref="modalDelete" modal-theme="dark">
             Are you sure you want to remove deck type {{ generateTypeTitle(type) }}?
-            <button slot="button" @click="remove()" class="btn btn-success">Confirm <icon name="trash" /></button>
             <button slot="button" @click="cancelRemove()" class="btn btn-default">Cancel <icon name="times" /></button>
+            <button slot="button" @click="remove()" class="btn btn-success">Confirm <icon name="trash" /></button>
         </sweet-modal>
 
     </div>
