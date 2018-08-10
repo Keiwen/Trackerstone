@@ -46,8 +46,20 @@
       }
     },
     methods: {
-      ...mapActions(['addSuccess']),
+      ...mapActions(['addSuccess', 'addError']),
       add () {
+        if (!this.newClass) {
+          this.addError('No class selected')
+          return
+        }
+        if (!this.newArchetype) {
+          this.addError('No archetype selected')
+          return
+        }
+        if (!this.newName) {
+          this.addError('No name defined')
+          return
+        }
         this.$store.commit(storeMut.ADD_DECKTYPE, {
           name: this.newName,
           hsClass: this.newClass,
