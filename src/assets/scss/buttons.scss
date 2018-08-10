@@ -95,7 +95,7 @@
 // ** radio buttons ** //
 
 //background color
-.enhancedCheck input[type="radio"] + label[data-v-feefc70c], .enhancedCheck input[type="checkbox"] + label[data-v-feefc70c], .enhancedCheck input[type="radio"] + label[data-v-0a3be451], .enhancedCheck input[type="checkbox"] + label[data-v-0a3be451] {
+.enhancedCheck input[type="radio"] + label, .enhancedCheck input[type="checkbox"] + label {
   background-color: $second-bg;
   color: lighten($main-color,10%);
   &:hover{
@@ -107,8 +107,8 @@
 }
 
 //not checked
-.enhancedCheck.enhancedCheck-primary input[type="radio"]:not(:checked) + label[data-v-0a3be451], .enhancedCheck.enhancedCheck-primary input[type="checkbox"]:not(:checked) + label[data-v-0a3be451],
-.enhancedCheck.enhancedCheck-warning input[type="radio"]:not(:checked) + label[data-v-feefc70c], .enhancedCheck.enhancedCheck-warning input[type="checkbox"]:not(:checked) + label[data-v-feefc70c]
+.enhancedCheck.enhancedCheck-primary input[type="radio"]:not(:checked) + label, .enhancedCheck.enhancedCheck-primary input[type="checkbox"]:not(:checked) + label,
+.enhancedCheck.enhancedCheck-warning input[type="radio"]:not(:checked) + label, .enhancedCheck.enhancedCheck-warning input[type="checkbox"]:not(:checked) + label
 {
   &:hover{
         border: 1px solid $main-color;
@@ -119,21 +119,21 @@
 }
 
 //star icon ★ ✩
-.enhancedCheck input[type="checkbox"]:checked + label[data-v-feefc70c]:before, .enhancedCheck input[type="checkbox"]:not(:checked) + label[data-v-feefc70c]:hover:before {
+.enhancedCheck input[type="checkbox"]:checked + label:before, .enhancedCheck input[type="checkbox"]:not(:checked) + label:hover:before {
   content: "\2605"!important;
   font-size: 20px;
   line-height: 28px;
 }
 
 //rounded icon
-.enhancedCheck input[type="radio"]:not(:checked) + label[data-v-0a3be451]:hover:before, .enhancedCheck input[type="radio"]:checked + label[data-v-0a3be451]:before {
+.enhancedCheck input[type="radio"]:not(:checked) + label:hover:before, .enhancedCheck input[type="radio"]:checked + label:before {
     content: "\25CF" !important;
     font-size: 24px;
     line-height: 27px;
 }
 
 //checked
-.enhancedCheck.enhancedCheck-primary input[type="radio"]:checked + label[data-v-0a3be451]:before, .enhancedCheck.enhancedCheck-primary input[type="checkbox"]:checked + label[data-v-0a3be451]:before {
+.enhancedCheck.enhancedCheck-primary input[type="radio"]:checked + label:before, .enhancedCheck.enhancedCheck-primary input[type="checkbox"]:checked + label:before {
     background: $main-color;
     color: $orange-ts;
 
