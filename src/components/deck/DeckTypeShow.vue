@@ -53,7 +53,7 @@
             <hr/>
             <div class="form-group">
                 <div class="col-xs-12">
-                    <enhanced-check v-model="newTop" label="Star" :animate="true" class="starCheck" subClass="warning" />
+                    <enhanced-check v-model="newTop" label="Star" :animate="true" class="starCheck" subClass="star" />
                 </div>
             </div>
             <div class="form-group">

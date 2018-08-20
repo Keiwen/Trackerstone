@@ -5,7 +5,7 @@
             <enhanced-check-radio :label="['Star', 'Class', 'Played vs', 'Winrate vs', 'Win score vs']"
                                   :value="['star', 'hsClass', 'played', 'winrate', 'winscore']"
                                   name="deck_type_sort"
-                                  subClass="primary" :animate="true" :inline="true" v-model="sortBy" :rounded="true">
+                                  subClass="default" :animate="true" :inline="true" v-model="sortBy" :rounded="true">
             </enhanced-check-radio>
         </div>
 

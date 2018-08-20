@@ -14,7 +14,7 @@
           <input type="text" class="form-control" v-model="newName" @keyup.enter="add()" placeholder="Deck type name"/>
         </div>
         <div class="col-xs-6">
-          <enhanced-check v-model="newTop" label="Star" :animate="true" class="starCheck" subClass="warning" />
+          <enhanced-check v-model="newTop" label="Star" :animate="true" class="starCheck" subClass="star" />
         </div>
       </div>
 

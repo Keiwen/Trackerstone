@@ -31,7 +31,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" v-for="(newDeckType, index) in loadedDeckTypes">
                     <div class="col-xs-4">{{ generateTypeTitle(newDeckType) }}</div>
                     <div class="col-xs-2">
-                        <enhanced-check v-model="newDeckType.top" label="Star" :animate="true" class="starCheck" subClass="warning" />
+                        <enhanced-check v-model="newDeckType.top" label="Star" :animate="true" class="starCheck" subClass="star" />
                     </div>
                     <div class="col-xs-3">
                         <enhanced-toggle labelOn="Add" labelOff="Ignore"
