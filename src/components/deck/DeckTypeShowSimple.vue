@@ -1,6 +1,6 @@
 <template>
     <div class="deckTypeShowSimple" :class="showDivClass">
-        {{ generateTypeTitle(type) }}
+        {{ generateTypeTitleLimit(type) }}
     </div>
 </template>
 
@@ -11,7 +11,7 @@
   export default {
     props: ['type'],
     computed: {
-      ...mapGetters(['generateTypeTitle']),
+      ...mapGetters(['generateTypeTitleLimit']),
       showDivClass () {
         return 'deckClass-' + this.type.hsClass + ' deckArchetype-' + this.type.archetype
       }

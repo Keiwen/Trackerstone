@@ -1,6 +1,6 @@
 <template>
     <div class="deckShow">
-        {{ generateDeckTitle(deck) }}
+        {{ generateDeckTitleLimit(deck) }}
     </div>
 </template>
 
@@ -11,7 +11,7 @@
   export default {
     props: ['deck'],
     computed: {
-      ...mapGetters(['generateDeckTitle'])
+      ...mapGetters(['generateDeckTitleLimit'])
     }
   }
 </script>

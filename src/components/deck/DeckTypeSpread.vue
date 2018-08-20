@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="container-fluid deckTypeList">
-            <div class="col-xs-6 col-sm-4 deckTypeFiltered genericDeckType" v-if="allowGenericPick && sortBy" @click="pickType(genericTypeFromSortedClass)">
+            <div class="col-xs-4 col-sm-3 deckTypeFiltered genericDeckType" v-if="allowGenericPick && sortBy" @click="pickType(genericTypeFromSortedClass)">
                 <deck-type-show-simple :type="genericTypeFromSortedClass"></deck-type-show-simple>
             </div>
 
-            <div class="col-xs-6 col-sm-4 deckTypeFiltered" v-for="type in typesFiltered" @click="pickType(type)">
+            <div class="col-xs-4 col-sm-3 deckTypeFiltered" v-for="type in typesFiltered" @click="pickType(type)">
                 <deck-type-show-simple :type="type"></deck-type-show-simple>
             </div>
         </div>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container-fluid deckList">
-            <div class="col-xs-6 col-sm-4 deckFiltered" v-for="(deck, id) in own" @click="pickDeck(id)">
+            <div class="col-xs-4 col-sm-3 deckFiltered" v-for="(deck, id) in own" @click="pickDeck(id)">
                 <deck-show-simple :deck="deck"></deck-show-simple>
             </div>
         </div>
