@@ -16,7 +16,7 @@
       }
     },
     computed: {
-      ...mapGetters(['classStats', 'typesStats', 'generateTypeTitle', 'sortList', 'current']),
+      ...mapGetters(['classStats', 'typesStats', 'generateTypeTitleLimit', 'sortList', 'current']),
       chartData () {
         let labels = []
         let dataLists = []
@@ -28,9 +28,9 @@
         for (let i = 0; i < typesSorted.length; i++) {
           const type = typesSorted[i]
           if (type[sortField] === 0) continue
-          labels.push(this.generateTypeTitle(type))
+          labels.push(this.generateTypeTitleLimit(type))
           dataLists.push({
-            label: this.generateTypeTitle(type),
+            label: this.generateTypeTitleLimit(type),
             data: [{x: type[sortField], y: type[percentField], r: 10}],
             backgroundColor: this.classStats[type['hsClass']]['backgroundColor']
           })

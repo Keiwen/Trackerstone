@@ -5,7 +5,7 @@
 
   export default Bar.extend({
     computed: {
-      ...mapGetters(['deckStats', 'className', 'generateDeckTitle']),
+      ...mapGetters(['deckStats', 'className', 'generateDeckTitleLimit']),
       chartData () {
         let labels = []
         let dataset = {
@@ -18,7 +18,7 @@
           if (!this.deckStats.hasOwnProperty(idDeck)) continue
           const deck = this.deckStats[idDeck]
           if (deck['winScoreWith'] < 0) continue
-          labels.push(this.generateDeckTitle(deck))
+          labels.push(this.generateDeckTitleLimit(deck))
           dataset.data.push(deck['winScoreWith'])
         }
 
