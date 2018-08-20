@@ -2,23 +2,23 @@
     <div class="container-fluid">
         <div class="gamemodeSum arenaSum row">
             <div class="col-xs-2">
-                <progress-circle :completed-steps="arenaGamesWonCurrent"
+                <progress-circle :completed-steps="isNewArena ? 0 : arenaGamesWonCurrent"
                                  :total-steps="12"
                                  :diameter="70"
                                  startColor="#25471E"
                                  stopColor="#66E85A"
                                  circleColor="#DDDDDD">
-                    <p class="innerProgressCircle">{{ arenaGamesWonCurrent }}</p>
+                    <p class="innerProgressCircle">{{ isNewArena ? 0 : arenaGamesWonCurrent }}</p>
                 </progress-circle>
             </div>
             <div class="col-xs-2">
-                <progress-circle :completed-steps="arenaGamesLossCurrent"
+                <progress-circle :completed-steps="isNewArena ? 0 : arenaGamesLossCurrent"
                                  :total-steps="3"
                                  :diameter="70"
                                  startColor="#491F1F"
                                  stopColor="#E85A5A"
                                  circleColor="#DDDDDD">
-                    <p class="innerProgressCircle">{{ arenaGamesLossCurrent}}</p>
+                    <p class="innerProgressCircle">{{ isNewArena ? 0 : arenaGamesLossCurrent}}</p>
                 </progress-circle>
             </div>
             <div class="col-xs-4">
