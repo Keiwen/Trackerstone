@@ -118,8 +118,8 @@
 .enhancedCheck.enhancedCheck-star input[type="checkbox"] {
   + label:before {
     content: "\2605" !important;
-    font-size: 20px;
-    line-height: 28px;
+    font-size: 20px !important;
+    line-height: 28px !important;
     color: transparent;
   }
   &:checked + label:before {
@@ -134,8 +134,8 @@
 .enhancedCheck input[type="radio"]:not(:checked) + label:hover:before,
 .enhancedCheck input[type="radio"]:checked + label:before {
   content: "\25CF" !important;
-  font-size: 24px;
-  line-height: 27px;
+  font-size: 24px !important;
+  line-height: 27px !important;
 }
 
 
