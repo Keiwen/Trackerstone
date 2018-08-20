@@ -124,13 +124,17 @@
   @include enhancedCheckSpec("\03c9", $serie-wild);
 }
 
-
 //rounded icon
-.enhancedCheck input[type="radio"]:not(:checked) + label:hover:before,
-.enhancedCheck input[type="radio"]:checked + label:before {
-  content: "\25CF" !important;
-  font-size: 24px !important;
-  line-height: 27px !important;
+.enhancedCheck input[type="radio"] {
+  + label:before {
+    content: "\25CF" !important;
+    font-size: 20px !important;
+    line-height: 28px !important;
+    color: transparent;
+  }
+  &:checked + label:before {
+    color: $main-color;
+  }
 }
 
 
