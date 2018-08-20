@@ -33,9 +33,9 @@
       }
     },
     computed: {
-      ...mapGetters(['generateTypeTitle']),
+      ...mapGetters(['generateTypeTitleLimit']),
       btnText () {
-        if (this.pick.id) return this.generateTypeTitle(this.pick)
+        if (this.pick.id) return this.generateTypeTitleLimit(this.pick)
         return 'Choose type...'
       }
     },

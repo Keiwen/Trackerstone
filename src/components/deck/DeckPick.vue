@@ -25,9 +25,9 @@
       }
     },
     computed: {
-      ...mapGetters(['own', 'current', 'generateDeckTitle']),
+      ...mapGetters(['own', 'current', 'generateDeckTitleLimit']),
       btnText () {
-        if (this.pick) return this.generateDeckTitle(this.own[this.pick])
+        if (this.pick) return this.generateDeckTitleLimit(this.own[this.pick])
         return 'Choose deck...'
       }
     },
