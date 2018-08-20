@@ -13,15 +13,15 @@
         <div class="col-xs-6">
           <input type="text" class="form-control" v-model="newName" @keyup.enter="add()" placeholder="Deck type name"/>
         </div>
-        <div class="col-xs-6">
+        <div class="col-xs-3">
           <enhanced-check v-model="newTop" label="Star" :animate="true" class="starCheck" subClass="star" />
+        </div>
+        <div class="col-xs-3">
+          <button @click="add()" class="btn btn-success">Add deck type</button>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-xs-12">
-          <button @click="add()" class="btn btn-success">Add deck type</button>
-        </div>
       </div>
 
     </div>

@@ -143,13 +143,23 @@
         color: $orange-ts!important;
         height: 22px;
         width: 22px;
-        top: 0px;
+        top: 0;
         position: absolute;
         right: 7px;
       }
 
       .noted {
         color: $orange-ts!important;
+      }
+    }
+
+    .deckSerie {
+      &-standard {
+        @include boxShadowDeckSerie($serie-standard);
+      }
+
+      &-wild {
+        @include boxShadowDeckSerie($serie-wild);
       }
     }
   }

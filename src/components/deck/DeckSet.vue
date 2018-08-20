@@ -14,7 +14,10 @@
           <div class="col-xs-6">
             <deck-type-pick @pick-type="pickType" :allowGenericPick="true" />
           </div>
-          <div class="col-xs-6">
+          <div class="col-xs-3">
+            <enhanced-check v-model="wildFormat" label="Wild" :animate="true" subClass="wild" />
+          </div>
+          <div class="col-xs-3">
             <button @click="add()" class="btn btn-success">Add deck</button>
           </div>
         </div>
@@ -29,14 +32,16 @@
   import DeckTypePick from './DeckTypePick'
   import DeckShow from './DeckShow'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
+  import { EnhancedCheck } from 'vue-enhanced-check'
 
   export default {
-    components: {DeckTypePick, DeckShow, ConfirmationModal},
+    components: {DeckTypePick, DeckShow, ConfirmationModal, EnhancedCheck},
     data () {
       return {
         newType: {},
         newName: '',
-        newExportCode: ''
+        newExportCode: '',
+        wildFormat: false
       }
     },
     computed: {
@@ -56,12 +61,14 @@
           type: this.newType,
           name: this.newName,
           exportCode: this.newExportCode,
-          note: ''
+          note: '',
+          serie: this.wildFormat ? 'wild' : 'standard'
         }
         this.$store.commit(storeMut.ADD_DECK, deckData)
         this.newType = {}
         this.newName = ''
         this.newExportCode = ''
+        this.wildFormat = false
         this.addSuccess('Deck added')
       },
       remove (id) {

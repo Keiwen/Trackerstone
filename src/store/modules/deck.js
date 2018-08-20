@@ -219,6 +219,7 @@ const mutations = {
     if (typeof payload.name !== 'undefined') state.own[idDeck]['name'] = payload.name
     if (typeof payload.note !== 'undefined') state.own[idDeck]['note'] = payload.note
     if (typeof payload.exportCode !== 'undefined') state.own[idDeck]['exportCode'] = payload.exportCode
+    if (typeof payload.serie !== 'undefined') state.own[idDeck]['serie'] = payload.serie
   },
   [types.SET_DECKTYPE_NAME] (state, payload) {
     state.types.forEach(function (type, index, object) {

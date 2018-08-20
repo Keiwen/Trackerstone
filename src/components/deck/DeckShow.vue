@@ -45,6 +45,11 @@
             </div>
             <hr/>
             <div class="form-group">
+                <div class="col-xs-12">
+                    <enhanced-check v-model="wildFormat" label="Wild" :animate="true" subClass="wild" />
+                </div>
+            </div>
+            <div class="form-group">
                 <label class="control-label col-xs-4" for="newName">Name:</label>
                 <div class="col-xs-8">
                     <input type="text" id="newName" class="form-control" v-model="newName" @keyup.enter="confirmEdit()"/>
@@ -69,7 +74,7 @@
             <div class="form-group">
                 <label for="newNote" class="control-label col-xs-4">Note:</label>
                 <div class="col-xs-8">
-                    <textarea id="newNote" rows="2" col="50" class="form-control" v-model="newNote"/>
+                    <textarea id="newNote" rows="1" col="50" class="form-control" v-model="newNote"/>
                 </div>
             </div>
             <button slot="button" @click="promptConfirmDelete()" class="btn btn-danger away-button">Delete <icon name="trash" /></button>
@@ -92,22 +97,25 @@
   import * as storeMut from '@/store/mutation-types'
   import { SweetModal } from 'sweet-modal-vue'
   import { mapGetters } from 'vuex'
+  import { EnhancedCheck } from 'vue-enhanced-check'
 
   export default {
-    components: { SweetModal },
+    components: { SweetModal, EnhancedCheck },
     props: ['deck'],
     data () {
       return {
         newName: '',
         newNote: '',
         newExportCode: '',
-        clipboardSuccess: false
+        clipboardSuccess: false,
+        wildFormat: true
       }
     },
     computed: {
       ...mapGetters(['generateDeckTitle', 'generateDeckTitleLimit', 'lastDeckChanged']),
       showDivClass () {
         let divClass = 'deckClass-' + this.deck.type.hsClass
+        divClass += ' deckSerie-' + this.deck.serie
         if (this.lastDeckChanged === this.deck.id) {
           divClass += ' lastChange'
         }
@@ -119,6 +127,7 @@
         this.newName = this.deck.name
         this.newNote = this.deck.note
         this.newExportCode = this.deck.exportCode
+        this.wildFormat = (this.deck.serie === 'wild')
         this.$refs.modalDetail.open()
       },
       confirmEdit () {
@@ -126,7 +135,8 @@
           id: this.deck.id,
           name: this.newName,
           note: this.newNote,
-          exportCode: this.newExportCode
+          exportCode: this.newExportCode,
+          serie: this.wildFormat ? 'wild' : 'standard'
         })
         this.$refs.modalDetail.close()
       },

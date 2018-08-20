@@ -130,6 +130,21 @@
   }
 }
 
+// enhanced check wild ; icon ω
+.enhancedCheck.enhancedCheck-wild input[type="checkbox"] {
+  + label:before {
+    content: "\03c9" !important;
+    font-size: 20px !important;
+    line-height: 28px !important;
+    color: transparent;
+  }
+  &:checked + label:before {
+    background: $serie-wild;
+    color: $white;
+  }
+}
+
+
 //rounded icon
 .enhancedCheck input[type="radio"]:not(:checked) + label:hover:before,
 .enhancedCheck input[type="radio"]:checked + label:before {
