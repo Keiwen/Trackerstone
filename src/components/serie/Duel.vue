@@ -8,7 +8,7 @@
                     <icon name="info-circle" :scale="2" class="infoNote" :class="{'noted': current.note}"></icon>
                 </span>
 
-                <sweet-modal ref="modalDeckNote" modal-theme="dark" title="Deck note">
+                <sweet-modal ref="modalDeckNote" modal-theme="dark" :title="generateDeckTitle(current)">
                     <pre v-if="current.note">{{ current.note }}</pre>
                     <p v-else><i>No note stored for this deck</i></p>
                 </sweet-modal>
@@ -21,7 +21,7 @@
                     <icon name="info-circle" :scale="2" class="infoNote" :class="{'noted': opponent.note}"></icon>
                 </span>
 
-                <sweet-modal ref="modalNote" modal-theme="dark" title="Deck type note">
+                <sweet-modal ref="modalNote" modal-theme="dark" :title="generateTypeTitle(opponent)">
                     <pre v-if="opponent.note">{{ opponent.note }}</pre>
                     <p v-else><i>No note stored for this deck type</i></p>
                 </sweet-modal>
@@ -55,7 +55,7 @@
     computed: {
       ...mapGetters([
         'current', 'opponent', 'getGamesVsType', 'getGamesWonAmong',
-        'computeWinPercent', 'isOnWinStreak'
+        'computeWinPercent', 'isOnWinStreak', 'generateTypeTitle', 'generateDeckTitle'
       ]),
       gamesCurrentPlayedVs () {
         if (this.opponent === {}) return []
