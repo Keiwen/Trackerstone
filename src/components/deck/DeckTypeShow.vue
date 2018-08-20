@@ -51,21 +51,19 @@
                 </div>
             </div>
             <hr/>
-            <div class="form-group">
-                <div class="col-xs-12">
-                    <enhanced-check v-model="newTop" label="Star" :animate="true" class="starCheck" subClass="star" />
-                </div>
-            </div>
-            <div class="form-group">
+            <div class="form-group form-group-double">
                 <label class="control-label col-xs-4" for="newName">Name:</label>
-                <div class="col-xs-8">
+                <div class="col-xs-5 first-form-field">
                     <input type="text" id="newName" class="form-control" v-model="newName" @keyup.enter="confirmEdit()"/>
+                </div>
+                <div class="col-xs-3">
+                    <enhanced-check v-model="newTop" label="Star" :animate="true" class="starCheck" subClass="star" />
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-4" for="newNote">Note:</label>
                 <div class="col-xs-8">
-                    <textarea id="newNote" rows="2" col="50" class="form-control" v-model="newNote"/>
+                    <textarea id="newNote" rows="4" col="50" class="form-control" v-model="newNote"/>
                 </div>
             </div>
 

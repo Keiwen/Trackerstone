@@ -73,7 +73,7 @@
   }
 </script>
 
-<style>
+<style scoped>
     .btn-setting {
         margin-top: 20px;
     }

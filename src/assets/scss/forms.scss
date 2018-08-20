@@ -1,30 +1,14 @@
 /* ** Forms ** */
-.settingForm {
-  max-width: 600px;
-  margin: 0 auto !important;
-
-  /* Class removed from now, no html anymore into form
-  .align-col {
-    margin-bottom: 15px;
-    text-align: left;
-    margin-top: 15px;
-  }*/
-
-  .starCheck {
-    display: inline-block;
-    margin-top: -8px;
+.form-group-double {
+  .first-form-field {
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 5px;
   }
-
-  button {
-    margin-top: -4px;
-
-    &:hover {
-      margin-top: -8px;
-    }
-
-    &:active {
-      margin-top: -1px;
-    }
+  .enhancedCheck {
+    margin-top: -5px;
+    position: absolute;
+    right: 0;
   }
 }
 
@@ -32,6 +16,6 @@
   max-width: 600px;
 }
 
-.form-group > div {
+.form-group {
   margin-bottom: 5px;
 }

@@ -44,15 +44,13 @@
                 </div>
             </div>
             <hr/>
-            <div class="form-group">
-                <div class="col-xs-12">
-                    <enhanced-check v-model="wildFormat" label="Wild" :animate="true" subClass="wild" />
-                </div>
-            </div>
-            <div class="form-group">
+            <div class="form-group form-group-double">
                 <label class="control-label col-xs-4" for="newName">Name:</label>
-                <div class="col-xs-8">
+                <div class="col-xs-5 first-form-field">
                     <input type="text" id="newName" class="form-control" v-model="newName" @keyup.enter="confirmEdit()"/>
+                </div>
+                <div class="col-xs-3">
+                    <enhanced-check v-model="wildFormat" label="Wild" :animate="true" subClass="wild" />
                 </div>
             </div>
             <div class="form-group">
@@ -74,7 +72,7 @@
             <div class="form-group">
                 <label for="newNote" class="control-label col-xs-4">Note:</label>
                 <div class="col-xs-8">
-                    <textarea id="newNote" rows="1" col="50" class="form-control" v-model="newNote"/>
+                    <textarea id="newNote" rows="3" col="50" class="form-control" v-model="newNote"/>
                 </div>
             </div>
             <button slot="button" @click="promptConfirmDelete()" class="btn btn-danger away-button">Delete <icon name="trash" /></button>

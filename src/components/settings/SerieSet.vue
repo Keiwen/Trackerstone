@@ -120,13 +120,13 @@
   }
 </script>
 
-<style>
+<style scoped>
     .btn-setting {
         margin-top: 20px;
     }
 
     .form-group {
-        margin-bottom: 0;
+        margin-bottom: 2px;
     }
 
     .panel-heading {
