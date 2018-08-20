@@ -18,9 +18,32 @@
   transform: $transforms;
 }
 
+//Bow shadow for decktype archetype
+@mixin boxShadowDeckArchetype($color) {
+  -webkit-box-shadow: inset -12px 0 0 0 $color;
+  -moz-box-shadow: inset -12px 0 0 0 $color;
+  box-shadow: inset -12px 0 0 0 $color;
+}
+
 //Bow shadow for deck serie
 @mixin boxShadowDeckSerie($color) {
   -webkit-box-shadow: inset 0 0 5px 5px $color;
   -moz-box-shadow: inset 0 0 5px 5px $color;
   box-shadow: inset 0 0 5px 5px $color;
+}
+
+//Bow shadow for deck serie
+@mixin enhancedCheckSpec($content, $background) {
+  input[type="checkbox"] {
+    + label:before {
+      content: $content !important;
+      font-size: 20px !important;
+      line-height: 28px !important;
+      color: transparent;
+    }
+    &:checked + label:before {
+      background: $background;
+      color: $white;
+    }
+  }
 }

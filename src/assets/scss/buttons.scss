@@ -115,33 +115,13 @@
 }
 
 // enhanced check star ; icon ★ ✩
-.enhancedCheck.enhancedCheck-star input[type="checkbox"] {
-  + label:before {
-    content: "\2605" !important;
-    font-size: 20px !important;
-    line-height: 28px !important;
-    color: transparent;
-  }
-  &:checked + label:before {
-    background: $orange-ts;
-    color: $white;
-  }
-  &:checked + label:hover:before {
-  }
+.enhancedCheck.enhancedCheck-star {
+  @include enhancedCheckSpec("\2605", $orange-ts);
 }
 
 // enhanced check wild ; icon ω
-.enhancedCheck.enhancedCheck-wild input[type="checkbox"] {
-  + label:before {
-    content: "\03c9" !important;
-    font-size: 20px !important;
-    line-height: 28px !important;
-    color: transparent;
-  }
-  &:checked + label:before {
-    background: $serie-wild;
-    color: $white;
-  }
+.enhancedCheck.enhancedCheck-wild {
+  @include enhancedCheckSpec("\03c9", $serie-wild);
 }
 
 

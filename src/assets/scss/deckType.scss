@@ -92,27 +92,19 @@
 
     .deckArchetype {
       &-aggro {
-        -webkit-box-shadow: inset -12px 0 0 0 $red-ts;
-        -moz-box-shadow: inset -12px 0 0 0 $red-ts;
-        box-shadow: inset -12px 0 0 0 $red-ts;
+        @include boxShadowDeckArchetype($red-ts);
       }
 
       &-control {
-        -webkit-box-shadow: inset -12px 0 0 0 $blue-ts;
-        -moz-box-shadow: inset -12px 0 0 0 $blue-ts;
-        box-shadow: inset -12px 0 0 0 $blue-ts;
+        @include boxShadowDeckArchetype($blue-ts);
       }
 
       &-midrange {
-        -webkit-box-shadow: inset -12px 0 0 0 $green-ts;
-        -moz-box-shadow: inset -12px 0 0 0 $green-ts;
-        box-shadow: inset -12px 0 0 0 $green-ts;
+        @include boxShadowDeckArchetype($green-ts);
       }
 
       &-combo {
-        -webkit-box-shadow: inset -12px 0 0 0 $orange-ts;
-        -moz-box-shadow: inset -12px 0 0 0 $orange-ts;
-        box-shadow: inset -12px 0 0 0 $orange-ts;
+        @include boxShadowDeckArchetype($orange-ts);
       }
     }
 
