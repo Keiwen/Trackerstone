@@ -5,6 +5,16 @@
         <serie-set></serie-set>
         <hr/>
 
+        <h3>My heroes</h3>
+        <p><i>
+            On hero page, you can pick your hero for each class.
+        </i></p>
+        <router-link :to="{ name: 'myHeroes' }" class="btn btn-info">
+            Pick heroes
+        </router-link>
+
+        <hr/>
+
         <h3>Deck types update</h3>
         <p><i>
             On update page, you can check recently added deck types and

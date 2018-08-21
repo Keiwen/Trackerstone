@@ -11,6 +11,7 @@ import Arena from '@/components/serie/Arena'
 import ArenaChart from '@/components/serie/ArenaChart'
 import TipsMain from '@/components/tips/TipsMain'
 import DeckTypeUpdateList from '@/components/settings/DeckTypeUpdateList'
+import MyHeroes from '@/components/settings/MyHeroes'
 
 Vue.use(Router)
 
@@ -93,6 +94,11 @@ export default new Router({
       path: '/dtus',
       name: 'dtus',
       component: DeckTypeUpdateList
+    },
+    {
+      path: '/myHeroes',
+      name: 'myHeroes',
+      component: MyHeroes
     }
   ]
 })
