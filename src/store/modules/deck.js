@@ -6,19 +6,30 @@ import Vue from 'vue'
 // ----------
 const state = {
   CLASSES: {
-    '': {id: '', name: 'None', backgroundColor: '#FFFFFF'},
-    'druid': {id: 'druid', name: 'Druid', backgroundColor: '#663E27'},
-    'hunter': {id: 'hunter', name: 'Hunter', backgroundColor: '#1D6619'},
-    'mage': {id: 'mage', name: 'Mage', backgroundColor: '#2F6DAA'},
-    'paladin': {id: 'paladin', name: 'Paladin', backgroundColor: '#BF761E'},
-    'priest': {id: 'priest', name: 'Priest', backgroundColor: '#DCD0E8'},
-    'rogue': {id: 'rogue', name: 'Rogue', backgroundColor: '#33262A'},
-    'shaman': {id: 'shaman', name: 'Shaman', backgroundColor: '#3142AF'},
-    'warlock': {id: 'warlock', name: 'Warlock', backgroundColor: '#542877'},
-    'warrior': {id: 'warrior', name: 'Warrior', backgroundColor: '#750F1E'}
+    '': {id: '', name: 'None', backgroundColor: '#FFFFFF', heroes: []},
+    'druid': {id: 'druid', name: 'Druid', backgroundColor: '#663E27', heroes: ['malfurion', 'lunara']},
+    'hunter': {id: 'hunter', name: 'Hunter', backgroundColor: '#1D6619', heroes: ['rexxar', 'alleria']},
+    'mage': {id: 'mage', name: 'Mage', backgroundColor: '#2F6DAA', heroes: ['jaina', 'khagdar', 'medivh']},
+    'paladin': {id: 'paladin', name: 'Paladin', backgroundColor: '#BF761E', heroes: ['uther', 'liadrin', 'arthas']},
+    'priest': {id: 'priest', name: 'Priest', backgroundColor: '#DCD0E8', heroes: ['anduin', 'tyrande']},
+    'rogue': {id: 'rogue', name: 'Rogue', backgroundColor: '#33262A', heroes: ['valeera', 'maeiv']},
+    'shaman': {id: 'shaman', name: 'Shaman', backgroundColor: '#3142AF', heroes: ['thrall', 'morgl']},
+    'warlock': {id: 'warlock', name: 'Warlock', backgroundColor: '#542877', heroes: ['gul\'dan', 'nemsy', 'jaraxxus']},
+    'warrior': {id: 'warrior', name: 'Warrior', backgroundColor: '#750F1E', heroes: ['garrosh', 'magni']}
   },
 
   own: {},
+  myHeroes: {
+    'druid': 'malfurion',
+    'hunter': 'rexxar',
+    'mage': 'jaina',
+    'paladin': 'uther',
+    'priest': 'anduin',
+    'rogue': 'valeera',
+    'shaman': 'thrall',
+    'warlock': 'gul\'dan',
+    'warrior': 'garrosh'
+  },
   current: 0,
   opponent: 0,
   currentArena: {},
@@ -129,7 +140,17 @@ const getters = {
   opponentArena: state => state.opponentArena,
   lastDeckChanged: state => state.lastDeckChanged,
   lastTypeChanged: state => state.lastTypeChanged,
-  lastDeckTypeUpdate: state => state.lastDeckTypeUpdate
+  lastDeckTypeUpdate: state => state.lastDeckTypeUpdate,
+  heroesForClass: state => (hsClass) => {
+    if (typeof state.CLASSES[hsClass] === 'undefined') return []
+    return state.CLASSES[hsClass]['heroes']
+  },
+  myHeroes: state => state.myHeroes,
+  myHeroForClass: state => (hsClass) => {
+    if (typeof state.myHeroes[hsClass] === 'undefined') return ''
+    return state.myHeroes[hsClass]
+  }
+
 }
 
 // ----------
@@ -247,6 +268,11 @@ const mutations = {
   },
   [types.UPDATE_DTUS_TIME] (state) {
     state.lastDeckTypeUpdate = Date.now()
+  },
+  [types.CHOOSE_HERO] (state, payload) {
+    if (typeof state.CLASSES[payload.hsClass] === 'undefined') return
+    if (!state.CLASSES[payload.hsClass].heroes.includes(payload.hero)) return
+    Vue.set(state.myHeroes, payload.hsClass, payload.hero)
   }
 }
 
