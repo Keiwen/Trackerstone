@@ -48,6 +48,7 @@
       getHeroesDisplayForClass (classKey) {
         let heroes = JSON.parse(JSON.stringify(this.heroesForClass(classKey)))
         for (let i = 0; i < heroes.length; i++) {
+          if (heroes[i] === 'guldan') heroes[i] = 'gul\'dan'
           heroes[i] = heroes[i].charAt(0).toUpperCase() + heroes[i].slice(1)
         }
         return heroes

@@ -14,7 +14,7 @@ const state = {
     'priest': {id: 'priest', name: 'Priest', backgroundColor: '#DCD0E8', heroes: ['anduin', 'tyrande']},
     'rogue': {id: 'rogue', name: 'Rogue', backgroundColor: '#33262A', heroes: ['valeera', 'maeiv']},
     'shaman': {id: 'shaman', name: 'Shaman', backgroundColor: '#3142AF', heroes: ['thrall', 'morgl']},
-    'warlock': {id: 'warlock', name: 'Warlock', backgroundColor: '#542877', heroes: ['gul\'dan', 'nemsy', 'jaraxxus']},
+    'warlock': {id: 'warlock', name: 'Warlock', backgroundColor: '#542877', heroes: ['guldan', 'nemsy', 'jaraxxus']},
     'warrior': {id: 'warrior', name: 'Warrior', backgroundColor: '#750F1E', heroes: ['garrosh', 'magni']}
   },
 
@@ -27,7 +27,7 @@ const state = {
     'priest': 'anduin',
     'rogue': 'valeera',
     'shaman': 'thrall',
-    'warlock': 'gul\'dan',
+    'warlock': 'guldan',
     'warrior': 'garrosh'
   },
   current: 0,
