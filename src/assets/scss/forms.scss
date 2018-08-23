@@ -40,9 +40,15 @@
     color: white !important;
     &.int-pm-increment {
       background: $green-ts !important;
+      &.disabled {
+        background: $green-ts-light !important;
+      }
     }
     &.int-pm-decrement {
       background: $red-ts !important;
+      &.disabled {
+        background: $red-ts-light !important;
+      }
     }
   }
 }
