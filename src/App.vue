@@ -75,6 +75,6 @@
   }
 </script>
 
-<style lang="scss" scoped>
-  @import './assets/scss/_import.scss'
+<style lang="scss">
+  @import './assets/scss/_import.scss';
 </style>
