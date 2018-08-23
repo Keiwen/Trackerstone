@@ -15,12 +15,14 @@ import 'vue-awesome/icons'
 import 'chart.js'
 import CxltToastr from 'cxlt-vue2-toastr'
 import VueClipboard from 'vue-clipboard2'
+import VueSelect from 'vue-select'
 import VueDirectiveTooltip from 'vue-directive-tooltip'
 
 Vue.config.productionTip = false
 
 Vue.use(VueResource)
 Vue.component('icon', Icon)
+Vue.component('v-select', VueSelect)
 Vue.use(VueAnalytics, {
   id: 'UA-101315491-1',
   router,

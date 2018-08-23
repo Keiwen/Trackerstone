@@ -19,3 +19,12 @@
 .form-group {
   margin-bottom: 5px;
 }
+
+.v-select.single.open {
+  .selected-tag {
+    left: 0;
+  }
+  input {
+    float: left;
+  }
+}
