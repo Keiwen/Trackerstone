@@ -26,6 +26,7 @@
     "vue-directive-tooltip": "^1.4.5",
     "vue-enhanced-check": "^1.5.3",
     "vue-flickity": "^1.1.1",
+    "vue-integer-plusminus": "^1.0.0",
     "vue-js-toggle-button": "^1.2.3",
     "vue-progress-circle": "^1.1.0",
     "vue-radial-progress": "^0.2.10",

@@ -28,3 +28,21 @@
     float: left;
   }
 }
+
+.int-pm {
+  .int-pm-value {
+    font-size: 2em;
+    padding: 10px 30px !important;
+  }
+
+  .int-pm-btn {
+    font-size: 1.5em;
+    color: white !important;
+    &.int-pm-increment {
+      background: $green-ts !important;
+    }
+    &.int-pm-decrement {
+      background: $red-ts !important;
+    }
+  }
+}
