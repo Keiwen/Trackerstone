@@ -1,32 +1,47 @@
 
 /* Main Style */
 body {
-  padding-bottom: 50px !important;
+  padding-bottom: 50px;
   position: relative;
 
-    footer {
-      position: absolute;
-      bottom:0;
-      width: 100%;
-      color: $white;
-      background-color: $brown-ts;
-      padding: 15px 0;
+  hr {
+    border-top: 1px dotted $main-color !important;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
 
-      p {
-        margin: 0;
-        a{
-          color: $orange-ts;
-          text-decoration: none;
-        }
-        &::before {
-          content:'';
-        }
-        span {
-          color: $white;
-        }
+  h2 {
+    margin-top: 10px;
+  }
+
+  h3 {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+
+  footer {
+    position: absolute;
+    bottom:0;
+    width: 100%;
+    color: $white;
+    background-color: $brown-ts;
+    padding: 15px 0;
+
+    p {
+      margin: 0;
+      a{
+        color: $orange-ts;
+        text-decoration: none;
+      }
+      &::before {
+        content:'';
+      }
+      span {
+        color: $white;
       }
     }
   }
+}
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

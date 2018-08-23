@@ -1,20 +1,19 @@
 /* ####### MAIN GLOBAL STYLE ####### */
 
-@import 'variables.scss';
-@import 'main.scss';
-@import 'mixins.scss';
+@import 'variables';
+@import 'main';
+@import 'mixins';
 
 
 /* #### Specific Styles #### */
-@import 'base.scss';
-
+@import 'table';
 @import 'menu';
-@import 'buttons.scss';
-@import 'icons.scss';
-@import 'charts.scss';
-@import 'classCard.scss';
-@import 'deckType.scss';
-@import 'forms.scss';
-@import 'archetypePick.scss';
-@import 'modal.scss';
+@import 'buttons';
+@import 'icons';
+@import 'charts';
+@import 'classCard';
+@import 'deckType';
+@import 'forms';
+@import 'archetypePick';
+@import 'modal';
 @import 'gameMode';
