@@ -1,0 +1,21 @@
+{
+ "cla": {"key": "cla", "name": "Classic", "release": "2014-03-11", "cards": 236, "cardsByRarity": "91/79/35/31", "wild": false, "hasPack": true},
+ "bas": {"key": "bas", "name": "Basic", "release": "2014-03-11", "cards": 133, "cardsByRarity": "133/0/0/0", "wild": false, "hasPack": false},
+
+ "bdp": {"key": "bdp", "name": "Boomsday Project", "release": "2018-08-07", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": false, "hasPack": true},
+ "wwd": {"key": "wwd", "name": "Witchwood", "release": "2018-04-12", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": false, "hasPack": true},
+ "kob": {"key": "kob", "name": "Kobolds & Catacombs", "release": "2017-12-07", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": false, "hasPack": true},
+ "kft": {"key": "kft", "name": "Frozen Throne", "release": "2017-08-10", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": false, "hasPack": true},
+ "ung": {"key": "ung", "name": "Un'Goro", "release": "2017-04-06", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": false, "hasPack": true},
+
+ "gad": {"key": "gad", "name": "Gadgetzan", "release": "2016-12-01", "cards": 132, "cardsByRarity": "49/36/27/20", "wild": true, "hasPack": true},
+ "kar": {"key": "kar", "name": "Karazhan", "release": "2016-08-11", "cards": 45, "cardsByRarity": "27/12/1/5", "wild": true, "hasPack": false},
+ "old": {"key": "old", "name": "Old Gods", "release": "2016-04-26", "cards": 134, "cardsByRarity": "50/36/27/21", "wild": true, "hasPack": true},
+ "loe": {"key": "loe", "name": "League of Explorers", "release": "2015-11-12", "cards": 45, "cardsByRarity": "25/13/2/5", "wild": true, "hasPack": false},
+ "tgt": {"key": "tgt", "name": "Grand Tournament", "release": "2014-03-11", "cards": 132, "cardsByRarity": "49/36/27/20", "wild": true, "hasPack": true},
+ "brm": {"key": "brm", "name": "Blackrock Mountain", "release": "2015-04-02", "cards": 31, "cardsByRarity": "15/11/0/5", "wild": true, "hasPack": false},
+ "gvg": {"key": "gvg", "name": "Goblins vs Gnomes", "release": "2014-12-08", "cards": 123, "cardsByRarity": "40/37/26/20", "wild": true, "hasPack": true},
+ "nax": {"key": "nax", "name": "Naxxramas", "release": "2014-07-22", "cards": 30, "cardsByRarity": "18/4/2/6", "wild": true, "hasPack": false},
+
+ "hof": {"key": "hof", "name": "Hall of Fame", "release": "2017-04-17", "cards": 13, "cardsByRarity": "3/2/3/5", "wild": true, "hasPack": false}
+}

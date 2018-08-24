@@ -1,0 +1,11 @@
+{
+  "cardpack": {
+    "epicEvery": 10,
+    "legendaryEvery": 40,
+    "legendaryInFirst": 10,
+    "averagePercentCommon": 75,
+    "averagePercentRare": 20,
+    "averagePercentEpic": 4,
+    "averagePercentLegendary": 1
+  }
+}

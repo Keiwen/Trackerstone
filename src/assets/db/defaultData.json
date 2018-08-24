@@ -1,0 +1,11 @@
+{
+  "cardpack": {
+    "opened": 0,
+    "common": 0,
+    "rare": 0,
+    "epic": 0,
+    "legendary": 0,
+    "lastEpicInPack": 0,
+    "lastLegendaryInPack": 0
+  }
+}
