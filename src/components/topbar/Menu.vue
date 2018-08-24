@@ -11,8 +11,9 @@
         <menu-link label="Deck types" routeName="deckTypesList"></menu-link>
         <menu-link label="Decks" routeName="deckList"></menu-link>
         <menu-link label="Arena" routeName="arena"></menu-link>
-        <menu-link label="Settings" routeName="settings"></menu-link>
+        <menu-link label="Card packs" routeName="pack"></menu-link>
         <menu-link label="Tips" routeName="tips"></menu-link>
+        <menu-link label="Settings" routeName="settings"></menu-link>
       </menu>
 
     </div>
