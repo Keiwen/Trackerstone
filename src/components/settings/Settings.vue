@@ -9,7 +9,7 @@
         <p><i>
             On hero page, you can pick your hero for each class.
         </i></p>
-        <router-link :to="{ name: 'myHeroes' }" class="btn btn-info">
+        <router-link :to="{ name: 'myHeroes' }" class="btn btn-default">
             Pick heroes
         </router-link>
 
@@ -21,7 +21,7 @@
             choose to add them or not in your stored list.
             You'll need a connexion to load a remote file.
         </i></p>
-        <router-link :to="{ name: 'dtus' }" class="btn btn-info">
+        <router-link :to="{ name: 'dtus' }" class="btn btn-default">
             Check deck types updates
         </router-link>
 
