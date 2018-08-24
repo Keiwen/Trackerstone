@@ -3,9 +3,11 @@
     "epicEvery": 10,
     "legendaryEvery": 40,
     "legendaryInFirst": 10,
-    "averagePercentCommon": 75,
-    "averagePercentRare": 20,
-    "averagePercentEpic": 4,
-    "averagePercentLegendary": 1
+    "minPercentRareFirst": 16,
+    "minPercentEpicFirst": 2,
+    "minPercentLegendaryFirst": 2,
+    "minPercentRareAfter": 17.5,
+    "minPercentEpicAfter": 2,
+    "minPercentLegendaryAfter": 0.5
   }
 }
