@@ -7,6 +7,7 @@ import serie from './modules/serie'
 import deck from './modules/deck'
 import history from './modules/history'
 import messageBag from './modules/messageBag'
+import pack from './modules/pack'
 import createLogger from '../../node_modules/vuex/dist/logger'
 import * as types from './mutation-types'
 
@@ -259,7 +260,7 @@ export default new Vuex.Store({
     }
   },
   modules: {
-    serie, deck, history, messageBag
+    serie, deck, history, messageBag, pack
   },
   strict: debug,
   plugins: debug ? [createLogger(), persistedState(persistOptions)] : [persistedState(persistOptions)]
