@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
-import '../static/flickity.css'
+import 'flickity/css/flickity.css'
 import 'vue-directive-tooltip/css/index.css'
 import App from './App'
 import router from './router'
