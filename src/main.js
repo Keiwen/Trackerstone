@@ -44,7 +44,7 @@ const toastrConfig = {
 Vue.use(CxltToastr, toastrConfig)
 Vue.use(VueClipboard)
 Vue.use(VueDirectiveTooltip, {
-  placement: 'bottom',
+  placement: 'left',
   class: 'ts-tooltip',
   triggers: ['hover']
 })

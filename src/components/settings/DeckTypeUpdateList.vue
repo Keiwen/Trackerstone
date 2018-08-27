@@ -28,7 +28,7 @@
 
                 <hr style="width: 100%;"/>
 
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" v-for="(newDeckType, index) in loadedDeckTypes">
+                <div class="col-xs-12 col-md-6" v-for="(newDeckType, index) in loadedDeckTypes">
                     <div class="col-xs-4">{{ generateTypeTitle(newDeckType) }}</div>
                     <div class="col-xs-2">
                         <enhanced-check v-model="newDeckType.top" label="Star" :animate="true" class="starCheck" subClass="star" />
@@ -40,7 +40,7 @@
                         </enhanced-toggle>
                     </div>
                     <div class="col-xs-3">
-                        <button class="btn btn-info" type="button" v-tooltip.bottom="{ html: 'tooltipContent'+index }">
+                        <button class="btn btn-info" type="button" v-tooltip.left="{ html: 'tooltipContent'+index }">
                             <span class="badge">{{ getTypesWithClass(newDeckType.hsClass).length }}</span> stored
                         </button>
                         <div :id="'tooltipContent'+index">
