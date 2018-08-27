@@ -24,7 +24,7 @@ Vue.use(VueResource)
 Vue.component('icon', Icon)
 Vue.component('v-select', VueSelect)
 Vue.use(VueAnalytics, {
-  id: 'UA-101315491-1',
+  id: 'UA-124585621-1',
   router,
   autoTracking: {
     exception: true
