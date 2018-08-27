@@ -1,23 +1,15 @@
 import * as types from '../mutation-types'
 import Vue from 'vue'
+import HsClasses from '@/assets/db/hsClasses.json'
+import Archetypes from '@/assets/db/archetypes.json'
+// generic archetype is reserved for untracked types
+import Dtus from '@/assets/db/dtus.json'
+// Deck Types Update System
 
 // ----------
 // Initial state
 // ----------
 const state = {
-  CLASSES: {
-    '': {id: '', name: 'None', backgroundColor: '#FFFFFF', heroes: []},
-    'druid': {id: 'druid', name: 'Druid', backgroundColor: '#663E27', heroes: ['malfurion', 'lunara']},
-    'hunter': {id: 'hunter', name: 'Hunter', backgroundColor: '#1D6619', heroes: ['rexxar', 'alleria']},
-    'mage': {id: 'mage', name: 'Mage', backgroundColor: '#2F6DAA', heroes: ['jaina', 'khagdar', 'medivh']},
-    'paladin': {id: 'paladin', name: 'Paladin', backgroundColor: '#BF761E', heroes: ['uther', 'liadrin', 'arthas']},
-    'priest': {id: 'priest', name: 'Priest', backgroundColor: '#DCD0E8', heroes: ['anduin', 'tyrande']},
-    'rogue': {id: 'rogue', name: 'Rogue', backgroundColor: '#33262A', heroes: ['valeera', 'maeiv']},
-    'shaman': {id: 'shaman', name: 'Shaman', backgroundColor: '#3142AF', heroes: ['thrall', 'morgl']},
-    'warlock': {id: 'warlock', name: 'Warlock', backgroundColor: '#542877', heroes: ['guldan', 'nemsy', 'jaraxxus']},
-    'warrior': {id: 'warrior', name: 'Warrior', backgroundColor: '#750F1E', heroes: ['garrosh', 'magni']}
-  },
-
   own: {},
   myHeroes: {
     'druid': 'malfurion',
@@ -34,13 +26,6 @@ const state = {
   opponent: 0,
   currentArena: {},
   opponentArena: {},
-  archetypes: {
-    'aggro': {id: 'aggro', backgroundColor: '#D43F3A'},
-    'midrange': {id: 'midrange', backgroundColor: '#4CAE4C'},
-    'control': {id: 'control', backgroundColor: '#089FA0'},
-    'combo': {id: 'combo', backgroundColor: '#D3921F'}
-    // 'generic' archetype is reserved for untracked type
-  },
   types: [
     {id: 1, name: 'Cube', hsClass: 'warlock', archetype: 'midrange', top: true, note: ''},
     {id: 2, name: 'Odd', hsClass: 'paladin', archetype: 'aggro', top: true, note: ''},
@@ -89,12 +74,13 @@ const state = {
 // Getters
 // ----------
 const getters = {
-  classes: state => state.CLASSES,
+  classes: state => HsClasses,
   types: state => state.types,
-  archetypes: state => state.archetypes,
+  archetypes: state => Archetypes,
+  dtus: state => Dtus,
   className: state => (id) => {
-    if (typeof state.CLASSES[id] === 'undefined') return ''
-    return state.CLASSES[id]['name']
+    if (typeof HsClasses[id] === 'undefined') return ''
+    return HsClasses[id]['name']
   },
   own: state => state.own,
   nextId: state => state.nextId,
@@ -142,8 +128,8 @@ const getters = {
   lastTypeChanged: state => state.lastTypeChanged,
   lastDeckTypeUpdate: state => state.lastDeckTypeUpdate,
   heroesForClass: state => (hsClass) => {
-    if (typeof state.CLASSES[hsClass] === 'undefined') return []
-    return state.CLASSES[hsClass]['heroes']
+    if (typeof HsClasses[hsClass] === 'undefined') return []
+    return HsClasses[hsClass]['heroes']
   },
   myHeroes: state => state.myHeroes,
   myHeroForClass: state => (hsClass) => {
@@ -157,19 +143,6 @@ const getters = {
 // Actions
 // ----------
 const actions = {
-  loadDeckTypeUpdate ({dispatch}) {
-    return new Promise((resolve, reject) => {
-      Vue.http.get('https://keiwen.github.io/Trackerstone/static/dtus.json').then(
-        (response) => {
-          resolve(response.body)
-        },
-        (response) => {
-          reject(response)
-          dispatch('addError', 'Cannot retrieve deck types data from server')
-        }
-      )
-    })
-  }
 }
 
 // ----------
@@ -205,12 +178,12 @@ const mutations = {
     state.opponent = type
   },
   [types.CHOOSE_DECK_ARENA] (state, id) {
-    if (typeof state.CLASSES[id] === 'undefined') return
-    state.currentArena = state.CLASSES[id]
+    if (typeof HsClasses[id] === 'undefined') return
+    state.currentArena = HsClasses[id]
   },
   [types.CHOOSE_OPPONENT_ARENA] (state, id) {
-    if (typeof state.CLASSES[id] === 'undefined') return
-    state.opponentArena = state.CLASSES[id]
+    if (typeof HsClasses[id] === 'undefined') return
+    state.opponentArena = HsClasses[id]
   },
   [types.ADD_DECKTYPE] (state, type) {
     type.id = state.nextTypeId
@@ -270,8 +243,8 @@ const mutations = {
     state.lastDeckTypeUpdate = Date.now()
   },
   [types.CHOOSE_HERO] (state, payload) {
-    if (typeof state.CLASSES[payload.hsClass] === 'undefined') return
-    if (!state.CLASSES[payload.hsClass].heroes.includes(payload.hero)) return
+    if (typeof HsClasses[payload.hsClass] === 'undefined') return
+    if (!HsClasses[payload.hsClass].heroes.includes(payload.hero)) return
     Vue.set(state.myHeroes, payload.hsClass, payload.hero)
   }
 }

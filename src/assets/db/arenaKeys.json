@@ -1,0 +1,15 @@
+{
+  "0": {"title": "Novice", "rewards": 2},
+  "1": {"title": "Apprentice", "rewards": 2},
+  "2": {"title": "Journeyman", "rewards": 2},
+  "3": {"title": "Copper", "rewards": 3},
+  "4": {"title": "Silver", "rewards": 3},
+  "5": {"title": "Gold", "rewards": 3},
+  "6": {"title": "Platinum", "rewards": 3},
+  "7": {"title": "Diamond", "rewards": 3},
+  "8": {"title": "Champion", "rewards": 4},
+  "9": {"title": "Ruby", "rewards": 4},
+  "10": {"title": "Frostborn", "rewards": 4},
+  "11": {"title": "Molten", "rewards": 4},
+  "12": {"title": "Lightforge", "rewards": 5}
+}

@@ -1,0 +1,6 @@
+{
+  "aggro": {"id": "aggro", "backgroundColor": "#D43F3A"},
+  "midrange": {"id": "midrange", "backgroundColor": "#4CAE4C"},
+  "control": {"id": "control", "backgroundColor": "#089FA0"},
+  "combo": {"id": "combo", "backgroundColor": "#D3921F"}
+}

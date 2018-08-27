@@ -26,13 +26,13 @@ const getters = {
     if (typeof state.cardpacks[key] !== 'undefined') {
       cardsetStat = JSON.parse(JSON.stringify(state.cardpacks[key]))
     }
-    cardsetStat['nextEpicIn'] = Constants.cardpack['epicEvery'] + cardsetStat['lastEpicInPack'] - cardsetStat['opened']
+    cardsetStat['nextEpicIn'] = Constants.cardpack.epicEvery + cardsetStat['lastEpicInPack'] - cardsetStat['opened']
     if (cardsetStat['lastLegendaryInPack']) {
       // first legendary found
-      cardsetStat['nextLegendaryIn'] = Constants.cardpack['legendaryEvery'] + cardsetStat['lastLegendaryInPack'] - cardsetStat['opened']
+      cardsetStat['nextLegendaryIn'] = Constants.cardpack.legendaryEvery + cardsetStat['lastLegendaryInPack'] - cardsetStat['opened']
     } else {
       // first legendary not open
-      cardsetStat['nextLegendaryIn'] = Constants.cardpack['legendaryInFirst'] - cardsetStat['opened']
+      cardsetStat['nextLegendaryIn'] = Constants.cardpack.legendaryInFirst - cardsetStat['opened']
     }
     return cardsetStat
   },

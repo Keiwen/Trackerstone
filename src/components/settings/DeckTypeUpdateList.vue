@@ -79,7 +79,7 @@
       }
     },
     computed: {
-      ...mapGetters(['lastDeckTypeUpdate', 'className', 'generateTypeTitle', 'getTypesWithClass'])
+      ...mapGetters(['lastDeckTypeUpdate', 'className', 'generateTypeTitle', 'getTypesWithClass', 'dtus'])
     },
     methods: {
       ...mapActions(['loadDeckTypeUpdate', 'addSuccess']),
@@ -107,17 +107,13 @@
       }
     },
     mounted () {
-      this.loadDeckTypeUpdate().then(
-        (result) => {
-          for (let i = 0; i < result.types.length; i++) {
-            if (result.types[i].timeAdded > this.lastDeckTypeUpdate) {
-              result.types[i].toAdd = true
-              this.loadedDeckTypes.push(result.types[i])
-            }
-          }
-          this.dataLoaded = true
+      for (let i = 0; i < this.dtus.length; i++) {
+        if (this.dtus[i].timeAdded > this.lastDeckTypeUpdate) {
+          this.dtus[i].toAdd = true
+          this.loadedDeckTypes.push(this.dtus[i])
         }
-      ).catch(() => {})
+      }
+      this.dataLoaded = true
     }
   }
 </script>

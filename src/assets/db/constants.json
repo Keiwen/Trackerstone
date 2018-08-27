@@ -1,5 +1,18 @@
 {
+  "serie": {
+    "milestones": [25, 20, 15, 10, 5, 0],
+    "winStreak": 3,
+    "bonusStar": 1,
+    "rankLossCount": 20,
+    "rankBonusCanceled": 5
+  },
+  "arena": {
+    "maxWin": 12,
+    "maxLoss": 3,
+    "fee": 150
+  },
   "cardpack": {
+    "cost": 100,
     "epicEvery": 10,
     "legendaryEvery": 40,
     "legendaryInFirst": 10,

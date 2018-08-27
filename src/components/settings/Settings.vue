@@ -19,7 +19,6 @@
         <p><i>
             On update page, you can check recently added deck types and
             choose to add them or not in your stored list.
-            You'll need a connexion to load a remote file.
         </i></p>
         <router-link :to="{ name: 'dtus' }" class="btn btn-default">
             Check deck types updates

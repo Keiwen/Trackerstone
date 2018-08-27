@@ -1,63 +1,12 @@
 import * as types from '../mutation-types'
+import Ranks from '@/assets/db/ranks.json'
+import ArenaKeys from '@/assets/db/arenaKeys.json'
+import Constants from '@/assets/db/constants.json'
 
 // ----------
 // Initial state
 // ----------
 const state = {
-  RANKS: {
-    25: {'title': 'Angry Chicken', 'stars': 5},
-    24: {'title': 'Leper Gnome', 'stars': 5},
-    23: {'title': 'Argent Squire', 'stars': 5},
-    22: {'title': 'Murloc Raider', 'stars': 5},
-    21: {'title': 'Southsea Deckhand', 'stars': 5},
-    20: {'title': 'Shieldbearer', 'stars': 5},
-    19: {'title': 'Novice Engineer', 'stars': 5},
-    18: {'title': 'Sorcerer\'s Apprentice', 'stars': 5},
-    17: {'title': 'Tauren Warrior', 'stars': 5},
-    16: {'title': 'Questing Adventurer', 'stars': 5},
-    15: {'title': 'Silvermoon Guardian', 'stars': 5},
-    14: {'title': 'Raid Leader', 'stars': 5},
-    13: {'title': 'Dread Corsair', 'stars': 5},
-    12: {'title': 'Warsong Commander', 'stars': 5},
-    11: {'title': 'Big Game Hunter', 'stars': 5},
-    10: {'title': 'Ogre Magi', 'stars': 5},
-    9: {'title': 'Silver Hand Knight', 'stars': 5},
-    8: {'title': 'Frostwolf Warlord', 'stars': 5},
-    7: {'title': 'Sunwalker', 'stars': 5},
-    6: {'title': 'Ancient of War', 'stars': 5},
-    5: {'title': 'Sea Giant', 'stars': 5},
-    4: {'title': 'Mountain Giant', 'stars': 5},
-    3: {'title': 'Molten Giant', 'stars': 5},
-    2: {'title': 'The Black Knight', 'stars': 5},
-    1: {'title': 'Innkeeper', 'stars': 5},
-    0: {'title': 'Legend', 'stars': 0}
-  },
-  ARENA_KEYS: {
-    0: {'title': 'Novice', 'rewards': 2},
-    1: {'title': 'Apprentice', 'rewards': 2},
-    2: {'title': 'Journeyman', 'rewards': 2},
-    3: {'title': 'Copper', 'rewards': 3},
-    4: {'title': 'Silver', 'rewards': 3},
-    5: {'title': 'Gold', 'rewards': 3},
-    6: {'title': 'Platinum', 'rewards': 3},
-    7: {'title': 'Diamond', 'rewards': 3},
-    8: {'title': 'Champion', 'rewards': 4},
-    9: {'title': 'Ruby', 'rewards': 4},
-    10: {'title': 'Frostborn', 'rewards': 4},
-    11: {'title': 'Molten', 'rewards': 4},
-    12: {'title': 'Lightforge', 'rewards': 5}
-  },
-  MILESTONES: [25, 20, 15, 10, 5, 0],
-  RANK_LOSSCOUNT: 20,
-  WIN_STREAK: 3,
-  BONUS_STAR: 1,
-  RANK_BONUSCANCELED: 5,
-
-  ARENA_MAX_WIN: 12,
-  ARENA_MAX_LOSS: 3,
-  ARENA_FEE: 150,
-  CARD_PACK_COST: 100,
-
   wildMode: false,
   rank: 25,
   rankMax: 25,
@@ -84,19 +33,19 @@ const getters = {
   rankWild: state => state.rankWild,
   rankTitle: state => (id) => {
     if (typeof id === 'undefined') id = state.wildMode ? state.rankWild : state.rank
-    return state.RANKS[id]['title']
+    return Ranks[id]['title']
   },
   rankStars: state => (id) => {
     if (typeof id === 'undefined') id = state.wildMode ? state.rankWild : state.rank
-    return state.RANKS[id]['stars']
+    return Ranks[id]['stars']
   },
   nextMilestone: state => {
     const rank = state.wildMode ? state.rankWild : state.rank
     if (rank === 0) return 0
     let nextMilestone = 0
-    for (let i = state.MILESTONES.length - 1; i >= 0; i--) {
-      if (state.MILESTONES[i] >= rank) break
-      nextMilestone = state.MILESTONES[i]
+    for (let i = Constants.serie.milestones.length - 1; i >= 0; i--) {
+      if (Constants.serie.milestones[i] >= rank) break
+      nextMilestone = Constants.serie.milestones[i]
     }
     return nextMilestone
   },
@@ -106,7 +55,7 @@ const getters = {
     const nextMilestone = getters.nextMilestone
     let stars = 1
     for (let i = rank; i > nextMilestone; i--) {
-      stars += state.RANKS[i]['stars']
+      stars += Ranks[i]['stars']
     }
     stars -= state.wildMode ? state.starsWild : state.stars
     return stars
@@ -116,15 +65,15 @@ const getters = {
     if (rank === 0) return 0
     const nextMilestone = getters.nextMilestone
     let prevMilestone = 25
-    for (let i = state.MILESTONES.length - 1; i > 0; i--) {
-      if (state.MILESTONES[i] === nextMilestone) {
-        prevMilestone = state.MILESTONES[i - 1]
+    for (let i = Constants.serie.milestones.length - 1; i > 0; i--) {
+      if (Constants.serie.milestones[i] === nextMilestone) {
+        prevMilestone = Constants.serie.milestones[i - 1]
         break
       }
     }
     let stars = 1
     for (let i = prevMilestone; i > nextMilestone; i--) {
-      stars += state.RANKS[i]['stars']
+      stars += Ranks[i]['stars']
     }
     return stars
   },
@@ -133,14 +82,14 @@ const getters = {
     if (rank === 0) return 0
     const starsToMilestone = getters.starsToMilestone
     // if no more bonus, wins = number of stars
-    if (rank <= state.RANK_BONUSCANCELED) return starsToMilestone
+    if (rank <= Constants.serie.rankBonusCanceled) return starsToMilestone
     // games to win before bonus star
     const winStreak = state.wildMode ? state.winStreakWild : state.winStreak
-    let winTilBonus = state.WIN_STREAK - 1 - winStreak
+    let winTilBonus = Constants.serie.winStreak - 1 - winStreak
     if (winTilBonus < 0) winTilBonus = 0
     let normalWins = Math.min(winTilBonus, starsToMilestone)
     // games to win with bonus
-    let bonusWins = (starsToMilestone - normalWins) / (state.BONUS_STAR + 1)
+    let bonusWins = (starsToMilestone - normalWins) / (Constants.serie.bonusStar + 1)
     return Math.ceil(normalWins + bonusWins)
   },
   stars: state => state.stars,
@@ -156,14 +105,14 @@ const getters = {
       if (rank === i) {
         totalStars += starsInRank
       } else {
-        totalStars += state.RANKS[i]['stars']
+        totalStars += Ranks[i]['stars']
       }
     }
     return totalStars
   },
   isOnWinStreak: state => {
     let currentWinStreak = state.wildMode ? state.winStreakWild : state.winStreak
-    return currentWinStreak >= state.WIN_STREAK
+    return currentWinStreak >= Constants.serie.winStreak
   },
   getSerieTimeProgress: state => {
     let currentDate = new Date()
@@ -183,11 +132,11 @@ const getters = {
   arenaLoss: state => state.arenaLoss,
   arenaKeyTitle: state => (winCount) => {
     if (typeof winCount === 'undefined') winCount = state.arenaWin
-    return state.ARENA_KEYS[winCount]['title']
+    return ArenaKeys[winCount]['title']
   },
   arenaOpen: state => state.arenaOpen,
-  arenaFee: state => state.ARENA_FEE,
-  cardPackCost: state => state.CARD_PACK_COST
+  arenaFee: state => Constants.arena.fee,
+  cardPackCost: state => Constants.cardpack.cost
 }
 
 // ----------
@@ -199,7 +148,7 @@ const actions = {
     let mult = 1
     let rank = state.wildMode ? state.rankWild : state.rank
     if (number < 0) {
-      if (rank > state.RANK_LOSSCOUNT) return // check if loss counted for current rank
+      if (rank > Constants.serie.rankLossCount) return // check if loss counted for current rank
       mult = -1
       number = -number // keep number absolute to iterate
     }
@@ -209,7 +158,7 @@ const actions = {
       if (stars === 0 && mult < 0) {
         // decrease when no star on rank
         commit(types.DECREASE_RANK)
-      } else if (stars === state.RANKS[rank]['stars'] && mult > 0) {
+      } else if (stars === Ranks[rank]['stars'] && mult > 0) {
         // increase when max stars on rank
         commit(types.INCREASE_RANK)
       } else if (mult > 0) {
@@ -224,11 +173,11 @@ const actions = {
     let bonusStar = 0
     const rank = state.wildMode ? state.rankWild : state.rank
     const winStreak = state.wildMode ? state.winStreakWild : state.winStreak
-    if (rank > state.RANK_BONUSCANCELED) {
+    if (rank > Constants.serie.rankBonusCanceled) {
       if (getters.isOnWinStreak) {
         bonusStar = number
-      } else if ((number + winStreak) >= state.WIN_STREAK) {
-        bonusStar = number - state.WIN_STREAK + 1 + winStreak
+      } else if ((number + winStreak) >= Constants.serie.winStreak) {
+        bonusStar = number - Constants.serie.winStreak + 1 + winStreak
         if (bonusStar < 0) bonusStar = 0
       }
     }
@@ -249,14 +198,14 @@ const actions = {
   winArena ({dispatch, commit, state}) {
     if (!state.arenaOpen) return
     commit(types.ADD_ARENA_WIN)
-    if (state.arenaWin >= state.ARENA_MAX_WIN) {
+    if (state.arenaWin >= Constants.arena.maxWin) {
       dispatch('closeArena')
     }
   },
   looseArena ({dispatch, commit, state}) {
     if (!state.arenaOpen) return
     commit(types.ADD_ARENA_LOSS)
-    if (state.arenaLoss >= state.ARENA_MAX_LOSS) {
+    if (state.arenaLoss >= Constants.arena.maxLoss) {
       dispatch('closeArena')
     }
   },
@@ -288,9 +237,9 @@ const mutations = {
     if (data.rankWild >= 0 && data.rankWild <= 25) state.rankWild = parseInt(data.rankWild)
     // stars between 0 and max by rank, 0 if rank 0
     if (state.rank === 0) data.stars = 0
-    if (data.stars >= 0 && data.stars <= state.RANKS[state.rank]['stars']) state.stars = parseInt(data.stars)
+    if (data.stars >= 0 && data.stars <= Ranks[state.rank]['stars']) state.stars = parseInt(data.stars)
     if (state.rankWild === 0) data.starsWild = 0
-    if (data.starsWild >= 0 && data.starsWild <= state.RANKS[state.rankWild]['stars']) state.starsWild = parseInt(data.starsWild)
+    if (data.starsWild >= 0 && data.starsWild <= Ranks[state.rankWild]['stars']) state.starsWild = parseInt(data.starsWild)
     // win streak must be >= 0
     if (data.winStreak >= 0) state.winStreak = parseInt(data.winStreak)
     if (data.winStreakWild >= 0) state.winStreakWild = parseInt(data.winStreakWild)
@@ -335,20 +284,20 @@ const mutations = {
   [types.DECREASE_RANK] (state) {
     if (state.wildMode) {
       if (state.rankWild === 25) return // min level
-      if (state.MILESTONES.indexOf(state.rankWild) > 0) return // cannot decrease if milestone reached
+      if (Constants.serie.milestones.indexOf(state.rankWild) > 0) return // cannot decrease if milestone reached
       state.rankWild++
-      state.starsWild = state.RANKS[state.rankWild]['stars'] - 1 // max stars minus 1
+      state.starsWild = Ranks[state.rankWild]['stars'] - 1 // max stars minus 1
     } else {
       if (state.rank === 25) return // min level
-      if (state.MILESTONES.indexOf(state.rank) > 0) return // cannot decrease if milestone reached
+      if (Constants.serie.milestones.indexOf(state.rank) > 0) return // cannot decrease if milestone reached
       state.rank++
-      state.stars = state.RANKS[state.rank]['stars'] - 1 // max stars minus 1
+      state.stars = Ranks[state.rank]['stars'] - 1 // max stars minus 1
     }
   },
   [types.ADD_STAR] (state) {
     if (state.wildMode) {
       if (state.rankWild === 0) return
-      if (state.starsWild === state.RANKS[state.rankWild]['stars']) return // no more star if already max
+      if (state.starsWild === Ranks[state.rankWild]['stars']) return // no more star if already max
       state.starsWild++
       if (state.rankWildMax === state.rankWild && state.starsWildMax < state.starsWild) {
         // stored max wild stars
@@ -356,7 +305,7 @@ const mutations = {
       }
     } else {
       if (state.rank === 0) return
-      if (state.stars === state.RANKS[state.rank]['stars']) return // no more star if already max
+      if (state.stars === Ranks[state.rank]['stars']) return // no more star if already max
       state.stars++
       if (state.rankMax === state.rank && state.starsMax < state.stars) {
         // stored max stars
