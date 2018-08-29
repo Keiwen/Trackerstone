@@ -20,6 +20,8 @@ import VueDirectiveTooltip from 'vue-directive-tooltip'
 
 Vue.config.productionTip = false
 
+const isProd = process.env.NODE_ENV === 'production'
+
 Vue.use(VueResource)
 Vue.component('icon', Icon)
 Vue.component('v-select', VueSelect)
@@ -28,6 +30,10 @@ Vue.use(VueAnalytics, {
   router,
   autoTracking: {
     exception: true
+  },
+  debug: {
+    enabled: !isProd,
+    sendHitTask: isProd
   }
 })
 
