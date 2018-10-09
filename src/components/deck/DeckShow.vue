@@ -1,5 +1,5 @@
 <template>
-    <div class="deckShow" :class="showDivClass">
+    <div class="deckShow" :class="showDivClass" :style="scssVar">
         <div class="row" @click="openDetail()">
             <div class="col-xs-3">
                 <div class="profil"></div>
@@ -70,11 +70,21 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="newNote" class="control-label col-xs-4">Note:</label>
-                <div class="col-xs-8">
-                    <textarea id="newNote" rows="3" col="50" class="form-control" v-model="newNote"/>
+                <label for="newRCard" class="control-label col-xs-4">Representative card:</label>
+                <div class="input-group col-xs-8">
+                    <input type="text" id="newRCard" class="form-control"
+                           v-model="newRCard" @keyup.enter="confirmEdit()"/>
+                    <span class="input-group-btn">
+                    </span>
                 </div>
             </div>
+            <div class="form-group">
+                <label for="newNote" class="control-label col-xs-4">Note:</label>
+                <div class="col-xs-8">
+                    <textarea id="newNote" rows="2" col="50" class="form-control" v-model="newNote"/>
+                </div>
+            </div>
+
             <button slot="button" @click="promptConfirmDelete()" class="btn btn-danger away-button">Delete <icon name="trash" /></button>
 
             <button slot="button" @click="cancelEdit()" class="btn btn-default">Cancel <icon name="times" /></button>
@@ -105,6 +115,7 @@
         newName: '',
         newNote: '',
         newExportCode: '',
+        newRCard: '',
         clipboardSuccess: false,
         wildFormat: true
       }
@@ -117,13 +128,28 @@
         if (this.lastDeckChanged === this.deck.id) {
           divClass += ' lastChange'
         }
+        if (this.hasRepresentCard) {
+          divClass += ' deckCardBackground'
+        }
         return divClass
+      },
+      scssVar () {
+        if (!this.hasRepresentCard) {
+          return {}
+        }
+        return {
+          '--sampleCard': 'url(https://art.hearthstonejson.com/v1/tiles/' + this.deck.representCard + '.png)'
+        }
+      },
+      hasRepresentCard () {
+        return this.deck.representCard !== undefined && this.deck.representCard !== ''
       }
     },
     methods: {
       openDetail () {
         this.newName = this.deck.name
         this.newNote = this.deck.note
+        this.newRCard = this.deck.representCard
         this.newExportCode = this.deck.exportCode
         this.wildFormat = (this.deck.serie === 'wild')
         this.$refs.modalDetail.open()
@@ -133,6 +159,7 @@
           id: this.deck.id,
           name: this.newName,
           note: this.newNote,
+          representCard: this.newRCard,
           exportCode: this.newExportCode,
           serie: this.wildFormat ? 'wild' : 'standard'
         })
@@ -236,5 +263,13 @@
             }
         }
     }
+
+
+    .deckCardBackground {
+        &:before {
+            background-image: var(--sampleCard)
+        }
+    }
+
 
 </style>

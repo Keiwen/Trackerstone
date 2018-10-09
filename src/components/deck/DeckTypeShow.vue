@@ -1,5 +1,5 @@
 <template>
-    <div class="deckTypeShow" :class="showDivClass">
+    <div class="deckTypeShow" :class="showDivClass" :style="scssVar">
         <div class="row" @click="openDetail()">
             <div class="col-xs-3">
                 <div class="profil">
@@ -61,9 +61,18 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="newRCard" class="control-label col-xs-4">Representative card:</label>
+                <div class="input-group col-xs-8">
+                    <input type="text" id="newRCard" class="form-control"
+                           v-model="newRCard" @keyup.enter="confirmEdit()"/>
+                    <span class="input-group-btn">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
                 <label class="control-label col-xs-4" for="newNote">Note:</label>
                 <div class="col-xs-8">
-                    <textarea id="newNote" rows="4" col="50" class="form-control" v-model="newNote"/>
+                    <textarea id="newNote" rows="3" col="50" class="form-control" v-model="newNote"/>
                 </div>
             </div>
 
@@ -96,6 +105,7 @@
       return {
         newName: '',
         newNote: '',
+        newRCard: '',
         newTop: false
       }
     },
@@ -106,7 +116,21 @@
         if (this.lastTypeChanged === this.type.id) {
           divClass += ' lastChange'
         }
+        if (this.hasRepresentCard) {
+          divClass += ' deckCardBackground'
+        }
         return divClass
+      },
+      scssVar () {
+        if (!this.hasRepresentCard) {
+          return {}
+        }
+        return {
+          '--sampleCard': 'url(https://art.hearthstonejson.com/v1/tiles/' + this.type.representCard + '.png)'
+        }
+      },
+      hasRepresentCard () {
+        return this.type.representCard !== undefined && this.type.representCard !== ''
       }
     },
     methods: {
@@ -114,11 +138,13 @@
         this.newName = this.type.name
         this.newNote = this.type.note
         this.newTop = this.type.top
+        this.newRCard = this.type.representCard
         this.$refs.modalDetail.open()
       },
       confirmEdit () {
         this.$store.commit(storeMut.SET_DECKTYPE_NAME, {id: this.type.id, name: this.newName})
         this.$store.commit(storeMut.SET_DECKTYPE_NOTE, {id: this.type.id, note: this.newNote})
+        this.$store.commit(storeMut.SET_DECKTYPE_REPRESENTCARD, {id: this.type.id, representCard: this.newRCard})
         if (this.type.top !== this.newTop) {
           this.$store.commit(storeMut.SWITCH_DECKTYPE_TOP, this.type.id)
         }
@@ -187,6 +213,12 @@
                 background-position: -280px -280px;
             }
 
+        }
+    }
+
+    .deckCardBackground {
+        &:before {
+            background-image: var(--sampleCard)
         }
     }
 

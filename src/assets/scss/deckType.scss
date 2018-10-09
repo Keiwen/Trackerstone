@@ -182,3 +182,22 @@
   height: 180px;
   overflow-y: scroll;
 }
+
+
+.deckCardBackground {
+  color: $black;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 85%;
+    height: 92%;
+    top: 3px;
+    right: 3px;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 110% 100%;
+    background-clip: padding-box;
+    margin-right: 10px;
+    opacity: 0.5;
+  }
+}
