@@ -27,40 +27,40 @@ const state = {
   currentArena: {},
   opponentArena: {},
   types: [
-    {id: 1, name: 'Cube', hsClass: 'warlock', archetype: 'midrange', top: true, note: ''},
-    {id: 2, name: 'Odd', hsClass: 'paladin', archetype: 'aggro', top: true, note: ''},
-    {id: 3, name: 'Spiteful', hsClass: 'druid', archetype: 'midrange', top: true, note: ''},
-    {id: 4, name: 'Even', hsClass: 'paladin', archetype: 'midrange', top: true, note: ''},
-    {id: 5, name: 'Taunt', hsClass: 'druid', archetype: 'midrange', top: true, note: ''},
-    {id: 6, name: 'Spiteful', hsClass: 'priest', archetype: 'midrange', top: true, note: ''},
-    {id: 7, name: 'Odd', hsClass: 'rogue', archetype: 'aggro', top: true, note: ''},
-    {id: 8, name: 'Face', hsClass: 'hunter', archetype: 'aggro', top: true, note: ''},
-    {id: 9, name: 'Tempo', hsClass: 'mage', archetype: 'aggro', top: true, note: ''},
-    {id: 10, name: 'Quest', hsClass: 'rogue', archetype: 'combo', top: true, note: ''},
-    {id: 11, name: 'Tempo', hsClass: 'rogue', archetype: 'aggro', top: true, note: ''},
-    {id: 12, name: 'Big spell', hsClass: 'mage', archetype: 'control', top: true, note: ''},
-    {id: 13, name: 'Rinlock', hsClass: 'warlock', archetype: 'control', top: false, note: ''},
-    {id: 14, name: 'Shudderwock', hsClass: 'shaman', archetype: 'combo', top: false, note: ''},
-    {id: 15, name: 'Miracle', hsClass: 'rogue', archetype: 'midrange', top: false, note: ''},
-    {id: 16, name: 'Elemental', hsClass: 'mage', archetype: 'midrange', top: false, note: ''},
-    {id: 17, name: 'Mind Blast', hsClass: 'priest', archetype: 'control', top: false, note: ''},
-    {id: 18, name: 'Zoolock', hsClass: 'warlock', archetype: 'aggro', top: false, note: ''},
-    {id: 19, name: 'Odd Taunt', hsClass: 'warrior', archetype: 'midrange', top: false, note: ''},
-    {id: 20, name: 'Murloc', hsClass: 'paladin', archetype: 'aggro', top: false, note: ''},
-    {id: 21, name: 'Elemental', hsClass: 'shaman', archetype: 'midrange', top: false, note: ''},
-    {id: 22, name: 'Inner Fire', hsClass: 'priest', archetype: 'combo', top: false, note: ''},
-    {id: 23, name: 'Taunt', hsClass: 'warrior', archetype: 'midrange', top: false, note: ''},
-    {id: 24, name: 'Spell', hsClass: 'hunter', archetype: 'midrange', top: false, note: ''},
-    {id: 25, name: 'Midrange', hsClass: 'hunter', archetype: 'midrange', top: false, note: ''},
-    {id: 26, name: 'Aggro', hsClass: 'paladin', archetype: 'aggro', top: false, note: ''},
-    {id: 27, name: 'Control', hsClass: 'warrior', archetype: 'control', top: false, note: ''},
-    {id: 28, name: 'Rush', hsClass: 'warrior', archetype: 'aggro', top: false, note: ''},
-    {id: 29, name: 'Even', hsClass: 'shaman', archetype: 'aggro', top: false, note: ''},
-    {id: 30, name: 'Token', hsClass: 'druid', archetype: 'aggro', top: false, note: ''},
-    {id: 31, name: 'Quest', hsClass: 'druid', archetype: 'midrange', top: false, note: ''},
-    {id: 32, name: 'Resurrect', hsClass: 'priest', archetype: 'midrange', top: false, note: ''},
-    {id: 33, name: 'Kingsbane', hsClass: 'rogue', archetype: 'midrange', top: false, note: ''},
-    {id: 34, name: 'Pirate', hsClass: 'warrior', archetype: 'aggro', top: false, note: ''}
+    {id: 1, name: 'Cube', hsClass: 'warlock', archetype: 'midrange', top: true, note: '', representCard: ''},
+    {id: 2, name: 'Odd', hsClass: 'paladin', archetype: 'aggro', top: true, note: '', representCard: ''},
+    {id: 3, name: 'Spiteful', hsClass: 'druid', archetype: 'midrange', top: true, note: '', representCard: ''},
+    {id: 4, name: 'Even', hsClass: 'paladin', archetype: 'midrange', top: true, note: '', representCard: ''},
+    {id: 5, name: 'Taunt', hsClass: 'druid', archetype: 'midrange', top: true, note: '', representCard: ''},
+    {id: 6, name: 'Spiteful', hsClass: 'priest', archetype: 'midrange', top: true, note: '', representCard: ''},
+    {id: 7, name: 'Odd', hsClass: 'rogue', archetype: 'aggro', top: true, note: '', representCard: ''},
+    {id: 8, name: 'Face', hsClass: 'hunter', archetype: 'aggro', top: true, note: '', representCard: ''},
+    {id: 9, name: 'Tempo', hsClass: 'mage', archetype: 'aggro', top: true, note: '', representCard: ''},
+    {id: 10, name: 'Quest', hsClass: 'rogue', archetype: 'combo', top: true, note: '', representCard: ''},
+    {id: 11, name: 'Tempo', hsClass: 'rogue', archetype: 'aggro', top: true, note: '', representCard: ''},
+    {id: 12, name: 'Big spell', hsClass: 'mage', archetype: 'control', top: true, note: '', representCard: ''},
+    {id: 13, name: 'Rinlock', hsClass: 'warlock', archetype: 'control', top: false, note: '', representCard: ''},
+    {id: 14, name: 'Shudderwock', hsClass: 'shaman', archetype: 'combo', top: false, note: '', representCard: ''},
+    {id: 15, name: 'Miracle', hsClass: 'rogue', archetype: 'midrange', top: false, note: '', representCard: ''},
+    {id: 16, name: 'Elemental', hsClass: 'mage', archetype: 'midrange', top: false, note: '', representCard: ''},
+    {id: 17, name: 'Mind Blast', hsClass: 'priest', archetype: 'control', top: false, note: '', representCard: ''},
+    {id: 18, name: 'Zoolock', hsClass: 'warlock', archetype: 'aggro', top: false, note: '', representCard: ''},
+    {id: 19, name: 'Odd Taunt', hsClass: 'warrior', archetype: 'midrange', top: false, note: '', representCard: ''},
+    {id: 20, name: 'Murloc', hsClass: 'paladin', archetype: 'aggro', top: false, note: '', representCard: ''},
+    {id: 21, name: 'Elemental', hsClass: 'shaman', archetype: 'midrange', top: false, note: '', representCard: ''},
+    {id: 22, name: 'Inner Fire', hsClass: 'priest', archetype: 'combo', top: false, note: '', representCard: ''},
+    {id: 23, name: 'Taunt', hsClass: 'warrior', archetype: 'midrange', top: false, note: '', representCard: ''},
+    {id: 24, name: 'Spell', hsClass: 'hunter', archetype: 'midrange', top: false, note: '', representCard: ''},
+    {id: 25, name: 'Midrange', hsClass: 'hunter', archetype: 'midrange', top: false, note: '', representCard: ''},
+    {id: 26, name: 'Aggro', hsClass: 'paladin', archetype: 'aggro', top: false, note: '', representCard: ''},
+    {id: 27, name: 'Control', hsClass: 'warrior', archetype: 'control', top: false, note: '', representCard: ''},
+    {id: 28, name: 'Rush', hsClass: 'warrior', archetype: 'aggro', top: false, note: '', representCard: ''},
+    {id: 29, name: 'Even', hsClass: 'shaman', archetype: 'aggro', top: false, note: '', representCard: ''},
+    {id: 30, name: 'Token', hsClass: 'druid', archetype: 'aggro', top: false, note: '', representCard: ''},
+    {id: 31, name: 'Quest', hsClass: 'druid', archetype: 'midrange', top: false, note: '', representCard: ''},
+    {id: 32, name: 'Resurrect', hsClass: 'priest', archetype: 'midrange', top: false, note: '', representCard: ''},
+    {id: 33, name: 'Kingsbane', hsClass: 'rogue', archetype: 'midrange', top: false, note: '', representCard: ''},
+    {id: 34, name: 'Pirate', hsClass: 'warrior', archetype: 'aggro', top: false, note: '', representCard: ''}
   ],
   nextId: 1,
   nextTypeId: 35,
@@ -86,7 +86,7 @@ const getters = {
   nextId: state => state.nextId,
   nextTypeId: state => state.nextTypeId,
   getGenericType: (state, getters) => (className) => {
-    return {id: className, name: '', hsClass: className, archetype: 'generic', top: false, note: ''}
+    return {id: className, name: '', hsClass: className, archetype: 'generic', top: false, note: '', representCard: ''}
   },
   getTypesFiltered: state => (filter, value) => {
     if (typeof value === 'undefined') value = true
@@ -214,6 +214,7 @@ const mutations = {
     if (typeof payload.note !== 'undefined') state.own[idDeck]['note'] = payload.note
     if (typeof payload.exportCode !== 'undefined') state.own[idDeck]['exportCode'] = payload.exportCode
     if (typeof payload.serie !== 'undefined') state.own[idDeck]['serie'] = payload.serie
+    if (typeof payload.representCard !== 'undefined') state.own[idDeck]['representCard'] = payload.representCard
   },
   [types.SET_DECKTYPE_NAME] (state, payload) {
     state.types.forEach(function (type, index, object) {
@@ -228,6 +229,14 @@ const mutations = {
       if (type.id === payload.id) {
         state.lastTypeChanged = type.id
         type.note = payload.note
+      }
+    })
+  },
+  [types.SET_DECKTYPE_REPRESENTCARD] (state, payload) {
+    state.types.forEach(function (type, index, object) {
+      if (type.id === payload.id) {
+        state.lastTypeChanged = type.id
+        type.representCard = payload.representCard
       }
     })
   },
