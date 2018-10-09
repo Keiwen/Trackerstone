@@ -151,6 +151,10 @@ const actions = {
 const mutations = {
   [types.ADD_DECK] (state, deckData) {
     deckData.id = state.nextId
+    deckData.representCard = ''
+    if (deckData.type.representCard !== undefined && deckData.type.representCard !== '') {
+      deckData.representCard = deckData.type.representCard
+    }
     Vue.set(state.own, state.nextId, deckData)
     state.lastDeckChanged = state.nextId
     state.nextId++
