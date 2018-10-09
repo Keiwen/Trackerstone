@@ -117,6 +117,9 @@ export default new Vuex.Store({
       return title.substring(0, DECK_TITLE_LIMIT - 1) + '...'
     },
     generateDeckTitle: (state, getters) => (deck) => {
+      if (typeof deck.type === 'undefined') {
+        return ''
+      }
       const className = getters.className(deck.type.hsClass)
       return deck.name + ' (' + deck.type.name + ' ' + className + ')'
     },
@@ -129,6 +132,9 @@ export default new Vuex.Store({
       }
     },
     generateTypeTitle: (state, getters) => (type) => {
+      if (typeof type.hsClass === 'undefined') {
+        return ''
+      }
       const className = getters.className(type.hsClass)
       return type.name + ' ' + className + ' (' + type.archetype + ')'
     },
