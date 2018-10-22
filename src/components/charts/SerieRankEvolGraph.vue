@@ -16,7 +16,7 @@
       }
     },
     computed: {
-      ...mapGetters(['rank', 'highest', 'getGamesList', 'current']),
+      ...mapGetters(['wildMode', 'rank', 'rankWild', 'highest', 'getGamesList', 'current']),
       chartData () {
         let labels = []
         let dataset = {
@@ -36,13 +36,21 @@
             // set non current deck point to 25 (bottom) to follow evolution in the serie
             dataset.data.push(25)
           } else {
-            dataset.data.push(history[i].rank)
+            if (this.wildMode) {
+              dataset.data.push(history[i].rankWild)
+            } else {
+              dataset.data.push(history[i].rank)
+            }
           }
         }
         // do not display current rank if currentOnly while current didnt play last game
         if (!this.currentOnly || lastId === this.current.id) {
           labels.push('current')
-          dataset.data.push(this.rank)
+          if (this.wildMode) {
+            dataset.data.push(this.rankWild)
+          } else {
+            dataset.data.push(this.rank)
+          }
         }
 
         return { labels: labels, datasets: [dataset] }

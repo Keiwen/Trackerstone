@@ -180,6 +180,8 @@ export default new Vuex.Store({
       const historyData = {
         rank: state.serie.rank,
         stars: state.serie.stars,
+        rankWild: state.serie.rankWild,
+        starsWild: state.serie.starsWild,
         won: won,
         deck: getters.current,
         opponent: getters.opponent,

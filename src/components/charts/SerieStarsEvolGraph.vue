@@ -16,7 +16,7 @@
       }
     },
     computed: {
-      ...mapGetters(['rank', 'stars', 'getGamesList', 'getTotalStars', 'current']),
+      ...mapGetters(['wildMode', 'rank', 'rankWild', 'stars', 'starsWild', 'getGamesList', 'getTotalStars', 'current']),
       chartData () {
         let labels = []
         let dataset = {
@@ -36,13 +36,23 @@
             // set non current deck point to 0 to follow evolution in the serie
             dataset.data.push(0)
           } else {
-            const totalStars = this.getTotalStars(history[i].rank, history[i].stars)
+            let totalStars = 0
+            if (this.wildMode) {
+              totalStars = this.getTotalStars(history[i].rankWild, history[i].starsWild)
+            } else {
+              totalStars = this.getTotalStars(history[i].rank, history[i].stars)
+            }
             dataset.data.push(totalStars)
           }
         }
         // do not display current stars if currentOnly while current didnt play last game
         if (!this.currentOnly || lastId === this.current.id) {
-          const totalStars = this.getTotalStars(this.rank, this.stars)
+          let totalStars = 0
+          if (this.wildMode) {
+            totalStars = this.getTotalStars(this.rankWild, this.starsWild)
+          } else {
+            totalStars = this.getTotalStars(this.rank, this.stars)
+          }
           labels.push('current')
           dataset.data.push(totalStars)
         }
