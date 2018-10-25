@@ -4,12 +4,19 @@
             <div class="form-group">
                 <label for="currentSetSelect" class="control-label col-xs-3">Cardset:</label>
                 <div class="col-xs-9">
-                    <v-select :options="Object.values(cardsetWithPack)" label="name" v-model="currentSet" id="currentSetSelect" >
-                        <template slot="option" slot-scope="option">
-                            <span class="icon"></span>
-                            {{ option.name }}
-                        </template>
-                    </v-select>
+                    <div v-if="isMobileDevice">
+                        <select v-model="currentSet" id="currentSetSelect" class="form-control" >
+                            <option v-for="option in Object.values(cardsetWithPack)" :value="option">{{ option.name }}</option>
+                        </select>
+                    </div>
+                    <div v-else>
+                        <v-select :options="Object.values(cardsetWithPack)" label="name" v-model="currentSet" id="currentSetSelect" >
+                            <template slot="option" slot-scope="option">
+                                <span class="icon"></span>
+                                {{ option.name }}
+                            </template>
+                        </v-select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -124,6 +131,9 @@
           return 1
         }
         return 0
+      },
+      isMobileDevice () {
+        return (typeof window.orientation !== 'undefined') || (navigator.userAgent.indexOf('IEMobile') !== -1)
       },
       cardsetStat () {
         return this.getCardsetStat(this.currentSet.key)
