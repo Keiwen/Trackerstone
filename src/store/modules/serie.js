@@ -346,6 +346,8 @@ const mutations = {
     }
     state.rankMax = state.rank
     state.stars = state.starsMax
+    // low ranks could have less stars
+    if (state.stars > Ranks[state.rank]['stars']) state.stars = Ranks[state.rank]['stars']
     state.winStreak = 0
     state.rankWild = state.rankWildMax + 4
     if (state.rankWild > 25) {
@@ -353,6 +355,7 @@ const mutations = {
     }
     state.rankWildMax = state.rankWild
     state.starsWild = state.starsWildMax
+    if (state.starsWild > Ranks[state.rankWild]['stars']) state.starsWild = Ranks[state.rankWild]['stars']
     state.winStreakWild = 0
     state.highest = Math.min(state.rankMax, state.rankWildMax)
   },
