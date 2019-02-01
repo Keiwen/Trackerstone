@@ -90,6 +90,7 @@
               name: this.loadedDeckTypes[i].name,
               hsClass: this.loadedDeckTypes[i].hsClass,
               archetype: this.loadedDeckTypes[i].archetype,
+              representCard: this.loadedDeckTypes[i].representCard,
               top: this.loadedDeckTypes[i].top
             })
           }
