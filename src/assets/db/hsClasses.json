@@ -13,7 +13,7 @@
    "heroes": ["jaina", "khagdar", "medivh"]},
  "paladin": {
    "id": "paladin", "name": "Paladin", "backgroundColor": "#BF761E",
-   "heroes": ["uther", "liadrin", "arthas"]},
+   "heroes": ["uther", "liadrin", "arthas", "annoy-o"]},
  "priest": {
    "id": "priest", "name": "Priest", "backgroundColor": "#DCD0E8",
    "heroes": ["anduin", "tyrande"]},
@@ -22,7 +22,7 @@
    "heroes": ["valeera", "maeiv"]},
  "shaman": {
    "id": "shaman", "name": "Shaman", "backgroundColor": "#3142AF",
-   "heroes": ["thrall", "morgl"]},
+   "heroes": ["thrall", "morgl", "rastakhan"]},
  "warlock": {
    "id": "warlock", "name": "Warlock", "backgroundColor": "#542877",
    "heroes": ["guldan", "nemsy", "jaraxxus"]},
