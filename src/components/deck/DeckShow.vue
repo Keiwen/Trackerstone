@@ -261,6 +261,12 @@
             &-jaraxxus .profil {
                 background-position: -375px -2175px;
             }
+            &-annoy-o .profil {
+                background-position: -675px -2175px;
+            }
+            &-rastakhan .profil {
+                background-position: -75px -2475px;
+            }
         }
     }
 
