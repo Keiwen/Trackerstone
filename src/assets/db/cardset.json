@@ -19,5 +19,5 @@
  "gvg": {"key": "gvg", "name": "Goblins vs Gnomes", "release": "2014-12-08", "cards": 123, "cardsByRarity": "40/37/26/20", "wild": true, "hasPack": true},
  "nax": {"key": "nax", "name": "Naxxramas", "release": "2014-07-22", "cards": 30, "cardsByRarity": "18/4/2/6", "wild": true, "hasPack": false},
 
- "hof": {"key": "hof", "name": "Hall of Fame", "release": "2017-04-17", "cards": 17, "cardsByRarity": "4/4/3/7", "wild": true, "hasPack": false}
+ "hof": {"key": "hof", "name": "Hall of Fame", "release": "2017-04-17", "cards": 21, "cardsByRarity": "5/5/5/7", "wild": true, "hasPack": false}
 }
