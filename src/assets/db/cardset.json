@@ -2,6 +2,7 @@
  "cla": {"key": "cla", "name": "Classic", "release": "2014-03-11", "cards": 236, "cardsByRarity": "91/79/35/31", "wild": false, "hasPack": true},
  "bas": {"key": "bas", "name": "Basic", "release": "2014-03-11", "cards": 133, "cardsByRarity": "133/0/0/0", "wild": false, "hasPack": false},
 
+ "sou": {"key": "sou", "name": "Saviors of Uldum", "release": "2019-08-06", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": false, "hasPack": true},
  "ros": {"key": "ros", "name": "Rise of Shadows", "release": "2019-04-09", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": false, "hasPack": true},
  "rkr": {"key": "rkr", "name": "Rastakhan's Rumble", "release": "2018-12-04", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": false, "hasPack": true},
  "bdp": {"key": "bdp", "name": "Boomsday Project", "release": "2018-08-07", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": false, "hasPack": true},
