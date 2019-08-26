@@ -104,11 +104,13 @@ const webpackConfig = merge(baseWebpackConfig, {
     ]),
     // service worker caching
     new SWPrecacheWebpackPlugin({
-      cacheId: 'my-vue-app',
+      cacheId: 'trackerstone',
       filename: 'service-worker.js',
-      staticFileGlobs: ['dist/**/*.{js,html,css}'],
+      // change dist to docs to use it in github environment
+      staticFileGlobs: ['docs/**/*.{js,html,css}'],
       minify: true,
-      stripPrefix: 'dist/'
+      // change dist to docs to use it in github environment
+      stripPrefix: 'docs/'
     })
   ]
 })
