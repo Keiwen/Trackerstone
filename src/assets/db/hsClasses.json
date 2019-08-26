@@ -16,13 +16,13 @@
    "heroes": ["uther", "liadrin", "arthas", "annoy-o"]},
  "priest": {
    "id": "priest", "name": "Priest", "backgroundColor": "#DCD0E8",
-   "heroes": ["anduin", "tyrande"]},
+   "heroes": ["anduin", "tyrande", "lazul"]},
  "rogue": {
    "id": "rogue", "name": "Rogue", "backgroundColor": "#33262A",
    "heroes": ["valeera", "maeiv"]},
  "shaman": {
    "id": "shaman", "name": "Shaman", "backgroundColor": "#3142AF",
-   "heroes": ["thrall", "morgl", "rastakhan"]},
+   "heroes": ["thrall", "morgl", "rastakhan", "thunder"]},
  "warlock": {
    "id": "warlock", "name": "Warlock", "backgroundColor": "#542877",
    "heroes": ["guldan", "nemsy", "jaraxxus"]},

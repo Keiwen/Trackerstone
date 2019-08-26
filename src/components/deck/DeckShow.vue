@@ -267,6 +267,12 @@
             &-rastakhan .profil {
                 background-position: -75px -2475px;
             }
+            &-lazul .profil {
+                background-position: -375px -2475px;
+            }
+            &-thunder .profil {
+                background-position: -675px -2475px;
+            }
         }
     }
 
