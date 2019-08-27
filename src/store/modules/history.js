@@ -366,6 +366,9 @@ const mutations = {
     if (scoreCoef > 1) {
       state.scoreCoef = scoreCoef
     }
+  },
+  [types.REMOVE_LAST_HISTORY] (state) {
+    state.history.pop()
   }
 
 }

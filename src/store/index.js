@@ -180,8 +180,13 @@ export default new Vuex.Store({
       const historyData = {
         rank: state.serie.rank,
         stars: state.serie.stars,
+        starsMax: state.serie.starsMax,
+        winStreak: state.serie.winStreak,
         rankWild: state.serie.rankWild,
         starsWild: state.serie.starsWild,
+        winStreakWild: state.serie.winStreakWild,
+        starsWildMax: state.serie.starsWildMax,
+        highest: state.serie.highest,
         won: won,
         deck: getters.current,
         opponent: getters.opponent,
@@ -265,6 +270,13 @@ export default new Vuex.Store({
       localStorage.removeItem(persistOptions.key)
       localStorage.removeItem('cookie:accepted')
       location.reload()
+    },
+    cancelLastGame ({dispatch, commit, getters}) {
+      let lastGame = getters.getLastGamesFiltered(1)
+      if (lastGame.length < 1) return
+      lastGame = lastGame[0]
+      commit(types.CANCEL_LAST_GAME, lastGame)
+      commit(types.REMOVE_LAST_HISTORY)
     }
   },
   modules: {

@@ -375,6 +375,17 @@ const mutations = {
   },
   [types.SWITCH_WILD_MODE] (state) {
     state.wildMode = !state.wildMode
+  },
+  [types.CANCEL_LAST_GAME] (state, game) {
+    state.highest = game.highest
+    state.rank = game.rank
+    state.stars = game.stars
+    state.starsMax = game.starsMax
+    state.winStreak = game.winStreak
+    state.rankWild = game.rankWild
+    state.starsWild = game.starsWild
+    state.starsWildMax = game.starsWildMax
+    state.winStreakWild = game.winStreakWild
   }
 
 }
