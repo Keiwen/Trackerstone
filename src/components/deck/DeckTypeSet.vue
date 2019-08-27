@@ -29,7 +29,6 @@
 
 
 <script>
-  import * as storeMut from '@/store/mutation-types'
   import { mapActions } from 'vuex'
   import ClassPick from '@/components/hsClass/ClassPick'
   import ArchetypePick from './ArchetypePick.vue'
@@ -46,7 +45,7 @@
       }
     },
     methods: {
-      ...mapActions(['addSuccess', 'addError']),
+      ...mapActions(['addSuccess', 'addError', 'addDeckType']),
       add () {
         if (!this.newClass) {
           this.addError('No class selected')
@@ -60,12 +59,13 @@
           this.addError('No name defined')
           return
         }
-        this.$store.commit(storeMut.ADD_DECKTYPE, {
+        const deckTypeData = {
           name: this.newName,
           hsClass: this.newClass,
           archetype: this.newArchetype,
           top: this.newTop
-        })
+        }
+        this.addDeckType(deckTypeData)
         this.addSuccess('Deck type added')
       },
       pickClass (pick) {

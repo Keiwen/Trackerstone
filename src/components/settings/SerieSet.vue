@@ -79,7 +79,6 @@
 
 
 <script>
-  import * as storeMut from '@/store/mutation-types'
   import { mapGetters, mapActions } from 'vuex'
 
   export default {
@@ -98,7 +97,7 @@
       ...mapGetters(['rank', 'stars', 'highest', 'winStreak', 'rankWild', 'starsWild', 'winStreakWild', 'highest'])
     },
     methods: {
-      ...mapActions(['addSuccess']),
+      ...mapActions(['addSuccess', 'setSerieData']),
       initialize () {
         this.newRank = this.rank
         this.newStars = this.stars
@@ -118,7 +117,7 @@
           winStreakWild: this.newWinStreakWild,
           highest: this.newHighest
         }
-        this.$store.commit(storeMut.SET_SERIE_DATA, dataSet)
+        this.setSerieData(dataSet)
         this.addSuccess('Serie data set')
       },
       cancelLastGame () {

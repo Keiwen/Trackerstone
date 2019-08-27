@@ -12,8 +12,7 @@
 
 
 <script>
-  import { mapGetters } from 'vuex'
-  import * as storeMut from '@/store/mutation-types'
+  import { mapGetters, mapActions } from 'vuex'
   import { SweetModal } from 'sweet-modal-vue'
   import DeckSpread from './DeckSpread'
 
@@ -35,6 +34,7 @@
       this.pick = this.current.id
     },
     methods: {
+      ...mapActions(['chooseDeck']),
       openDeckSpread () {
         this.$refs.modalDeckPick.open()
       },
@@ -45,7 +45,7 @@
       deckPicked (key) {
         this.pick = key
         this.$refs.modalDeckPick.close()
-        this.$store.commit(storeMut.CHOOSE_DECK, this.pick)
+        this.chooseDeck(this.pick)
       }
     }
   }

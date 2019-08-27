@@ -93,9 +93,8 @@
 
 
 <script>
-  import * as storeMut from '@/store/mutation-types'
   import { SweetModal } from 'sweet-modal-vue'
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   import { EnhancedCheck } from 'vue-enhanced-check'
 
   export default {
@@ -134,6 +133,11 @@
       }
     },
     methods: {
+      ...mapActions([
+        'setDeckTypeName', 'setDeckTypeNote',
+        'setDeckTypeRepresentCard', 'switchDeckTypeTop',
+        'removeDeckType'
+      ]),
       openDetail () {
         this.newName = this.type.name
         this.newNote = this.type.note
@@ -142,11 +146,11 @@
         this.$refs.modalDetail.open()
       },
       confirmEdit () {
-        this.$store.commit(storeMut.SET_DECKTYPE_NAME, {id: this.type.id, name: this.newName})
-        this.$store.commit(storeMut.SET_DECKTYPE_NOTE, {id: this.type.id, note: this.newNote})
-        this.$store.commit(storeMut.SET_DECKTYPE_REPRESENTCARD, {id: this.type.id, representCard: this.newRCard})
+        this.setDeckTypeName({id: this.type.id, name: this.newName})
+        this.setDeckTypeNote({id: this.type.id, note: this.newNote})
+        this.setDeckTypeRepresentCard({id: this.type.id, representCard: this.newRCard})
         if (this.type.top !== this.newTop) {
-          this.$store.commit(storeMut.SWITCH_DECKTYPE_TOP, this.type.id)
+          this.switchDeckTypeTop(this.type.id)
         }
         this.$refs.modalDetail.close()
       },
@@ -159,7 +163,7 @@
       remove () {
         this.$refs.modalDelete.close()
         this.$refs.modalDetail.close()
-        this.$store.commit(storeMut.REMOVE_DECKTYPE, this.type.id)
+        this.removeDeckType(this.type.id)
       },
       cancelRemove () {
         this.$refs.modalDelete.close()

@@ -28,7 +28,6 @@
 
 <script>
   import { mapGetters, mapActions } from 'vuex'
-  import * as storeMut from '@/store/mutation-types'
   import DeckTypePick from './DeckTypePick'
   import DeckShow from './DeckShow'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
@@ -48,7 +47,7 @@
       ...mapGetters(['deckStats', 'recentNumberGames'])
     },
     methods: {
-      ...mapActions(['addSuccess', 'addError']),
+      ...mapActions(['addSuccess', 'addError', 'addDeck', 'removeDeck']),
       pickType (type) {
         this.newType = type
       },
@@ -64,7 +63,7 @@
           note: '',
           serie: this.wildFormat ? 'wild' : 'standard'
         }
-        this.$store.commit(storeMut.ADD_DECK, deckData)
+        this.addDeck(deckData)
         this.newType = {}
         this.newName = ''
         this.newExportCode = ''
@@ -72,7 +71,7 @@
         this.addSuccess('Deck added')
       },
       remove (id) {
-        this.$store.commit(storeMut.REMOVE_DECK, id)
+        this.removeDeck(id)
       }
     }
   }

@@ -102,9 +102,8 @@
 
 
 <script>
-  import * as storeMut from '@/store/mutation-types'
   import { SweetModal } from 'sweet-modal-vue'
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   import { EnhancedCheck } from 'vue-enhanced-check'
 
   export default {
@@ -146,6 +145,7 @@
       }
     },
     methods: {
+      ...mapActions(['setDeck', 'removeDeck']),
       openDetail () {
         this.newName = this.deck.name
         this.newNote = this.deck.note
@@ -155,14 +155,15 @@
         this.$refs.modalDetail.open()
       },
       confirmEdit () {
-        this.$store.commit(storeMut.SET_DECK, {
+        const deckData = {
           id: this.deck.id,
           name: this.newName,
           note: this.newNote,
           representCard: this.newRCard,
           exportCode: this.newExportCode,
           serie: this.wildFormat ? 'wild' : 'standard'
-        })
+        }
+        this.setDeck(deckData)
         this.$refs.modalDetail.close()
       },
       cancelEdit () {
@@ -181,7 +182,7 @@
       remove () {
         this.$refs.modalDelete.close()
         this.$refs.modalDetail.close()
-        this.$store.commit(storeMut.REMOVE_DECK, this.deck.id)
+        this.removeDeck(this.deck.id)
       },
       cancelRemove () {
         this.$refs.modalDelete.close()

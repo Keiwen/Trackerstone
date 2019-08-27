@@ -26,7 +26,6 @@
 
 
 <script>
-  import * as storeMut from '@/store/mutation-types'
   import { mapGetters, mapActions } from 'vuex'
   import ClassPick from '@/components/hsClass/ClassPick'
   import { SweetModal } from 'sweet-modal-vue'
@@ -37,9 +36,9 @@
       ...mapGetters(['currentArena', 'opponentArena'])
     },
     methods: {
-      ...mapActions(['winArena', 'looseArena']),
+      ...mapActions(['winArena', 'looseArena', 'chooseOpponentArena']),
       pickOpponentClass (hsClass) {
-        this.$store.commit(storeMut.CHOOSE_OPPONENT_ARENA, hsClass)
+        this.chooseOpponentArena(hsClass)
       }
     }
   }

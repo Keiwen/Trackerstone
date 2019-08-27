@@ -44,7 +44,6 @@
 
 
 <script>
-  import * as storeMut from '@/store/mutation-types'
   import { mapGetters, mapActions } from 'vuex'
   import DeckPick from '@/components/deck/DeckPick'
   import DeckTypePick from '@/components/deck/DeckTypePick'
@@ -76,9 +75,9 @@
       }
     },
     methods: {
-      ...mapActions(['win', 'loose']),
+      ...mapActions(['win', 'loose', 'chooseOpponent']),
       pickOpponentType (type) {
-        this.$store.commit(storeMut.CHOOSE_OPPONENT, type)
+        this.chooseOpponent(type)
       },
       showDeckNote () {
         this.$refs.modalDeckNote.open()

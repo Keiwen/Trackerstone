@@ -65,6 +65,9 @@ const getters = {
 // Actions
 // ----------
 const actions = {
+  openPack ({commit, state}, packData) {
+    commit(types.OPEN_PACK, packData)
+  }
 }
 
 // ----------

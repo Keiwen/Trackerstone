@@ -216,6 +216,9 @@ const actions = {
     commit(types.RESET_SERIE)
     commit(types.RESET_HISTORY)
     // dispatch('earnStar', bonusStar)
+  },
+  setSerieData ({dispatch, commit, state}, dataSet) {
+    commit(types.SET_SERIE_DATA, dataSet)
   }
 }
 

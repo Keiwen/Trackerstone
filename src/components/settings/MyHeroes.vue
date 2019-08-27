@@ -26,8 +26,7 @@
 
 
 <script>
-  import { mapGetters } from 'vuex'
-  import * as storeMut from '@/store/mutation-types'
+  import { mapGetters, mapActions } from 'vuex'
   import { EnhancedCheckRadio } from 'vue-enhanced-check'
   import ClassCard from '../hsClass/ClassCard'
 
@@ -45,6 +44,7 @@
       this.heroPick = JSON.parse(JSON.stringify(this.myHeroes))
     },
     methods: {
+      ...mapActions(['chooseHero']),
       getHeroesDisplayForClass (classKey) {
         let heroes = JSON.parse(JSON.stringify(this.heroesForClass(classKey)))
         for (let i = 0; i < heroes.length; i++) {
@@ -54,7 +54,7 @@
         return heroes
       },
       chooseHeroForClass (hsClass) {
-        this.$store.commit(storeMut.CHOOSE_HERO, {
+        this.chooseHero({
           hsClass: hsClass,
           hero: this.heroPick[hsClass]
         })

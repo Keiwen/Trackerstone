@@ -45,7 +45,6 @@
 
 
 <script>
-  import * as storeMut from '@/store/mutation-types'
   import { mapGetters, mapActions } from 'vuex'
 
   export default {
@@ -59,10 +58,10 @@
       ...mapGetters(['recentNumberGames', 'scoreCoef'])
     },
     methods: {
-      ...mapActions(['addSuccess']),
+      ...mapActions(['addSuccess', 'setRecentGamesNumber', 'setScoreCoef']),
       set () {
-        this.$store.commit(storeMut.SET_RECENT_GAMES_NUMBER, this.newRecentGames)
-        this.$store.commit(storeMut.SET_SCORE_COEF, this.newScoreCoef)
+        this.setRecentGamesNumber(this.newRecentGames)
+        this.setScoreCoef(this.newScoreCoef)
         this.addSuccess('History data set')
       }
     },

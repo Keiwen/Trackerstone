@@ -63,7 +63,6 @@
 
 <script>
   import { mapGetters, mapActions } from 'vuex'
-  import * as storeMut from '@/store/mutation-types'
   import ClassCard from '@/components/hsClass/ClassCard'
   import { EnhancedCheck, EnhancedToggle } from 'vue-enhanced-check'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
@@ -82,17 +81,18 @@
       ...mapGetters(['lastDeckTypeUpdate', 'className', 'generateTypeTitle', 'getTypesWithClass', 'dtus'])
     },
     methods: {
-      ...mapActions(['loadDeckTypeUpdate', 'addSuccess']),
+      ...mapActions(['loadDeckTypeUpdate', 'addSuccess', 'addDeckType', 'updateDtusTime']),
       proceedImport () {
         for (let i = 0; i < this.loadedDeckTypes.length; i++) {
           if (this.loadedDeckTypes[i].toAdd) {
-            this.$store.commit(storeMut.ADD_DECKTYPE, {
+            const deckTypeData = {
               name: this.loadedDeckTypes[i].name,
               hsClass: this.loadedDeckTypes[i].hsClass,
               archetype: this.loadedDeckTypes[i].archetype,
               representCard: this.loadedDeckTypes[i].representCard,
               top: this.loadedDeckTypes[i].top
-            })
+            }
+            this.addDeckType(deckTypeData)
           }
         }
         this.addSuccess('Import completed')
@@ -102,9 +102,6 @@
       ignoreAll () {
         this.loadedDeckTypes = []
         this.updateDtusTime()
-      },
-      updateDtusTime () {
-        this.$store.commit(storeMut.UPDATE_DTUS_TIME)
       }
     },
     mounted () {

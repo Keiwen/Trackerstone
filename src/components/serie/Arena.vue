@@ -35,7 +35,6 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
-  import * as storeMut from '@/store/mutation-types'
   import ArenaSum from './ArenaSum'
   import ArenaDuel from './ArenaDuel'
   import ArenaStats from './ArenaStats'
@@ -54,13 +53,13 @@
       ...mapGetters(['arenaOpen'])
     },
     methods: {
-      ...mapActions(['closeArena']),
+      ...mapActions(['closeArena', 'chooseDeckArena', 'openArena']),
       pickClass (pick) {
         this.newClass = pick
       },
       newArena () {
-        this.$store.commit(storeMut.CHOOSE_DECK_ARENA, this.newClass)
-        this.$store.commit(storeMut.OPEN_ARENA)
+        this.chooseDeckArena(this.newClass)
+        this.openArena()
       }
     }
   }

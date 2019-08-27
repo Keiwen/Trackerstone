@@ -107,8 +107,7 @@
 
 
 <script>
-  import * as storeMut from '@/store/mutation-types'
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   import { SweetModal } from 'sweet-modal-vue'
   import { IntegerPlusminus } from 'vue-integer-plusminus'
 
@@ -145,6 +144,7 @@
       }
     },
     methods: {
+      ...mapActions(['openPack']),
       openPack () {
         this.resetPackCounters()
         this.$refs.modalOpenPack.open()
@@ -153,14 +153,14 @@
         this.$refs.modalOpenPack.close()
       },
       confirmOpenPack () {
-        const payload = {
+        const packData = {
           cardset: this.currentSet.key,
           common: this.packOpenCommon,
           rare: this.packOpenRare,
           epic: this.packOpenEpic,
           legendary: this.packOpenLegendary
         }
-        this.$store.commit(storeMut.OPEN_PACK, payload)
+        this.openPack(packData)
         this.$refs.modalOpenPack.close()
       },
       resetPackCounters () {

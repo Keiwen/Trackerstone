@@ -108,6 +108,51 @@ const getters = {
 // Actions
 // ----------
 const actions = {
+  addDeck ({commit, state}, deckData) {
+    commit(types.ADD_DECK, deckData)
+  },
+  setDeck ({commit, state}, deckData) {
+    commit(types.SET_DECK, deckData)
+  },
+  removeDeck ({commit, state}, deckId) {
+    commit(types.REMOVE_DECK, deckId)
+  },
+  chooseDeck ({commit, state}, deckId) {
+    commit(types.CHOOSE_DECK, deckId)
+  },
+  addDeckType ({commit, state}, deckTypeData) {
+    commit(types.ADD_DECKTYPE, deckTypeData)
+  },
+  setDeckTypeName ({commit, state}, deckTypeData) {
+    commit(types.SET_DECKTYPE_NAME, deckTypeData)
+  },
+  setDeckTypeNote ({commit, state}, deckTypeData) {
+    commit(types.SET_DECKTYPE_NOTE, deckTypeData)
+  },
+  setDeckTypeRepresentCard ({commit, state}, deckTypeData) {
+    commit(types.SET_DECKTYPE_REPRESENTCARD, deckTypeData)
+  },
+  switchDeckTypeTop ({commit, state}, deckTypeData) {
+    commit(types.SWITCH_DECKTYPE_TOP, deckTypeData)
+  },
+  removeDeckType ({commit, state}, deckTypeId) {
+    commit(types.REMOVE_DECKTYPE, deckTypeId)
+  },
+  chooseDeckArena ({commit, state}, classId) {
+    commit(types.CHOOSE_DECK_ARENA, classId)
+  },
+  chooseOpponent ({commit, state}, deckType) {
+    commit(types.CHOOSE_OPPONENT, deckType)
+  },
+  chooseOpponentArena ({commit, state}, classId) {
+    commit(types.CHOOSE_OPPONENT_ARENA, classId)
+  },
+  updateDtusTime ({commit, state}) {
+    commit(types.UPDATE_DTUS_TIME)
+  },
+  chooseHero ({commit, state}, payload) {
+    commit(types.CHOOSE_HERO, payload)
+  }
 }
 
 // ----------

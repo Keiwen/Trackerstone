@@ -315,6 +315,12 @@ const actions = {
     prizes.dust = parseInt(prizes.dust)
 
     commit(types.SET_LAST_ARENA_PRIZE, prizes)
+  },
+  setRecentGamesNumber ({state, commit}, gameNumber) {
+    commit(types.SET_RECENT_GAMES_NUMBER, gameNumber)
+  },
+  setScoreCoef ({state, commit}, scoreCoef) {
+    commit(types.SET_SCORE_COEF, scoreCoef)
   }
 }
 
