@@ -36,7 +36,7 @@
       ...mapGetters(['deckStats', 'recentNumberGames'])
     },
     methods: {
-      ...mapActions(['addSuccess', 'addDeck']),
+      ...mapActions(['addDeck']),
       pickType (type) {
         this.newType = type
       },
@@ -51,7 +51,6 @@
         this.newType = {}
         this.newName = ''
         this.newExportCode = ''
-        this.addSuccess('Deck added')
       }
     }
   }

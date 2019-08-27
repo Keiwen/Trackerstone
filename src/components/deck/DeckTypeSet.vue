@@ -45,7 +45,7 @@
       }
     },
     methods: {
-      ...mapActions(['addSuccess', 'addError', 'addDeckType']),
+      ...mapActions(['addError', 'addDeckType']),
       add () {
         if (!this.newClass) {
           this.addError('No class selected')
@@ -66,7 +66,6 @@
           top: this.newTop
         }
         this.addDeckType(deckTypeData)
-        this.addSuccess('Deck type added')
       },
       pickClass (pick) {
         this.newClass = pick

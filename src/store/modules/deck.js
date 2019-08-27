@@ -108,8 +108,9 @@ const getters = {
 // Actions
 // ----------
 const actions = {
-  addDeck ({commit, state}, deckData) {
+  addDeck ({dispatch, commit, state}, deckData) {
     commit(types.ADD_DECK, deckData)
+    dispatch('addSuccess', 'Deck added')
   },
   setDeck ({commit, state}, deckData) {
     commit(types.SET_DECK, deckData)
@@ -120,8 +121,9 @@ const actions = {
   chooseDeck ({commit, state}, deckId) {
     commit(types.CHOOSE_DECK, deckId)
   },
-  addDeckType ({commit, state}, deckTypeData) {
+  addDeckType ({dispatch, commit, state}, deckTypeData) {
     commit(types.ADD_DECKTYPE, deckTypeData)
+    dispatch('addSuccess', 'Deck type added')
   },
   setDeckTypeName ({commit, state}, deckTypeData) {
     commit(types.SET_DECKTYPE_NAME, deckTypeData)

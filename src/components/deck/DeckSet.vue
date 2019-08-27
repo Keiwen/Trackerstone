@@ -47,7 +47,7 @@
       ...mapGetters(['deckStats', 'recentNumberGames'])
     },
     methods: {
-      ...mapActions(['addSuccess', 'addError', 'addDeck', 'removeDeck']),
+      ...mapActions(['addError', 'addDeck', 'removeDeck']),
       pickType (type) {
         this.newType = type
       },
@@ -68,7 +68,6 @@
         this.newName = ''
         this.newExportCode = ''
         this.wildFormat = false
-        this.addSuccess('Deck added')
       },
       remove (id) {
         this.removeDeck(id)

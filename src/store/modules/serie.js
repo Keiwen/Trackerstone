@@ -219,6 +219,7 @@ const actions = {
   },
   setSerieData ({dispatch, commit, state}, dataSet) {
     commit(types.SET_SERIE_DATA, dataSet)
+    dispatch('addSuccess', 'Serie data set')
   }
 }
 

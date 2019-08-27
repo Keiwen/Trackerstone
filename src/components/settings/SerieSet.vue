@@ -72,7 +72,7 @@
 
         </div>
 
-        <button @click="cancelLastGame()" class="btn btn-warning">Cancel last game</button>
+        <button @click="rollbackLastGame()" class="btn btn-warning">Cancel last game</button>
 
     </div>
 </template>
@@ -97,7 +97,7 @@
       ...mapGetters(['rank', 'stars', 'highest', 'winStreak', 'rankWild', 'starsWild', 'winStreakWild', 'highest'])
     },
     methods: {
-      ...mapActions(['addSuccess', 'setSerieData']),
+      ...mapActions(['setSerieData', 'cancelLastGame']),
       initialize () {
         this.newRank = this.rank
         this.newStars = this.stars
@@ -118,10 +118,9 @@
           highest: this.newHighest
         }
         this.setSerieData(dataSet)
-        this.addSuccess('Serie data set')
       },
-      cancelLastGame () {
-        this.$store.dispatch('cancelLastGame')
+      rollbackLastGame () {
+        this.cancelLastGame()
         this.initialize()
       }
     },

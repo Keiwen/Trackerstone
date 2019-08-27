@@ -315,6 +315,7 @@ const actions = {
     prizes.dust = parseInt(prizes.dust)
 
     commit(types.SET_LAST_ARENA_PRIZE, prizes)
+    dispatch('addSuccess', 'Arena prizes saved')
   },
   setRecentGamesNumber ({state, commit}, gameNumber) {
     commit(types.SET_RECENT_GAMES_NUMBER, gameNumber)

@@ -277,6 +277,7 @@ export default new Vuex.Store({
       lastGame = lastGame[0]
       commit(types.CANCEL_LAST_GAME, lastGame)
       commit(types.REMOVE_LAST_HISTORY)
+      dispatch('addSuccess', 'Last game canceled')
     }
   },
   modules: {
