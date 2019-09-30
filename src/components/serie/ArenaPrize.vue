@@ -45,7 +45,7 @@
         this.setLastArenaPrize({gold: this.newGoldPrize, dust: this.newDustPrize})
       }
     },
-    mounted: function () {
+    mounted () {
       if (this.hasArenaCompleted && !this.hasLastArenaUnprized) {
         const lastArena = this.getArenaList()[this.getArenaList().length - 1]
         this.newGoldPrize = lastArena.prizes.gold

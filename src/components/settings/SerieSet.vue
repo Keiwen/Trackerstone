@@ -124,7 +124,7 @@
         this.initialize()
       }
     },
-    mounted: function () {
+    mounted () {
       this.initialize()
     }
   }

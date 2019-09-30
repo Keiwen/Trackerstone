@@ -30,7 +30,7 @@
         return 'Choose deck...'
       }
     },
-    mounted: function () {
+    mounted () {
       this.pick = this.current.id
     },
     methods: {

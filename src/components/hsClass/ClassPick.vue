@@ -57,7 +57,7 @@
         this.$emit('pick-class', key)
       }
     },
-    mounted: function () {
+    mounted () {
       if (typeof this.initialPick !== 'undefined') this.pick = this.initialPick
     }
   }

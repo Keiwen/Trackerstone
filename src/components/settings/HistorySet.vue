@@ -65,7 +65,7 @@
         this.addSuccess('History data set')
       }
     },
-    mounted: function () {
+    mounted () {
       this.newRecentGames = this.recentNumberGames
       this.newScoreCoef = this.scoreCoef
     }
