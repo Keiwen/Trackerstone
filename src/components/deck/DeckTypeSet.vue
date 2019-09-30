@@ -45,20 +45,8 @@
       }
     },
     methods: {
-      ...mapActions(['addError', 'addDeckType']),
+      ...mapActions(['addDeckType']),
       add () {
-        if (!this.newClass) {
-          this.addError('No class selected')
-          return
-        }
-        if (!this.newArchetype) {
-          this.addError('No archetype selected')
-          return
-        }
-        if (!this.newName) {
-          this.addError('No name defined')
-          return
-        }
         const deckTypeData = {
           name: this.newName,
           hsClass: this.newClass,

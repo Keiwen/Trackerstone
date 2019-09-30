@@ -109,8 +109,13 @@ const getters = {
 // ----------
 const actions = {
   addDeck ({dispatch, commit, state}, deckData) {
+    if (!deckData.type.id) {
+      dispatch('addError', 'No type selected')
+      return false
+    }
     commit(types.ADD_DECK, deckData)
     dispatch('addSuccess', 'Deck added')
+    return true
   },
   setDeck ({commit, state}, deckData) {
     commit(types.SET_DECK, deckData)
@@ -122,6 +127,18 @@ const actions = {
     commit(types.CHOOSE_DECK, deckId)
   },
   addDeckType ({dispatch, commit, state}, deckTypeData) {
+    if (!deckTypeData.hsClass) {
+      dispatch('addError', 'No class selected')
+      return false
+    }
+    if (!deckTypeData.archetype) {
+      dispatch('addError', 'No archetype selected')
+      return false
+    }
+    if (!deckTypeData.name) {
+      dispatch('addError', 'No name selected')
+      return false
+    }
     commit(types.ADD_DECKTYPE, deckTypeData)
     dispatch('addSuccess', 'Deck type added')
   },

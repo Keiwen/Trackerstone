@@ -47,15 +47,11 @@
       ...mapGetters(['deckStats', 'recentNumberGames'])
     },
     methods: {
-      ...mapActions(['addError', 'addDeck', 'removeDeck']),
+      ...mapActions(['addDeck', 'removeDeck']),
       pickType (type) {
         this.newType = type
       },
       add () {
-        if (!this.newType.id) {
-          this.addError('No type selected')
-          return
-        }
         const deckData = {
           type: this.newType,
           name: this.newName,
