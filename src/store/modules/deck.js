@@ -178,6 +178,12 @@ const actions = {
 // Mutations
 // ----------
 const mutations = {
+  [types.IMPORT_DATA_DECK] (state, dataDeck) {
+    for (let attribute in state) {
+      if (!state.hasOwnProperty(attribute)) continue
+      state[attribute] = dataDeck[attribute]
+    }
+  },
   [types.ADD_DECK] (state, deckData) {
     deckData.id = state.nextId
     deckData.representCard = ''

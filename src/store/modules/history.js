@@ -329,6 +329,12 @@ const actions = {
 // Mutations
 // ----------
 const mutations = {
+  [types.IMPORT_DATA_HISTORY] (state, dataHistory) {
+    for (let attribute in state) {
+      if (!state.hasOwnProperty(attribute)) continue
+      state[attribute] = dataHistory[attribute]
+    }
+  },
   [types.RESET_HISTORY] (state) {
     state.history = []
     state.historyWild = []

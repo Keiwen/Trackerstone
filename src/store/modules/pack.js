@@ -74,6 +74,12 @@ const actions = {
 // Mutations
 // ----------
 const mutations = {
+  [types.IMPORT_DATA_PACK] (state, dataPack) {
+    for (let attribute in state) {
+      if (!state.hasOwnProperty(attribute)) continue
+      state[attribute] = dataPack[attribute]
+    }
+  },
   [types.OPEN_PACK] (state, payload) {
     if (typeof payload.cardset === 'undefined') return
     const cardsetKey = payload.cardset

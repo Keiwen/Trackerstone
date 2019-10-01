@@ -30,6 +30,9 @@ const DECK_TITLE_LIMIT = 20
 
 export default new Vuex.Store({
   getters: {
+    dataExport: (state) => {
+      return JSON.stringify(state)
+    },
     classStats: (state, getters) => {
       // clone classes to manipulate it, or it will change state directly
       let stats = JSON.parse(JSON.stringify(getters.classes))
@@ -166,6 +169,37 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    importData ({commit, dispatch}, dataImport) {
+      try {
+        dataImport = JSON.parse(dataImport)
+      } catch (e) {
+        dispatch('addError', 'Incorrect JSON format')
+        console.log(e) // console.log on purpose
+        return false
+      }
+      if (!dataImport.deck) {
+        dispatch('addError', 'No deck data found')
+        return false
+      }
+      if (!dataImport.history) {
+        dispatch('addError', 'No history data found')
+        return false
+      }
+      if (!dataImport.pack) {
+        dispatch('addError', 'No pack data found')
+        return false
+      }
+      if (!dataImport.serie) {
+        dispatch('addError', 'No serie data found')
+        return false
+      }
+      commit(types.IMPORT_DATA_DECK, dataImport.deck)
+      commit(types.IMPORT_DATA_HISTORY, dataImport.history)
+      commit(types.IMPORT_DATA_PACK, dataImport.pack)
+      commit(types.IMPORT_DATA_SERIE, dataImport.serie)
+      dispatch('addSuccess', 'Data imported')
+      return true
+    },
     switchWildMode ({commit}) {
       commit(types.SWITCH_WILD_MODE)
     },

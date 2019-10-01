@@ -30,6 +30,36 @@
         <history-set></history-set>
         <hr/>
 
+        <h3>Export / Import</h3>
+        <button @click="openExportData()" class="btn btn-info">Export data</button>
+        <sweet-modal ref="modalExportData" modal-theme="dark" title="Export data">
+            <p>Below are your data in JSON format.<br/>You can copy this text and store it to reload it later.</p>
+            <textarea id="exportData" v-model="dataExport" rows="7" cols="70">
+            </textarea>
+
+            <button slot="button" class="btn btn-default"
+                    v-clipboard:copy="dataExport"
+                    v-clipboard:success="onClipboardSuccess"
+                    v-tooltip.notrigger.bottom="{ content: 'Copied!', visible: clipboardSuccess }">
+                Copy <icon name="clipboard" />
+            </button>
+            <button slot="button" @click="closeExportData()" class="btn btn-default">Close <icon name="times" /></button>
+        </sweet-modal>
+
+        <button @click="openImportData()" class="btn btn-warning">Import data</button>
+        <sweet-modal ref="modalImportData" modal-theme="dark" title="Import data">
+            <p>There is no control about data validity, be sure about your import.</p>
+            <textarea id="importData" v-model="dataToImport" rows="7" cols="70">
+            </textarea>
+
+            <button slot="button" @click="closeImportData()" class="btn btn-default">Close <icon name="times" /></button>
+            <button slot="button" @click="confirmImportData()" class="btn btn-success">Import <icon name="save" /></button>
+        </sweet-modal>
+
+
+        <hr/>
+
+        <h3>Reset</h3>
         <confirmation-modal
                 @modal-confirm="hardReset()"
                 modalText="You will loose all your data. Are you sure to continue?"
@@ -43,13 +73,70 @@
   import SerieSet from './SerieSet'
   import HistorySet from './HistorySet'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
+  import { mapGetters, mapActions } from 'vuex'
+  import { SweetModal } from 'sweet-modal-vue'
 
   export default {
-    components: {SerieSet, HistorySet, ConfirmationModal},
+    components: {SerieSet, HistorySet, ConfirmationModal, SweetModal},
+    data () {
+      return {
+        clipboardSuccess: false,
+        dataToImport: ''
+      }
+    },
+    computed: {
+      ...mapGetters(['dataExport'])
+    },
     methods: {
+      ...mapActions(['importData', 'addError']),
       hardReset () {
         this.$store.dispatch('resetState')
+      },
+      openExportData () {
+        this.$refs.modalExportData.open()
+      },
+      closeExportData () {
+        this.$refs.modalExportData.close()
+      },
+      onClipboardSuccess () {
+        this.clipboardSuccess = true
+        setTimeout(this.onClipboardOut, 1000)
+      },
+      onClipboardOut () {
+        this.clipboardSuccess = false
+      },
+      openImportData () {
+        this.$refs.modalImportData.open()
+      },
+      confirmImportData () {
+        const importPromise = this.importData(this.dataToImport)
+        const modalImportData = this.$refs.modalImportData
+        const router = this.$router
+        importPromise.then(
+          function (importOk) {
+            if (importOk) {
+              // import success
+              modalImportData.close()
+              router.push({name: 'serie'})
+            } else {
+              // import fail
+            }
+          },
+          function (importReturn) {
+            this.addError('Something went wrong while importing data')
+            console.log(importReturn) // console.log on purpose
+          }
+        )
+      },
+      closeImportData () {
+        this.$refs.modalImportData.close()
       }
     }
   }
 </script>
+
+<style>
+    #exportData,#importData {
+        color: black;
+    }
+</style>

@@ -227,6 +227,14 @@ const actions = {
 // Mutations
 // ----------
 const mutations = {
+  [types.IMPORT_DATA_SERIE] (state, dataSerie) {
+    // state = dataSerie
+    // command above does NOT work, we need to change attributes one by one
+    for (let attribute in state) {
+      if (!state.hasOwnProperty(attribute)) continue
+      state[attribute] = dataSerie[attribute]
+    }
+  },
   [types.SET_SERIE_DATA] (state, data) {
     if (typeof data.rank === 'undefined') data.rank = 25
     if (typeof data.stars === 'undefined') data.stars = 0
