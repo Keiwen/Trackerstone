@@ -2,7 +2,7 @@
 
 <a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it on web browser</a> and get mobile app (see below)! (Oh, seems to have some issues with IE)
 
-Current version is 0.8.11 with ranks' stars update
+Current version is 0.9.0 with export/import data, and option to cancel last game
 
 > Please note that this project is an experiment with VueJS framework and Progressive Web App, maintained on free-time without guarantee :)
 
@@ -28,9 +28,8 @@ Simple Hearthstone tracker. Just track your win and loss. On app you'll find:
 - arena tracker (and gold refund)
 - card pack opening stats
 
-Maybe one day this app will:
-- be fully mobile first designed
-- get a lot of pink unicorned stuff
+Next steps:
+- Redesign main page to go on first app release
 
 ## Mobile app
 Trackerstone is a Progressive Web Application, meaning that it's designed to work both on web browser and mobile app.
@@ -48,7 +47,9 @@ Mobile app orientation is landscape defined, as you should use Hearthstone game 
 ## Card background
 Deck type and deck now have a card illustration on their background.
 These illustrations are coming form <a target="_blank" href="https://github.com/HearthSim/hsdata">HS Data project</a>.
-Card ids could be found in the CardDefs.xml file.
+Card IDs could be found in the CardDefs.xml file.
+
+Note that this feature may be disabled if project API is not up to date.
 
 ## Build Setup
 
