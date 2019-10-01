@@ -30,7 +30,11 @@
                 </div>
                 <div class="col-xs-8">
                     <h4>Next milestone</h4>
-                    <p>{{ milestoneTitle }}<br/>{{ winsToMilestone }} wins needed</p>
+                    <p>
+                        {{ milestoneTitle }}<br/>in {{ winsToMilestone }}
+                        <span v-if="winsToMilestone === 1">win</span>
+                        <span v-else>consecutive wins</span>
+                    </p>
                 </div>
             </div>
             <div class="col-xs-4">
