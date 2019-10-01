@@ -60,7 +60,7 @@
                     <enhanced-check v-model="newTop" label="Star" :animate="true" class="starCheck" subClass="star" />
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" v-if="useRepresentativeCard">
                 <label for="newRCard" class="control-label col-xs-4">Representative card:</label>
                 <div class="input-group col-xs-8">
                     <input type="text" id="newRCard" class="form-control"
@@ -72,7 +72,7 @@
             <div class="form-group">
                 <label class="control-label col-xs-4" for="newNote">Note:</label>
                 <div class="col-xs-8">
-                    <textarea id="newNote" rows="3" col="50" class="form-control" v-model="newNote"/>
+                    <textarea id="newNote" :rows="useRepresentativeCard ? 3 : 4" col="50" class="form-control" v-model="newNote"/>
                 </div>
             </div>
 
@@ -109,7 +109,7 @@
       }
     },
     computed: {
-      ...mapGetters(['generateTypeTitle', 'generateTypeTitleLimit', 'lastTypeChanged']),
+      ...mapGetters(['generateTypeTitle', 'generateTypeTitleLimit', 'lastTypeChanged', 'useRepresentativeCard']),
       showDivClass () {
         let divClass = 'deckClass-' + this.type.hsClass + ' deckArchetype-' + this.type.archetype
         if (this.lastTypeChanged === this.type.id) {
@@ -129,6 +129,7 @@
         }
       },
       hasRepresentCard () {
+        if (!this.useRepresentativeCard) return false
         return this.type.representCard !== undefined && this.type.representCard !== ''
       }
     },

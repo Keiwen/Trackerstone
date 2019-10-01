@@ -69,7 +69,7 @@
                     </span>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" v-if="useRepresentativeCard">
                 <label for="newRCard" class="control-label col-xs-4">Representative card:</label>
                 <div class="input-group col-xs-8">
                     <input type="text" id="newRCard" class="form-control"
@@ -81,7 +81,7 @@
             <div class="form-group">
                 <label for="newNote" class="control-label col-xs-4">Note:</label>
                 <div class="col-xs-8">
-                    <textarea id="newNote" rows="2" col="50" class="form-control" v-model="newNote"/>
+                    <textarea id="newNote" :rows="useRepresentativeCard ? 2 : 3" col="50" class="form-control" v-model="newNote"/>
                 </div>
             </div>
 
@@ -120,7 +120,7 @@
       }
     },
     computed: {
-      ...mapGetters(['generateDeckTitle', 'generateDeckTitleLimit', 'lastDeckChanged', 'myHeroForClass']),
+      ...mapGetters(['generateDeckTitle', 'generateDeckTitleLimit', 'lastDeckChanged', 'myHeroForClass', 'useRepresentativeCard']),
       showDivClass () {
         let divClass = 'deckHero-' + this.myHeroForClass(this.deck.type.hsClass)
         divClass += ' deckSerie-' + this.deck.serie
@@ -141,6 +141,7 @@
         }
       },
       hasRepresentCard () {
+        if (!this.useRepresentativeCard) return false
         return this.deck.representCard !== undefined && this.deck.representCard !== ''
       }
     },

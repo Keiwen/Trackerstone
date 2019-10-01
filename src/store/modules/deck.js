@@ -6,6 +6,11 @@ import Archetypes from '@/assets/db/archetypes.json'
 import Dtus from '@/assets/db/dtus.json'
 // Deck Types Update System
 
+// we have some trouble using representative card,
+// as its rely on API that should be up to date.
+// if not, this feature can be turned off
+const USE_REPRESENTATIVE_CARD = false
+
 // ----------
 // Initial state
 // ----------
@@ -100,8 +105,8 @@ const getters = {
   myHeroForClass: state => (hsClass) => {
     if (typeof state.myHeroes[hsClass] === 'undefined') return ''
     return state.myHeroes[hsClass]
-  }
-
+  },
+  useRepresentativeCard: state => USE_REPRESENTATIVE_CARD
 }
 
 // ----------
