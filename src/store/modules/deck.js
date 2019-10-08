@@ -9,7 +9,7 @@ import Dtus from '@/assets/db/dtus.json'
 // we have some trouble using representative card,
 // as its rely on API that should be up to date.
 // if not, this feature can be turned off
-const USE_REPRESENTATIVE_CARD = false
+const USE_REPRESENTATIVE_CARD = true
 
 // ----------
 // Initial state
