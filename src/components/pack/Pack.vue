@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        <button @click="openPack()" class="btn btn-default" id="openPackBtn">Open new card pack</button>
+        <button @click="startOpenPack()" class="btn btn-default" id="openPackBtn">Open new card pack</button>
 
         <div class="row guaranteed-rarity">
             <div class="col-xs-6 rarity-epic">
@@ -145,7 +145,7 @@
     },
     methods: {
       ...mapActions(['openPack']),
-      openPack () {
+      startOpenPack () {
         this.resetPackCounters()
         this.$refs.modalOpenPack.open()
       },
