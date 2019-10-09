@@ -2,7 +2,7 @@
 
 <a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it on web browser</a> and get mobile app (see below)! (Oh, seems to have some issues with IE)
 
-Current version is 0.9.1 with export/import data, and option to cancel last game
+Current version is 0.9.2 with export/import data, and option to cancel last game
 
 > Please note that this project is an experiment with VueJS framework and Progressive Web App, maintained on free-time without guarantee :)
 
@@ -47,7 +47,8 @@ Mobile app orientation is landscape defined, as you should use Hearthstone game 
 ## Card background
 Deck type and deck now have a card illustration on their background.
 These illustrations are coming form <a target="_blank" href="https://github.com/HearthSim/hsdata">HS Data project</a>.
-Card IDs could be found in the CardDefs.xml file.
+You can change this illustrations by selecting the desired card name
+when editing deck type or deck
 
 Note that this feature may be disabled if project API is not up to date.
 
