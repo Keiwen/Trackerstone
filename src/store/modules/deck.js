@@ -5,6 +5,7 @@ import Archetypes from '@/assets/db/archetypes.json'
 // generic archetype is reserved for untracked types
 import Dtus from '@/assets/db/dtus.json'
 // Deck Types Update System
+import RepCards from '@/assets/db/repCards.json'
 
 // we have some trouble using representative card,
 // as its rely on API that should be up to date.
@@ -48,6 +49,8 @@ const getters = {
   types: state => state.types,
   archetypes: state => Archetypes,
   dtus: state => Dtus,
+  repCards: state => RepCards,
+  repCardName: state => (id) => { return RepCards[id] },
   className: state => (id) => {
     if (typeof HsClasses[id] === 'undefined') return ''
     return HsClasses[id]['name']

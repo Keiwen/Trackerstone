@@ -63,10 +63,7 @@
             <div class="form-group" v-if="useRepresentativeCard">
                 <label for="newRCard" class="control-label col-xs-4">Representative card:</label>
                 <div class="input-group col-xs-8">
-                    <input type="text" id="newRCard" class="form-control"
-                           v-model="newRCard" @keyup.enter="confirmEdit()"/>
-                    <span class="input-group-btn">
-                    </span>
+                    <rep-card-pick :initialPick="newRCard" @pick-rep-card="repCardPicked" id="newRCard" />
                 </div>
             </div>
             <div class="form-group">
@@ -96,9 +93,10 @@
   import { SweetModal } from 'sweet-modal-vue'
   import { mapGetters, mapActions } from 'vuex'
   import { EnhancedCheck } from 'vue-enhanced-check'
+  import RepCardPick from './RepCardPick'
 
   export default {
-    components: { SweetModal, EnhancedCheck },
+    components: { SweetModal, EnhancedCheck, RepCardPick },
     props: ['type'],
     data () {
       return {
@@ -168,6 +166,9 @@
       },
       cancelRemove () {
         this.$refs.modalDelete.close()
+      },
+      repCardPicked (rCard) {
+        this.newRCard = rCard
       }
     }
   }
@@ -224,6 +225,13 @@
     .deckCardBackground {
         &:before {
             background-image: var(--sampleCard)
+        }
+    }
+
+    #newRCard {
+        color: black;
+        .sweet-action-close {
+            color: black;
         }
     }
 
