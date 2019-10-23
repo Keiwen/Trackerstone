@@ -3,7 +3,9 @@ import Router from 'vue-router'
 import Serie from '@/components/serie/Serie'
 import Settings from '@/components/settings/Settings'
 import DeckTypeList from '@/components/deck/DeckTypeList'
+import DeckTypeEdit from '@/components/deck/DeckTypeEdit'
 import DeckList from '@/components/deck/DeckList'
+import DeckEdit from '@/components/deck/DeckEdit'
 import DeckChart from '@/components/deck/DeckChart'
 import SerieChart from '@/components/serie/SerieChart'
 import DeckTypeChart from '@/components/deck/DeckTypeChart'
@@ -18,11 +20,9 @@ Vue.use(Router)
 
 export default new Router({
   scrollBehavior (to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    } else {
-      return { x: 0, y: 0 }
-    }
+    if (savedPosition) return savedPosition
+    if (to.hash) return { selector: to.hash }
+    return { x: 0, y: 0 }
   },
   routes: [
     {
@@ -46,6 +46,15 @@ export default new Router({
       component: DeckTypeList
     },
     {
+      path: '/deckTypeEdit',
+      name: 'deckTypeEdit',
+      meta: {
+        deckEditionRoute: true,
+        backRoute: 'deckTypesList'
+      },
+      component: DeckTypeEdit
+    },
+    {
       path: '/deckList',
       name: 'deckList',
       component: DeckList
@@ -58,6 +67,15 @@ export default new Router({
         backRoute: 'deckList'
       },
       component: DeckChart
+    },
+    {
+      path: '/deckEdit',
+      name: 'deckEdit',
+      meta: {
+        deckEditionRoute: true,
+        backRoute: 'deckList'
+      },
+      component: DeckEdit
     },
     {
       path: '/serieChart',

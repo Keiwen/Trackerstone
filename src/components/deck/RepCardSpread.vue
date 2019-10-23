@@ -61,7 +61,7 @@
 
     .repCard {
         margin-bottom: 10px;
-        border: 1px solid black;
+        border: 1px solid white;
         padding: 3px;
         height: 50px;
 

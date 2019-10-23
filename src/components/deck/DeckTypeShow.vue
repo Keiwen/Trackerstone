@@ -32,82 +32,21 @@
             </div>
 
         </div>
-
-        <sweet-modal ref="modalDetail" modal-theme="dark" :title="generateTypeTitle(type)">
-            <div class="row detailStats">
-                <div class="col-xs-6">
-                    <p>
-                        Record against: {{ type.wonVs }} - {{ type.lossVs }}<br/>
-                        <span class="score">
-                            Score: {{ type.winScoreVs }}
-                        </span>
-                    </p>
-                </div>
-                <div class="col-xs-6">
-                    <p>
-                        {{ type.winPercentVs }} % global<br/>
-                        {{ type.winPercentVsRecent }} % last {{ type.playedVsRecent }} games
-                    </p>
-                </div>
-            </div>
-            <hr/>
-            <div class="form-group form-group-double">
-                <label class="control-label col-xs-4" for="newName">Name:</label>
-                <div class="col-xs-5 first-form-field">
-                    <input type="text" id="newName" class="form-control" v-model="newName" @keyup.enter="confirmEdit()"/>
-                </div>
-                <div class="col-xs-3">
-                    <enhanced-check v-model="newTop" label="Star" :animate="true" class="starCheck" subClass="star" />
-                </div>
-            </div>
-            <div class="form-group" v-if="useRepresentativeCard">
-                <label for="newRCard" class="control-label col-xs-4">Representative card:</label>
-                <div class="input-group col-xs-8">
-                    <rep-card-pick :initialPick="newRCard" @pick-rep-card="repCardPicked" id="newRCard" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-xs-4" for="newNote">Note:</label>
-                <div class="col-xs-8">
-                    <textarea id="newNote" :rows="useRepresentativeCard ? 3 : 4" col="50" class="form-control" v-model="newNote"/>
-                </div>
-            </div>
-
-            <button slot="button" @click="promptConfirmDelete()" class="btn btn-danger away-button">Delete <icon name="trash" /></button>
-
-            <button slot="button" @click="cancelEdit()" class="btn btn-default">Cancel <icon name="times" /></button>
-            <button slot="button" @click="confirmEdit()" class="btn btn-success">Save <icon name="save" /></button>
-        </sweet-modal>
-
-        <sweet-modal icon="warning" ref="modalDelete" modal-theme="dark">
-            Are you sure you want to remove deck type {{ generateTypeTitle(type) }}?
-            <button slot="button" @click="cancelRemove()" class="btn btn-default">Cancel <icon name="times" /></button>
-            <button slot="button" @click="remove()" class="btn btn-success">Confirm <icon name="trash" /></button>
-        </sweet-modal>
-
     </div>
 </template>
 
 
 <script>
-  import { SweetModal } from 'sweet-modal-vue'
-  import { mapGetters, mapActions } from 'vuex'
-  import { EnhancedCheck } from 'vue-enhanced-check'
-  import RepCardPick from './RepCardPick'
+  import { mapGetters } from 'vuex'
 
   export default {
-    components: { SweetModal, EnhancedCheck, RepCardPick },
+    components: { },
     props: ['type'],
     data () {
-      return {
-        newName: '',
-        newNote: '',
-        newRCard: '',
-        newTop: false
-      }
+      return {}
     },
     computed: {
-      ...mapGetters(['generateTypeTitle', 'generateTypeTitleLimit', 'lastTypeChanged', 'useRepresentativeCard']),
+      ...mapGetters(['generateTypeTitleLimit', 'lastTypeChanged', 'useRepresentativeCard']),
       showDivClass () {
         let divClass = 'deckClass-' + this.type.hsClass + ' deckArchetype-' + this.type.archetype
         if (this.lastTypeChanged === this.type.id) {
@@ -132,43 +71,8 @@
       }
     },
     methods: {
-      ...mapActions([
-        'setDeckTypeName', 'setDeckTypeNote',
-        'setDeckTypeRepresentCard', 'switchDeckTypeTop',
-        'removeDeckType'
-      ]),
       openDetail () {
-        this.newName = this.type.name
-        this.newNote = this.type.note
-        this.newTop = this.type.top
-        this.newRCard = this.type.representCard
-        this.$refs.modalDetail.open()
-      },
-      confirmEdit () {
-        this.setDeckTypeName({id: this.type.id, name: this.newName})
-        this.setDeckTypeNote({id: this.type.id, note: this.newNote})
-        this.setDeckTypeRepresentCard({id: this.type.id, representCard: this.newRCard})
-        if (this.type.top !== this.newTop) {
-          this.switchDeckTypeTop(this.type.id)
-        }
-        this.$refs.modalDetail.close()
-      },
-      cancelEdit () {
-        this.$refs.modalDetail.close()
-      },
-      promptConfirmDelete () {
-        this.$refs.modalDelete.open()
-      },
-      remove () {
-        this.$refs.modalDelete.close()
-        this.$refs.modalDetail.close()
-        this.removeDeckType(this.type.id)
-      },
-      cancelRemove () {
-        this.$refs.modalDelete.close()
-      },
-      repCardPicked (rCard) {
-        this.newRCard = rCard
+        this.$router.push({name: 'deckTypeEdit', params: {deckType: this.type}})
       }
     }
   }
@@ -227,12 +131,4 @@
             background-image: var(--sampleCard)
         }
     }
-
-    #newRCard {
-        color: black;
-        .sweet-action-close {
-            color: black;
-        }
-    }
-
 </style>

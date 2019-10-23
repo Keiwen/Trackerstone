@@ -2,7 +2,7 @@
     <span>
         <button class="btn btn-default btn-class" @click="openRepCardSpread()" :disabled="disabled">{{ btnText }}</button>
 
-        <sweet-modal ref="modalRepCardPick"  title="Pick representative card">
+        <sweet-modal ref="modalRepCardPick" modal-theme="dark" title="Pick representative card">
             <rep-card-spread @pick-rep-card="repCardPicked" />
         </sweet-modal>
     </span>
