@@ -4,7 +4,7 @@
  },
  "druid": {
    "id": "druid", "name": "Druid", "backgroundColor": "#663E27",
-   "heroes": ["malfurion", "lunara"]},
+   "heroes": ["malfurion", "lunara", "elise"]},
  "hunter": {
    "id": "hunter", "name": "Hunter", "backgroundColor": "#1D6619",
    "heroes": ["rexxar", "alleria"]},

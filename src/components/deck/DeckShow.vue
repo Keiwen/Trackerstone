@@ -276,6 +276,9 @@
             &-thunder .profil {
                 background-position: -675px -2475px;
             }
+            &-elise .profil {
+                background-position: -75px -2775px;
+            }
         }
     }
 
