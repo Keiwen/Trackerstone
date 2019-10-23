@@ -3,7 +3,7 @@
         <topbar v-if="showTopbar"></topbar>
         <router-view></router-view>
 
-        <button @click="routerBack()" class="btn btn-info routerBack" v-if="!showTopbar">
+        <button @click="routerBack()" class="btn btn-info routerBack" v-if="isChartRoute">
             <icon name="step-backward" />
             Back
         </button>
@@ -28,8 +28,16 @@
     computed: {
       ...mapGetters(['messageBag']),
       showTopbar () {
-        if (this.$route.meta && this.$route.meta.chartRoute) return false
+        if (this.isChartRoute || this.isDeckEditionRoute) return false
         return true
+      },
+      isChartRoute () {
+        if (this.$route.meta && this.$route.meta.chartRoute) return true
+        return false
+      },
+      isDeckEditionRoute () {
+        if (this.$route.meta && this.$route.meta.deckEditionRoute) return true
+        return false
       }
     },
     watch: {
@@ -76,5 +84,5 @@
 </script>
 
 <style lang="scss">
-  @import './assets/scss/_import.scss';
+    @import './assets/scss/_import.scss';
 </style>
