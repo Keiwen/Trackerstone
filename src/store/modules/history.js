@@ -381,7 +381,7 @@ const mutations = {
     }
   },
   [types.REMOVE_LAST_HISTORY] (state) {
-    state.history.pop()
+    state.wildMode ? state.historyWild.pop() : state.history.pop()
   }
 
 }
