@@ -60,8 +60,14 @@
     methods: {
       ...mapActions(['addSuccess', 'setRecentGamesNumber', 'setScoreCoef']),
       set () {
-        this.setRecentGamesNumber(this.newRecentGames)
-        this.setScoreCoef(this.newScoreCoef)
+        if (this.newRecentGames !== this.recentNumberGames) {
+          this.setRecentGamesNumber(this.newRecentGames)
+          this.$ga.event('settings', 'set', 'recentGames', this.newRecentGames)
+        }
+        if (this.newScoreCoef !== this.scoreCoef) {
+          this.setScoreCoef(this.newScoreCoef)
+          this.$ga.event('settings', 'set', 'scoreCoef', this.newScoreCoef)
+        }
         this.addSuccess('History data set')
       }
     },

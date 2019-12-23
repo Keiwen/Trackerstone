@@ -54,6 +54,7 @@
           top: this.newTop
         }
         this.addDeckType(deckTypeData)
+        this.$ga.event('deckType', 'add', this.newClass + ' - ' + this.newName)
       },
       pickClass (pick) {
         this.newClass = pick

@@ -60,6 +60,7 @@
           serie: this.wildFormat ? 'wild' : 'standard'
         }
         this.addDeck(deckData)
+        this.$ga.event('deck', 'add', 'addDeck')
         this.newType = {}
         this.newName = ''
         this.newExportCode = ''

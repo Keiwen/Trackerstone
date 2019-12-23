@@ -33,11 +33,11 @@
         </div>
 
         <div class="duelButtons">
-            <button @click="win()" class="btn btn-success">Win <icon name="thumbs-up" /></button>
+            <button @click="playedDuel(true)" class="btn btn-success">Win <icon name="thumbs-up" /></button>
             <span class="winstreakIcon">
                 <icon name="fire" v-if="isOnWinStreak" class="text-danger" />
             </span>
-            <button @click="loose()" class="btn btn-warning">Loss <icon name="thumbs-down" /></button>
+            <button @click="playedDuel(false)" class="btn btn-warning">Loss <icon name="thumbs-down" /></button>
         </div>
     </div>
 </template>
@@ -53,7 +53,7 @@
     components: {DeckPick, DeckTypePick, SweetModal},
     computed: {
       ...mapGetters([
-        'current', 'opponent', 'getGamesVsType', 'getGamesWonAmong',
+        'current', 'opponent', 'getGamesVsType', 'getGamesWonAmong', 'wildMode',
         'computeWinPercent', 'isOnWinStreak', 'generateTypeTitle', 'generateDeckTitle'
       ]),
       gamesCurrentPlayedVs () {
@@ -78,6 +78,10 @@
       ...mapActions(['win', 'loose', 'chooseOpponent']),
       pickOpponentType (type) {
         this.chooseOpponent(type)
+      },
+      playedDuel (won) {
+        this.$ga.event('history', 'add', this.wildMode ? 'wild' : 'standard')
+        won ? this.win() : this.loose()
       },
       showDeckNote () {
         this.$refs.modalDeckNote.open()

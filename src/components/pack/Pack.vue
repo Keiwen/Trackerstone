@@ -161,6 +161,11 @@
           legendary: this.packOpenLegendary
         }
         this.openPack(packData)
+        this.$ga.event('openPack', 'extension', this.currentSet.name)
+        this.$ga.event('openPack', 'rarity', 'common', this.packOpenCommon)
+        this.$ga.event('openPack', 'rarity', 'rare', this.packOpenRare)
+        this.$ga.event('openPack', 'rarity', 'epic', this.packOpenEpic)
+        this.$ga.event('openPack', 'rarity', 'legendary', this.packOpenLegendary)
         this.$refs.modalOpenPack.close()
       },
       resetPackCounters () {

@@ -94,6 +94,7 @@
       },
       openExportData () {
         this.$refs.modalExportData.open()
+        this.$ga.event('interface', 'export', 'exportData')
       },
       closeExportData () {
         this.$refs.modalExportData.close()
@@ -118,6 +119,7 @@
               // import success
               modalImportData.close()
               router.push({name: 'serie'})
+              this.$ga.event('interface', 'import', 'importData')
             } else {
               // import fail
             }
@@ -125,6 +127,7 @@
           function (importReturn) {
             this.addError('Something went wrong while importing data')
             console.log(importReturn) // console.log on purpose
+            this.$ga.event('interface', 'import', 'importDataFail')
           }
         )
       },

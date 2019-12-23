@@ -118,10 +118,12 @@
           highest: this.newHighest
         }
         this.setSerieData(dataSet)
+        this.$ga.event('settings', 'set', 'serieData')
       },
       rollbackLastGame () {
         this.cancelLastGame()
         this.initialize()
+        this.$ga.event('history', 'cancel', 'removeLast')
       }
     },
     mounted () {

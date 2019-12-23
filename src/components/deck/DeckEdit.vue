@@ -134,6 +134,7 @@
       remove () {
         this.$refs.modalDelete.close()
         this.removeDeck(this.deck.id)
+        this.$ga.event('deck', 'remove', 'removeDeck')
         this.$router.push({name: 'deckList'})
       },
       cancelRemove () {

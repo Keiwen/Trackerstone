@@ -17,9 +17,9 @@
         </div>
 
         <div class="duelButtons">
-            <button @click="winArena()" class="btn btn-success">Win <icon name="thumbs-up" /></button>
+            <button @click="playedArenaDuel(true)" class="btn btn-success">Win <icon name="thumbs-up" /></button>
             <span class="winstreakIcon"></span>
-            <button @click="looseArena()" class="btn btn-warning">Loss <icon name="thumbs-down" /></button>
+            <button @click="playedArenaDuel(false)" class="btn btn-warning">Loss <icon name="thumbs-down" /></button>
         </div>
     </div>
 </template>
@@ -39,6 +39,10 @@
       ...mapActions(['winArena', 'looseArena', 'chooseOpponentArena']),
       pickOpponentClass (hsClass) {
         this.chooseOpponentArena(hsClass)
+      },
+      playedArenaDuel (won) {
+        this.$ga.event('history', 'add', 'arena')
+        won ? this.winArena() : this.looseArena()
       }
     }
   }
