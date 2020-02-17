@@ -3,10 +3,10 @@
         <div class="container">
             <div class="col-xs-6">
                 <h3>My deck</h3>
-                <deck-pick/>
                 <span @click="showDeckNote()">
-                    <icon name="info-circle" :scale="2" class="infoNote" :class="{'noted': current.note}"></icon>
+                    <icon name="info-circle" :scale="2" class="infoNoteBefore" :class="{'noted': current.note}"></icon>
                 </span>
+                <deck-pick/>
 
                 <sweet-modal ref="modalDeckNote" modal-theme="dark" :title="generateDeckTitle(current)">
                     <pre v-if="current.note">{{ current.note }}</pre>
