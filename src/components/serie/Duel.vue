@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <div class="container">
-            <div class="col-xs-6">
+            <div class="col-xs-5">
                 <h3>My deck</h3>
                 <span @click="showDeckNote()">
                     <icon name="info-circle" :scale="2" class="infoNoteBefore" :class="{'noted': current.note}"></icon>
@@ -14,7 +14,10 @@
                 </sweet-modal>
 
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-2">
+
+            </div>
+            <div class="col-xs-5">
                 <h3>Opponent deck</h3>
                 <deck-type-pick @pick-type="pickOpponentType" :initialPick="opponent" :allowGenericPick="true" />
                 <span @click="showNote()">
@@ -28,16 +31,21 @@
 
             </div>
         </div>
-        <div class="container">
-            <p>Similar games played: {{ gamesCurrentWonVs.length }} - {{ gamesCurrentLossVsCount }} ({{ gamesCurrentWinpercentVs }} % won)</p>
-        </div>
 
         <div class="duelButtons">
             <button @click="playedDuel(true)" class="btn btn-success">Win <icon name="thumbs-up" /></button>
-            <span class="winstreakIcon">
-                <icon name="fire" v-if="isOnWinStreak" class="text-danger" />
-            </span>
             <button @click="playedDuel(false)" class="btn btn-warning">Loss <icon name="thumbs-down" /></button>
+        </div>
+
+        <div class="container">
+            <div class="col-xs-6">
+            <span class="text-danger winstreakIcon" v-if="isOnWinStreak || true">
+                <icon name="fire" /> Win streak
+            </span>
+            </div>
+            <div class="col-xs-6">
+                <p>Similar games played: {{ gamesCurrentWonVs.length }} - {{ gamesCurrentLossVsCount }} ({{ gamesCurrentWinpercentVs }} % won)</p>
+            </div>
         </div>
     </div>
 </template>
