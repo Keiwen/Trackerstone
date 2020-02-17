@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="container">
             <div class="col-xs-6">
-                <h3>Current deck</h3>
+                <h3>My deck</h3>
                 <deck-pick/>
                 <span @click="showDeckNote()">
                     <icon name="info-circle" :scale="2" class="infoNote" :class="{'noted': current.note}"></icon>

@@ -1,19 +1,20 @@
 <template>
     <div class="container-fluid">
         <serie-sum/>
-        <hr/>
+
+        <div class="row">
+            <button class="btn btn-default btn-wildmode"
+                    :class="wildMode ? 'btn-wildSerie' : 'btn-standardSerie'"
+                    @click="switchWildMode()">
+                {{ switchWildModeBtnText }}
+            </button>
+        </div>
+
         <duel/>
         <hr/>
         <serie-stats/>
         <div class="container">
-            <div class="col-xs-6">
-                <button class="btn btn-default btn-wildmode"
-                        :class="wildMode ? 'btn-wildSerie' : 'btn-standardSerie'"
-                        @click="switchWildMode()">
-                    {{ switchWildModeBtnText }}
-                </button>
-            </div>
-            <div class="col-xs-6">
+            <div class="row">
                 <confirmation-modal
                         @modal-confirm="reset()"
                         modalText="Are you sure you want to reset serie? History for current serie will be loss"
