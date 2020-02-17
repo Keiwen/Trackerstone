@@ -2,55 +2,52 @@
     <div class="container-fluid">
         <div class="gamemodeSum serieSum row">
             <div class="col-xs-4">
+                <h4>Rank</h4>
                 <div class="col-xs-4">
-                    <progress-circle :completed-steps="25 - (wildMode ? rankWild : rank)"
-                                     :total-steps="25"
-                                     :diameter="progressCircleDiameter"
-                                     startColor="#463C3B"
-                                     stopColor="#D3921F"
-                                     circleColor="#DDDDDD">
-                        <p class="innerProgressCircle">{{ wildMode ? rankWild : rank }}</p>
-                    </progress-circle>
+                    <div :class="'rankbadge rank-' + (wildMode ? rankWild : rank)"></div>
                 </div>
                 <div class="col-xs-8">
-                    <h4>Rank</h4>
-                    <p>{{ currentRankTitle }}<br/>{{ currentStars }} star<span v-if="currentStars > 1">s</span></p>
+                    <div>
+                        <span v-for="i in currentStars" class="serieStar serieStar-on">X</span>
+                        <span v-for="i in (currentMaxStars - currentStars)" class="serieStar serieStar-off">-</span>
+                    </div>
+                    <p>{{ currentRankTitle }}</p>
                 </div>
             </div>
             <div class="col-xs-4">
-                <div class="col-xs-4">
+                <h4>Next milestone</h4>
+                <div class="col-xs-6">
+                    Stars left
                     <progress-circle :completed-steps="starsInMilestone - starsToMilestone"
                                      :total-steps="starsInMilestone"
                                      :diameter="progressCircleDiameter"
-                                     startColor="#1F2F4B"
-                                     stopColor="#599CE9"
+                                     startColor="#321D05"
+                                     stopColor="#FF911C"
                                      circleColor="#DDDDDD">
-                        <p class="innerProgressCircle">{{ nextMilestone}}</p>
+                        <p class="innerProgressCircle">{{ starsToMilestone }}</p>
                     </progress-circle>
                 </div>
-                <div class="col-xs-8">
-                    <h4>Next milestone</h4>
-                    <p>
-                        {{ milestoneTitle }}<br/>in {{ winsToMilestone }}
-                        <span v-if="winsToMilestone === 1">win</span>
-                        <span v-else>consecutive wins</span>
-                    </p>
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div class="col-xs-4">
+                <div class="col-xs-6">
+                    Days left
                     <progress-circle :completed-steps="getSerieTimeProgress"
                                      :total-steps="100"
                                      :diameter="progressCircleDiameter"
-                                     startColor="#505050"
-                                     stopColor="#C0C0C0"
+                                     startColor="#1F2F4B"
+                                     stopColor="#00A8E5"
                                      circleColor="#DDDDDD">
                         <p class="innerProgressCircle">{{ getSerieTimeLeft}}</p>
                     </progress-circle>
                 </div>
-                <div class="col-xs-8">
-                    <h4>Days left</h4>
-                    <p>Current chest<br/>{{ highest }}</p>
+            </div>
+            <div class="col-xs-4">
+                <h4>Current chest</h4>
+                <div :class="'serieChest serieChest-' + highest"></div>
+                <div class="row">
+                    <p>
+                        Next chest in <strong>{{ winsToNextChest }}</strong>
+                        <span v-if="winsToNextChest === 1">win</span>
+                        <span v-else>consecutive wins</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -66,21 +63,24 @@
     components: {ProgressCircle},
     data () {
       return {
-        progressCircleDiameter: 70
+        progressCircleDiameter: 60
       }
     },
     computed: {
       ...mapGetters(['rank', 'stars', 'highest', 'nextMilestone', 'winsToMilestone',
         'gamesPlayed', 'gamesWon', 'winRate', 'current', 'opponent', 'recentNumberGames',
         'rankTitle', 'getSerieTimeProgress', 'getSerieTimeLeft',
-        'starsInMilestone', 'starsToMilestone',
-        'rankWild', 'starsWild', 'wildMode'
+        'starsInMilestone', 'starsToMilestone', 'winsToNextChest',
+        'rankWild', 'starsWild', 'wildMode', 'rankStars'
       ]),
       currentRankTitle () {
         return this.rankTitle()
       },
       currentStars () {
         return this.wildMode ? this.starsWild : this.stars
+      },
+      currentMaxStars () {
+        return this.wildMode ? this.rankStars(this.rankWild) : this.rankStars(this.rank)
       },
       milestoneTitle () {
         return this.rankTitle(this.nextMilestone)

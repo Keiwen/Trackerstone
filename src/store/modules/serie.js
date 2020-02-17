@@ -49,16 +49,21 @@ const getters = {
     }
     return nextMilestone
   },
-  starsToMilestone: (state, getters) => {
+  starsToRank: (state, getters) => (targetRank) => {
     const rank = state.wildMode ? state.rankWild : state.rank
     if (rank === 0) return 0
-    const nextMilestone = getters.nextMilestone
     let stars = 1
-    for (let i = rank; i > nextMilestone; i--) {
+    for (let i = rank; i > targetRank; i--) {
       stars += Ranks[i]['stars']
     }
     stars -= state.wildMode ? state.starsWild : state.stars
     return stars
+  },
+  starsToMilestone: (state, getters) => {
+    return getters.starsToRank(getters.nextMilestone)
+  },
+  starsToNextChest: (state, getters) => {
+    return getters.starsToRank(getters.highest - 1)
   },
   starsInMilestone: (state, getters) => {
     const rank = state.wildMode ? state.rankWild : state.rank
@@ -77,20 +82,26 @@ const getters = {
     }
     return stars
   },
-  winsToMilestone: (state, getters) => {
+  winsToRank: (state, getters) => (targetRank) => {
     const rank = state.wildMode ? state.rankWild : state.rank
     if (rank === 0) return 0
-    const starsToMilestone = getters.starsToMilestone
+    const starsToRank = getters.starsToRank(targetRank)
     // if no more bonus, wins = number of stars
-    if (rank <= Constants.serie.rankBonusCanceled) return starsToMilestone
+    if (rank <= Constants.serie.rankBonusCanceled) return starsToRank
     // games to win before bonus star
     const winStreak = state.wildMode ? state.winStreakWild : state.winStreak
     let winTilBonus = Constants.serie.winStreak - 1 - winStreak
     if (winTilBonus < 0) winTilBonus = 0
-    let normalWins = Math.min(winTilBonus, starsToMilestone)
+    let normalWins = Math.min(winTilBonus, starsToRank)
     // games to win with bonus
-    let bonusWins = (starsToMilestone - normalWins) / (Constants.serie.bonusStar + 1)
+    let bonusWins = (starsToRank - normalWins) / (Constants.serie.bonusStar + 1)
     return Math.ceil(normalWins + bonusWins)
+  },
+  winsToMilestone: (state, getters) => {
+    return getters.winsToRank(getters.nextMilestone)
+  },
+  winsToNextChest: (state, getters) => {
+    return getters.winsToRank(getters.highest - 1)
   },
   stars: state => state.stars,
   starsWild: state => state.starsWild,
