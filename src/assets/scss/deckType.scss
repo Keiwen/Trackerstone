@@ -9,11 +9,11 @@
 
     .deckTypeShow,.deckShow {
       height: 60px;
-      background-color: var(--second-bg;
+      background-color: var(--second-bg);
       border-radius: 50px 0 0 50px;
 
       &.lastChange {
-        border: 1px solid var(--orange-ts;
+        border: 1px solid var(--orange-ts);
       }
 
       h4 {
@@ -104,7 +104,7 @@
       }
 
       &-combo {
-        @include boxShadowDeckArchetype(var(--orange-ts);
+        @include boxShadowDeckArchetype(var(--orange-ts));
       }
     }
 
