@@ -43,7 +43,7 @@
     }
     &:checked + label:before {
       background: $background;
-      color: $white;
+      color: var(--white);
     }
   }
 }

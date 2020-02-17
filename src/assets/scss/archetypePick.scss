@@ -9,14 +9,14 @@
       cursor: pointer;
 
       :hover {
-        //border: 1px solid $orange-ts;
+        //border: 1px solid var(--orange-ts);
       }
 
       > div {
         padding: 20px 0 20px 75px;
         position: relative;
         text-align: left;
-        color: $black;
+        color: var(--black);
         font-weight: bold;
         margin: 15px 0;
         @include transition(0.3s linear all);
@@ -39,8 +39,8 @@
       }
 
       .aggro {
-        background-color: $red-ts;
-        box-shadow: 0 10px darken($red-ts, 10%);
+        background-color: var(--red-ts);
+        box-shadow: 0 10px darken(var(--red-ts), 10%);
 
         &::before {
           content: '';
@@ -54,18 +54,18 @@
         }
 
         &:hover {
-          box-shadow: 0 20px darken($red-ts, 10%);
+          box-shadow: 0 20px darken(var(--red-ts), 10%);
         }
 
         &:active {
-          box-shadow: 0 2px darken($red-ts, 10%);
+          box-shadow: 0 2px darken(var(--red-ts), 10%);
         }
 
       }
 
       .midrange {
-        background-color: $green-ts;
-        box-shadow: 0 10px darken($green-ts, 10%);
+        background-color: var(--green-ts);
+        box-shadow: 0 10px darken(var(--green-ts), 10%);
 
         &::before {
           content: '';
@@ -79,17 +79,17 @@
         }
 
         &:hover {
-          box-shadow: 0 20px darken($green-ts, 10%);
+          box-shadow: 0 20px darken(var(--green-ts), 10%);
         }
 
         &:active {
-          box-shadow: 0 2px darken($green-ts, 10%);
+          box-shadow: 0 2px darken(var(--green-ts), 10%);
         }
       }
 
       .control {
-        background-color: $blue-ts;
-        box-shadow: 0 10px darken($blue-ts, 10%);
+        background-color: var(--blue-ts);
+        box-shadow: 0 10px darken(var(--blue-ts), 10%);
 
         &::before {
           content: '';
@@ -103,17 +103,17 @@
         }
 
         &:hover {
-          box-shadow: 0 20px darken($blue-ts, 10%);
+          box-shadow: 0 20px darken(var(--blue-ts), 10%);
         }
 
         &:active {
-          box-shadow: 0 2px darken($blue-ts, 10%);
+          box-shadow: 0 2px darken(var(--blue-ts), 10%);
         }
       }
 
       .combo {
-        background-color: $orange-ts;
-        box-shadow: 0 10px darken($orange-ts, 10%);
+        background-color: var(--orange-ts);
+        box-shadow: 0 10px darken(var(--orange-ts), 10%);
 
         &::before {
           content: '';
@@ -127,11 +127,11 @@
         }
 
         &:hover {
-          box-shadow: 0 20px darken($orange-ts, 10%);
+          box-shadow: 0 20px darken(var(--orange-ts), 10%);
         }
 
         &:active {
-          box-shadow: 0 2px darken($orange-ts, 10%);
+          box-shadow: 0 2px darken(var(--orange-ts), 10%);
         }
       }
     }

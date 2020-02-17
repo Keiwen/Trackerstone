@@ -5,24 +5,24 @@ table {
   margin: auto;
   td,th {
     padding: 5px;
-    border: 1px solid $orange-ts50;
+    border: 1px solid var(--orange-ts50);
   }
   tr:hover td {
-    background-color: $grey-light;
+    background-color: var(--grey-light);
   }
   th {
     text-align: center;
-    color: $black;
+    color: var(--black);
     // first col th (first row is overloaded below)
-    background: linear-gradient(to left, $white, $secondary-light);
+    background: linear-gradient(to left, var(--white), var(--secondary-light));
   }
   tr:first-child th {
     // first row th
-    background: linear-gradient(to top, $white, $secondary-light);
+    background: linear-gradient(to top, var(--white), var(--secondary-light));
   }
   tr.midheader th {
     // first row th
-    background: linear-gradient(to top, $white, $secondary-light);
+    background: linear-gradient(to top, var(--white), var(--secondary-light));
   }
   td {
     &.nocell {

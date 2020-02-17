@@ -9,11 +9,11 @@
 
     .deckTypeShow,.deckShow {
       height: 60px;
-      background-color: $second-bg;
+      background-color: var(--second-bg;
       border-radius: 50px 0 0 50px;
 
       &.lastChange {
-        border: 1px solid $orange-ts;
+        border: 1px solid var(--orange-ts;
       }
 
       h4 {
@@ -35,7 +35,7 @@
 
         //      background: url('../../assets/charac_skins.jpg') 0 0 no-repeat;
         // h4 {
-        //   color: $white;
+        //   color: var(--white);
         //   top: 36px;
         //   z-index: 4;
         //   position: absolute;
@@ -92,19 +92,19 @@
 
     .deckArchetype {
       &-aggro {
-        @include boxShadowDeckArchetype($red-ts);
+        @include boxShadowDeckArchetype(var(--red-ts);
       }
 
       &-control {
-        @include boxShadowDeckArchetype($blue-ts);
+        @include boxShadowDeckArchetype(var(--blue-ts);
       }
 
       &-midrange {
-        @include boxShadowDeckArchetype($green-ts);
+        @include boxShadowDeckArchetype(var(--green-ts);
       }
 
       &-combo {
-        @include boxShadowDeckArchetype($orange-ts);
+        @include boxShadowDeckArchetype(var(--orange-ts);
       }
     }
 
@@ -117,7 +117,7 @@
         }
 
         .col-xs-2 {
-          background-color: $black;
+          background-color: var(--black);
 
           > div {
             margin: 0 auto;
@@ -132,7 +132,7 @@
       // }
 
       .stared {
-        color: $orange-ts!important;
+        color: var(--orange-ts)!important;
         height: 22px;
         width: 22px;
         top: 0;
@@ -141,7 +141,7 @@
       }
 
       .noted {
-        color: $orange-ts!important;
+        color: var(--orange-ts)!important;
       }
     }
 
@@ -185,7 +185,7 @@
 
 
 .deckCardBackground {
-  color: $black;
+  color: var(--black);
   &:before {
     content: "";
     position: absolute;
@@ -205,4 +205,3 @@
 .deckEdition {
   margin-top: -55px;
 }
-

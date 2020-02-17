@@ -5,7 +5,7 @@ body {
   position: relative;
 
   hr {
-    border-top: 1px dotted $main-color !important;
+    border-top: 1px dotted var(--main-color)!important;
     margin-top: 5px;
     margin-bottom: 5px;
   }
@@ -23,21 +23,21 @@ body {
     position: absolute;
     bottom:0;
     width: 100%;
-    color: $white;
-    background-color: $brown-ts;
+    color: var(--white);
+    background-color: var(--brown-ts);
     padding: 15px 0;
 
     p {
       margin: 0;
       a{
-        color: $orange-ts;
+        color: var(--orange-ts);
         text-decoration: none;
       }
       &::before {
         content:'';
       }
       span {
-        color: $white;
+        color: var(--white);
       }
     }
   }
@@ -48,6 +48,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: $main-color;
+  color: var(--main-color);
   margin-top: 55px;
 }

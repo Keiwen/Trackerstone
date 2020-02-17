@@ -29,20 +29,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.navbar-brand {
-  & > img {
-    display: inline;
-    height: 50px;
+
+.navbar {
+  background-color: #EBE6D7;
+  box-shadow: 0px 3px 6px #858585;
+
+
+  .navbar-brand {
+    & > img {
+      display: inline-block;
+      height: 50px;
+    }
+    padding: 0;
+    margin-right: 25px;
   }
-  padding: 0;
-  margin-right: 25px;
+
+  .navbar-xs {
+    position: fixed;
+    z-index: 1030;
+    top: 0;
+    left: 0;
+  }
 }
 
-.navbar-xs {
-  position: fixed;
-  z-index: 1030;
-  top: 0;
-  left: 0;
-}
 
 </style>

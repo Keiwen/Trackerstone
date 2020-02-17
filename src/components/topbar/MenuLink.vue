@@ -20,20 +20,29 @@
 
 <style lang="scss" scoped>
 
+
+
 .nav > menuitem {
   float: left;
   position: relative;
   display: block;
+  padding: 15px;
   & > a {
     color: #777;
     line-height: 20px;
+    display: inline-block;
     position: relative;
-    display: block;
-    padding: 15px;
     text-decoration: none;
-    &:hover {
-      border-bottom: 1px solid #000000;
-    }
+    &:hover::before {
+        // content: '';
+        // width: 100%;
+        // display: block;
+        // position: absolute;
+        // bottom:-16px;
+        // height:5px;
+        // transition: .4s ease-in-out;
+        // background: green;
+        // opacity: 1;
 
   }
   & .fa-icon {
@@ -41,8 +50,29 @@
   }
 }
 
-.router-link-exact-active {
-  border-bottom: 1px solid #D3921F;
+:not(.router-link-exact-active)::before {
+  content: '';
+  width: 0;
+  display: block;
+  position: absolute;
+  bottom:-16px;
+  height:5px;
+  transition: .4s ease-in-out;
+//  background: $orange-ts;
+  opacity: 0;
+}
+
+.router-link-exact-active::before {
+    content: '';
+    width: 100%;
+    display: block;
+    position: absolute;
+    bottom:-16px;
+    height:5px;
+    transition: .4s ease-in-out;
+  //  background: $orange-ts;
+    opacity: 1;
+  }
 }
 
 

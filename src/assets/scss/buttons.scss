@@ -37,58 +37,58 @@
 }
 
 .btn-success {
-  border-color: $green-ts!important;
-  box-shadow: 0 3px darken($green-ts, 10%);
+  border-color: var(--green-ts)!important;
+  box-shadow: 0 3px darken(var(--green-ts), 10%);
 
   &:hover {
-    background-color: $green-ts!important;
-    box-shadow: 0 6px darken($green-ts, 10%);
+    background-color: var(--green-ts)!important;
+    box-shadow: 0 6px darken(var(--green-ts), 10%);
   }
 
   &:active {
-    box-shadow: 0 2px darken($green-ts, 10%);
+    box-shadow: 0 2px darken(var(--green-ts), 10%);
   }
 }
 
 .btn-danger {
-  border-color: $red-ts!important;
-  box-shadow: 0 3px darken($red-ts, 10%);
+  border-color: var(--red-ts)!important;
+  box-shadow: 0 3px darken(var(--red-ts), 10%);
 
   &:hover {
-    background-color: $red-ts!important;
-    box-shadow: 0 6px darken($red-ts, 10%);
+    background-color: var(--red-ts)!important;
+    box-shadow: 0 6px darken(var(--red-ts), 10%);
   }
 
   &:active {
-    box-shadow: 0 2px darken($red-ts, 10%);
+    box-shadow: 0 2px darken(var(--red-ts), 10%);
   }
 }
 
 .btn-default {
-  border-color: $orange-ts!important;
-  box-shadow: 0 3px darken($orange-ts, 5%);
+  border-color: var(--orange-ts)!important;
+  box-shadow: 0 3px darken(var(--orange-ts), 5%);
 
   &:hover {
-    background-color: lighten($orange-ts, 10%)!important;
-    box-shadow: 0 6px darken($orange-ts, 5%);
+    background-color: lighten(var(--orange-ts), 10%)!important;
+    box-shadow: 0 6px darken(var(--orange-ts), 5%);
   }
 
   &:active {
-    box-shadow: 0 2px darken($orange-ts, 5%);
+    box-shadow: 0 2px darken(var(--orange-ts), 5%);
   }
 }
 
 .btn-warning {
-  border-color: $orange-ts!important;
-  box-shadow: 0 3px darken($orange-ts, 5%);
+  border-color: var(--orange-ts)!important;
+  box-shadow: 0 3px darken(var(--orange-ts), 5%);
 
   &:hover {
-    background-color: lighten($orange-ts, 5%)!important;
-    box-shadow: 0 6px darken($orange-ts, 5%);
+    background-color: lighten(var(--orange-ts), 5%)!important;
+    box-shadow: 0 6px darken(var(--orange-ts), 5%);
   }
 
   &:active {
-    box-shadow: 0 2px darken($orange-ts, 5%);
+    box-shadow: 0 2px darken(var(--orange-ts), 5%);
   }
 }
 
@@ -98,11 +98,11 @@
 .enhancedCheck input[type="radio"] + label,
 .enhancedCheck input[type="checkbox"] + label {
   background-color: transparent;
-  color: $main-color !important;
+  color: var(--main-color)!important;
   &:hover{
-    border: 1px solid $main-color !important;
-    background-color: $orange-ts;
-    color: $white !important;
+    border: 1px solid var(--main-color) !important;
+    background-color: var(--orange-ts);
+    color: var(--white) !important;
     @include transition(all ease 0.6s);
   }
 }
@@ -110,18 +110,18 @@
 // checked
 .enhancedCheck input[type="radio"]:checked + label,
 .enhancedCheck input[type="checkbox"]:checked + label {
-  background-color: $main-color;
-  color: $orange-ts !important;
+  background-color: var(--main-color);
+  color: var(--orange-ts) !important;
 }
 
 // enhanced check star ; icon ★ ✩
 .enhancedCheck.enhancedCheck-star {
-  @include enhancedCheckSpec("\2605", $orange-ts);
+  @include enhancedCheckSpec("\2605", var(--orange-ts));
 }
 
 // enhanced check wild ; icon ω
 .enhancedCheck.enhancedCheck-wild {
-  @include enhancedCheckSpec("\03c9", $serie-wild);
+  @include enhancedCheckSpec("\03c9", var(--serie-wild));
 }
 
 //rounded icon
@@ -133,7 +133,7 @@
     color: transparent;
   }
   &:checked + label:before {
-    color: $main-color;
+    color: var(--main-color);
   }
 }
 
