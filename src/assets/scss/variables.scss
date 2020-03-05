@@ -12,6 +12,10 @@
 --brown-ts50 : rgba(70,60,59,0.5);
 --brown-ts25 : rgba(70,60,59,0.25);
 --orange-ts : #D3921F;
+--lighten-orange-ts5 : lighten(#D3921F, 5%);
+--lighten-orange-ts10 : lighten(#D3921F, 10%);
+--darken-orange-ts5 : darken(#D3921F, 5%);
+--darken-orange-ts10 : darken(#D3921F, 10%);
 --orange-ts75 : rgba(211,146,31,0.75);
 --orange-ts50 : rgba(211,146,31,0.5);
 --orange-ts25 : rgba(211,146,31,0.25);
@@ -20,8 +24,11 @@
 --secondary-dark : #0C2032;
 
 --green-ts : #4CAE4C;
+--darken-green-ts10 : darken(#4CAE4C, 10%);
 --red-ts : #D43F3A;
+--darken-red-ts10 : darken(#D43F3A, 10%);
 --blue-ts: #089FA0;
+--darken-blue-ts10 : darken(#089FA0, 10%);
 
 --green-ts-light: #7CC47C;
 --red-ts-light: #DF736F;

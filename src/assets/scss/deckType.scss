@@ -147,11 +147,11 @@
 
     .deckSerie {
       &-standard {
-        @include boxShadowDeckSerie($serie-standard);
+        @include boxShadowDeckSerie(var(--serie-standard));
       }
 
       &-wild {
-        @include boxShadowDeckSerie($serie-wild);
+        @include boxShadowDeckSerie(var(--serie-wild));
       }
     }
   }
@@ -163,7 +163,7 @@
   border: 1px solid transparent;
   cursor: pointer;
   &:hover {
-    border: 1px solid #D3921F;
+    border: 1px solid var(--orange-ts);
   }
 
   .deckTypeShowSimple,.deckShow {

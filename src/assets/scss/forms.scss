@@ -39,15 +39,15 @@
     font-size: 1.5em;
     color: white !important;
     &.int-pm-increment {
-      background: var(--green-ts !important;
+      background: var(--green-ts) !important;
       &.disabled {
-        background: var(--green-ts-light !important;
+        background: var(--green-ts-light) !important;
       }
     }
     &.int-pm-decrement {
-      background: var(--red-ts !important;
+      background: var(--red-ts) !important;
       &.disabled {
-        background: var(--red-ts-light !important;
+        background: var(--red-ts-light) !important;
       }
     }
   }

@@ -38,57 +38,57 @@
 
 .btn-success {
   border-color: var(--green-ts)!important;
-  box-shadow: 0 3px darken(var(--green-ts), 10%);
+  box-shadow: 0 3px var(--darken-green-ts10);
 
   &:hover {
     background-color: var(--green-ts)!important;
-    box-shadow: 0 6px darken(var(--green-ts), 10%);
+    box-shadow: 0 6px var(--darken-green-ts10);
   }
 
   &:active {
-    box-shadow: 0 2px darken(var(--green-ts), 10%);
+    box-shadow: 0 2px var(--darken-green-ts10);
   }
 }
 
 .btn-danger {
   border-color: var(--red-ts)!important;
-  box-shadow: 0 3px darken(var(--red-ts), 10%);
+  box-shadow: 0 3px var(--darken-red-ts10);
 
   &:hover {
     background-color: var(--red-ts)!important;
-    box-shadow: 0 6px darken(var(--red-ts), 10%);
+    box-shadow: 0 6px var(--darken-red-ts10);
   }
 
   &:active {
-    box-shadow: 0 2px darken(var(--red-ts), 10%);
+    box-shadow: 0 2px var(--darken-red-ts10);
   }
 }
 
 .btn-default {
   border-color: var(--orange-ts)!important;
-  box-shadow: 0 3px darken(var(--orange-ts), 5%);
+  box-shadow: 0 3px var(--darken-orange-ts5);
 
   &:hover {
-    background-color: lighten(var(--orange-ts), 10%)!important;
-    box-shadow: 0 6px darken(var(--orange-ts), 5%);
+    background-color: var(--lighten-orange-ts10)!important;
+    box-shadow: 0 6px var(--darken-orange-ts5);
   }
 
   &:active {
-    box-shadow: 0 2px darken(var(--orange-ts), 5%);
+    box-shadow: 0 2px var(--darken-orange-ts5);
   }
 }
 
 .btn-warning {
   border-color: var(--orange-ts)!important;
-  box-shadow: 0 3px darken(var(--orange-ts), 5%);
+  box-shadow: 0 3px var(--darken-orange-ts5);
 
   &:hover {
-    background-color: lighten(var(--orange-ts), 5%)!important;
-    box-shadow: 0 6px darken(var(--orange-ts), 5%);
+    background-color: var(--lighten-orange-ts5)!important;
+    box-shadow: 0 6px var(--darken-orange-ts5);
   }
 
   &:active {
-    box-shadow: 0 2px darken(var(--orange-ts), 5%);
+    box-shadow: 0 2px var(--darken-orange-ts5);
   }
 }
 

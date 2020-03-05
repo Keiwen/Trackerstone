@@ -40,7 +40,7 @@
 
       .aggro {
         background-color: var(--red-ts);
-        box-shadow: 0 10px darken(var(--red-ts), 10%);
+        box-shadow: 0 10px var(--darken-red-ts10);
 
         &::before {
           content: '';
@@ -54,18 +54,18 @@
         }
 
         &:hover {
-          box-shadow: 0 20px darken(var(--red-ts), 10%);
+          box-shadow: 0 20px var(--darken-red-ts10);
         }
 
         &:active {
-          box-shadow: 0 2px darken(var(--red-ts), 10%);
+          box-shadow: 0 2px var(--darken-red-ts10);
         }
 
       }
 
       .midrange {
         background-color: var(--green-ts);
-        box-shadow: 0 10px darken(var(--green-ts), 10%);
+        box-shadow: 0 10px var(--darken-green-ts10);
 
         &::before {
           content: '';
@@ -79,17 +79,17 @@
         }
 
         &:hover {
-          box-shadow: 0 20px darken(var(--green-ts), 10%);
+          box-shadow: 0 20px var(--darken-green-ts10);
         }
 
         &:active {
-          box-shadow: 0 2px darken(var(--green-ts), 10%);
+          box-shadow: 0 2px var(--darken-green-ts10);
         }
       }
 
       .control {
         background-color: var(--blue-ts);
-        box-shadow: 0 10px darken(var(--blue-ts), 10%);
+        box-shadow: 0 10px var(--darken-blue-ts10);
 
         &::before {
           content: '';
@@ -103,17 +103,17 @@
         }
 
         &:hover {
-          box-shadow: 0 20px darken(var(--blue-ts), 10%);
+          box-shadow: 0 20px var(--darken-blue-ts10);
         }
 
         &:active {
-          box-shadow: 0 2px darken(var(--blue-ts), 10%);
+          box-shadow: 0 2px var(--darken-blue-ts10);
         }
       }
 
       .combo {
         background-color: var(--orange-ts);
-        box-shadow: 0 10px darken(var(--orange-ts), 10%);
+        box-shadow: 0 10px var(--darken-orange-ts10);
 
         &::before {
           content: '';
@@ -127,11 +127,11 @@
         }
 
         &:hover {
-          box-shadow: 0 20px darken(var(--orange-ts), 10%);
+          box-shadow: 0 20px var(--darken-orange-ts10);
         }
 
         &:active {
-          box-shadow: 0 2px darken(var(--orange-ts), 10%);
+          box-shadow: 0 2px var(--darken-orange-ts10);
         }
       }
     }
