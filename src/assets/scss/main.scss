@@ -19,6 +19,7 @@ body {
       font-size: 16px;
       color: var(--main-color);
       margin-top: 55px;
+      background-color: var(--main-bg);
 
       hr {
         border-top: 1px dotted var(--main-color)!important;
@@ -26,13 +27,11 @@ body {
         margin-bottom: 5px;
       }
 
-      h2 {
-        margin-top: 10px;
-      }
-
-      h3 {
-        margin-top: 10px;
+      h2, h3 {
         font-size: 20px;
+        font-family: 'Changa One', Helvetica, Arial, sans-serif;
+        text-transform: uppercase;
+        margin: 0;
       }
 
       // footer {
