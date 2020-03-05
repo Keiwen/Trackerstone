@@ -28,7 +28,7 @@
   display: block;
   padding: 15px;
   & > a {
-    color: #777;
+    color: var(--main-color);
     line-height: 20px;
     display: inline-block;
     position: relative;
@@ -58,7 +58,7 @@
   bottom:-16px;
   height:5px;
   transition: .4s ease-in-out;
-//  background: $orange-ts;
+  background: var(--orange-ts);
   opacity: 0;
 }
 
@@ -70,7 +70,7 @@
     bottom:-16px;
     height:5px;
     transition: .4s ease-in-out;
-  //  background: $orange-ts;
+    background: var(--orange-ts);
     opacity: 1;
   }
 }

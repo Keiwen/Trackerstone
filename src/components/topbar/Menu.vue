@@ -31,14 +31,18 @@ export default {
 <style lang="scss" scoped>
 
 .navbar {
-  background-color: #EBE6D7;
-  box-shadow: 0px 3px 6px #858585;
+  background-color: var(--main-bg);
+  box-shadow: 0px 3px 6px var(--black-ts45);
 
 
   .navbar-brand {
     & > img {
       display: inline-block;
       height: 50px;
+    }
+
+    .hidden-xs {
+      color: var(--main-color);
     }
     padding: 0;
     margin-right: 25px;

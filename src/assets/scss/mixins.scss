@@ -18,6 +18,13 @@
   transform: $transforms;
 }
 
+//Bow shadow for Header
+@mixin boxShadowHeader($color) {
+  -webkit-box-shadow: 0px 3px 6px $color;
+  -moz-box-shadow: 0px 3px 6px $color;
+  box-shadow: 0px 3px 6px $color;
+}
+
 //Bow shadow for decktype archetype
 @mixin boxShadowDeckArchetype($color) {
   -webkit-box-shadow: inset -12px 0 0 0 $color;
