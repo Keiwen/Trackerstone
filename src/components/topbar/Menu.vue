@@ -43,6 +43,10 @@ export default {
 
     .hidden-xs {
       color: var(--main-color);
+      font-family: 'Changa One', Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      text-transform: uppercase;
+      vertical-align: middle;
     }
     padding: 0;
     margin-right: 25px;

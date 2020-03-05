@@ -55,7 +55,7 @@
   width: 0;
   display: block;
   position: absolute;
-  bottom:-16px;
+  bottom:-18px;
   height:5px;
   transition: .4s ease-in-out;
   background: var(--orange-ts);
@@ -67,7 +67,7 @@
     width: 100%;
     display: block;
     position: absolute;
-    bottom:-16px;
+    bottom:-18px;
     height:5px;
     transition: .4s ease-in-out;
     background: var(--orange-ts);

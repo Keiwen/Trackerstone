@@ -1,53 +1,64 @@
 
 /* Main Style */
+
+/* ~** Fonts **~ */
+
+// main font
+@import url('https://fonts.googleapis.com/css?family=Changa+One|Source+Sans+Pro:400,700&display=swap');
+
+
 body {
   padding-bottom: 50px;
   position: relative;
 
-  hr {
-    border-top: 1px dotted var(--main-color)!important;
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
+    #app {
+      font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-align: center;
+      font-size: 16px;
+      color: var(--main-color);
+      margin-top: 55px;
 
-  h2 {
-    margin-top: 10px;
-  }
-
-  h3 {
-    margin-top: 10px;
-    font-size: 20px;
-  }
-
-  footer {
-    position: absolute;
-    bottom:0;
-    width: 100%;
-    color: var(--white);
-    background-color: var(--brown-ts);
-    padding: 15px 0;
-
-    p {
-      margin: 0;
-      a{
-        color: var(--orange-ts);
-        text-decoration: none;
+      hr {
+        border-top: 1px dotted var(--main-color)!important;
+        margin-top: 5px;
+        margin-bottom: 5px;
       }
-      &::before {
-        content:'';
+
+      h2 {
+        margin-top: 10px;
       }
-      span {
-        color: var(--white);
+
+      h3 {
+        margin-top: 10px;
+        font-size: 20px;
       }
+
+      // footer {
+      //   position: absolute;
+      //   bottom:0;
+      //   width: 100%;
+      //   color: var(--white);
+      //   background-color: var(--brown-ts);
+      //   padding: 15px 0;
+      //
+      //   p {
+      //     margin: 0;
+      //     a{
+      //       color: var(--orange-ts);
+      //       text-decoration: none;
+      //     }
+      //     &::before {
+      //       content:'';
+      //     }
+      //     span {
+      //       color: var(--white);
+      //     }
+      //   }
+      // }
+
     }
-  }
-}
 
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: var(--main-color);
-  margin-top: 55px;
+
 }
