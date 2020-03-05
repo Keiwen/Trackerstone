@@ -92,15 +92,15 @@
 
     .deckArchetype {
       &-aggro {
-        @include boxShadowDeckArchetype(var(--red-ts);
+        @include boxShadowDeckArchetype(var(--red-ts));
       }
 
       &-control {
-        @include boxShadowDeckArchetype(var(--blue-ts);
+        @include boxShadowDeckArchetype(var(--blue-ts));
       }
 
       &-midrange {
-        @include boxShadowDeckArchetype(var(--green-ts);
+        @include boxShadowDeckArchetype(var(--green-ts));
       }
 
       &-combo {
