@@ -9,8 +9,8 @@
                 <div class="col-xs-5">
                     <div>
                       <h2>Rank</h2>
-                        <span v-for="i in currentStars" class="serieStar serieStar-on">X</span>
-                        <span v-for="i in (currentMaxStars - currentStars)" class="serieStar serieStar-off">-</span>
+                        <span v-for="i in currentStars" class="serieStar serieStar-on"></span>
+                        <span v-for="i in (currentMaxStars - currentStars)" class="serieStar serieStar-off"></span>
                     </div>
                     <p>{{ currentRankTitle }}</p>
                 </div>
@@ -185,6 +185,50 @@
       .rank-1 {
         background-position: -480px -480px;
       }
+
+      .serieStar {
+        padding: 15px 0 15px 0;
+        width: 17px;
+        height: 17px;
+        display: inline-block;
+        visibility: hidden;
+      }
+        .serieStar-on {
+          position: relative;
+          width: 17px;
+          height: 17px;
+
+        &:before {
+          content:'';
+          position: absolute;
+          visibility: visible;
+          top: 10px;
+          left: 0;
+          width: 16px;
+          height: 16px;
+          background: url('../../assets/star.svg') 0 0 no-repeat;
+          }
+      }
+
+      .serieStar-off {
+        position: relative;
+        width: 17px;
+        height: 17px;
+
+      &:before {
+        content:'';
+        position: absolute;
+        visibility: visible;
+        top: 10px;
+        left: -3px;
+        width: 16px;
+        height: 16px;
+        background: url('../../assets/star.svg') 0 0 no-repeat;
+        filter: brightness(0%);
+        opacity:0.4;
+        }
+    }
+
 
     }
 
