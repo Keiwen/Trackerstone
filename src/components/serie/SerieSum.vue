@@ -102,9 +102,88 @@
 
     .rankhome {
       .rankbadge {
+        display: block;
+        position: relative;
+        background: url('../../assets/spriteHS.png') 0 0 no-repeat;
         width: 105px;
-        height: 130px;
-        background-color: var(--main-color);
+        height: 120px;
+        background-size: 600px 600px;
+      }
+
+      .rank-25 {
+        background-position: 0 0;
+      }
+      .rank-24 {
+        background-position: -120px 0;
+      }
+      .rank-23 {
+        background-position: -240px 0;
+      }
+      .rank-22 {
+        background-position: -360px 0;
+      }
+      .rank-21 {
+        background-position: -480px 0;
+      }
+      .rank-20 {
+        background-position: 0 -120px;
+      }
+      .rank-19 {
+        background-position: -120px -120px;
+      }
+      .rank-18 {
+        background-position: -240px -120px;
+      }
+      .rank-17 {
+        background-position: -360px -120px;
+      }
+      .rank-16 {
+        background-position: -480px -120px;
+      }
+      .rank-15 {
+        background-position: 0 -240px;
+      }
+      .rank-14 {
+        background-position: -120px -240px;
+      }
+      .rank-13 {
+        background-position: -240px -240px;
+      }
+      .rank-12 {
+        background-position: -360px -240px;
+      }
+      .rank-11 {
+        background-position: -480px -240px;
+      }
+      .rank-10 {
+        background-position: 0 -360px;
+      }
+      .rank-9 {
+        background-position: -120px -360px;
+      }
+      .rank-8 {
+        background-position: -240px -360px;
+      }
+      .rank-7 {
+        background-position: -360px -360px;
+      }
+      .rank-6 {
+        background-position: -480px -360px;
+      }
+      .rank-5 {
+        background-position: 0 -480px;
+      }
+      .rank-4 {
+        background-position: -120px -480px;
+      }
+      .rank-3 {
+        background-position: -240px -480px;
+      }
+      .rank-2 {
+        background-position: -360px -480px;
+      }
+      .rank-1 {
+        background-position: -480px -480px;
       }
 
     }
@@ -116,7 +195,7 @@
       .circle-progress-container {
           position: relative;
           margin: 0 auto;
-          
+
           &:before {
             content:'';
             width: 38px;
