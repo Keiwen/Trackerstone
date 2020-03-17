@@ -188,15 +188,15 @@
 
       .serieStar {
         padding: 15px 0 15px 0;
-        width: 17px;
-        height: 17px;
+        width: 15px;
+        height: 15px;
         display: inline-block;
         visibility: hidden;
       }
         .serieStar-on {
           position: relative;
-          width: 17px;
-          height: 17px;
+          width: 15px;
+          height: 15px;
 
         &:before {
           content:'';
@@ -204,16 +204,16 @@
           visibility: visible;
           top: 10px;
           left: 0;
-          width: 16px;
-          height: 16px;
+          width: 15px;
+          height: 15px;
           background: url('../../assets/star.svg') 0 0 no-repeat;
           }
       }
 
       .serieStar-off {
         position: relative;
-        width: 17px;
-        height: 17px;
+        width: 15px;
+        height: 15px;
 
       &:before {
         content:'';
@@ -221,8 +221,8 @@
         visibility: visible;
         top: 10px;
         left: -3px;
-        width: 16px;
-        height: 16px;
+        width: 15px;
+        height: 15px;
         background: url('../../assets/star.svg') 0 0 no-repeat;
         filter: brightness(0%);
         opacity:0.4;

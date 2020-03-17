@@ -26,7 +26,7 @@
   float: left;
   position: relative;
   display: block;
-  padding: 15px;
+  padding: 15px 10px;
   & > a {
     color: var(--main-color);
     line-height: 20px;
