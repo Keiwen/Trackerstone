@@ -17,7 +17,7 @@
                                     :inner-text="isNewArena ? 0 : arenaGamesLossCurrent">
                 </ts-progress-circle>
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-4 arenaKey">
                 <h4>{{ arenaKeyTitle() }} key</h4>
                 <p>
                     {{ arenaWinPercentCurrent }} % winrate
@@ -25,7 +25,7 @@
                     <win-loss v-for="(game, gameIndex) in currentGames" :game="game" :key="gameIndex" />
                 </p>
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-4 arenaBalance">
                 <h4>Gold balance</h4>
                 <p>
                     Arena refund: <span :class="getGoldBalanceLabelClass()">{{ getGoldBalance() }}</span>
@@ -87,5 +87,17 @@
 
 <style lang="scss" scoped>
 
+    .arenaSum {
+        margin-bottom: 5px;
+        h4 {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        .arenaKey,.arenaBalance {
+            > p {
+                margin-bottom: 0;
+            }
+        }
+    }
 
 </style>
