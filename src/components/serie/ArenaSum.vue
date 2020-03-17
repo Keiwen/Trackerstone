@@ -6,7 +6,7 @@
                                     :total-steps="12"
                                     startColor="#25471E"
                                     stopColor="#66E85A"
-                                    :inner-text="isNewArena ? 0 : arenaGamesWonCurrent">
+                                    :inner-number="isNewArena ? 0 : arenaGamesWonCurrent">
                 </ts-progress-circle>
             </div>
             <div class="col-xs-2">
@@ -14,7 +14,7 @@
                                     :total-steps="3"
                                     startColor="#491F1F"
                                     stopColor="#E85A5A"
-                                    :inner-text="isNewArena ? 0 : arenaGamesLossCurrent">
+                                    :inner-number="isNewArena ? 0 : arenaGamesLossCurrent">
                 </ts-progress-circle>
             </div>
             <div class="col-xs-4 arenaKey">

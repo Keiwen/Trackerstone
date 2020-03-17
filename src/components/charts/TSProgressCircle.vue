@@ -6,7 +6,7 @@
                          :startColor="startColor"
                          :stopColor="stopColor"
                          circleColor="#DDDDDD">
-            <p class="innerProgressCircle">{{ innerText }}</p>
+            <p class="innerProgressCircle">{{ innerNumber }}</p>
         </progress-circle>
     </div>
 </template>
@@ -33,9 +33,9 @@
         type: String,
         default: '#000000'
       },
-      innerText: {
-        type: String,
-        default: ''
+      innerNumber: {
+        type: Number,
+        default: 0
       }
     },
     components: {ProgressCircle}

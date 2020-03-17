@@ -23,7 +23,7 @@
                                      :total-steps="starsInMilestone"
                                      startColor="#321D05"
                                      stopColor="#FF911C"
-                                     :inner-text="starsToMilestone">
+                                     :inner-number="starsToMilestone">
                     </ts-progress-circle>
                 </div>
                 <div class="col-xs-6 info">
@@ -32,7 +32,7 @@
                                         :total-steps="100"
                                         startColor="#1F2F4B"
                                         stopColor="#00A8E5"
-                                        :inner-text="getSerieTimeLeft">
+                                        :inner-number="getSerieTimeLeft">
                     </ts-progress-circle>
                 </div>
             </div>
