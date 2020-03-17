@@ -19,25 +19,21 @@
                 <h2>Next milestone</h2>
                 <div class="col-xs-6 info">
                     Stars left
-                    <progress-circle :completed-steps="starsInMilestone - starsToMilestone"
+                    <ts-progress-circle :completed-steps="starsInMilestone - starsToMilestone"
                                      :total-steps="starsInMilestone"
-                                     :diameter="progressCircleDiameter"
                                      startColor="#321D05"
                                      stopColor="#FF911C"
-                                     circleColor="#DDDDDD">
-                        <p class="innerProgressCircle">{{ starsToMilestone }}</p>
-                    </progress-circle>
+                                     :inner-text="starsToMilestone">
+                    </ts-progress-circle>
                 </div>
                 <div class="col-xs-6 info">
                     Days left
-                    <progress-circle :completed-steps="getSerieTimeProgress"
-                                     :total-steps="100"
-                                     :diameter="progressCircleDiameter"
-                                     startColor="#1F2F4B"
-                                     stopColor="#00A8E5"
-                                     circleColor="#DDDDDD">
-                        <p class="innerProgressCircle">{{ getSerieTimeLeft}}</p>
-                    </progress-circle>
+                    <ts-progress-circle :completed-steps="getSerieTimeProgress"
+                                        :total-steps="100"
+                                        startColor="#1F2F4B"
+                                        stopColor="#00A8E5"
+                                        :inner-text="getSerieTimeLeft">
+                    </ts-progress-circle>
                 </div>
             </div>
             <div class="col-xs-4 chesthome">
@@ -58,15 +54,10 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  import { ProgressCircle } from 'vue-progress-circle'
+  import TsProgressCircle from '@/components/charts/TSProgressCircle'
 
   export default {
-    components: {ProgressCircle},
-    data () {
-      return {
-        progressCircleDiameter: 60
-      }
-    },
+    components: {TsProgressCircle},
     computed: {
       ...mapGetters(['rank', 'stars', 'highest', 'nextMilestone', 'winsToMilestone',
         'gamesPlayed', 'gamesWon', 'winRate', 'current', 'opponent', 'recentNumberGames',
@@ -235,31 +226,6 @@
     .milestonehome {
 
       .info {margin-top: 5px}
-
-      .circle-progress-container {
-          position: relative;
-          margin: 0 auto;
-
-          &:before {
-            content:'';
-            width: 38px;
-            height:38px;
-            position: absolute;
-            background-color: var(--white);
-            border-radius: 50%;
-            width: 38px;
-            left: 11px;
-            top: 11px;
-          }
-
-      }
-
-      p.innerProgressCircle {
-        margin-top: 7px;
-        font-size: 20px;
-        display: block;
-        font-weight: bold;
-      }
 
     }
 

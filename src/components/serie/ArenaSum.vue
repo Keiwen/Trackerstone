@@ -2,24 +2,20 @@
     <div class="container-fluid">
         <div class="gamemodeSum arenaSum row">
             <div class="col-xs-2">
-                <progress-circle :completed-steps="isNewArena ? 0 : arenaGamesWonCurrent"
-                                 :total-steps="12"
-                                 :diameter="70"
-                                 startColor="#25471E"
-                                 stopColor="#66E85A"
-                                 circleColor="#DDDDDD">
-                    <p class="innerProgressCircle">{{ isNewArena ? 0 : arenaGamesWonCurrent }}</p>
-                </progress-circle>
+                <ts-progress-circle :completed-steps="isNewArena ? 0 : arenaGamesWonCurrent"
+                                    :total-steps="12"
+                                    startColor="#25471E"
+                                    stopColor="#66E85A"
+                                    :inner-text="isNewArena ? 0 : arenaGamesWonCurrent">
+                </ts-progress-circle>
             </div>
             <div class="col-xs-2">
-                <progress-circle :completed-steps="isNewArena ? 0 : arenaGamesLossCurrent"
-                                 :total-steps="3"
-                                 :diameter="70"
-                                 startColor="#491F1F"
-                                 stopColor="#E85A5A"
-                                 circleColor="#DDDDDD">
-                    <p class="innerProgressCircle">{{ isNewArena ? 0 : arenaGamesLossCurrent}}</p>
-                </progress-circle>
+                <ts-progress-circle :completed-steps="isNewArena ? 0 : arenaGamesLossCurrent"
+                                    :total-steps="3"
+                                    startColor="#491F1F"
+                                    stopColor="#E85A5A"
+                                    :inner-text="isNewArena ? 0 : arenaGamesLossCurrent">
+                </ts-progress-circle>
             </div>
             <div class="col-xs-4">
                 <h4>{{ arenaKeyTitle() }} key</h4>
@@ -46,10 +42,10 @@
 <script>
   import { mapGetters } from 'vuex'
   import WinLoss from './WinLoss'
-  import { ProgressCircle } from 'vue-progress-circle'
+  import TsProgressCircle from '@/components/charts/TSProgressCircle'
 
   export default {
-    components: {WinLoss, ProgressCircle},
+    components: {WinLoss, TsProgressCircle},
     computed: {
       ...mapGetters([
         'arenaGamesWonCurrent',
@@ -87,3 +83,9 @@
     }
   }
 </script>
+
+
+<style lang="scss" scoped>
+
+
+</style>
