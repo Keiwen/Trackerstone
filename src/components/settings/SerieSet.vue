@@ -132,7 +132,7 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
     .btn-setting {
         margin-top: 20px;
     }
@@ -141,9 +141,21 @@
         margin-bottom: 2px;
     }
 
-    .panel-heading {
-        padding-top: 5px;
-        padding-bottom: 5px;
+    .panel-default {
+
+        border-color: var(--second-bg);
+
+        .panel-heading {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            background: var(--second-bg);
+            border-color: var(--second-bg);
+        }
+
+        .panel-body {
+            background: var(--main-bg);
+        }
     }
+
 
 </style>
