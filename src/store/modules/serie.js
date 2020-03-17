@@ -40,6 +40,21 @@ const getters = {
     if (typeof id === 'undefined') id = state.wildMode ? state.rankWild : state.rank
     return Ranks[id]['stars']
   },
+  rankChest: state => (id) => {
+    if (typeof id === 'undefined') id = state.wildMode ? state.rankWildMax : state.rankMax
+    let chest = JSON.parse(JSON.stringify(Ranks[id]['chest']))
+    let chestUpgrade = null
+    // no next chest if legend, not supported over 20
+    if (id > 0 && id <= 20) chestUpgrade = JSON.parse(JSON.stringify(Ranks[id - 1]['chest']))
+    if (chestUpgrade !== null) {
+      chestUpgrade.goldenCommon = chestUpgrade.goldenCommon - chest.goldenCommon
+      chestUpgrade.goldenRare = chestUpgrade.goldenRare - chest.goldenRare
+      chestUpgrade.goldenEpic = chestUpgrade.goldenEpic - chest.goldenEpic
+      chestUpgrade.dust = chestUpgrade.dust - chest.dust
+    }
+    chest.chestUpgrade = chestUpgrade
+    return chest
+  },
   nextMilestone: state => {
     const rank = state.wildMode ? state.rankWild : state.rank
     if (rank === 0) return 0
