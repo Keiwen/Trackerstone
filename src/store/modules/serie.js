@@ -19,6 +19,7 @@ const state = {
   starsWildMax: 0,
   winStreakWild: 0,
   highest: 25,
+  rank15Reached: false,
   arenaWin: 0,
   arenaLoss: 0,
   arenaOpen: false
@@ -223,6 +224,7 @@ const actions = {
   reset ({dispatch, commit, state}) {
     // old reset: back to 25 and earn stars
     // march 2018: loose 4 ranks
+
     // const bonusStar = 25 - state.highest
     commit(types.RESET_SERIE)
     commit(types.RESET_HISTORY)
@@ -274,12 +276,14 @@ const mutations = {
     state.rankWildMax = state.rankWild
     state.starsMax = state.stars
     state.starsWildMax = state.starsWild
+    if (state.rank <= 15) state.rank15Reached = true
   },
   [types.INCREASE_RANK] (state) {
     if (state.wildMode) {
       if (state.rankWild === 0) return // max level
       state.rankWild--
       state.starsWild = 1
+      if (state.rankWild <= 15) state.rank15Reached = true
       if (state.rankWild === 0) state.starsWild = 0 // no star in last level
       if (state.highest > state.rankWild) state.highest = state.rankWild // store highest rank reached
       if (state.rankWildMax > state.rankWild) {
@@ -293,6 +297,7 @@ const mutations = {
       if (state.rank === 0) return // max level
       state.rank--
       state.stars = 1
+      if (state.rank <= 15) state.rank15Reached = true
       if (state.rank === 0) state.stars = 0 // no star in last level
       if (state.highest > state.rank) state.highest = state.rank // store highest rank reached
       if (state.rankMax > state.rank) {
@@ -364,8 +369,13 @@ const mutations = {
   },
   [types.RESET_SERIE] (state) {
     state.rank = state.rankMax + 4
+    // cannot go over 25
     if (state.rank > 25) {
       state.rank = 25
+    }
+    // cannot go over 20 if 15 ever reached
+    if (state.rank15Reached && state.rank > 20) {
+      state.rank = 20
     }
     state.rankMax = state.rank
     state.stars = state.starsMax
@@ -375,6 +385,9 @@ const mutations = {
     state.rankWild = state.rankWildMax + 4
     if (state.rankWild > 25) {
       state.rankWild = 25
+    }
+    if (state.rank15Reached && state.rankWild > 20) {
+      state.rankWild = 20
     }
     state.rankWildMax = state.rankWild
     state.starsWild = state.starsWildMax
