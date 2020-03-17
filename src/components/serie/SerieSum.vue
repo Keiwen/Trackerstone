@@ -84,7 +84,6 @@
 <style lang="scss" scoped>
 
 .gamemodeSum  {
-  margin-top: 15px;
 
     .col-xs-4,.col-xs-8,.col-xs-7,.col-xs-5 {
       padding-right: 0;
