@@ -4,7 +4,7 @@
             <div class="col-xs-4 rankhome">
 
                 <div class="col-xs-7">
-                    <div :class="'rankbadge rank-' + (wildMode ? rankWild : rank)"></div>
+                    <div :class="'rankbadge rank-' + currentRank"></div>
                 </div>
                 <div class="col-xs-5">
                     <div>
@@ -19,8 +19,8 @@
                 <h2>Next milestone</h2>
                 <div class="col-xs-6 info">
                     Stars left
-                    <ts-progress-circle :completed-steps="starsInMilestone - starsToMilestone"
-                                     :total-steps="starsInMilestone"
+                    <ts-progress-circle :completed-steps="starsInMilestone + 1 - starsToMilestone"
+                                     :total-steps="starsInMilestone + 1"
                                      startColor="#321D05"
                                      stopColor="#FF911C"
                                      :inner-number="starsToMilestone">
@@ -59,20 +59,16 @@
   export default {
     components: {TsProgressCircle},
     computed: {
-      ...mapGetters(['rank', 'stars', 'highest', 'nextMilestone', 'winsToMilestone',
+      ...mapGetters(['currentRank', 'currentStars', 'highest', 'nextMilestone', 'winsToMilestone',
         'gamesPlayed', 'gamesWon', 'winRate', 'current', 'opponent', 'recentNumberGames',
         'rankTitle', 'getSerieTimeProgress', 'getSerieTimeLeft',
-        'starsInMilestone', 'starsToMilestone', 'winsToNextChest',
-        'rankWild', 'starsWild', 'wildMode', 'rankStars'
+        'starsInMilestone', 'starsToMilestone', 'winsToNextChest', 'rankStars'
       ]),
       currentRankTitle () {
         return this.rankTitle()
       },
-      currentStars () {
-        return this.wildMode ? this.starsWild : this.stars
-      },
       currentMaxStars () {
-        return this.wildMode ? this.rankStars(this.rankWild) : this.rankStars(this.rank)
+        return this.rankStars()
       },
       milestoneTitle () {
         return this.rankTitle(this.nextMilestone)

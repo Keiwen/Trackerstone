@@ -35,6 +35,10 @@ const getters = {
     if (typeof id === 'undefined') id = getters.currentRank
     return Ranks[id]['title']
   },
+  rankLevel: (state, getters) => (id) => {
+    if (typeof id === 'undefined') id = getters.currentRank
+    return Ranks[id]['league'] + ' ' + Ranks[id]['rank']
+  },
   rankStars: (state, getters) => (id) => {
     if (typeof id === 'undefined') id = getters.currentRank
     return Ranks[id]['stars']
@@ -44,7 +48,12 @@ const getters = {
     next = (typeof next !== 'undefined')
     let floor = id
     if (floor > Constants.serie.minRank) floor = Constants.serie.minRank
-    if (floor < Constants.serie.maxRank) floor = Constants.serie.maxRank
+    if (floor < Constants.serie.maxRank) {
+      floor = Constants.serie.maxRank
+    } else if (next) {
+      // start on rank above instead of given rank
+      floor--
+    }
     while (!Constants.serie.milestones.includes(floor)) {
       next ? floor-- : floor++
     }
@@ -74,7 +83,7 @@ const getters = {
     const rank = getters.currentRank
     if (rank === Constants.serie.maxRank) return 0
     if (rank <= targetRank) return 0
-    let stars = 1
+    let stars = 1 // start at one to reach target rank
     for (let i = rank; i > targetRank; i--) {
       stars += Ranks[i]['stars']
     }
@@ -92,7 +101,7 @@ const getters = {
     if (rank === Constants.serie.maxRank) return 0
     const nextMilestone = getters.nextMilestone
     let prevMilestone = getters.rankFloor()
-    let stars = 1
+    let stars = 0
     for (let i = prevMilestone; i > nextMilestone; i--) {
       stars += Ranks[i]['stars']
     }
@@ -107,18 +116,18 @@ const getters = {
     let winStreak = getters.currentWinStreak
     let winsToRank = 0
     while (rank > targetRank) {
+      winStreak++
       let nextWinStars = 1 * starsMult
       const currentLeague = Ranks[rank].league
       if (winStreak >= Constants.serie.winStreak) nextWinStars = nextWinStars * 2
-      while (nextWinStars > Ranks[rank].stars) {
+      while ((stars + nextWinStars) > Ranks[rank].stars) {
         nextWinStars -= Ranks[rank].stars - stars
         rank--
         const newLeague = Ranks[rank].league
         if (currentLeague !== newLeague && starsMult > 1) starsMult--
         stars = 0
       }
-      stars = nextWinStars
-      winStreak++
+      stars += nextWinStars
       winsToRank++
     }
     return winsToRank
