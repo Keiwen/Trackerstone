@@ -99,22 +99,29 @@ const getters = {
     return stars
   },
   winsToRank: (state, getters) => (targetRank) => {
-    const rank = getters.currentRank
+    let rank = getters.currentRank
     if (rank === Constants.serie.maxRank) return 0
-    const starsMult = getters.currentStarsMult
-    const starsToRank = getters.starsToRank(targetRank)
-    // TODO OK only for next milestone, as stars mult would change
-    const normalWinToRank = Math.ceil(starsToRank / starsMult)
-    // check if no more bonus
-    if (rank <= Constants.serie.rankBonusCanceled) return normalWinToRank
-    // games to win before bonus star
-    const winStreak = getters.currentWinStreak
-    let winTilBonus = Constants.serie.winStreak - 1 - winStreak
-    if (winTilBonus < 0) winTilBonus = 0
-    let normalWins = Math.min(winTilBonus, normalWinToRank)
-    // games to win with bonus
-    let bonusWins = (normalWinToRank - normalWins) / 2
-    return Math.ceil(normalWins + bonusWins)
+    if (rank <= targetRank) return 0
+    let stars = getters.currentStars
+    let starsMult = getters.currentStarsMult
+    let winStreak = getters.currentWinStreak
+    let winsToRank = 0
+    while (rank > targetRank) {
+      let nextWinStars = 1 * starsMult
+      const currentLeague = Ranks[rank].league
+      if (winStreak >= Constants.serie.winStreak) nextWinStars = nextWinStars * 2
+      while (nextWinStars > Ranks[rank].stars) {
+        nextWinStars -= Ranks[rank].stars - stars
+        rank--
+        const newLeague = Ranks[rank].league
+        if (currentLeague !== newLeague && starsMult > 1) starsMult--
+        stars = 0
+      }
+      stars = nextWinStars
+      winStreak++
+      winsToRank++
+    }
+    return winsToRank
   },
   winsToMilestone: (state, getters) => {
     return getters.winsToRank(getters.nextMilestone)
@@ -308,7 +315,7 @@ const mutations = {
       if (state.rankWild === Constants.serie.maxRank) state.starsWild = 0 // no star in last level
       if (state.highest > state.rankWild) state.highest = state.rankWild // store highest rank reached
       const newLeague = Ranks[state.rankWild]['league']
-      if (previousLeague !== newLeague) state.starsMultWild-- // decrease multiplier if new league reached
+      if (previousLeague !== newLeague && state.starsMultWild > 1) state.starsMultWild-- // decrease multiplier if new league reached
     } else {
       if (state.rank === Constants.serie.maxRank) return // max level
       const previousLeague = Ranks[state.rank]['league']
@@ -317,7 +324,7 @@ const mutations = {
       if (state.rank === Constants.serie.maxRank) state.stars = 0 // no star in last level
       if (state.highest > state.rank) state.highest = state.rank // store highest rank reached
       const newLeague = Ranks[state.rank]['league']
-      if (previousLeague !== newLeague) state.starsMultWild-- // decrease multiplier if new league reached
+      if (previousLeague !== newLeague && state.starsMult > 1) state.starsMult-- // decrease multiplier if new league reached
     }
   },
   [types.DECREASE_RANK] (state) {
