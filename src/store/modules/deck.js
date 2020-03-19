@@ -37,7 +37,7 @@ const state = {
   nextTypeId: 1,
   lastDeckChanged: 0,
   lastTypeChanged: 0,
-  lastDeckTypeUpdate: 1539100000000
+  lastDeckTypeUpdate: 1584610000000
 
 }
 
