@@ -158,6 +158,21 @@
             &-elise .profil {
                 background-position: -75px -2775px;
             }
+            &-deathwing .profil {
+                background-position: -375px -2775px;
+            }
+            &-sylvanas .profil {
+                background-position: -675px -2775px;
+            }
+            &-hazelbark .profil {
+                background-position: -75px -3075px;
+            }
+            &-vashj .profil {
+                background-position: -375px -3075px;
+            }
+            &-illidan .profil {
+                background-position: -675px -3075px;
+            }
         }
     }
 

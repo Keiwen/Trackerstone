@@ -4,10 +4,10 @@
  },
  "druid": {
    "id": "druid", "name": "Druid", "backgroundColor": "#663E27",
-   "heroes": ["malfurion", "lunara", "elise"]},
+   "heroes": ["malfurion", "lunara", "elise", "hazelbark"]},
  "hunter": {
    "id": "hunter", "name": "Hunter", "backgroundColor": "#1D6619",
-   "heroes": ["rexxar", "alleria"]},
+   "heroes": ["rexxar", "alleria", "sylvanas"]},
  "mage": {
    "id": "mage", "name": "Mage", "backgroundColor": "#2F6DAA",
    "heroes": ["jaina", "khagdar", "medivh"]},
@@ -22,11 +22,11 @@
    "heroes": ["valeera", "maeiv"]},
  "shaman": {
    "id": "shaman", "name": "Shaman", "backgroundColor": "#3142AF",
-   "heroes": ["thrall", "morgl", "rastakhan", "thunder"]},
+   "heroes": ["thrall", "morgl", "rastakhan", "thunder", "vashj"]},
  "warlock": {
    "id": "warlock", "name": "Warlock", "backgroundColor": "#542877",
    "heroes": ["guldan", "nemsy", "jaraxxus"]},
  "warrior": {
    "id": "warrior", "name": "Warrior", "backgroundColor": "#750F1E",
-   "heroes": ["garrosh", "magni"]}
+   "heroes": ["garrosh", "magni", "deathwing"]}
 }
