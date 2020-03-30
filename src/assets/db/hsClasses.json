@@ -2,6 +2,9 @@
  "": {
    "id": "", "name": "None", "backgroundColor": "#FFFFFF", "heroes": []
  },
+  "demon_hunter": {
+    "id": "demon_hunter", "name": "Demon Hunter", "backgroundColor": "#1E463C",
+    "heroes": ["illidan"]},
  "druid": {
    "id": "druid", "name": "Druid", "backgroundColor": "#663E27",
    "heroes": ["malfurion", "lunara", "elise", "hazelbark"]},

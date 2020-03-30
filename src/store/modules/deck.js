@@ -18,6 +18,7 @@ const USE_REPRESENTATIVE_CARD = true
 const state = {
   own: {},
   myHeroes: {
+    'demon_hunter': 'illidan',
     'druid': 'malfurion',
     'hunter': 'rexxar',
     'mage': 'jaina',

@@ -4,10 +4,10 @@
 
         <div class="row myHeroes">
             <div class="row" v-for="(hsClass, key) in classes" v-if="key">
-                <div class="col-xs-3 col-md-2">
+                <div class="col-xs-4 col-md-2">
                     <class-card :hsClass="hsClass" />
                 </div>
-                <div class="col-xs-7 col-xs-offset-1 col-md-offset-2 myHeroesPicker">
+                <div class="col-xs-7 col-md-9 col-xs-offset-1 col-md-offset-1 myHeroesPicker">
                     <enhanced-check-radio :label="getHeroesDisplayForClass(key)"
                                           :value="heroesForClass(key)"
                                           :name="key + '_hero_pick'"
@@ -16,8 +16,6 @@
                                           subClass="default" :animate="true" :inline="true" :rounded="true">
                     </enhanced-check-radio>
                 </div>
-            </div>
-            <div class="col-xs-1">
             </div>
         </div>
 
@@ -66,6 +64,6 @@
 
 <style scoped>
     .myHeroesPicker {
-        text-align: justify;
+        text-align: left;
     }
 </style>

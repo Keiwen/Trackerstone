@@ -105,5 +105,9 @@
             background-position: -280px -280px;
         }
 
+        &.demon_hunter::before {
+            background-position: -280px -400px;
+        }
+
     }
 </style>

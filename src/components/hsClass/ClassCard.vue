@@ -75,4 +75,8 @@
   background-position: -160px -400px;
 }
 
+.hero-demon_hunter {
+  background-position: -280px -400px;
+}
+
 </style>

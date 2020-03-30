@@ -32,7 +32,4 @@
 
 
 <style lang="scss" scoped>
-    .col-xs-3 {
-        width: 20%;
-    }
 </style>
