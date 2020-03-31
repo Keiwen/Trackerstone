@@ -3,6 +3,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 // import * as actions from './actions'
 // import * as getters from './getters'
+import OTM from '@/assets/db/otm.json'
 import serie from './modules/serie'
 import deck from './modules/deck'
 import history from './modules/history'
@@ -30,6 +31,7 @@ const DECK_TITLE_LIMIT = 20
 
 export default new Vuex.Store({
   getters: {
+    oneTimeMessages: state => OTM,
     dataExport: (state) => {
       return JSON.stringify(state)
     },
@@ -302,7 +304,9 @@ export default new Vuex.Store({
     resetState () {
       // call this.$store.dispatch('resetState') from a component action
       localStorage.removeItem(persistOptions.key)
-      localStorage.removeItem('cookie:accepted')
+      // also remove one time message stored
+      localStorage.removeItem('tsotm:localStorageAccepted')
+      localStorage.removeItem('tsotm:update_1.0')
       location.reload()
     },
     cancelLastGame ({dispatch, commit, getters}) {

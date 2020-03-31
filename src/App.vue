@@ -8,7 +8,11 @@
             Back
         </button>
 
-        <cookie-law theme="dark-lime" message="This website uses local navigator storage to save and load data."></cookie-law>
+        <cookie-law theme="dark-lime"
+                    v-for="(otm, key) in oneTimeMessages"
+                    :storageName="'tsotm:'+key"
+                    :message="otm">
+        </cookie-law>
         <!-- <footer>
           <p>
             <a href="https://github.com/Keiwen/Trackerstone" target="_blank">Trackerstone</a><span> - Version 1.0</span> <span> - Conception Keiwen & Gverrier</span>
@@ -26,7 +30,7 @@
     name: 'app',
     components: { CookieLaw, Topbar },
     computed: {
-      ...mapGetters(['messageBag']),
+      ...mapGetters(['messageBag', 'oneTimeMessages']),
       showTopbar () {
         if (this.isChartRoute || this.isDeckEditionRoute) return false
         return true
