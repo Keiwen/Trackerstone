@@ -89,6 +89,7 @@
             margin: auto;
             font-size: 2em;
             text-shadow: 1px 1px black;
+            text-align: center;
 
             &.reward-pack {
                 background: url('../../assets/pack.png');
