@@ -37,6 +37,7 @@ const getters = {
   },
   rankLevel: (state, getters) => (id) => {
     if (typeof id === 'undefined') id = getters.currentRank
+    if (id === 0) return Ranks[id]['league']
     return Ranks[id]['league'] + ' ' + Ranks[id]['rank']
   },
   rankStars: (state, getters) => (id) => {
@@ -47,8 +48,8 @@ const getters = {
     if (typeof id === 'undefined' || id === null) id = getters.currentRank
     next = (typeof next !== 'undefined')
     let floor = id
-    if (floor > Constants.serie.minRank) floor = Constants.serie.minRank
-    if (floor < Constants.serie.maxRank) {
+    if (floor >= Constants.serie.minRank) floor = Constants.serie.minRank
+    if (floor <= Constants.serie.maxRank) {
       floor = Constants.serie.maxRank
     } else if (next) {
       // start on rank above instead of given rank
@@ -73,7 +74,9 @@ const getters = {
     }
     chest.chestUpgrade = chestUpgrade
     chest.rank = currentFloor
+    chest.level = getters.rankLevel(currentFloor)
     chest.nextRank = nextFloor
+    chest.nextLevel = getters.rankLevel(nextFloor)
     return chest
   },
   nextMilestone: (state, getters) => {

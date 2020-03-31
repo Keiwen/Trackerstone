@@ -16,8 +16,8 @@
         </div>
 
 
-        <sweet-modal ref="modalChest" modal-theme="dark" title="Chest">
-            <h4>Current chest {{ currentChest.rank }}</h4>
+        <sweet-modal ref="modalChest" modal-theme="dark" :title="currentChest.level + ' chest'">
+            <h4>End of season rewards</h4>
             <div class="container reward-container">
                 <div class="col-xs-4">
                     <div class="reward reward-pack" v-if="currentChest.pack">{{ currentChest.pack }}</div>
@@ -35,16 +35,18 @@
                 <div class="col-xs-4">Epic cards</div>
             </div>
             <hr/>
-            <h4>Next chest {{ currentChest.nextRank }}</h4>
-            <div class="container reward-container">
-                <div class="col-xs-4">
-                    <div class="reward reward-pack" v-if="currentChest.chestUpgrade.pack">+{{ currentChest.chestUpgrade.pack }}</div>
-                </div>
-                <div class="col-xs-4">
-                    <div class="reward reward-rareCard" v-if="currentChest.chestUpgrade.rareCard">+{{ currentChest.chestUpgrade.rareCard }}</div>
-                </div>
-                <div class="col-xs-4">
-                    <div class="reward reward-epicCard" v-if="currentChest.chestUpgrade.epicCard">+{{ currentChest.chestUpgrade.epicCard }}</div>
+            <div v-if="currentChest.chestUpgrade">
+                <h4>Next chest: {{ currentChest.nextLevel }}</h4>
+                <div class="container reward-container">
+                    <div class="col-xs-4">
+                        <div class="reward reward-pack" v-if="currentChest.chestUpgrade.pack">+{{ currentChest.chestUpgrade.pack }}</div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="reward reward-rareCard" v-if="currentChest.chestUpgrade.rareCard">+{{ currentChest.chestUpgrade.rareCard }}</div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="reward reward-epicCard" v-if="currentChest.chestUpgrade.epicCard">+{{ currentChest.chestUpgrade.epicCard }}</div>
+                    </div>
                 </div>
             </div>
         </sweet-modal>
