@@ -60,6 +60,7 @@ const getters = {
     return floor
   },
   rankChest: (state, getters) => (id) => {
+    if (typeof id === 'undefined' || id === null) id = getters.highest
     const currentFloor = getters.rankFloor(id)
     const nextFloor = getters.rankFloor(id, true)
     let chest = JSON.parse(JSON.stringify(Ranks[currentFloor]['rewards']))
@@ -71,6 +72,8 @@ const getters = {
       chestUpgrade.pack = chestUpgrade.pack - chest.pack
     }
     chest.chestUpgrade = chestUpgrade
+    chest.rank = currentFloor
+    chest.nextRank = nextFloor
     return chest
   },
   nextMilestone: (state, getters) => {

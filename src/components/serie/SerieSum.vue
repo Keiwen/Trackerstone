@@ -36,16 +36,8 @@
                     </ts-progress-circle>
                 </div>
             </div>
-            <div class="col-xs-4 chesthome">
-                <h2>Current chest</h2>
-                <div :class="'serieChest serieChest-' + highest"></div>
-                <div class="row">
-                    <p>
-                        Next chest in <strong>{{ winsToNextChest }}</strong>
-                        <span v-if="winsToNextChest === 1">win</span>
-                        <span v-else>consecutive wins</span>
-                    </p>
-                </div>
+            <div class="col-xs-4">
+                <chest-home></chest-home>
             </div>
         </div>
     </div>
@@ -55,14 +47,15 @@
 <script>
   import { mapGetters } from 'vuex'
   import TsProgressCircle from '@/components/charts/TSProgressCircle'
+  import ChestHome from './ChestHome'
 
   export default {
-    components: {TsProgressCircle},
+    components: {TsProgressCircle, ChestHome},
     computed: {
-      ...mapGetters(['currentRank', 'currentStars', 'highest', 'nextMilestone', 'winsToMilestone',
+      ...mapGetters(['currentRank', 'currentStars', 'nextMilestone', 'winsToMilestone',
         'gamesPlayed', 'gamesWon', 'winRate', 'current', 'opponent', 'recentNumberGames',
         'rankTitle', 'getSerieTimeProgress', 'getSerieTimeLeft',
-        'starsInMilestone', 'starsToMilestone', 'winsToNextChest', 'rankStars'
+        'starsInMilestone', 'starsToMilestone', 'rankStars'
       ]),
       currentRankTitle () {
         return this.rankTitle()
