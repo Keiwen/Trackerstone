@@ -172,17 +172,18 @@ const getters = {
   },
   getSerieTimeProgress: state => {
     let currentDate = new Date()
-    let lastDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0)
+    // next month index 0 = day before first day = last day of current month
+    let lastDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0)
     currentDate = currentDate.getDate()
     lastDate = lastDate.getDate()
     return Math.round(currentDate / lastDate * 100)
   },
   getSerieTimeLeft: state => {
     let currentDate = new Date()
-    let lastDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0)
+    let lastDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0)
     currentDate = currentDate.getDate()
     lastDate = lastDate.getDate()
-    return lastDate - currentDate + 1
+    return lastDate - currentDate
   },
   arenaWin: state => state.arenaWin,
   arenaLoss: state => state.arenaLoss,
