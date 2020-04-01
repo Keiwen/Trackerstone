@@ -232,19 +232,21 @@ const actions = {
   },
   win ({dispatch, commit, state, getters}, number) {
     if (typeof number === 'undefined') number = 1 // default is 1 win
-    let bonusStar = 0
+    console.log('i won')
     const rank = getters.currentStars
+    const starsMult = getters.currentStarsMult
     const winStreak = getters.currentWinStreak
+    let starGain = number * starsMult
     if (rank > Constants.serie.rankBonusCanceled) {
       if (getters.isOnWinStreak) {
-        bonusStar = number
+        starGain = number * starsMult * 2
       } else if ((number + winStreak) >= Constants.serie.winStreak) {
-        bonusStar = number - Constants.serie.winStreak + 1 + winStreak
-        if (bonusStar < 0) bonusStar = 0
+        starGain = (Constants.serie.winStreak - winStreak) * starsMult // star gain before win streak
+        starGain += ((number + winStreak) - Constants.serie.winStreak) * starsMult * 2 // star gain after win streak
       }
     }
     commit(types.ADD_WIN_STREAK, number)
-    dispatch('earnStar', number + bonusStar)
+    dispatch('earnStar', starGain)
   },
   loose ({dispatch, commit, state}, number) {
     if (typeof number === 'undefined') number = 1 // default is 1 loss
