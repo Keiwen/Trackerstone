@@ -4,7 +4,7 @@
             <div class="col-xs-5">
                 <h3>My deck</h3>
                 <span @click="showDeckNote()">
-                    <icon name="info-circle" :scale="2" class="infoNoteBefore" :class="{'noted': current.note}"></icon>
+                    <icon-info :noted="typeof current.note !== 'undefined' && current.note.length > 0" :before="true"></icon-info>
                 </span>
                 <deck-pick/>
 
@@ -21,7 +21,7 @@
                 <h3>Opponent deck</h3>
                 <deck-type-pick @pick-type="pickOpponentType" :initialPick="opponent" :allowGenericPick="true" />
                 <span @click="showNote()">
-                    <icon name="info-circle" :scale="2" class="infoNote" :class="{'noted': opponent.note}"></icon>
+                    <icon-info :noted="typeof opponent.note !== 'undefined' && opponent.note.length > 0"></icon-info>
                 </span>
 
                 <sweet-modal ref="modalNote" modal-theme="dark" :title="generateTypeTitle(opponent)">
@@ -56,9 +56,10 @@
   import DeckPick from '@/components/deck/DeckPick'
   import DeckTypePick from '@/components/deck/DeckTypePick'
   import { SweetModal } from 'sweet-modal-vue'
+  import IconInfo from '@/components/singleElements/IconInfo'
 
   export default {
-    components: {DeckPick, DeckTypePick, SweetModal},
+    components: {DeckPick, DeckTypePick, SweetModal, IconInfo},
     computed: {
       ...mapGetters([
         'current', 'opponent', 'getGamesVsType', 'getGamesWonAmong', 'wildMode',

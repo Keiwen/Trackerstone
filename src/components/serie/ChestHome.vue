@@ -4,7 +4,7 @@
         <div class="row">
             <div :class="'col-xs-10 serieChest serieChest-' + currentChest.rank"></div>
             <div @click="showChestNote()" class="col-xs-2">
-                <icon name="info-circle" :scale="2" class="infoNoteBefore noted"></icon>
+                <icon-info :noted="true"></icon-info>
             </div>
         </div>
         <div class="row">
@@ -58,9 +58,10 @@
 <script>
   import { mapGetters } from 'vuex'
   import { SweetModal } from 'sweet-modal-vue'
+  import IconInfo from '@/components/singleElements/IconInfo'
 
   export default {
-    components: {SweetModal},
+    components: {SweetModal, IconInfo},
     computed: {
       ...mapGetters(['winsToNextChest', 'rankChest']),
       currentChest () {
