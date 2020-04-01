@@ -22,20 +22,20 @@
       ...mapGetters([
         'arenaGamesWon', 'arenaGamesLoss', 'arenaWinPercent',
         'arenaPlayed', 'arenaAverageWin', 'arenaMaxWin',
-        'arenaWithPrize', 'arenaTotalPrize', 'arenaAveragePrize',
+        'arenaWithPrize', 'getArenaTotalPrize', 'getArenaAveragePrize',
         'arenaFee', 'cardPackCost'
       ]),
       totalGoldPrize () {
-        return this.arenaTotalPrize('gold')
+        return this.getArenaTotalPrize('gold')
       },
       averageGoldPrize () {
-        return this.arenaAveragePrize('gold')
+        return this.getArenaAveragePrize('gold')
       },
       totalDustPrize () {
-        return this.arenaTotalPrize('dust')
+        return this.getArenaTotalPrize('dust')
       },
       averageDustPrize () {
-        return this.arenaAveragePrize('dust')
+        return this.getArenaAveragePrize('dust')
       }
     },
     methods: {

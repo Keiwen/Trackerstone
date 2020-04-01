@@ -64,9 +64,9 @@
   export default {
     components: {SweetModal, IconInfo},
     computed: {
-      ...mapGetters(['winsToNextChest', 'rankChest']),
+      ...mapGetters(['winsToNextChest', 'getRankChest']),
       currentChest () {
-        return this.rankChest()
+        return this.getRankChest()
       }
     },
     methods: {

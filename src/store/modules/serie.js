@@ -31,20 +31,20 @@ const getters = {
   currentRank: state => {
     return state.wildMode ? state.rankWild : state.rank
   },
-  rankTitle: (state, getters) => (id) => {
+  getRankTitle: (state, getters) => (id) => {
     if (typeof id === 'undefined') id = getters.currentRank
     return Ranks[id]['title']
   },
-  rankLevel: (state, getters) => (id) => {
+  getRankLevel: (state, getters) => (id) => {
     if (typeof id === 'undefined') id = getters.currentRank
     if (id === 0) return Ranks[id]['league']
     return Ranks[id]['league'] + ' ' + Ranks[id]['rank']
   },
-  rankStars: (state, getters) => (id) => {
+  getRankStars: (state, getters) => (id) => {
     if (typeof id === 'undefined') id = getters.currentRank
     return Ranks[id]['stars']
   },
-  rankFloor: (state, getters) => (id, next) => {
+  getRankFloor: (state, getters) => (id, next) => {
     if (typeof id === 'undefined' || id === null) id = getters.currentRank
     next = (typeof next !== 'undefined')
     let floor = id
@@ -60,10 +60,10 @@ const getters = {
     }
     return floor
   },
-  rankChest: (state, getters) => (id) => {
+  getRankChest: (state, getters) => (id) => {
     if (typeof id === 'undefined' || id === null) id = getters.highest
-    const currentFloor = getters.rankFloor(id)
-    const nextFloor = getters.rankFloor(id, true)
+    const currentFloor = getters.getRankFloor(id)
+    const nextFloor = getters.getRankFloor(id, true)
     let chest = JSON.parse(JSON.stringify(Ranks[currentFloor]['rewards']))
     let chestUpgrade = null
     if (currentFloor !== nextFloor) chestUpgrade = JSON.parse(JSON.stringify(Ranks[nextFloor]['rewards']))
@@ -74,18 +74,18 @@ const getters = {
     }
     chest.chestUpgrade = chestUpgrade
     chest.rank = currentFloor
-    chest.level = getters.rankLevel(currentFloor)
+    chest.level = getters.getRankLevel(currentFloor)
     chest.nextRank = nextFloor
-    chest.nextLevel = getters.rankLevel(nextFloor)
+    chest.nextLevel = getters.getRankLevel(nextFloor)
     return chest
   },
   nextMilestone: (state, getters) => {
-    return getters.rankFloor(null, true)
+    return getters.getRankFloor(null, true)
   },
   nextChest: (state, getters) => {
-    return getters.rankFloor(state.highest, true)
+    return getters.getRankFloor(state.highest, true)
   },
-  starsToRank: (state, getters) => (targetRank) => {
+  getStarsToRank: (state, getters) => (targetRank) => {
     const rank = getters.currentRank
     if (rank === Constants.serie.maxRank) return 0
     if (rank <= targetRank) return 0
@@ -97,23 +97,23 @@ const getters = {
     return stars
   },
   starsToMilestone: (state, getters) => {
-    return getters.starsToRank(getters.nextMilestone)
+    return getters.getStarsToRank(getters.nextMilestone)
   },
   starsToNextChest: (state, getters) => {
-    return getters.starsToRank(getters.nextChest)
+    return getters.getStarsToRank(getters.nextChest)
   },
   starsInMilestone: (state, getters) => {
     const rank = getters.currentRank
     if (rank === Constants.serie.maxRank) return 0
     const nextMilestone = getters.nextMilestone
-    let prevMilestone = getters.rankFloor()
+    let prevMilestone = getters.getRankFloor()
     let stars = 0
     for (let i = prevMilestone; i > nextMilestone; i--) {
       stars += Ranks[i]['stars']
     }
     return stars
   },
-  winsToRank: (state, getters) => (targetRank) => {
+  getWinsToRank: (state, getters) => (targetRank) => {
     let rank = getters.currentRank
     if (rank === Constants.serie.maxRank) return 0
     if (rank <= targetRank) return 0
@@ -137,10 +137,10 @@ const getters = {
     return winsToRank
   },
   winsToMilestone: (state, getters) => {
-    return getters.winsToRank(getters.nextMilestone)
+    return getters.getWinsToRank(getters.nextMilestone)
   },
   winsToNextChest: (state, getters) => {
-    return getters.winsToRank(getters.nextChest)
+    return getters.getWinsToRank(getters.nextChest)
   },
   stars: state => state.stars,
   starsWild: state => state.starsWild,
@@ -191,7 +191,7 @@ const getters = {
   },
   arenaWin: state => state.arenaWin,
   arenaLoss: state => state.arenaLoss,
-  arenaKeyTitle: state => (winCount) => {
+  getArenaKeyTitle: state => (winCount) => {
     if (typeof winCount === 'undefined') winCount = state.arenaWin
     return ArenaKeys[winCount]['title']
   },

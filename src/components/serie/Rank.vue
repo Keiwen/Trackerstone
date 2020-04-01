@@ -25,13 +25,13 @@
   export default {
     computed: {
       ...mapGetters(['currentRank', 'currentStars', 'currentStarsMult',
-        'rankLevel', 'rankStars'
+        'getRankLevel', 'getRankStars'
       ]),
       currentRankTitle () {
-        return this.rankLevel()
+        return this.getRankLevel()
       },
       currentMaxStars () {
-        return this.rankStars()
+        return this.getRankStars()
       }
     }
   }

@@ -18,7 +18,7 @@
                 </ts-progress-circle>
             </div>
             <div class="col-xs-4 arenaKey">
-                <h4>{{ arenaKeyTitle() }} key</h4>
+                <h4>{{ getArenaKeyTitle() }} key</h4>
                 <p>
                     {{ arenaWinPercentCurrent }} % winrate
                     <br/>
@@ -54,10 +54,10 @@
         'getArenaGamesList',
         'arenaWin',
         'arenaLoss',
-        'arenaKeyTitle',
+        'getArenaKeyTitle',
         'arenaFee',
         'cardPackCost',
-        'arenaTotalPrize',
+        'getArenaTotalPrize',
         'arenaWithPrize'
       ]),
       currentGames () {
@@ -65,7 +65,7 @@
         return this.getArenaGamesList(true)
       },
       totalGoldPrize () {
-        return this.arenaTotalPrize('gold')
+        return this.getArenaTotalPrize('gold')
       },
       isNewArena () {
         return (this.arenaWin === 0 && this.arenaLoss === 0)

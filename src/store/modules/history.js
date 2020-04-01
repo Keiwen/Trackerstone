@@ -256,7 +256,7 @@ const getters = {
     }
     return Math.round(totalWin / arenaComplete.length * 10) / 10
   },
-  arenaAverageWinWithClass: (state, getters) => (hsClass) => {
+  getArenaAverageWinWithClass: (state, getters) => (hsClass) => {
     const arenaComplete = getters.getArenaWithClass(hsClass)
     if (arenaComplete.length === 0) return 0
     let totalWin = 0
@@ -282,7 +282,7 @@ const getters = {
     }
     return arenaCount
   },
-  arenaTotalPrize: (state, getters) => (prize) => {
+  getArenaTotalPrize: (state, getters) => (prize) => {
     const arenaComplete = getters.getArenaList()
     let totalPrize = 0
     for (let i = 0; i < arenaComplete.length; i++) {
@@ -291,9 +291,9 @@ const getters = {
     }
     return totalPrize
   },
-  arenaAveragePrize: (state, getters) => (prize) => {
+  getArenaAveragePrize: (state, getters) => (prize) => {
     if (getters.arenaWithPrize === 0) return 0
-    return Math.round(getters.arenaTotalPrize(prize) / getters.arenaWithPrize)
+    return Math.round(getters.getArenaTotalPrize(prize) / getters.arenaWithPrize)
   },
 
   // GAMES STATS >>>
