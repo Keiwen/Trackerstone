@@ -12,7 +12,11 @@
                         <span v-for="i in currentStars" class="serieStar serieStar-on"></span>
                         <span v-for="i in (currentMaxStars - currentStars)" class="serieStar serieStar-off"></span>
                     </div>
-                    <p>{{ currentRankTitle }}</p>
+                    <p>
+                        {{ currentRankTitle }}
+                        <br/>
+                        <i v-if="currentStarsMult > 1">x{{ currentStarsMult }} multiplier</i>
+                    </p>
                 </div>
             </div>
             <div class="col-xs-4 milestonehome">
@@ -54,17 +58,14 @@
     computed: {
       ...mapGetters(['currentRank', 'currentStars', 'nextMilestone', 'winsToMilestone',
         'gamesPlayed', 'gamesWon', 'winRate', 'current', 'opponent', 'recentNumberGames',
-        'rankTitle', 'getSerieTimeProgress', 'getSerieTimeLeft',
-        'starsInMilestone', 'starsToMilestone', 'rankStars'
+        'rankLevel', 'getSerieTimeProgress', 'getSerieTimeLeft',
+        'starsInMilestone', 'starsToMilestone', 'rankStars', 'currentStarsMult'
       ]),
       currentRankTitle () {
-        return this.rankTitle()
+        return this.rankLevel()
       },
       currentMaxStars () {
         return this.rankStars()
-      },
-      milestoneTitle () {
-        return this.rankTitle(this.nextMilestone)
       }
     }
   }

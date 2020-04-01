@@ -302,7 +302,8 @@ const mutations = {
     if (typeof data.starsWild === 'undefined') data.starsWild = 0
     if (typeof data.starsMultWild === 'undefined') data.starsMultWild = 1
     if (typeof data.winStreakWild === 'undefined') data.winStreakWild = 0
-    if (typeof data.highest === 'undefined') data.highest = data.rank
+
+    data.highest = data.rank
 
     // rank between min and max
     if (data.rank >= Constants.serie.maxRank && data.rank <= Constants.serie.minRank) state.rank = parseInt(data.rank)
@@ -315,6 +316,9 @@ const mutations = {
     // win streak must be >= 0
     if (data.winStreak >= 0) state.winStreak = parseInt(data.winStreak)
     if (data.winStreakWild >= 0) state.winStreakWild = parseInt(data.winStreakWild)
+    // stars mult must be >= 1
+    if (data.starsMult >= 1) state.starsMult = parseInt(data.starsMult)
+    if (data.starsMultWild >= 1) state.starsMultWild = parseInt(data.starsMultWild)
     // highest should be at least rank
     if (data.highest > state.rank) data.highest = state.rank
     if (data.highest > state.rankWild) data.highest = state.rankWild

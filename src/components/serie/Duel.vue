@@ -39,7 +39,7 @@
 
         <div class="container">
             <div class="col-xs-6">
-            <span class="text-danger winstreakIcon" v-if="isOnWinStreak || true">
+            <span class="text-danger winstreakIcon" v-if="isOnWinStreak">
                 <icon name="fire" /> Win streak
             </span>
             </div>

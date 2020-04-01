@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="container-fluid">
             <form class="form-horizontal">
-                <div class="col-xs-4">
+                <div class="col-xs-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">Standard</div>
                         <div class="panel-body">
@@ -24,10 +24,16 @@
                                     <input type="number" class="form-control" id="newWinStreak" v-model="newWinStreak">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-6 col-sm-4" for="newStarsMult">Star multiplier:</label>
+                                <div class="col-xs-6 col-sm-8">
+                                    <input type="number" class="form-control" id="newStarsMult" v-model="newStarsMult">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-xs-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">Wild</div>
                         <div class="panel-body">
@@ -49,23 +55,15 @@
                                     <input type="number" class="form-control" id="newWinStreakWild" v-model="newWinStreakWild">
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Chest</div>
-                        <div class="panel-body">
                             <div class="form-group">
-                                <label class="control-label col-xs-6 col-sm-4" for="newHighest">Chest:</label>
+                                <label class="control-label col-xs-6 col-sm-4" for="newStarsMultWild">Star multiplier:</label>
                                 <div class="col-xs-6 col-sm-8">
-                                    <input type="number" class="form-control" id="newHighest" v-model="newHighest">
+                                    <input type="number" class="form-control" id="newStarsMultWild" v-model="newStarsMultWild">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </form>
 
             <button @click="set()" class="btn btn-success btn-setting">Save</button>
@@ -87,14 +85,17 @@
         newRank: 25,
         newStars: 0,
         newWinStreak: 0,
+        newStarsMult: 1,
         newRankWild: 25,
         newStarsWild: 0,
         newWinStreakWild: 0,
-        newHighest: 25
+        newStarsMultWild: 1
       }
     },
     computed: {
-      ...mapGetters(['rank', 'stars', 'highest', 'winStreak', 'rankWild', 'starsWild', 'winStreakWild', 'highest'])
+      ...mapGetters(['rank', 'stars', 'winStreak', 'starsMult',
+        'rankWild', 'starsWild', 'winStreakWild', 'starsMultWild'
+      ])
     },
     methods: {
       ...mapActions(['setSerieData', 'cancelLastGame']),
@@ -102,20 +103,22 @@
         this.newRank = this.rank
         this.newStars = this.stars
         this.newWinStreak = this.winStreak
+        this.newStarsMult = this.starsMult
         this.newRankWild = this.rankWild
         this.newStarsWild = this.starsWild
         this.newWinStreakWild = this.winStreakWild
-        this.newHighest = this.highest
+        this.newStarsMultWild = this.starsMultWild
       },
       set () {
         const dataSet = {
           rank: this.newRank,
           stars: this.newStars,
           winStreak: this.newWinStreak,
+          starsMult: this.newStarsMult,
           rankWild: this.newRankWild,
           starsWild: this.newStarsWild,
           winStreakWild: this.newWinStreakWild,
-          highest: this.newHighest
+          starsMultWild: this.newStarsMultWild
         }
         this.setSerieData(dataSet)
         this.$ga.event('settings', 'set', 'serieData')
