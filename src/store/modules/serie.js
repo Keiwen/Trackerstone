@@ -124,13 +124,11 @@ const getters = {
     while (rank > targetRank) {
       winStreak++
       let nextWinStars = 1 * starsMult
-      const currentLeague = Ranks[rank].league
       if (winStreak >= Constants.serie.winStreak) nextWinStars = nextWinStars * 2
       while ((stars + nextWinStars) > Ranks[rank].stars) {
         nextWinStars -= Ranks[rank].stars - stars
         rank--
-        const newLeague = Ranks[rank].league
-        if (currentLeague !== newLeague && starsMult > 1) starsMult--
+        if (Constants.serie.milestones.includes(rank) && starsMult > 1) starsMult--
         stars = 0
       }
       stars += nextWinStars
@@ -325,22 +323,18 @@ const mutations = {
   [types.INCREASE_RANK] (state) {
     if (state.wildMode) {
       if (state.rankWild === Constants.serie.maxRank) return // max level
-      const previousLeague = Ranks[state.rankWild]['league']
       state.rankWild--
       state.starsWild = 1
       if (state.rankWild === Constants.serie.maxRank) state.starsWild = 0 // no star in last level
       if (state.highest > state.rankWild) state.highest = state.rankWild // store highest rank reached
-      const newLeague = Ranks[state.rankWild]['league']
-      if (previousLeague !== newLeague && state.starsMultWild > 1) state.starsMultWild-- // decrease multiplier if new league reached
+      if (Constants.serie.milestones.includes(state.rankWild) && state.starsMultWild > 1) state.starsMultWild-- // decrease multiplier if new milestone reached
     } else {
       if (state.rank === Constants.serie.maxRank) return // max level
-      const previousLeague = Ranks[state.rank]['league']
       state.rank--
       state.stars = 1
       if (state.rank === Constants.serie.maxRank) state.stars = 0 // no star in last level
       if (state.highest > state.rank) state.highest = state.rank // store highest rank reached
-      const newLeague = Ranks[state.rank]['league']
-      if (previousLeague !== newLeague && state.starsMult > 1) state.starsMult-- // decrease multiplier if new league reached
+      if (Constants.serie.milestones.includes(state.rank) && state.starsMult > 1) state.starsMult-- // decrease multiplier if new milestone reached
     }
   },
   [types.DECREASE_RANK] (state) {
