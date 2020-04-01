@@ -10,6 +10,7 @@
 
         <cookie-law theme="dark-lime"
                     v-for="(otm, key) in oneTimeMessages"
+                    :key="key"
                     :storageName="'tsotm:'+key"
                     :message="otm">
         </cookie-law>
