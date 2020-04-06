@@ -62,8 +62,27 @@
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
+    @import '../../assets/scss/mixins.scss';
+
     .myHeroesPicker {
         text-align: left;
     }
+
+    .myHeroes {
+        padding: 0;
+        .hero {
+        @include transform(scale(0.5));
+            position: absolute;
+            top: 0;
+            margin-top: -30px;
+        }
+        .hero-label {
+            float: right;
+        }
+        .class-card {
+            margin-bottom: 45px;
+        }
+    }
+
 </style>

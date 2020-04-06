@@ -63,9 +63,32 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+    @import '../../assets/scss/mixins.scss';
+
     .btn-class.btn-pick {
+        position: relative;
+        margin-left: 60px;
+
+        &:active:focus {
+            outline: none;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
         &::before {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 80px;
+            height: 80px;
+            @include transition(0.5s);
+            @include transform(scale(0.65));
+            border-radius: 50%;
+            left: -74px;
+            top: -25px;
             background: url('../../assets/icones_classes.png') 0 0 no-repeat;
         }
 

@@ -207,7 +207,7 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     h4 {
         margin-top: 0;
     }
@@ -248,6 +248,19 @@
                 &:after { content: ')' }
             }
         }
+    }
+
+    .rarity-common{
+        color: var(--rarity-common);
+    }
+    .rarity-rare {
+        color: var(--rarity-rare);
+    }
+    .rarity-epic{
+        color: var(--rarity-epic);
+    }
+    .rarity-legendary {
+        color: var(--rarity-legendary);
     }
 
     #openPackBtn {

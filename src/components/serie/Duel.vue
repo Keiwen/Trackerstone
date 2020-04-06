@@ -102,3 +102,30 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+    .duelButtons {
+        .btn-success {
+            padding-right: 30px;
+            position: relative;
+
+            svg {
+                position: absolute;
+                top: 6px;
+                right: 7px;
+            }
+        }
+
+        .btn-warning {
+            padding-right: 30px;
+            position: relative;
+
+            svg {
+                position: absolute;
+                top: 8px;
+                right: 7px;
+            }
+        }
+    }
+
+</style>

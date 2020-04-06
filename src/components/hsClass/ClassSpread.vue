@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid class-spread">
+    <div class="row class-spread">
         <div class="col-xs-3 col-sm-3" v-for="(hsClass, key) in classes" v-if="key || allowNone">
             <class-card :hsClass="hsClass" @hero-click="pickClass" />
         </div>
@@ -32,4 +32,9 @@
 
 
 <style lang="scss" scoped>
+
+    .class-spread {
+        padding: 0;
+    }
+
 </style>
