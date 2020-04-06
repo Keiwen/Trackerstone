@@ -1,10 +1,6 @@
 <template>
     <div class="deckTypeShow" :class="showDivClass" :style="scssVar">
         <div class="row">
-            <div class="col-xs-3">
-                <div class="profil">
-                </div>
-            </div>
             <div class="col-xs-9">
                 <div class="row">
                     <div class="col-xs-12">
@@ -15,19 +11,22 @@
                 </div>
                 <div class="col-xs-12 deckTypeStats">
                     <div class="row">
+                        <div class="col-xs-3 starIcon">
+                            <icon name="star" v-if="type.top" class="stared" />
+                        </div>
                         <div class="col-xs-9">
                             <p>
                                 {{ type.wonVs }} - {{ type.lossVs }} against<br/>
                             </p>
                         </div>
-                        <div class="col-xs-3 starIcon">
-                            <icon name="star" v-if="type.top" class="stared" />
-                        </div>
                     </div>
                 </div>
 
             </div>
-
+            <div class="col-xs-3">
+                <div class="profil">
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -81,7 +80,7 @@
         .deckTypeShow {
             height: 60px;
             background-color: var(--second-bg);
-            border-radius: 50px 0 0 50px;
+            border-radius: 0 50px 50px 0;
 
             &.lastChange {
                 border: 1px solid var(--orange-ts);
@@ -93,6 +92,7 @@
                 text-align: left;
                 margin-top: 5px;
                 margin-bottom: 5px;
+                margin-left: 20px;
             }
 
             .profil {
@@ -100,7 +100,7 @@
                 height: 100px;
                 display: inline-block;
                 position: absolute;
-                left: -13px;
+                right: -27px;
                 top: -13px;
                 transform: scale(0.75);
                 background: url('../../assets/icones_classes.png') 0 0 no-repeat;
@@ -191,7 +191,7 @@
             width: 85%;
             height: 92%;
             top: 3px;
-            right: 3px;
+            left: 15px;
             background-position: right;
             background-repeat: no-repeat;
             background-size: 110% 100%;

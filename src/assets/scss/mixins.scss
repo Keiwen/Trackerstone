@@ -27,9 +27,9 @@
 
 //Bow shadow for decktype archetype
 @mixin boxShadowDeckArchetype($color) {
-  -webkit-box-shadow: inset -12px 0 0 0 $color;
-  -moz-box-shadow: inset -12px 0 0 0 $color;
-  box-shadow: inset -12px 0 0 0 $color;
+  -webkit-box-shadow: inset 12px 0 0 0 $color;
+  -moz-box-shadow: inset 12px 0 0 0 $color;
+  box-shadow: inset 12px 0 0 0 $color;
 }
 
 //Bow shadow for deck serie
