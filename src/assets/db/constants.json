@@ -2,7 +2,7 @@
   "serie": {
     "milestones": [50, 45, 40, 35, 30, 25, 20, 15, 10, 5, 0],
     "winStreak": 3,
-    "rankLossCount": 50,
+    "rankLossCount": 40,
     "maxRank": 0,
     "minRank": 50,
     "rankBonusCanceled": 0
