@@ -18,3 +18,11 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+    .deckTypeShowSimple {
+        display: inline-block;
+        line-height: 1.5;
+        vertical-align: middle;
+    }
+</style>

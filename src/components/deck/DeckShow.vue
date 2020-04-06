@@ -67,12 +67,65 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .deckContainer {
+        margin-bottom: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
+
         .deckShow {
+            height: 60px;
+            background-color: var(--second-bg);
+            border-radius: 50px 0 0 50px;
+
+            &.lastChange {
+                border: 1px solid var(--orange-ts);
+            }
+
+            h4 {
+                font-family: 'Changa One', cursive;
+                text-transform: uppercase;
+                text-align: left;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+
             .profil {
+                width: 150px;
+                height: 150px;
+                display: inline-block;
+                position: absolute;
+                left: -63%;
+                top: -45px;
+                transform: scale(0.4);
                 background: url('../../assets/classes_sprite.png') 0 0 no-repeat;
             }
+
+            .deckStats {
+                position: absolute;
+                top: 30px;
+                left: 0;
+            }
+
+            .row {
+                margin: 0;
+
+                > div {
+                    padding: 0;
+                }
+
+                .col-xs-2 {
+                    background-color: var(--black);
+
+                    > div {
+                        margin: 0 auto;
+                        position: relative;
+                        width: 30px;
+                        height: 58px;
+                    }
+                }
+            }
+
         }
         .deckHero {
             &-rexxar .profil {
@@ -173,7 +226,20 @@
 
 
     .deckCardBackground {
+        color: var(--black);
         &:before {
+            content: "";
+            position: absolute;
+            width: 85%;
+            height: 92%;
+            top: 3px;
+            right: 3px;
+            background-position: right;
+            background-repeat: no-repeat;
+            background-size: 110% 100%;
+            background-clip: padding-box;
+            margin-right: 10px;
+            opacity: 0.5;
             background-image: var(--sampleCard)
         }
     }

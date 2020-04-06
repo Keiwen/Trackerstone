@@ -3,54 +3,8 @@
   padding: 0;
 
   .deckTypeContainer,.deckContainer {
-    margin-bottom: 15px;
-    padding-left: 10px;
-    padding-right: 10px;
 
     .deckTypeShow,.deckShow {
-      height: 60px;
-      background-color: var(--second-bg);
-      border-radius: 50px 0 0 50px;
-
-      &.lastChange {
-        border: 1px solid var(--orange-ts);
-      }
-
-      h4 {
-        font-family: 'Changa One', cursive;
-        text-transform: uppercase;
-        text-align: left;
-        margin-top: 5px;
-        margin-bottom: 5px;
-      }
-
-      .profil {
-        width: 100px;
-        height: 100px;
-        display: inline-block;
-        position: absolute;
-        left: -13px;
-        top: -13px;
-        transform: scale(0.75);
-
-        //      background: url('../../assets/charac_skins.jpg') 0 0 no-repeat;
-        // h4 {
-        //   color: var(--white);
-        //   top: 36px;
-        //   z-index: 4;
-        //   position: absolute;
-        //   margin: 0 auto;
-        //   text-align: center;
-        //   width: 100%;
-        //   min-width: 220px;
-        // }
-      }
-
-      .deckTypeStats,.deckStats {
-        position: absolute;
-        top: 30px;
-        left: 0;
-      }
 
       .stats {
         font-size: 11px;
@@ -80,16 +34,6 @@
 
     }
 
-    .deckShow {
-      .profil {
-        width: 150px;
-        height: 150px;
-        left: -63%;
-        top: -45px;
-        transform: scale(0.4);
-      }
-    }
-
     .deckArchetype {
       &-aggro {
         @include boxShadowDeckArchetype(var(--red-ts));
@@ -105,43 +49,6 @@
 
       &-combo {
         @include boxShadowDeckArchetype(var(--orange-ts));
-      }
-    }
-
-    .deckTypeShow,.deckShow {
-      .row {
-        margin: 0;
-
-        > div {
-          padding: 0;
-        }
-
-        .col-xs-2 {
-          background-color: var(--black);
-
-          > div {
-            margin: 0 auto;
-            position: relative;
-            width: 30px;
-            height: 58px;
-          }
-        }
-      }
-      // p {
-      //   padding-top: 15px;
-      // }
-
-      .stared {
-        color: var(--orange-ts)!important;
-        height: 22px;
-        width: 22px;
-        top: 0;
-        position: absolute;
-        right: 7px;
-      }
-
-      .noted {
-        color: var(--orange-ts)!important;
       }
     }
 
@@ -181,25 +88,6 @@
   margin-bottom: 20px;
   height: 180px;
   overflow-y: scroll;
-}
-
-
-.deckCardBackground {
-  color: var(--black);
-  &:before {
-    content: "";
-    position: absolute;
-    width: 85%;
-    height: 92%;
-    top: 3px;
-    right: 3px;
-    background-position: right;
-    background-repeat: no-repeat;
-    background-size: 110% 100%;
-    background-clip: padding-box;
-    margin-right: 10px;
-    opacity: 0.5;
-  }
 }
 
 .deckEdition {

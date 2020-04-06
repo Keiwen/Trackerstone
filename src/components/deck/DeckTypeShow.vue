@@ -15,9 +15,6 @@
                 </div>
                 <div class="col-xs-12 deckTypeStats">
                     <div class="row">
-                        <!-- <div class="col-xs-1 editIcon">
-                            <icon name="pencil-square-o" v-if="type.note" class="noted" />
-                        </div> -->
                         <div class="col-xs-9">
                             <p>
                                 {{ type.wonVs }} - {{ type.lossVs }} against<br/>
@@ -74,13 +71,78 @@
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
+
     .deckTypeContainer {
+        margin-bottom: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
+
         .deckTypeShow {
+            height: 60px;
+            background-color: var(--second-bg);
+            border-radius: 50px 0 0 50px;
+
+            &.lastChange {
+                border: 1px solid var(--orange-ts);
+            }
+
+            h4 {
+                font-family: 'Changa One', cursive;
+                text-transform: uppercase;
+                text-align: left;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+
             .profil {
+                width: 100px;
+                height: 100px;
+                display: inline-block;
+                position: absolute;
+                left: -13px;
+                top: -13px;
+                transform: scale(0.75);
                 background: url('../../assets/icones_classes.png') 0 0 no-repeat;
             }
+
+            .deckTypeStats {
+                position: absolute;
+                top: 30px;
+                left: 0;
+            }
+
+            .row {
+                margin: 0;
+
+                > div {
+                    padding: 0;
+                }
+
+                .col-xs-2 {
+                    background-color: var(--black);
+
+                    > div {
+                        margin: 0 auto;
+                        position: relative;
+                        width: 30px;
+                        height: 58px;
+                    }
+                }
+            }
+
+            .stared {
+                color: var(--orange-ts)!important;
+                height: 22px;
+                width: 22px;
+                top: 0;
+                position: absolute;
+                right: 7px;
+            }
+
+
         }
+
         .deckClass {
             &-hunter .profil {
                 background-position: -40px -40px;
@@ -122,7 +184,20 @@
     }
 
     .deckCardBackground {
+        color: var(--black);
         &:before {
+            content: "";
+            position: absolute;
+            width: 85%;
+            height: 92%;
+            top: 3px;
+            right: 3px;
+            background-position: right;
+            background-repeat: no-repeat;
+            background-size: 110% 100%;
+            background-clip: padding-box;
+            margin-right: 10px;
+            opacity: 0.5;
             background-image: var(--sampleCard)
         }
     }
