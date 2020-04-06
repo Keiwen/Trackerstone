@@ -1,11 +1,11 @@
 <template>
     <div class="chesthome">
         <h2>Current chest</h2>
-        <div>
-            <div :class="'serieChest serieChest-' + currentChest.rank">
-                <div @click="showChestNote()">
-                    <icon-info :noted="true"></icon-info>
-                </div>
+        <div class="row">
+            <div class="col-xs-9" :class="'serieChest serieChest-' + currentChest.rank">
+            </div>
+            <div @click="showChestNote()" class="col-xs-3">
+                <icon-info :noted="true"></icon-info>
             </div>
         </div>
         <div class="row">

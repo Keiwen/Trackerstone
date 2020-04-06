@@ -3,10 +3,12 @@
         <div class="container">
             <div class="col-xs-5">
                 <h3>My deck</h3>
-                <span @click="showDeckNote()">
-                    <icon-info :noted="typeof current.note !== 'undefined' && current.note.length > 0" :before="true"></icon-info>
-                </span>
-                <deck-pick/>
+                <div class="row">
+                    <div @click="showDeckNote()" class="col-xs-3">
+                        <icon-info :noted="typeof current.note !== 'undefined' && current.note.length > 0" :before="true"></icon-info>
+                    </div>
+                    <deck-pick class="col-xs-9"/>
+                </div>
 
                 <sweet-modal ref="modalDeckNote" modal-theme="dark" :title="generateDeckTitle(current)">
                     <pre v-if="current.note">{{ current.note }}</pre>
@@ -19,10 +21,12 @@
             </div>
             <div class="col-xs-5">
                 <h3>Opponent deck</h3>
-                <deck-type-pick @pick-type="pickOpponentType" :initialPick="opponent" :allowGenericPick="true" />
-                <span @click="showNote()">
-                    <icon-info :noted="typeof opponent.note !== 'undefined' && opponent.note.length > 0"></icon-info>
-                </span>
+                <div class="row">
+                    <deck-type-pick @pick-type="pickOpponentType" :initialPick="opponent" :allowGenericPick="true" class="col-xs-9"/>
+                    <div @click="showNote()" class="col-xs-3">
+                        <icon-info :noted="typeof opponent.note !== 'undefined' && opponent.note.length > 0"></icon-info>
+                    </div>
+                </div>
 
                 <sweet-modal ref="modalNote" modal-theme="dark" :title="generateTypeTitle(opponent)">
                     <pre v-if="opponent.note">{{ opponent.note }}</pre>

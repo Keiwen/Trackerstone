@@ -29,21 +29,9 @@
 
     .infoNote,.infoNoteBefore {
         cursor: pointer;
-        position: absolute;
-        margin-top: 5px;
         &.noted {
             color: var(--orange-ts)!important;
         }
     }
-
-    .infoNote {
-        margin-left: 5px;
-    }
-
-    .infoNoteBefore {
-        margin-left: -40px;
-    }
-
-
 
 </style>
