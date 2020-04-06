@@ -62,6 +62,10 @@
 </script>
 
 
-<style>
+<style lang="scss">
+
+    .deckContent {
+        padding: 0;
+    }
 
 </style>

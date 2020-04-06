@@ -147,11 +147,19 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     #newRCard {
         .sweet-action-close {
             color: white;
         }
+    }
+
+    .score {
+        font-weight: bold;
+    }
+
+    .deckEdition {
+        margin-top: -55px;
     }
 
 </style>

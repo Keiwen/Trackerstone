@@ -72,5 +72,8 @@
 </script>
 
 
-<style>
+<style lang="scss">
+    .deckTypeContent {
+        padding: 0;
+    }
 </style>

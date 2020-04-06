@@ -68,6 +68,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '../../assets/scss/mixins.scss';
+
     .deckContainer {
         margin-bottom: 15px;
         padding-left: 10px;
@@ -123,6 +125,16 @@
                         width: 30px;
                         height: 58px;
                     }
+                }
+            }
+
+            &.deckSerie {
+                &-standard {
+                    @include boxShadowDeckSerie(var(--serie-standard));
+                }
+
+                &-wild {
+                    @include boxShadowDeckSerie(var(--serie-wild));
                 }
             }
 

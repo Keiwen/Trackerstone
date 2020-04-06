@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <div class="container">
-            <div class="col-xs-5">
+            <div class="col-xs-6">
                 <h3>My deck</h3>
                 <div class="row">
                     <div @click="showDeckNote()" class="col-xs-3">
@@ -16,10 +16,7 @@
                 </sweet-modal>
 
             </div>
-            <div class="col-xs-2">
-
-            </div>
-            <div class="col-xs-5">
+            <div class="col-xs-6">
                 <h3>Opponent deck</h3>
                 <div class="row">
                     <deck-type-pick @pick-type="pickOpponentType" :initialPick="opponent" :allowGenericPick="true" class="col-xs-9"/>

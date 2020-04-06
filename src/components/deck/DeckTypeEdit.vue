@@ -123,64 +123,21 @@
 </script>
 
 
-<style lang="scss">
-    .deckTypeContainer {
-        .deckTypeShow {
-            .profil {
-                background: url('../../assets/icones_classes.png') 0 0 no-repeat;
-            }
-        }
-        .deckClass {
-            &-hunter .profil {
-                background-position: -40px -40px;
-            }
-
-            &-warlock .profil {
-                background-position: -160px -40px;
-            }
-
-            &-shaman .profil {
-                background-position: -280px -40px;
-            }
-
-            &-mage .profil {
-                background-position: -40px -160px;
-            }
-
-            &-druid .profil {
-                background-position: -160px -160px;
-            }
-
-            &-paladin .profil {
-                background-position: -280px -160px;
-            }
-
-            &-priest .profil {
-                background-position: -40px -280px;
-            }
-
-            &-warrior .profil {
-                background-position: -160px -280px;
-            }
-
-            &-rogue .profil {
-                background-position: -280px -280px;
-            }
-
-        }
-    }
-
-    .deckCardBackground {
-        &:before {
-            background-image: var(--sampleCard)
-        }
-    }
+<style lang="scss" scoped>
 
     #newRCard {
         color: black;
         .sweet-action-close {
             color: black;
         }
+    }
+
+    .score {
+        font-weight: bold;
+    }
+
+    .deckEdition {
+        margin-top: -55px;
     }
 
 </style>

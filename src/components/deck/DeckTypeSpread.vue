@@ -72,6 +72,30 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
+
+    .deckTypeList {
+        margin-bottom: 20px;
+        height: 180px;
+        overflow-y: scroll;
+    }
+
+    .deckTypeFiltered {
+        height: 50px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        &:hover {
+            border: 1px solid var(--orange-ts);
+        }
+        display: inline-block;
+        line-height: 1.5;
+        vertical-align: middle;
+    }
+
+    .genericDeckType {
+        font-style: italic;
+        color: #888888;
+    }
+
 
 </style>

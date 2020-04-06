@@ -71,6 +71,7 @@
 
 
 <style lang="scss" scoped>
+    @import '../../assets/scss/mixins.scss';
 
     .deckTypeContainer {
         margin-bottom: 15px;
@@ -201,4 +202,23 @@
             background-image: var(--sampleCard)
         }
     }
+
+    .deckArchetype {
+        &-aggro {
+            @include boxShadowDeckArchetype(var(--red-ts));
+        }
+
+        &-control {
+            @include boxShadowDeckArchetype(var(--blue-ts));
+        }
+
+        &-midrange {
+            @include boxShadowDeckArchetype(var(--green-ts));
+        }
+
+        &-combo {
+            @include boxShadowDeckArchetype(var(--orange-ts));
+        }
+    }
+
 </style>

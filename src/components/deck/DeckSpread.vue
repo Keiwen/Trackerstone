@@ -40,3 +40,26 @@
   }
 </script>
 
+<style lang="scss" scoped>
+
+    .deckList {
+        margin-bottom: 20px;
+        height: 180px;
+        overflow-y: scroll;
+    }
+
+    .deckFiltered {
+        height: 50px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        &:hover {
+            border: 1px solid var(--orange-ts);
+        }
+        display: inline-block;
+        line-height: 1.5;
+        vertical-align: middle;
+    }
+
+
+
+</style>
