@@ -2,13 +2,14 @@
  "cla": {"key": "cla", "name": "Classic", "release": "2014-03-11", "cards": 236, "cardsByRarity": "91/79/35/31", "wild": false, "hasPack": true},
  "bas": {"key": "bas", "name": "Basic", "release": "2014-03-11", "cards": 133, "cardsByRarity": "133/0/0/0", "wild": false, "hasPack": false},
 
+ "aoe": {"key": "aoe", "name": "Ashes of Outland", "release": "2020-04-07", "cards": 135, "cardsByRarity": "52/35/23/25", "wild": false, "hasPack": true},
  "dod": {"key": "dod", "name": "Descent of Dragons", "release": "2019-12-10", "cards": 140, "cardsByRarity": "49/36/27/27", "wild": false, "hasPack": true},
  "sou": {"key": "sou", "name": "Saviors of Uldum", "release": "2019-08-06", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": false, "hasPack": true},
  "ros": {"key": "ros", "name": "Rise of Shadows", "release": "2019-04-09", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": false, "hasPack": true},
- "rkr": {"key": "rkr", "name": "Rastakhan's Rumble", "release": "2018-12-04", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": false, "hasPack": true},
- "bdp": {"key": "bdp", "name": "Boomsday Project", "release": "2018-08-07", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": false, "hasPack": true},
- "wwd": {"key": "wwd", "name": "Witchwood", "release": "2018-04-12", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": false, "hasPack": true},
 
+ "rkr": {"key": "rkr", "name": "Rastakhan's Rumble", "release": "2018-12-04", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
+ "bdp": {"key": "bdp", "name": "Boomsday Project", "release": "2018-08-07", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
+ "wwd": {"key": "wwd", "name": "Witchwood", "release": "2018-04-12", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
  "kob": {"key": "kob", "name": "Kobolds & Catacombs", "release": "2017-12-07", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
  "kft": {"key": "kft", "name": "Frozen Throne", "release": "2017-08-10", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
  "ung": {"key": "ung", "name": "Un'Goro", "release": "2017-04-06", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
