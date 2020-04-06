@@ -10,7 +10,9 @@
         </div>
 
         <div class="container-fluid deckTypeContent">
-            <div class="deckTypeContainer col-xs-6 col-sm-6 col-md-4 col-lg-3" v-for="type in typesList">
+            <div class="deckTypeContainer col-xs-6 col-sm-6 col-md-4 col-lg-3"
+                 v-for="type in typesList"
+                 @click="openEdition(type)">
                 <deck-type-show :type="type" />
             </div>
         </div>
@@ -59,6 +61,11 @@
           default:
             return this.typesStats
         }
+      }
+    },
+    methods: {
+      openEdition (deckType) {
+        this.$router.push({name: 'deckTypeEdit', params: {deckType: deckType}})
       }
     }
   }

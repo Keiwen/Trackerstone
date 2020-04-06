@@ -1,6 +1,6 @@
 <template>
     <div class="deckShow" :class="showDivClass" :style="scssVar">
-        <div class="row" @click="openDetail()">
+        <div class="row">
             <div class="col-xs-3">
                 <div class="profil"></div>
             </div>
@@ -62,11 +62,6 @@
       hasRepresentCard () {
         if (!this.useRepresentativeCard) return false
         return this.deck.representCard !== undefined && this.deck.representCard !== ''
-      }
-    },
-    methods: {
-      openDetail () {
-        this.$router.push({name: 'deckEdit', params: {deck: this.deck}})
       }
     }
   }

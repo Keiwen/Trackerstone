@@ -29,12 +29,11 @@
 <script>
   import { mapGetters, mapActions } from 'vuex'
   import DeckTypePick from './DeckTypePick'
-  import DeckShow from './DeckShow'
   import ConfirmationModal from '@/components/modals/ConfirmationModal'
   import { EnhancedCheck } from 'vue-enhanced-check'
 
   export default {
-    components: {DeckTypePick, DeckShow, ConfirmationModal, EnhancedCheck},
+    components: {DeckTypePick, ConfirmationModal, EnhancedCheck},
     data () {
       return {
         newType: {},
