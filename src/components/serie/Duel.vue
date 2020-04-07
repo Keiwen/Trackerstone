@@ -105,6 +105,12 @@
 
 <style lang="scss" scoped>
     .duelButtons {
+        margin-top: 10px;
+        button {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
         .btn-success {
             padding-right: 30px;
             position: relative;
@@ -126,6 +132,10 @@
                 right: 7px;
             }
         }
+    }
+
+    .winstreakIcon {
+        display: inline-block;
     }
 
 </style>

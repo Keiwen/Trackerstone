@@ -18,7 +18,6 @@
 
         <div class="duelButtons">
             <button @click="playedArenaDuel(true)" class="btn btn-success">Win <icon name="thumbs-up" /></button>
-            <span class="winstreakIcon"></span>
             <button @click="playedArenaDuel(false)" class="btn btn-warning">Loss <icon name="thumbs-down" /></button>
         </div>
     </div>
@@ -50,6 +49,12 @@
 
 <style lang="scss" scoped>
     .duelButtons {
+        margin-top: 10px;
+        button {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
         .btn-success {
             padding-right: 30px;
             position: relative;
