@@ -1,46 +1,46 @@
 /* ####### Modals ####### */
 .sweet-modal {
-  text-align: center;
+  text-align: center !important;
   .sweet-title {
-    padding: 0;
-    height: 40px;
-    line-height: 40px;
+    padding: 0 !important;
+    height: 40px !important;
+    line-height: 40px !important;
     & > h2 {
-      margin-top: 10px;
+      margin-top: 10px !important;
     }
   }
 
   .sweet-box-actions {
-    top: 0;
+    top: 0 !important;
     .sweet-action-close {
-      width: 40px;
-      height: 40px;
+      width: 40px !important;
+      height: 40px !important;
     }
   }
 
   .sweet-buttons {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
     button {
-      margin-left: 10px;
+      margin-left: 10px !important;
       &.away-button {
-        float: left;
-        margin-right: 10px;
-        margin-left: 0;
+        float: left !important;
+        margin-right: 10px !important;
+        margin-left: 0 !important;
       }
     }
   }
 
   .sweet-content {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
     .detailStats >div >p {
-      margin-bottom: 0;
+      margin-bottom: 0 !important;
     }
   }
   &.is-alert .sweet-content {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
   }
 
 }
@@ -56,17 +56,17 @@
 // On re-align, issue with blurry text.
 // library use translate transformation, so I remove every transform
 .sweet-modal {
-  width: 90%;
-  max-height: 90%;
-  top: 5%;
-  left: 5%;
-  transform: none;
-  -webkit-transform: none;
+  width: 90% !important;
+  max-height: 90% !important;
+  top: 5% !important;
+  left: 5% !important;
+  transform: none !important;
+  -webkit-transform: none !important;
   @media (max-width: 768px) {
-    height: 90%;
+    height: 90% !important;
   }
   &.is-visible {
-    transform: none;
-    -webkit-transform: none;
+    transform: none !important;
+    -webkit-transform: none !important;
   }
 }
