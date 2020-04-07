@@ -189,7 +189,6 @@
             left: 15px;
             background-position: right;
             background-repeat: no-repeat;
-            background-size: 110% 100%;
             background-clip: padding-box;
             margin-right: 10px;
             opacity: 0.5;

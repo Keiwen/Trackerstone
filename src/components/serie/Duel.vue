@@ -4,10 +4,10 @@
             <div class="col-xs-6">
                 <h3>My deck</h3>
                 <div class="row">
-                    <div @click="showDeckNote()" class="col-xs-3">
+                    <deck-pick/>
+                    <span @click="showDeckNote()" class="deckNote">
                         <icon-info :noted="typeof current.note !== 'undefined' && current.note.length > 0" :before="true"></icon-info>
-                    </div>
-                    <deck-pick class="col-xs-9"/>
+                    </span>
                 </div>
 
                 <sweet-modal ref="modalDeckNote" modal-theme="dark" :title="generateDeckTitle(current)">
@@ -19,10 +19,10 @@
             <div class="col-xs-6">
                 <h3>Opponent deck</h3>
                 <div class="row">
-                    <deck-type-pick @pick-type="pickOpponentType" :initialPick="opponent" :allowGenericPick="true" class="col-xs-9"/>
-                    <div @click="showNote()" class="col-xs-3">
+                    <deck-type-pick @pick-type="pickOpponentType" :initialPick="opponent" :allowGenericPick="true"/>
+                    <span @click="showNote()" class="deckTypeNote">
                         <icon-info :noted="typeof opponent.note !== 'undefined' && opponent.note.length > 0"></icon-info>
-                    </div>
+                    </span>
                 </div>
 
                 <sweet-modal ref="modalNote" modal-theme="dark" :title="generateTypeTitle(opponent)">
@@ -136,6 +136,14 @@
 
     .winstreakIcon {
         display: inline-block;
+    }
+
+    .deckNote {
+        float: left;
+    }
+
+    .deckTypeNote {
+        float: right;
     }
 
 </style>

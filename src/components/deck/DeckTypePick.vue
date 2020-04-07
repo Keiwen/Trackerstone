@@ -1,6 +1,11 @@
 <template>
     <span>
-        <button class="btn btn-default" @click="openTypeSpread()">{{ btnText }}</button>
+        <div @click="openTypeSpread()">
+            <div v-if="hasPick">
+                <deck-type-show :type="pick" class="pickContainer" />
+            </div>
+            <button class="btn btn-default" v-else>Choose type...</button>
+        </div>
 
         <sweet-modal ref="modalTypePick" overlay-theme="dark" title="Pick type">
             <deck-type-spread :allowGenericPick="allowGenericPick" @pick-type="typePicked" @goTo="goToManageDeckType"></deck-type-spread>
@@ -15,9 +20,10 @@
   import { mapGetters } from 'vuex'
   import { SweetModal } from 'sweet-modal-vue'
   import DeckTypeSpread from './DeckTypeSpread'
+  import DeckTypeShow from './DeckTypeShow'
 
   export default {
-    components: { SweetModal, DeckTypeSpread },
+    components: { SweetModal, DeckTypeSpread, DeckTypeShow },
     props: {
       initialPick: {
         type: Object
@@ -33,10 +39,9 @@
       }
     },
     computed: {
-      ...mapGetters(['generateTypeTitleLimit']),
-      btnText () {
-        if (this.pick.id) return this.generateTypeTitleLimit(this.pick)
-        return 'Choose type...'
+      ...mapGetters(['typesStats']),
+      hasPick () {
+        return typeof this.pick.id !== 'undefined'
       }
     },
     methods: {
@@ -49,12 +54,35 @@
       },
       typePicked (key) {
         this.pick = key
+        this.retrieveStats()
+
         this.$refs.modalTypePick.close()
         this.$emit('pick-type', key)
+      },
+      retrieveStats () {
+        if (!this.hasPick) return
+        for (let i = 0; i < this.typesStats.length; i++) {
+          if (this.typesStats[i].id === this.pick.id) {
+            this.pick = this.typesStats[i]
+            break
+          }
+        }
       }
     },
     mounted () {
-      if (typeof this.initialPick !== 'undefined') this.pick = this.initialPick
+      if (typeof this.initialPick !== 'undefined') {
+        this.pick = this.initialPick
+        this.retrieveStats()
+      }
     }
   }
 </script>
+
+
+<style lang="scss" scoped>
+    .pickContainer {
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+
+</style>

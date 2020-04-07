@@ -1,12 +1,16 @@
 <template>
-    <span>
-        <button class="btn btn-default" @click="openDeckSpread()">{{ btnText }}</button>
+    <div class="deckPicker">
+        <div @click="openDeckSpread()">
+            <div v-if="this.pick > 0">
+                <deck-show :deck="currentDeck" class="pickContainer"></deck-show>
+            </div>
+            <button class="btn btn-default" v-else>Choose deck...</button>
+        </div>
 
         <sweet-modal ref="modalDeckPick" overlay-theme="dark" title="Pick deck">
             <deck-spread @pick-deck="deckPicked" @goTo="goToManageDeck"></deck-spread>
         </sweet-modal>
-
-    </span>
+    </div>
 
 </template>
 
@@ -15,19 +19,20 @@
   import { mapGetters, mapActions } from 'vuex'
   import { SweetModal } from 'sweet-modal-vue'
   import DeckSpread from './DeckSpread'
+  import DeckShow from './DeckShow'
 
   export default {
-    components: { SweetModal, DeckSpread },
+    components: { SweetModal, DeckSpread, DeckShow },
     data () {
       return {
-        pick: ''
+        pick: 0
       }
     },
     computed: {
-      ...mapGetters(['own', 'current', 'generateDeckTitleLimit']),
-      btnText () {
-        if (this.pick) return this.generateDeckTitleLimit(this.own[this.pick])
-        return 'Choose deck...'
+      ...mapGetters(['current', 'deckStats']),
+      currentDeck () {
+        if (this.pick > 0) return this.deckStats[this.pick]
+        return {}
       }
     },
     mounted () {
@@ -50,3 +55,11 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+    .pickContainer {
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+
+</style>
