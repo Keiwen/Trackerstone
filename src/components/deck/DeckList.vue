@@ -66,6 +66,11 @@
 
     .deckContent {
         padding: 0;
+        .deckContainer {
+            margin-bottom: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
     }
 
 </style>

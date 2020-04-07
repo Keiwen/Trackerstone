@@ -75,5 +75,11 @@
 <style lang="scss">
     .deckTypeContent {
         padding: 0;
+        .deckTypeContainer {
+            margin-bottom: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
     }
+
 </style>

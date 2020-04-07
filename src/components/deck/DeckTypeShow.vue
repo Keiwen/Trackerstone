@@ -73,115 +73,109 @@
 <style lang="scss" scoped>
     @import '../../assets/scss/mixins.scss';
 
-    .deckTypeContainer {
-        margin-bottom: 15px;
-        padding-left: 10px;
-        padding-right: 10px;
+    .deckTypeShow {
+        height: 60px;
+        background-color: var(--second-bg);
+        border-radius: 0 50px 50px 0;
 
-        .deckTypeShow {
-            height: 60px;
-            background-color: var(--second-bg);
-            border-radius: 0 50px 50px 0;
+        &.lastChange {
+            border: 1px solid var(--orange-ts);
+        }
 
-            &.lastChange {
-                border: 1px solid var(--orange-ts);
+        h4 {
+            font-family: 'Changa One', cursive;
+            text-transform: uppercase;
+            text-align: left;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 20px;
+        }
+
+        .profil {
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            position: absolute;
+            right: -27px;
+            top: -13px;
+            transform: scale(0.75);
+            background: url('../../assets/icones_classes.png') 0 0 no-repeat;
+        }
+
+        .deckTypeStats {
+            position: absolute;
+            top: 30px;
+            left: 0;
+        }
+
+        .row {
+            margin: 0;
+
+            > div {
+                padding: 0;
             }
 
-            h4 {
-                font-family: 'Changa One', cursive;
-                text-transform: uppercase;
-                text-align: left;
-                margin-top: 5px;
-                margin-bottom: 5px;
-                margin-left: 20px;
-            }
-
-            .profil {
-                width: 100px;
-                height: 100px;
-                display: inline-block;
-                position: absolute;
-                right: -27px;
-                top: -13px;
-                transform: scale(0.75);
-                background: url('../../assets/icones_classes.png') 0 0 no-repeat;
-            }
-
-            .deckTypeStats {
-                position: absolute;
-                top: 30px;
-                left: 0;
-            }
-
-            .row {
-                margin: 0;
+            .col-xs-2 {
+                background-color: var(--black);
 
                 > div {
-                    padding: 0;
-                }
-
-                .col-xs-2 {
-                    background-color: var(--black);
-
-                    > div {
-                        margin: 0 auto;
-                        position: relative;
-                        width: 30px;
-                        height: 58px;
-                    }
+                    margin: 0 auto;
+                    position: relative;
+                    width: 30px;
+                    height: 58px;
                 }
             }
-
-            .stared {
-                color: var(--orange-ts)!important;
-                height: 22px;
-                width: 22px;
-                top: 0;
-                position: absolute;
-                right: 7px;
-            }
-
-
         }
 
-        .deckClass {
-            &-hunter .profil {
-                background-position: -40px -40px;
-            }
-
-            &-warlock .profil {
-                background-position: -160px -40px;
-            }
-
-            &-shaman .profil {
-                background-position: -280px -40px;
-            }
-
-            &-mage .profil {
-                background-position: -40px -160px;
-            }
-
-            &-druid .profil {
-                background-position: -160px -160px;
-            }
-
-            &-paladin .profil {
-                background-position: -280px -160px;
-            }
-
-            &-priest .profil {
-                background-position: -40px -280px;
-            }
-
-            &-warrior .profil {
-                background-position: -160px -280px;
-            }
-
-            &-rogue .profil {
-                background-position: -280px -280px;
-            }
-
+        .stared {
+            color: var(--orange-ts)!important;
+            height: 22px;
+            width: 22px;
+            top: 0;
+            position: absolute;
+            right: 7px;
         }
+
+
+    }
+
+    .deckClass {
+        &-hunter .profil {
+            background-position: -40px -40px;
+        }
+
+        &-warlock .profil {
+            background-position: -160px -40px;
+        }
+
+        &-shaman .profil {
+            background-position: -280px -40px;
+        }
+
+        &-mage .profil {
+            background-position: -40px -160px;
+        }
+
+        &-druid .profil {
+            background-position: -160px -160px;
+        }
+
+        &-paladin .profil {
+            background-position: -280px -160px;
+        }
+
+        &-priest .profil {
+            background-position: -40px -280px;
+        }
+
+        &-warrior .profil {
+            background-position: -160px -280px;
+        }
+
+        &-rogue .profil {
+            background-position: -280px -280px;
+        }
+
     }
 
     .deckCardBackground {

@@ -70,169 +70,163 @@
 <style lang="scss" scoped>
     @import '../../assets/scss/mixins.scss';
 
-    .deckContainer {
-        margin-bottom: 15px;
-        padding-left: 10px;
-        padding-right: 10px;
+    .deckShow {
+        height: 60px;
+        background-color: var(--second-bg);
+        border-radius: 50px 0 0 50px;
 
-        .deckShow {
-            height: 60px;
-            background-color: var(--second-bg);
-            border-radius: 50px 0 0 50px;
+        &.lastChange {
+            border: 1px solid var(--orange-ts);
+        }
 
-            &.lastChange {
-                border: 1px solid var(--orange-ts);
+        h4 {
+            font-family: 'Changa One', cursive;
+            text-transform: uppercase;
+            text-align: left;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .profil {
+            width: 150px;
+            height: 150px;
+            display: inline-block;
+            position: absolute;
+            left: -63%;
+            top: -45px;
+            transform: scale(0.4);
+            background: url('../../assets/classes_sprite.png') 0 0 no-repeat;
+        }
+
+        .deckStats {
+            position: absolute;
+            top: 30px;
+            left: 0;
+        }
+
+        .row {
+            margin: 0;
+
+            > div {
+                padding: 0;
             }
 
-            h4 {
-                font-family: 'Changa One', cursive;
-                text-transform: uppercase;
-                text-align: left;
-                margin-top: 5px;
-                margin-bottom: 5px;
-            }
-
-            .profil {
-                width: 150px;
-                height: 150px;
-                display: inline-block;
-                position: absolute;
-                left: -63%;
-                top: -45px;
-                transform: scale(0.4);
-                background: url('../../assets/classes_sprite.png') 0 0 no-repeat;
-            }
-
-            .deckStats {
-                position: absolute;
-                top: 30px;
-                left: 0;
-            }
-
-            .row {
-                margin: 0;
+            .col-xs-2 {
+                background-color: var(--black);
 
                 > div {
-                    padding: 0;
-                }
-
-                .col-xs-2 {
-                    background-color: var(--black);
-
-                    > div {
-                        margin: 0 auto;
-                        position: relative;
-                        width: 30px;
-                        height: 58px;
-                    }
+                    margin: 0 auto;
+                    position: relative;
+                    width: 30px;
+                    height: 58px;
                 }
             }
-
-            &.deckSerie {
-                &-standard {
-                    @include boxShadowDeckSerie(var(--serie-standard));
-                }
-
-                &-wild {
-                    @include boxShadowDeckSerie(var(--serie-wild));
-                }
-            }
-
         }
-        .deckHero {
-            &-rexxar .profil {
-                background-position: -75px -75px;
+
+        &.deckSerie {
+            &-standard {
+                @include boxShadowDeckSerie(var(--serie-standard));
             }
-            &-guldan .profil {
-                background-position: -375px -75px;
+
+            &-wild {
+                @include boxShadowDeckSerie(var(--serie-wild));
             }
-            &-thrall .profil {
-                background-position: -675px -75px;
-            }
-            &-jaina .profil {
-                background-position: -75px -375px;
-            }
-            &-malfurion .profil {
-                background-position: -375px -376px;
-            }
-            &-uther .profil {
-                background-position: -675px -375px;
-            }
-            &-anduin .profil {
-                background-position: -75px -675px;
-            }
-            &-garrosh .profil {
-                background-position: -375px -675px;
-            }
-            &-valeera .profil {
-                background-position: -675px -675px;
-            }
-            &-alleria .profil {
-                background-position: -675px -975px;
-            }
-            &-khagdar .profil {
-                background-position: -75px -1275px;
-            }
-            &-medivh .profil {
-                background-position: -375px -1275px;
-            }
-            &-liadrin .profil {
-                background-position: -675px -1275px;
-            }
-            &-arthas .profil {
-                background-position: -75px -1575px;
-            }
-            &-tyrande .profil {
-                background-position: -375px -1575px;
-            }
-            &-maeiv .profil {
-                background-position: -675px -1575px;
-            }
-            &-morgl .profil {
-                background-position: -75px -1875px;
-            }
-            &-nemsy .profil {
-                background-position: -375px -1875px;
-            }
-            &-magni .profil {
-                background-position: -675px -1875px;
-            }
-            &-lunara .profil {
-                background-position: -75px -2175px;
-            }
-            &-jaraxxus .profil {
-                background-position: -375px -2175px;
-            }
-            &-annoy-o .profil {
-                background-position: -675px -2175px;
-            }
-            &-rastakhan .profil {
-                background-position: -75px -2475px;
-            }
-            &-lazul .profil {
-                background-position: -375px -2475px;
-            }
-            &-thunder .profil {
-                background-position: -675px -2475px;
-            }
-            &-elise .profil {
-                background-position: -75px -2775px;
-            }
-            &-deathwing .profil {
-                background-position: -375px -2775px;
-            }
-            &-sylvanas .profil {
-                background-position: -675px -2775px;
-            }
-            &-hazelbark .profil {
-                background-position: -75px -3075px;
-            }
-            &-vashj .profil {
-                background-position: -375px -3075px;
-            }
-            &-illidan .profil {
-                background-position: -675px -3075px;
-            }
+        }
+
+    }
+    .deckHero {
+        &-rexxar .profil {
+            background-position: -75px -75px;
+        }
+        &-guldan .profil {
+            background-position: -375px -75px;
+        }
+        &-thrall .profil {
+            background-position: -675px -75px;
+        }
+        &-jaina .profil {
+            background-position: -75px -375px;
+        }
+        &-malfurion .profil {
+            background-position: -375px -376px;
+        }
+        &-uther .profil {
+            background-position: -675px -375px;
+        }
+        &-anduin .profil {
+            background-position: -75px -675px;
+        }
+        &-garrosh .profil {
+            background-position: -375px -675px;
+        }
+        &-valeera .profil {
+            background-position: -675px -675px;
+        }
+        &-alleria .profil {
+            background-position: -675px -975px;
+        }
+        &-khagdar .profil {
+            background-position: -75px -1275px;
+        }
+        &-medivh .profil {
+            background-position: -375px -1275px;
+        }
+        &-liadrin .profil {
+            background-position: -675px -1275px;
+        }
+        &-arthas .profil {
+            background-position: -75px -1575px;
+        }
+        &-tyrande .profil {
+            background-position: -375px -1575px;
+        }
+        &-maeiv .profil {
+            background-position: -675px -1575px;
+        }
+        &-morgl .profil {
+            background-position: -75px -1875px;
+        }
+        &-nemsy .profil {
+            background-position: -375px -1875px;
+        }
+        &-magni .profil {
+            background-position: -675px -1875px;
+        }
+        &-lunara .profil {
+            background-position: -75px -2175px;
+        }
+        &-jaraxxus .profil {
+            background-position: -375px -2175px;
+        }
+        &-annoy-o .profil {
+            background-position: -675px -2175px;
+        }
+        &-rastakhan .profil {
+            background-position: -75px -2475px;
+        }
+        &-lazul .profil {
+            background-position: -375px -2475px;
+        }
+        &-thunder .profil {
+            background-position: -675px -2475px;
+        }
+        &-elise .profil {
+            background-position: -75px -2775px;
+        }
+        &-deathwing .profil {
+            background-position: -375px -2775px;
+        }
+        &-sylvanas .profil {
+            background-position: -675px -2775px;
+        }
+        &-hazelbark .profil {
+            background-position: -75px -3075px;
+        }
+        &-vashj .profil {
+            background-position: -375px -3075px;
+        }
+        &-illidan .profil {
+            background-position: -675px -3075px;
         }
     }
 
