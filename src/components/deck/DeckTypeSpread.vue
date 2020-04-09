@@ -41,12 +41,16 @@
       }
     },
     computed: {
-      ...mapGetters(['generateTypeTitle', 'getTypesWithClass', 'getTypesOnTop', 'getGenericType']),
+      ...mapGetters(['generateTypeTitle', 'getTypesWithClass', 'getGenericType', 'sortList', 'typesStats']),
       typesFiltered () {
         if (this.sortBy === '') {
-          const typesTop = this.getTypesOnTop()
-          const typesNoTop = this.getTypesOnTop(false)
-          return typesTop.concat(typesNoTop)
+          let typesList = []
+          for (let idType in this.typesStats) {
+            if (this.typesStats.hasOwnProperty(idType)) {
+              typesList.push(this.typesStats[idType])
+            }
+          }
+          return this.sortList(typesList, 'top')
         }
         return this.getTypesWithClass(this.sortBy)
       },

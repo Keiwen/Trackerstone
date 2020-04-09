@@ -2,7 +2,7 @@
     <span>
         <div @click="openTypeSpread()">
             <div v-if="hasPick">
-                <deck-type-show :type="pick" class="pickContainer" />
+                <deck-type-show :id-type="pick" class="pickContainer" />
             </div>
             <button class="btn btn-default" v-else>Choose type...</button>
         </div>
@@ -35,13 +35,13 @@
     },
     data () {
       return {
-        pick: {}
+        pick: 0
       }
     },
     computed: {
       ...mapGetters(['typesStats']),
       hasPick () {
-        return typeof this.pick.id !== 'undefined'
+        return this.pick !== 0
       }
     },
     methods: {
@@ -53,26 +53,14 @@
         this.$router.push({name: routeName})
       },
       typePicked (key) {
-        this.pick = key
-        this.retrieveStats()
-
+        this.pick = key.id
         this.$refs.modalTypePick.close()
         this.$emit('pick-type', key)
-      },
-      retrieveStats () {
-        if (!this.hasPick) return
-        for (let i = 0; i < this.typesStats.length; i++) {
-          if (this.typesStats[i].id === this.pick.id) {
-            this.pick = this.typesStats[i]
-            break
-          }
-        }
       }
     },
     mounted () {
       if (typeof this.initialPick !== 'undefined') {
         this.pick = this.initialPick
-        this.retrieveStats()
       }
     }
   }

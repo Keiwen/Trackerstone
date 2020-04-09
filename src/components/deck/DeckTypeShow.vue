@@ -37,12 +37,19 @@
 
   export default {
     components: { },
-    props: ['type'],
+    props: ['idType'],
     data () {
       return {}
     },
     computed: {
-      ...mapGetters(['generateTypeTitleLimit', 'lastTypeChanged', 'useRepresentativeCard']),
+      ...mapGetters(['generateTypeTitleLimit', 'lastTypeChanged', 'useRepresentativeCard', 'typesStats', 'getGenericType']),
+      type () {
+        let typeStat = this.typesStats[this.idType]
+        if (typeof typeStat === 'undefined') {
+          typeStat = this.getGenericType(this.idType)
+        }
+        return typeStat
+      },
       showDivClass () {
         let divClass = 'deckClass-' + this.type.hsClass + ' deckArchetype-' + this.type.archetype
         if (this.lastTypeChanged === this.type.id) {

@@ -33,7 +33,7 @@ const state = {
   opponent: 0,
   currentArena: {},
   opponentArena: {},
-  types: [],
+  types: {},
   nextId: 1,
   nextTypeId: 1,
   lastDeckChanged: 0,
@@ -64,7 +64,14 @@ const getters = {
   },
   getTypesFiltered: state => (filter, value) => {
     if (typeof value === 'undefined') value = true
-    return state.types.filter(type => { return type[filter] === value })
+
+    let typeFiltered = {}
+    for (let idType in state.types) {
+      if (state.types.hasOwnProperty(idType)) {
+        if (state.types[idType][filter] === value) typeFiltered[idType] = state.types[idType]
+      }
+    }
+    return typeFiltered
   },
   getTypesWithClass: (state, getters) => (hsClass) => {
     return getters.getTypesFiltered('hsClass', hsClass)
@@ -83,17 +90,13 @@ const getters = {
     return currentDeck
   },
   opponent: (state, getters) => {
-    let opponentType = {}
+    if (typeof state.types[state.opponent] === 'undefined') return {}
     if (!Number.isInteger(state.opponent) && state.opponent.length > 0) {
       // string as opponent id => generic type
       return getters.getGenericType(state.opponent)
     }
-    for (let i = 0; i < state.types.length; i++) {
-      if (state.types[i].id === state.opponent) {
-        opponentType = state.types[i]
-        break
-      }
-    }
+    let opponentType = state.types[state.opponent]
+    opponentType.id = state.opponent
     return opponentType
   },
   currentArena: state => state.currentArena,
@@ -151,17 +154,8 @@ const actions = {
     commit(types.ADD_DECKTYPE, deckTypeData)
     dispatch('addSuccess', 'Deck type added')
   },
-  setDeckTypeName ({commit, state}, deckTypeData) {
-    commit(types.SET_DECKTYPE_NAME, deckTypeData)
-  },
-  setDeckTypeNote ({commit, state}, deckTypeData) {
-    commit(types.SET_DECKTYPE_NOTE, deckTypeData)
-  },
-  setDeckTypeRepresentCard ({commit, state}, deckTypeData) {
-    commit(types.SET_DECKTYPE_REPRESENTCARD, deckTypeData)
-  },
-  switchDeckTypeTop ({commit, state}, deckTypeData) {
-    commit(types.SWITCH_DECKTYPE_TOP, deckTypeData)
+  setDeckType ({commit, state}, deckTypeData) {
+    commit(types.SET_DECKTYPE, deckTypeData)
   },
   removeDeckType ({commit, state}, deckTypeId) {
     commit(types.REMOVE_DECKTYPE, deckTypeId)
@@ -235,20 +229,20 @@ const mutations = {
   },
   [types.ADD_DECKTYPE] (state, type) {
     type.id = state.nextTypeId
+    Vue.set(state.types, state.nextTypeId, type)
     state.lastTypeChanged = type.id
     state.nextTypeId++
-    state.types.push(type)
   },
   [types.SET_DECKTYPES] (state, deckTypes) {
     state.lastTypeChanged = 0
     state.types = deckTypes
   },
   [types.REMOVE_DECKTYPE] (state, id) {
-    state.types.forEach(function (type, index, object) {
-      if (type.id === id) {
-        object.splice(index, 1)
-      }
-    })
+    Vue.delete(state.types, id)
+    state.lastTypeChanged = id
+    if (state.opponent === id) {
+      state.opponent = 0
+    }
     state.lastTypeChanged = id
     if (state.opponent === id) {
       state.opponent = 0
@@ -264,37 +258,14 @@ const mutations = {
     if (typeof payload.serie !== 'undefined') state.own[idDeck]['serie'] = payload.serie
     if (typeof payload.representCard !== 'undefined') state.own[idDeck]['representCard'] = payload.representCard
   },
-  [types.SET_DECKTYPE_NAME] (state, payload) {
-    state.types.forEach(function (type, index, object) {
-      if (type.id === payload.id) {
-        state.lastTypeChanged = type.id
-        type.name = payload.name
-      }
-    })
-  },
-  [types.SET_DECKTYPE_NOTE] (state, payload) {
-    state.types.forEach(function (type, index, object) {
-      if (type.id === payload.id) {
-        state.lastTypeChanged = type.id
-        type.note = payload.note
-      }
-    })
-  },
-  [types.SET_DECKTYPE_REPRESENTCARD] (state, payload) {
-    state.types.forEach(function (type, index, object) {
-      if (type.id === payload.id) {
-        state.lastTypeChanged = type.id
-        type.representCard = payload.representCard
-      }
-    })
-  },
-  [types.SWITCH_DECKTYPE_TOP] (state, id) {
-    state.types.forEach(function (type, index, object) {
-      if (type.id === id) {
-        state.lastTypeChanged = type.id
-        type.top = !type.top
-      }
-    })
+  [types.SET_DECKTYPE] (state, payload) {
+    const idType = parseInt(payload.id)
+    if (typeof state.types[idType] === 'undefined') return
+    state.lastTypeChanged = idType
+    if (typeof payload.name !== 'undefined') state.types[idType]['name'] = payload.name
+    if (typeof payload.note !== 'undefined') state.types[idType]['note'] = payload.note
+    if (typeof payload.top !== 'undefined') state.types[idType]['top'] = payload.top
+    if (typeof payload.representCard !== 'undefined') state.types[idType]['representCard'] = payload.representCard
   },
   [types.UPDATE_DTUS_TIME] (state) {
     state.lastDeckTypeUpdate = Date.now()

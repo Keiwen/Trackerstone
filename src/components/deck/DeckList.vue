@@ -2,9 +2,9 @@
     <div class="container-fluid">
         <div class="container-fluid deckContent">
             <div class="deckContainer col-xs-6 col-sm-6 col-md-4 col-lg-3"
-                 v-for="(deck, id) in deckStats"
+                 v-for="(deck, id) in own"
                  @click="openEdition(deck)">
-                <deck-show :deck="deck" />
+                <deck-show :id-deck="id" />
             </div>
         </div>
 
@@ -35,7 +35,7 @@
       }
     },
     computed: {
-      ...mapGetters(['deckStats', 'recentNumberGames'])
+      ...mapGetters(['own'])
     },
     methods: {
       ...mapActions(['addDeck']),

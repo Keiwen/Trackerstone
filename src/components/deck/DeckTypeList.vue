@@ -13,7 +13,7 @@
             <div class="deckTypeContainer col-xs-6 col-sm-6 col-md-4 col-lg-3"
                  v-for="type in typesList"
                  @click="openEdition(type)">
-                <deck-type-show :type="type" />
+                <deck-type-show :id-type="type.id" />
             </div>
         </div>
 
@@ -45,21 +45,27 @@
     computed: {
       ...mapGetters(['sortList', 'typesStats']),
       typesList () {
+        let typesList = []
+        for (let idType in this.typesStats) {
+          if (this.typesStats.hasOwnProperty(idType)) {
+            typesList.push(this.typesStats[idType])
+          }
+        }
         switch (this.sortBy) {
           case 'star':
-            return this.sortList(this.typesStats, 'top')
+            return this.sortList(typesList, 'top')
           case 'played':
-            return this.sortList(this.typesStats, 'playedVs')
+            return this.sortList(typesList, 'playedVs')
           case 'winscore':
-            return this.sortList(this.typesStats, 'winScoreVs')
+            return this.sortList(typesList, 'winScoreVs')
           case 'winrate':
-            return this.sortList(this.typesStats, 'winPercentVs')
+            return this.sortList(typesList, 'winPercentVs')
           case 'winrateRecent':
-            return this.sortList(this.typesStats, 'winPercentVsRecent')
+            return this.sortList(typesList, 'winPercentVsRecent')
           case 'hsClass':
-            return this.sortList(this.typesStats, 'hsClass', true)
+            return this.sortList(typesList, 'hsClass', true)
           default:
-            return this.typesStats
+            return typesList
         }
       }
     },

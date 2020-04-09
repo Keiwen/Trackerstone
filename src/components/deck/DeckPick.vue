@@ -2,7 +2,7 @@
     <div class="deckPicker">
         <div @click="openDeckSpread()">
             <div v-if="this.pick > 0">
-                <deck-show :deck="currentDeck" class="pickContainer"></deck-show>
+                <deck-show :id-deck="pick" class="pickContainer"></deck-show>
             </div>
             <button class="btn btn-default" v-else>Choose deck...</button>
         </div>
@@ -29,11 +29,7 @@
       }
     },
     computed: {
-      ...mapGetters(['current', 'deckStats']),
-      currentDeck () {
-        if (this.pick > 0) return this.deckStats[this.pick]
-        return {}
-      }
+      ...mapGetters(['current'])
     },
     mounted () {
       this.pick = this.current.id

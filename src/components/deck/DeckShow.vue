@@ -34,12 +34,15 @@
 
   export default {
     components: { },
-    props: ['deck'],
+    props: ['idDeck'],
     data () {
       return {}
     },
     computed: {
-      ...mapGetters(['generateDeckTitleLimit', 'lastDeckChanged', 'myHeroForClass', 'useRepresentativeCard']),
+      ...mapGetters(['generateDeckTitleLimit', 'lastDeckChanged', 'myHeroForClass', 'useRepresentativeCard', 'deckStats']),
+      deck () {
+        return this.deckStats[this.idDeck]
+      },
       showDivClass () {
         let divClass = 'deckHero-' + this.myHeroForClass(this.deck.type.hsClass)
         divClass += ' deckSerie-' + this.deck.serie

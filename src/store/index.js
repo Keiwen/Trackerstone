@@ -79,24 +79,25 @@ export default new Vuex.Store({
     typesStats: (state, getters) => {
       // clone types to manipulate it, or it will change state directly
       let stats = JSON.parse(JSON.stringify(getters.types))
-      for (let i = 0; i < stats.length; i++) {
-        const idType = stats[i].id
-        const playedVs = getters.getGamesVsType(idType)
-        stats[i]['playedVs'] = playedVs.length
-        stats[i]['playedVsCurrent'] = getters.getGamesVsWithDeck(playedVs, getters.current.id).length
-        const wonVs = getters.getGamesWonVsType(idType)
-        stats[i]['wonVs'] = wonVs.length
-        stats[i]['wonVsCurrent'] = getters.getGamesVsWithDeck(wonVs, getters.current.id).length
-        stats[i]['lossVs'] = stats[i]['playedVs'] - stats[i]['wonVs']
-        stats[i]['lossVsCurrent'] = stats[i]['playedVsCurrent'] - stats[i]['wonVsCurrent']
-        stats[i]['winPercentVs'] = getters.computeWinPercent(stats[i]['playedVs'], stats[i]['wonVs'])
-        stats[i]['winScoreVs'] = getters.computeWinScore(stats[i]['playedVs'], stats[i]['winPercentVs'])
-        stats[i]['winPercentVsCurrent'] = getters.computeWinPercent(stats[i]['playedVsCurrent'], stats[i]['wonVsCurrent'])
-        stats[i]['winScoreVsCurrent'] = getters.computeWinScore(stats[i]['playedVsCurrent'], stats[i]['winPercentVsCurrent'])
-        stats[i]['playedVsRecent'] = getters.getGamesVsType(idType, true).length
-        stats[i]['wonVsRecent'] = getters.getGamesWonVsType(idType, true).length
-        stats[i]['lossVsRecent'] = stats[i]['playedVsRecent'] - stats[i]['wonVsRecent']
-        stats[i]['winPercentVsRecent'] = getters.getWinPercentVsType(idType, true)
+      for (let idType in stats) {
+        if (stats.hasOwnProperty(idType)) {
+          const playedVs = getters.getGamesVsType(idType)
+          stats[idType]['playedVs'] = playedVs.length
+          stats[idType]['playedVsCurrent'] = getters.getGamesVsWithDeck(playedVs, getters.current.id).length
+          const wonVs = getters.getGamesWonVsType(idType)
+          stats[idType]['wonVs'] = wonVs.length
+          stats[idType]['wonVsCurrent'] = getters.getGamesVsWithDeck(wonVs, getters.current.id).length
+          stats[idType]['lossVs'] = stats[idType]['playedVs'] - stats[idType]['wonVs']
+          stats[idType]['lossVsCurrent'] = stats[idType]['playedVsCurrent'] - stats[idType]['wonVsCurrent']
+          stats[idType]['winPercentVs'] = getters.computeWinPercent(stats[idType]['playedVs'], stats[idType]['wonVs'])
+          stats[idType]['winScoreVs'] = getters.computeWinScore(stats[idType]['playedVs'], stats[idType]['winPercentVs'])
+          stats[idType]['winPercentVsCurrent'] = getters.computeWinPercent(stats[idType]['playedVsCurrent'], stats[idType]['wonVsCurrent'])
+          stats[idType]['winScoreVsCurrent'] = getters.computeWinScore(stats[idType]['playedVsCurrent'], stats[idType]['winPercentVsCurrent'])
+          stats[idType]['playedVsRecent'] = getters.getGamesVsType(idType, true).length
+          stats[idType]['wonVsRecent'] = getters.getGamesWonVsType(idType, true).length
+          stats[idType]['lossVsRecent'] = stats[idType]['playedVsRecent'] - stats[idType]['wonVsRecent']
+          stats[idType]['winPercentVsRecent'] = getters.getWinPercentVsType(idType, true)
+        }
       }
       return stats
     },

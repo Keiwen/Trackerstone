@@ -86,18 +86,15 @@
       this.newRCard = this.type.representCard
     },
     methods: {
-      ...mapActions([
-        'setDeckTypeName', 'setDeckTypeNote',
-        'setDeckTypeRepresentCard', 'switchDeckTypeTop',
-        'removeDeckType'
-      ]),
+      ...mapActions(['setDeckType', 'removeDeckType']),
       confirmEdit () {
-        this.setDeckTypeName({id: this.type.id, name: this.newName})
-        this.setDeckTypeNote({id: this.type.id, note: this.newNote})
-        this.setDeckTypeRepresentCard({id: this.type.id, representCard: this.newRCard})
-        if (this.type.top !== this.newTop) {
-          this.switchDeckTypeTop(this.type.id)
-        }
+        this.setDeckType({
+          id: this.type.id,
+          name: this.newName,
+          note: this.newNote,
+          representCard: this.newRCard,
+          top: this.newTop
+        })
         this.$router.push({name: 'deckTypesList'})
       },
       cancelEdit () {
