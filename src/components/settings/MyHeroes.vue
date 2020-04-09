@@ -5,7 +5,7 @@
         <div class="row myHeroes">
             <div class="row" v-for="(hsClass, key) in classes" v-if="key">
                 <div class="col-xs-4 col-md-2">
-                    <class-card :hsClass="hsClass" />
+                    <class-card :hsClass="hsClass" class="myHeroClass" />
                 </div>
                 <div class="col-xs-7 col-md-9 col-xs-offset-1 col-md-offset-1 myHeroesPicker">
                     <enhanced-check-radio :label="getHeroesDisplayForClass(key)"
@@ -77,11 +77,8 @@
             top: 0;
             margin-top: -30px;
         }
-        .hero-label {
-            float: right;
-        }
-        .class-card {
-            margin-bottom: 45px;
+        .myHeroClass {
+            margin-bottom: 5px;
         }
     }
 
