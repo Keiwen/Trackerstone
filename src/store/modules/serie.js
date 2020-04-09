@@ -232,7 +232,6 @@ const actions = {
   },
   win ({dispatch, commit, state, getters}, number) {
     if (typeof number === 'undefined') number = 1 // default is 1 win
-    console.log('i won')
     const rank = getters.currentStars
     const starsMult = getters.currentStarsMult
     const winStreak = getters.currentWinStreak
