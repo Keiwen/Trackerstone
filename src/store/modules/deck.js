@@ -90,11 +90,11 @@ const getters = {
     return currentDeck
   },
   opponent: (state, getters) => {
-    if (typeof state.types[state.opponent] === 'undefined') return {}
     if (!Number.isInteger(state.opponent) && state.opponent.length > 0) {
       // string as opponent id => generic type
       return getters.getGenericType(state.opponent)
     }
+    if (typeof state.types[state.opponent] === 'undefined') return {}
     let opponentType = state.types[state.opponent]
     opponentType.id = state.opponent
     return opponentType
@@ -217,6 +217,7 @@ const mutations = {
   },
   [types.CHOOSE_OPPONENT] (state, type) {
     if (typeof type === 'object') type = type.id
+    console.log('pick opponent', type)
     state.opponent = type
   },
   [types.CHOOSE_DECK_ARENA] (state, id) {

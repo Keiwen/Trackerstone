@@ -26,7 +26,6 @@
     components: { SweetModal, DeckTypeSpread, DeckTypeShow },
     props: {
       initialPick: {
-        type: Object
       },
       allowGenericPick: {
         type: Boolean,

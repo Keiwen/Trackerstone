@@ -19,7 +19,7 @@
             <div class="col-xs-6">
                 <h3>Opponent deck</h3>
                 <div class="row">
-                    <deck-type-pick @pick-type="pickOpponentType" :initialPick="opponent" :allowGenericPick="true"/>
+                    <deck-type-pick @pick-type="pickOpponentType" :initialPick="opponent.id" :allowGenericPick="true"/>
                     <span @click="showNote()" class="deckTypeNote">
                         <icon-info :noted="typeof opponent.note !== 'undefined' && opponent.note.length > 0"></icon-info>
                     </span>
