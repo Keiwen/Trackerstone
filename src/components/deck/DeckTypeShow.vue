@@ -42,13 +42,9 @@
       return {}
     },
     computed: {
-      ...mapGetters(['generateTypeTitleLimit', 'lastTypeChanged', 'useRepresentativeCard', 'typesStats', 'getGenericType']),
+      ...mapGetters(['generateTypeTitleLimit', 'lastTypeChanged', 'useRepresentativeCard', 'typesStats']),
       type () {
-        let typeStat = this.typesStats[this.idType]
-        if (typeof typeStat === 'undefined') {
-          typeStat = this.getGenericType(this.idType)
-        }
-        return typeStat
+        return this.typesStats[this.idType]
       },
       showDivClass () {
         let divClass = 'deckClass-' + this.type.hsClass + ' deckArchetype-' + this.type.archetype

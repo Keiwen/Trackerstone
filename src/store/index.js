@@ -79,6 +79,15 @@ export default new Vuex.Store({
     typesStats: (state, getters) => {
       // clone types to manipulate it, or it will change state directly
       let stats = JSON.parse(JSON.stringify(getters.types))
+      let hsClasses = JSON.parse(JSON.stringify(getters.classes))
+
+      // add generic types
+      for (let idClass in hsClasses) {
+        if (hsClasses.hasOwnProperty(idClass) && idClass !== '') {
+          stats[idClass] = getters.getGenericType(idClass)
+        }
+      }
+
       for (let idType in stats) {
         if (stats.hasOwnProperty(idType)) {
           const playedVs = getters.getGamesVsType(idType)
