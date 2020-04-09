@@ -183,6 +183,10 @@
             background-position: -280px -280px;
         }
 
+        &-demon_hunter .profil {
+            background-position: -280px -400px;
+        }
+
     }
 
     .deckCardBackground {
