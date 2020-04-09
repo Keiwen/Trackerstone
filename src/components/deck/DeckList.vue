@@ -3,7 +3,7 @@
         <div class="container-fluid deckContent">
             <div class="deckContainer col-xs-6 col-sm-6 col-md-4 col-lg-3"
                  v-for="(deck, id) in own"
-                 @click="openEdition(deck)">
+                 @click="openEdition(id)">
                 <deck-show :id-deck="id" />
             </div>
         </div>
@@ -42,8 +42,8 @@
       pickType (type) {
         this.newType = type
       },
-      openEdition (deck) {
-        this.$router.push({name: 'deckEdit', params: {deck: deck}})
+      openEdition (idDeck) {
+        this.$router.push({name: 'deckEdit', params: {idDeck: idDeck}})
       },
       add () {
         const deckData = {

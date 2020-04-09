@@ -82,7 +82,7 @@
     components: { SweetModal, EnhancedCheck, RepCardPick },
     data () {
       return {
-        deck: {},
+        idDeck: 0,
         newName: '',
         newNote: '',
         newExportCode: '',
@@ -92,12 +92,13 @@
       }
     },
     computed: {
-      ...mapGetters(['generateDeckTitle', 'useRepresentativeCard'])
+      ...mapGetters(['generateDeckTitle', 'useRepresentativeCard', 'deckStats']),
+      deck () {
+        return (typeof this.deckStats[this.idDeck] === 'undefined') ? {} : this.deckStats[this.idDeck]
+      }
     },
     mounted () {
-      let deck = this.$route.params.deck
-
-      this.deck = JSON.parse(JSON.stringify(deck))
+      this.idDeck = this.$route.params.idDeck
       this.newName = this.deck.name
       this.newNote = this.deck.note
       this.newRCard = this.deck.representCard
@@ -108,7 +109,7 @@
       ...mapActions(['setDeck', 'removeDeck']),
       confirmEdit () {
         const deckData = {
-          id: this.deck.id,
+          id: this.idDeck,
           name: this.newName,
           note: this.newNote,
           representCard: this.newRCard,
@@ -133,7 +134,7 @@
       },
       remove () {
         this.$refs.modalDelete.close()
-        this.removeDeck(this.deck.id)
+        this.removeDeck(this.idDeck)
         this.$ga.event('deck', 'remove', 'removeDeck')
         this.$router.push({name: 'deckList'})
       },
