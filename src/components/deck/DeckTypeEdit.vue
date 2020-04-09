@@ -66,7 +66,7 @@
     components: { SweetModal, EnhancedCheck, RepCardPick },
     data () {
       return {
-        type: {},
+        idType: 0,
         newName: '',
         newNote: '',
         newRCard: '',
@@ -74,12 +74,13 @@
       }
     },
     computed: {
-      ...mapGetters(['generateTypeTitle', 'useRepresentativeCard'])
+      ...mapGetters(['generateTypeTitle', 'useRepresentativeCard', 'typesStats']),
+      type () {
+        return (typeof this.typesStats[this.idType] === 'undefined') ? {} : this.typesStats[this.idType]
+      }
     },
     mounted () {
-      let deckType = this.$route.params.deckType
-
-      this.type = JSON.parse(JSON.stringify(deckType))
+      this.idType = this.$route.params.idType
       this.newName = this.type.name
       this.newNote = this.type.note
       this.newTop = this.type.top
@@ -89,7 +90,7 @@
       ...mapActions(['setDeckType', 'removeDeckType']),
       confirmEdit () {
         this.setDeckType({
-          id: this.type.id,
+          id: this.idType,
           name: this.newName,
           note: this.newNote,
           representCard: this.newRCard,
@@ -105,7 +106,7 @@
       },
       remove () {
         this.$refs.modalDelete.close()
-        this.removeDeckType(this.type.id)
+        this.removeDeckType(this.idType)
         this.$ga.event('deckType', 'remove', this.type.hsClass + ' - ' + this.type.name)
         this.$router.push({name: 'deckTypesList'})
       },
