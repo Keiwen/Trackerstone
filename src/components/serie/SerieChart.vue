@@ -6,10 +6,12 @@
                 <h3>Ranks</h3>
                 <serie-rank-evol-graph :height="180" :currentOnly="currentOnly" />
             </div>
+            <!--
             <div class="carousel-cell chart">
                 <h3>Total stars</h3>
                 <serie-stars-evol-graph :height="180" :currentOnly="currentOnly" />
             </div>
+            -->
             <div class="carousel-cell chart">
                 <h3>Class played against</h3>
                 <class-against-graph :height="180" :currentOnly="currentOnly" />
@@ -38,7 +40,7 @@
 <script>
   import { EnhancedToggle } from 'vue-enhanced-check'
   import Flickity from 'vue-flickity'
-  import SerieStarsEvolGraph from '@/components/charts/SerieStarsEvolGraph'
+  // import SerieStarsEvolGraph from '@/components/charts/SerieStarsEvolGraph'
   import SerieRankEvolGraph from '@/components/charts/SerieRankEvolGraph'
   import ClassAgainstGraph from '@/components/charts/ClassAgainstGraph'
   import ArchetypeAgainstGraph from '@/components/charts/ArchetypeAgainstGraph'
@@ -48,7 +50,7 @@
     components: {
       EnhancedToggle,
       Flickity,
-      SerieStarsEvolGraph,
+      // SerieStarsEvolGraph,
       SerieRankEvolGraph,
       ClassAgainstGraph,
       ArchetypeAgainstGraph,

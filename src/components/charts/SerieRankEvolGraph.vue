@@ -2,6 +2,7 @@
 <script>
   import { Line } from 'vue-chartjs'
   import { mapGetters } from 'vuex'
+  import Constants from '@/assets/db/constants.json'
 
   export default Line.extend({
     props: {
@@ -34,7 +35,7 @@
           labels.push(i)
           if (this.currentOnly && lastId !== this.current.id) {
             // set non current deck point to 25 (bottom) to follow evolution in the serie
-            dataset.data.push(25)
+            dataset.data.push(Constants.serie.minRank)
           } else {
             if (this.wildMode) {
               dataset.data.push(history[i].rankWild)
@@ -62,7 +63,7 @@
               ticks: {
                 reverse: true,
                 min: this.highest,
-                max: 25
+                max: Constants.serie.minRank
               }
             }]
           },
