@@ -23,7 +23,13 @@
 
         const sortField = this.currentOnly ? 'playedVsCurrent' : 'playedVs'
         const percentField = this.currentOnly ? 'winPercentVsCurrent' : 'winPercentVs'
-        const typesSorted = this.sortList(this.typesStats, sortField).slice(0, 10)
+        let typesStatsList = []
+        for (let idType in this.typesStats) {
+          if (this.typesStats.hasOwnProperty(idType)) {
+            typesStatsList.push(this.typesStats[idType])
+          }
+        }
+        const typesSorted = this.sortList(typesStatsList, sortField).slice(0, 10)
 
         for (let i = 0; i < typesSorted.length; i++) {
           const type = typesSorted[i]
