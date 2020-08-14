@@ -316,7 +316,6 @@ export default new Vuex.Store({
       localStorage.removeItem(persistOptions.key)
       // also remove one time message stored
       localStorage.removeItem('tsotm:localStorageAccepted')
-      localStorage.removeItem('tsotm:update_1.0')
       location.reload()
     },
     cancelLastGame ({dispatch, commit, getters}) {
