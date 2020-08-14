@@ -39,13 +39,13 @@
         </div>
 
         <div class="container">
-            <div class="col-xs-6">
+            <div class="col-xs-6">ws
             <span class="text-danger winstreakIcon" v-if="isOnWinStreak">
                 <icon name="fire" /> Win streak
             </span>
             </div>
             <div class="col-xs-6">
-                <p>Similar games played: {{ gamesCurrentWonVs.length }} - {{ gamesCurrentLossVsCount }} ({{ gamesCurrentWinpercentVs }} % won)</p>
+                <p class="small">Similar games played: {{ gamesCurrentWonVs.length }} - {{ gamesCurrentLossVsCount }} ({{ gamesCurrentWinpercentVs }} % won)</p>
             </div>
         </div>
     </div>
@@ -105,7 +105,6 @@
 
 <style lang="scss" scoped>
     .duelButtons {
-        margin-top: 10px;
         button {
             margin-left: 20px;
             margin-right: 20px;

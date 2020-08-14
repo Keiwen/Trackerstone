@@ -3,6 +3,7 @@
         <h2>Current chest</h2>
         <div class="row">
             <div class="col-xs-9" :class="'serieChest serieChest-' + currentChest.rank">
+                {{ currentChest.level }}
             </div>
             <div @click="showChestNote()" class="col-xs-3">
                 <icon-info :noted="true"></icon-info>

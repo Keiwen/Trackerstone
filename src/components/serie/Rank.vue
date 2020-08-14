@@ -47,7 +47,7 @@
         .rankbadge {
             display: block;
             position: relative;
-            background: url('../../assets/spriteHS.png') 0 0 no-repeat;
+            //background: url('../../assets/spriteHS.png') 0 0 no-repeat;
             width: 105px;
             height: 120px;
             background-size: 600px 600px;

@@ -2,6 +2,8 @@
     <div class="container-fluid">
         <serie-sum/>
 
+        <duel/>
+
         <div class="row">
             <button class="btn btn-default btn-wildmode"
                     :class="wildMode ? 'btn-wildSerie' : 'btn-standardSerie'"
@@ -10,7 +12,6 @@
             </button>
         </div>
 
-        <duel/>
         <hr/>
         <serie-stats/>
         <div class="container">
