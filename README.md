@@ -2,7 +2,10 @@
 
 <a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it on web browser</a> and get mobile app (see below)! (Oh, seems to have some issues with IE)
 
-Current version is 0.9.4 with export/import data, and option to cancel last game
+Current version is 0.10.0 new ranked system (require hard reset for old users).
+Reworked design is still in progress.
+
+Lastest card set included: Scholomance Academy (released 2020-08)
 
 > Please note that this project is an experiment with VueJS framework and Progressive Web App, maintained on free-time without guarantee :)
 
@@ -17,7 +20,7 @@ Current version is 0.9.4 with export/import data, and option to cancel last game
 ## Features
 Simple Hearthstone tracker. Just track your win and loss. On app you'll find:
 - your current rank and star (standard/wild)
-- how many win needed 'til next rank milestone
+- how many win needed until next rank milestone
 - global winrate, detail by hours of play
 - winrate with each deck
 - persist data in local browser storage
