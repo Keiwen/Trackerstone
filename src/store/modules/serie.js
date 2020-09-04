@@ -35,6 +35,10 @@ const getters = {
     if (typeof id === 'undefined') id = getters.currentRank
     return Ranks[id]['title']
   },
+  getRankData: (state, getters) => (id) => {
+    if (typeof id === 'undefined') id = getters.currentRank
+    return Ranks[id]
+  },
   getRankLevel: (state, getters) => (id) => {
     if (typeof id === 'undefined') id = getters.currentRank
     if (id === 0) return Ranks[id]['league']
@@ -78,6 +82,21 @@ const getters = {
     chest.nextRank = nextFloor
     chest.nextLevel = getters.getRankLevel(nextFloor)
     return chest
+  },
+  getRankFromLeague: (state) => (league, subrank) => {
+    for (let rank in Ranks) {
+      if (league === Ranks[rank]['league'] && subrank === Ranks[rank]['rank']) {
+        return rank
+      }
+    }
+    return Constants.serie.minRank
+  },
+  rankLeagues: (state) => {
+    let leagues = []
+    for (let rank in Ranks) {
+      if (!leagues.includes(Ranks[rank]['league'])) leagues.push(Ranks[rank]['league'])
+    }
+    return leagues
   },
   nextMilestone: (state, getters) => {
     return getters.getRankFloor(null, true)
