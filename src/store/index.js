@@ -315,8 +315,10 @@ export default new Vuex.Store({
       // call this.$store.dispatch('resetState') from a component action
       localStorage.removeItem(persistOptions.key)
       // also remove one time message stored
-      // TODO hmmm what about looping on OTM???
-      localStorage.removeItem('tsotm:localStorageAccepted')
+      for (let otm in OTM) {
+        localStorage.removeItem('tsotm:' + otm)
+      }
+
       location.reload()
     },
     cancelLastGame ({dispatch, commit, getters}) {
