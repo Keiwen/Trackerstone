@@ -7,9 +7,17 @@
                         <div class="panel-heading">Standard</div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label class="control-label col-xs-6 col-sm-4" for="newRank">Rank:</label>
+                                <label class="control-label col-xs-6 col-sm-4" for="newLeague">League:</label>
                                 <div class="col-xs-6 col-sm-8">
-                                    <input type="number" class="form-control" id="newRank" v-model="newRank">
+                                    <select v-model="newLeague" id="newLeague" class="form-control" >
+                                        <option v-for="leagueName in rankLeagues" :value="leagueName">{{ leagueName }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-6 col-sm-4" for="newSubRank">Rank:</label>
+                                <div class="col-xs-6 col-sm-8">
+                                    <input type="number" class="form-control" id="newSubRank" v-model="newSubRank">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -38,9 +46,17 @@
                         <div class="panel-heading">Wild</div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label class="control-label col-xs-6 col-sm-4" for="newRankWild">Rank:</label>
+                                <label class="control-label col-xs-6 col-sm-4" for="newLeague">League:</label>
                                 <div class="col-xs-6 col-sm-8">
-                                    <input type="number" class="form-control" id="newRankWild" v-model="newRankWild">
+                                    <select v-model="newLeagueWild" id="newLeagueWild" class="form-control" >
+                                        <option v-for="leagueName in rankLeagues" :value="leagueName">{{ leagueName }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-6 col-sm-4" for="newSubRankWild">Rank:</label>
+                                <div class="col-xs-6 col-sm-8">
+                                    <input type="number" class="form-control" id="newSubRankWild" v-model="newSubRankWild">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -82,11 +98,13 @@
   export default {
     data () {
       return {
-        newRank: 25,
+        newLeague: 'Bronze',
+        newSubRank: 10,
         newStars: 0,
         newWinStreak: 0,
         newStarsMult: 1,
-        newRankWild: 25,
+        newLeagueWild: 'Bronze',
+        newSubRankWild: 10,
         newStarsWild: 0,
         newWinStreakWild: 0,
         newStarsMultWild: 1
@@ -94,28 +112,35 @@
     },
     computed: {
       ...mapGetters(['rank', 'stars', 'winStreak', 'starsMult',
-        'rankWild', 'starsWild', 'winStreakWild', 'starsMultWild'
+        'rankWild', 'starsWild', 'winStreakWild', 'starsMultWild',
+        'rankLeagues', 'getRankFromLeague', 'getRankData'
       ])
     },
     methods: {
       ...mapActions(['setSerieData', 'cancelLastGame']),
       initialize () {
-        this.newRank = this.rank
+        const rankData = this.getRankData(this.rank)
+        const rankDataWild = this.getRankData(this.rankWild)
+        this.newLeague = rankData['league']
+        this.newSubRank = rankData['rank']
         this.newStars = this.stars
         this.newWinStreak = this.winStreak
         this.newStarsMult = this.starsMult
-        this.newRankWild = this.rankWild
+        this.newLeagueWild = rankDataWild['league']
+        this.newSubRankWild = rankDataWild['rank']
         this.newStarsWild = this.starsWild
         this.newWinStreakWild = this.winStreakWild
         this.newStarsMultWild = this.starsMultWild
       },
       set () {
+        const newRank = this.getRankFromLeague(this.newLeague, parseInt(this.newSubRank))
+        const newRankWild = this.getRankFromLeague(this.newLeagueWild, parseInt(this.newSubRankWild))
         const dataSet = {
-          rank: this.newRank,
+          rank: newRank,
           stars: this.newStars,
           winStreak: this.newWinStreak,
           starsMult: this.newStarsMult,
-          rankWild: this.newRankWild,
+          rankWild: newRankWild,
           starsWild: this.newStarsWild,
           winStreakWild: this.newWinStreakWild,
           starsMultWild: this.newStarsMultWild
