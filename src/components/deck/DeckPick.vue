@@ -1,7 +1,7 @@
 <template>
     <div class="deckPicker">
-        <div @click="openDeckSpread()">
-            <div v-if="this.pick > 0">
+        <div @click="openDeckSpread()" class="row">
+            <div v-if="this.pick > 0" class="col-xs-12">
                 <deck-show :id-deck="pick" class="pickContainer"></deck-show>
             </div>
             <button class="btn btn-default" v-else>Choose deck...</button>
@@ -53,8 +53,8 @@
 </script>
 
 <style lang="scss" scoped>
-    .pickContainer {
-        margin-top: 10px;
+    .deckPicker {
+        margin-top: 5px;
         margin-right: 10px;
     }
 

@@ -1,7 +1,7 @@
 <template>
-    <span>
-        <div @click="openTypeSpread()">
-            <div v-if="hasPick">
+    <div class="deckTypePicker">
+        <div @click="openTypeSpread()" class="row">
+            <div v-if="hasPick" class="col-xs-12">
                 <deck-type-show :id-type="pick" class="pickContainer" />
             </div>
             <button class="btn btn-default" v-else>Choose type...</button>
@@ -11,7 +11,7 @@
             <deck-type-spread :allowGenericPick="allowGenericPick" @pick-type="typePicked" @goTo="goToManageDeckType"></deck-type-spread>
         </sweet-modal>
 
-    </span>
+    </div>
 
 </template>
 
@@ -67,9 +67,9 @@
 
 
 <style lang="scss" scoped>
-    .pickContainer {
-        margin-top: 10px;
-        margin-right: 10px;
+    .deckTypePicker {
+        margin-top: 5px;
+        margin-left: 10px;
     }
 
 </style>

@@ -108,6 +108,7 @@
         button {
             margin-left: 20px;
             margin-right: 20px;
+            margin-top: 10px;
         }
 
         .btn-success {
@@ -138,11 +139,15 @@
     }
 
     .deckNote {
-        float: left;
+        position: absolute;
+        left: -35px;
+        top: 60px;
     }
 
     .deckTypeNote {
-        float: right;
+        position: absolute;
+        right: -35px;
+        top: 60px;
     }
 
 </style>
