@@ -193,6 +193,9 @@ const getters = {
   isOnWinStreak: (state, getters) => {
     return getters.currentWinStreak >= Constants.serie.winStreak
   },
+  isOnWinStreakIfWin: (state, getters) => {
+    return getters.currentWinStreak >= (Constants.serie.winStreak - 1)
+  },
   getSerieTimeProgress: state => {
     let currentDate = new Date()
     // next month index 0 = day before first day = last day of current month
@@ -256,7 +259,7 @@ const actions = {
     const winStreak = getters.currentWinStreak
     let starGain = number * starsMult
     if (rank > Constants.serie.rankBonusCanceled) {
-      if (getters.isOnWinStreak) {
+      if (getters.isOnWinStreakIfWin) {
         starGain = number * starsMult * 2
       } else if ((number + winStreak) >= Constants.serie.winStreak) {
         starGain = (Constants.serie.winStreak - winStreak) * starsMult // star gain before win streak
