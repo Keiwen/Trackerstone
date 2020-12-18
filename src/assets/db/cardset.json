@@ -2,6 +2,7 @@
  "cla": {"key": "cla", "name": "Classic", "release": "2014-03-11", "cards": 236, "cardsByRarity": "91/79/35/31", "wild": false, "hasPack": true},
  "bas": {"key": "bas", "name": "Basic", "release": "2014-03-11", "cards": 133, "cardsByRarity": "133/0/0/0", "wild": false, "hasPack": false},
 
+ "dar": {"key": "dar", "name": "Madness at the Darkmoon Faire", "release": "2020-11-17", "cards": 135, "cardsByRarity": "54/32/24/25", "wild": false, "hasPack": true},
  "sch": {"key": "sch", "name": "Scholomance Academy", "release": "2020-08-06", "cards": 135, "cardsByRarity": "52/35/23/25", "wild": false, "hasPack": true},
  "aoo": {"key": "aoo", "name": "Ashes of Outland", "release": "2020-04-07", "cards": 135, "cardsByRarity": "52/35/23/25", "wild": false, "hasPack": true},
  "dod": {"key": "dod", "name": "Descent of Dragons", "release": "2019-12-10", "cards": 140, "cardsByRarity": "49/36/27/27", "wild": false, "hasPack": true},
@@ -9,19 +10,19 @@
  "ros": {"key": "ros", "name": "Rise of Shadows", "release": "2019-04-09", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": false, "hasPack": true},
 
  "rkr": {"key": "rkr", "name": "Rastakhan's Rumble", "release": "2018-12-04", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
- "bdp": {"key": "bdp", "name": "Boomsday Project", "release": "2018-08-07", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
- "wwd": {"key": "wwd", "name": "Witchwood", "release": "2018-04-12", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
+ "bdp": {"key": "bdp", "name": "The Boomsday Project", "release": "2018-08-07", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
+ "wwd": {"key": "wwd", "name": "The Witchwood", "release": "2018-04-12", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
  "kob": {"key": "kob", "name": "Kobolds & Catacombs", "release": "2017-12-07", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
- "kft": {"key": "kft", "name": "Frozen Throne", "release": "2017-08-10", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
- "ung": {"key": "ung", "name": "Un'Goro", "release": "2017-04-06", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
- "gad": {"key": "gad", "name": "Gadgetzan", "release": "2016-12-01", "cards": 132, "cardsByRarity": "49/36/27/20", "wild": true, "hasPack": true},
- "kar": {"key": "kar", "name": "Karazhan", "release": "2016-08-11", "cards": 45, "cardsByRarity": "27/12/1/5", "wild": true, "hasPack": false},
- "old": {"key": "old", "name": "Old Gods", "release": "2016-04-26", "cards": 134, "cardsByRarity": "50/36/27/21", "wild": true, "hasPack": true},
- "loe": {"key": "loe", "name": "League of Explorers", "release": "2015-11-12", "cards": 45, "cardsByRarity": "25/13/2/5", "wild": true, "hasPack": false},
- "tgt": {"key": "tgt", "name": "Grand Tournament", "release": "2014-03-11", "cards": 132, "cardsByRarity": "49/36/27/20", "wild": true, "hasPack": true},
+ "kft": {"key": "kft", "name": "Knights of the Frozen Throne", "release": "2017-08-10", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
+ "ung": {"key": "ung", "name": "Journey to Un'Goro", "release": "2017-04-06", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
+ "gad": {"key": "gad", "name": "Mean Streets of Gadgetzan", "release": "2016-12-01", "cards": 132, "cardsByRarity": "49/36/27/20", "wild": true, "hasPack": true},
+ "kar": {"key": "kar", "name": "One Night in Karazhan", "release": "2016-08-11", "cards": 45, "cardsByRarity": "27/12/1/5", "wild": true, "hasPack": false},
+ "old": {"key": "old", "name": "Whispers of the Old Gods", "release": "2016-04-26", "cards": 134, "cardsByRarity": "50/36/27/21", "wild": true, "hasPack": true},
+ "loe": {"key": "loe", "name": "The League of Explorers", "release": "2015-11-12", "cards": 45, "cardsByRarity": "25/13/2/5", "wild": true, "hasPack": false},
+ "tgt": {"key": "tgt", "name": "The Grand Tournament", "release": "2014-03-11", "cards": 132, "cardsByRarity": "49/36/27/20", "wild": true, "hasPack": true},
  "brm": {"key": "brm", "name": "Blackrock Mountain", "release": "2015-04-02", "cards": 31, "cardsByRarity": "15/11/0/5", "wild": true, "hasPack": false},
  "gvg": {"key": "gvg", "name": "Goblins vs Gnomes", "release": "2014-12-08", "cards": 123, "cardsByRarity": "40/37/26/20", "wild": true, "hasPack": true},
- "nax": {"key": "nax", "name": "Naxxramas", "release": "2014-07-22", "cards": 30, "cardsByRarity": "18/4/2/6", "wild": true, "hasPack": false},
+ "nax": {"key": "nax", "name": "Curse of Naxxramas", "release": "2014-07-22", "cards": 30, "cardsByRarity": "18/4/2/6", "wild": true, "hasPack": false},
 
  "hof": {"key": "hof", "name": "Hall of Fame", "release": "2017-04-17", "cards": 21, "cardsByRarity": "5/5/5/7", "wild": true, "hasPack": false}
 }
