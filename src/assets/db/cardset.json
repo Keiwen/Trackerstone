@@ -1,14 +1,12 @@
 {
- "cla": {"key": "cla", "name": "Classic", "release": "2014-03-11", "cards": 236, "cardsByRarity": "91/79/35/31", "wild": false, "hasPack": true},
- "bas": {"key": "bas", "name": "Basic", "release": "2014-03-11", "cards": 133, "cardsByRarity": "133/0/0/0", "wild": false, "hasPack": false},
-
+ "bar": {"key": "bar", "name": "Forged in the Barrens", "release": "2021-03-30", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},
  "dar": {"key": "dar", "name": "Madness at the Darkmoon Faire", "release": "2020-11-17", "cards": 135, "cardsByRarity": "70/46/25/29", "wild": false, "hasPack": true},
  "sch": {"key": "sch", "name": "Scholomance Academy", "release": "2020-08-06", "cards": 135, "cardsByRarity": "52/35/23/25", "wild": false, "hasPack": true},
  "aoo": {"key": "aoo", "name": "Ashes of Outland", "release": "2020-04-07", "cards": 135, "cardsByRarity": "52/35/23/25", "wild": false, "hasPack": true},
- "dod": {"key": "dod", "name": "Descent of Dragons", "release": "2019-12-10", "cards": 140, "cardsByRarity": "49/36/27/27", "wild": false, "hasPack": true},
- "sou": {"key": "sou", "name": "Saviors of Uldum", "release": "2019-08-06", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": false, "hasPack": true},
- "ros": {"key": "ros", "name": "Rise of Shadows", "release": "2019-04-09", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": false, "hasPack": true},
 
+ "dod": {"key": "dod", "name": "Descent of Dragons", "release": "2019-12-10", "cards": 140, "cardsByRarity": "49/36/27/27", "wild": true, "hasPack": true},
+ "sou": {"key": "sou", "name": "Saviors of Uldum", "release": "2019-08-06", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
+ "ros": {"key": "ros", "name": "Rise of Shadows", "release": "2019-04-09", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
  "rkr": {"key": "rkr", "name": "Rastakhan's Rumble", "release": "2018-12-04", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
  "bdp": {"key": "bdp", "name": "The Boomsday Project", "release": "2018-08-07", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
  "wwd": {"key": "wwd", "name": "The Witchwood", "release": "2018-04-12", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
@@ -24,5 +22,6 @@
  "gvg": {"key": "gvg", "name": "Goblins vs Gnomes", "release": "2014-12-08", "cards": 123, "cardsByRarity": "40/37/26/20", "wild": true, "hasPack": true},
  "nax": {"key": "nax", "name": "Curse of Naxxramas", "release": "2014-07-22", "cards": 30, "cardsByRarity": "18/4/2/6", "wild": true, "hasPack": false},
 
- "hof": {"key": "hof", "name": "Hall of Fame", "release": "2017-04-17", "cards": 21, "cardsByRarity": "5/5/5/7", "wild": true, "hasPack": false}
+ "cla": {"key": "cla", "name": "Classic", "release": "2014-03-11", "cards": 236, "cardsByRarity": "91/79/35/31", "wild": false, "hasPack": true},
+ "bas": {"key": "bas", "name": "Basic", "release": "2014-03-11", "cards": 133, "cardsByRarity": "133/0/0/0", "wild": false, "hasPack": false},
 }
