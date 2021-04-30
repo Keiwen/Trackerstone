@@ -23,5 +23,5 @@
  "nax": {"key": "nax", "name": "Curse of Naxxramas", "release": "2014-07-22", "cards": 30, "cardsByRarity": "18/4/2/6", "wild": true, "hasPack": false},
 
  "cla": {"key": "cla", "name": "Classic", "release": "2014-03-11", "cards": 236, "cardsByRarity": "91/79/35/31", "wild": false, "hasPack": true},
- "bas": {"key": "bas", "name": "Basic", "release": "2014-03-11", "cards": 133, "cardsByRarity": "133/0/0/0", "wild": false, "hasPack": false},
+ "bas": {"key": "bas", "name": "Basic", "release": "2014-03-11", "cards": 133, "cardsByRarity": "133/0/0/0", "wild": false, "hasPack": false}
 }
