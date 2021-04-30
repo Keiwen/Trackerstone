@@ -139,9 +139,7 @@
       }
     },
     mounted () {
-      if (this.cardsetWithPack['cla']) {
-        this.currentSet = this.cardsetWithPack['cla']
-      }
+      this.currentSet = Object.values(this.cardsetWithPack).shift()
     },
     methods: {
       ...mapActions(['openPack']),
