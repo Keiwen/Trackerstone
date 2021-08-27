@@ -5,7 +5,7 @@
     "rankLossCount": 40,
     "maxRank": 0,
     "minRank": 50,
-    "rankBonusCanceled": 0
+    "rankBonusCanceled": 5
   },
   "arena": {
     "maxWin": 12,

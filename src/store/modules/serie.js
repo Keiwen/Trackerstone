@@ -143,7 +143,7 @@ const getters = {
     while (rank > targetRank) {
       winStreak++
       let nextWinStars = 1 * starsMult
-      if (winStreak >= Constants.serie.winStreak) nextWinStars = nextWinStars * 2
+      if (winStreak >= Constants.serie.winStreak && rank > Constants.serie.rankBonusCanceled) nextWinStars = nextWinStars * 2
       while ((stars + nextWinStars) > Ranks[rank].stars) {
         nextWinStars -= Ranks[rank].stars - stars
         rank--
@@ -254,7 +254,7 @@ const actions = {
   },
   win ({dispatch, commit, state, getters}, number) {
     if (typeof number === 'undefined') number = 1 // default is 1 win
-    const rank = getters.currentStars
+    const rank = getters.currentRank
     const starsMult = getters.currentStarsMult
     const winStreak = getters.currentWinStreak
     let starGain = number * starsMult
