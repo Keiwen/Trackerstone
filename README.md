@@ -2,7 +2,7 @@
 
 <a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it on web browser</a> and get mobile app (see below)! (Oh, seems to have some issues with IE)
 
-Current version is 0.10.5 new ranked system (require hard reset for old users).
+Current version is 0.10.6 new ranked system (require hard reset for old users).
 Reworked design is still in progress.
 
 Lastest card set included: United in Stormwind (released 2021-08-04)
