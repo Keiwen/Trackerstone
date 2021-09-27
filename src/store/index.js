@@ -212,8 +212,13 @@ export default new Vuex.Store({
       dispatch('addSuccess', 'Data imported')
       return true
     },
-    switchWildMode ({commit}) {
+    switchWildMode ({state, commit}) {
       commit(types.SWITCH_WILD_MODE)
+      commit(types.SWITCH_DECK, state.serie.wildMode)
+    },
+    chooseDeck ({commit, state}, deckId) {
+      const payload = {'deckId': deckId, 'wildMode': state.serie.wildMode}
+      commit(types.CHOOSE_DECK, payload)
     },
     win ({dispatch}) {
       dispatch('storeGame', true)

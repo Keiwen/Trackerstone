@@ -31,6 +31,11 @@
     computed: {
       ...mapGetters(['current'])
     },
+    watch: {
+      current (newValue) {
+        this.pick = newValue.id
+      }
+    },
     mounted () {
       this.pick = this.current.id
     },

@@ -30,6 +30,8 @@ const state = {
     'warrior': 'garrosh'
   },
   current: 0,
+  currentStandard: 0,
+  currentWild: 0,
   opponent: 0,
   currentArena: {},
   opponentArena: {},
@@ -135,9 +137,6 @@ const actions = {
   removeDeck ({commit, state}, deckId) {
     commit(types.REMOVE_DECK, deckId)
   },
-  chooseDeck ({commit, state}, deckId) {
-    commit(types.CHOOSE_DECK, deckId)
-  },
   addDeckType ({dispatch, commit, state}, deckTypeData) {
     if (!deckTypeData.hsClass) {
       dispatch('addError', 'No class selected')
@@ -211,13 +210,24 @@ const mutations = {
   [types.SET_DECK_NEXTID] (state, nextId) {
     state.nextId = nextId
   },
-  [types.CHOOSE_DECK] (state, id) {
-    if (typeof state.own[id] === 'undefined') return
-    state.current = parseInt(id)
+  [types.CHOOSE_DECK] (state, payload) {
+    if (typeof state.own[payload.deckId] === 'undefined') return
+    state.current = parseInt(payload.deckId)
+    if (payload.wildMode) {
+      state.currentWild = state.current
+    } else {
+      state.currentStandard = state.current
+    }
+  },
+  [types.SWITCH_DECK] (state, wildMode) {
+    if (wildMode) {
+      state.current = state.currentWild
+    } else {
+      state.current = state.currentStandard
+    }
   },
   [types.CHOOSE_OPPONENT] (state, type) {
     if (typeof type === 'object') type = type.id
-    console.log('pick opponent', type)
     state.opponent = type
   },
   [types.CHOOSE_DECK_ARENA] (state, id) {
