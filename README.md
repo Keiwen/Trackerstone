@@ -5,7 +5,7 @@
 Current version is 0.10.6 new ranked system (require hard reset for old users).
 Reworked design is still in progress.
 
-Lastest card set included: United in Stormwind (released 2021-08-04)
+Lastest card set included: Fractured in Alterac Valley (released 2021-12-07)
 
 > Please note that this project is an experiment with VueJS framework and Progressive Web App, maintained on free-time without guarantee :)
 
