@@ -1,11 +1,12 @@
 {
+ "vsc": {"key": "vsc", "name": "Voyage to the Sunken City", "release": "2022-04-12", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},
  "fav": {"key": "fav", "name": "Fractured in Alterac Valley", "release": "2021-12-07", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},
  "uis": {"key": "uis", "name": "United in Stormwind", "release": "2021-08-04", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},
  "bar": {"key": "bar", "name": "Forged in the Barrens", "release": "2021-03-30", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},
- "dar": {"key": "dar", "name": "Madness at the Darkmoon Faire", "release": "2020-11-17", "cards": 135, "cardsByRarity": "70/46/25/29", "wild": false, "hasPack": true},
- "sch": {"key": "sch", "name": "Scholomance Academy", "release": "2020-08-06", "cards": 135, "cardsByRarity": "52/35/23/25", "wild": false, "hasPack": true},
- "aoo": {"key": "aoo", "name": "Ashes of Outland", "release": "2020-04-07", "cards": 135, "cardsByRarity": "52/35/23/25", "wild": false, "hasPack": true},
 
+ "dar": {"key": "dar", "name": "Madness at the Darkmoon Faire", "release": "2020-11-17", "cards": 135, "cardsByRarity": "70/46/25/29", "wild": true, "hasPack": true},
+ "sch": {"key": "sch", "name": "Scholomance Academy", "release": "2020-08-06", "cards": 135, "cardsByRarity": "52/35/23/25", "wild": true, "hasPack": true},
+ "aoo": {"key": "aoo", "name": "Ashes of Outland", "release": "2020-04-07", "cards": 135, "cardsByRarity": "52/35/23/25", "wild": true, "hasPack": true},
  "dod": {"key": "dod", "name": "Descent of Dragons", "release": "2019-12-10", "cards": 140, "cardsByRarity": "49/36/27/27", "wild": true, "hasPack": true},
  "sou": {"key": "sou", "name": "Saviors of Uldum", "release": "2019-08-06", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},
  "ros": {"key": "ros", "name": "Rise of Shadows", "release": "2019-04-09", "cards": 135, "cardsByRarity": "49/36/27/23", "wild": true, "hasPack": true},

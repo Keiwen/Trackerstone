@@ -5,7 +5,7 @@
 Current version is 0.10.6 new ranked system (require hard reset for old users).
 Reworked design is still in progress.
 
-Lastest card set included: Fractured in Alterac Valley (released 2021-12-07)
+Lastest card set included: Voyage to the Sunken City (released 2022-04-12)
 
 > Please note that this project is an experiment with VueJS framework and Progressive Web App, maintained on free-time without guarantee :)
 
