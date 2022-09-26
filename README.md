@@ -5,7 +5,7 @@
 Current version is 0.10.6 new ranked system (require hard reset for old users).
 Reworked design is still in progress.
 
-Lastest card set included: Voyage to the Sunken City (released 2022-04-12)
+Lastest card set included: Murder at Castle Nathria (released 2022-08-02)
 
 > Please note that this project is an experiment with VueJS framework and Progressive Web App, maintained on free-time without guarantee :)
 

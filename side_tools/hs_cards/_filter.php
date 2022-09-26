@@ -1,7 +1,7 @@
 <?php
 
 echo PHP_EOL."Input reading...";
-$contentJson = file_get_contents('./JSON_HearthSim.json');
+$contentJson = file_get_contents('./cards.collectible.json');
 //$contentJson = iconv("CP1257","UTF-8", $contentJson);
 $cardList = json_decode($contentJson, true);
 $filteredCards = array();

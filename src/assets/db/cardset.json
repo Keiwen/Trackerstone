@@ -1,4 +1,5 @@
 {
+ "mcn": {"key": "mcn", "name": "Murder at Castle Nathria", "release": "2022-08-02", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},
  "vsc": {"key": "vsc", "name": "Voyage to the Sunken City", "release": "2022-04-12", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},
  "fav": {"key": "fav", "name": "Fractured in Alterac Valley", "release": "2021-12-07", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},
  "uis": {"key": "uis", "name": "United in Stormwind", "release": "2021-08-04", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},

@@ -17,7 +17,9 @@
         "HERO_10p": "Sabertender Illidan",
         "HERO_10q": "Nightborne Aranna",
         "HERO_10r": "Mrrgillidan",
-        "HERO_10s": "Illhoof Illidan"
+        "HERO_10s": "Illhoof Illidan",
+        "HERO_10t": "Felfirework Aranna",
+        "HERO_10u": "Songstress Aranna"
     },
     "druid": {
         "HERO_06": "Malfurion Stormrage",
@@ -41,7 +43,10 @@
         "HERO_06t": "Cherry Blossom Lunara",
         "HERO_06u": "Ambassador Faelin",
         "HERO_06v": "Sea Dryad Lunara",
-        "HERO_06w": "Guff Murtotem"
+        "HERO_06w": "Guff Murtotem",
+        "HERO_06x": "Fireflower Lunara",
+        "HERO_06y": "Ardenweald Lunara",
+        "HERO_06z": "Magical Guardian Elise"
     },
     "hunter": {
         "HERO_05": "Rexxar",
@@ -62,12 +67,18 @@
         "HERO_05q": "Snowflipper Rexxar",
         "HERO_05r": "Black Ox Rexxar",
         "HERO_05t": "Denwatcher Rexxar",
-        "HERO_05u": "Naga Sylvanas"
+        "HERO_05u": "Naga Sylvanas",
+        "HERO_05v": "Flameshot Sylvanas",
+        "HERO_05w": "Sanguine Sylvanas"
     },
     "mage": {
         "HERO_08": "Jaina Proudmoore",
         "HERO_08a": "Medivh",
+        "HERO_08aa": "Kael'thas Sunstrider",
         "HERO_08ab": "Navigator Khadgar",
+        "HERO_08ac": "Reveler Kael'thas",
+        "HERO_08ad": "Wicked Prince Kael'thas",
+        "HERO_08ag": "Kel'Thuzad, the Inevitable",
         "HERO_08b": "Khadgar",
         "HERO_08c": "Fire Mage Jaina",
         "HERO_08d": "Celeste",
@@ -114,7 +125,10 @@
         "HERO_04s": "Greench Uther",
         "HERO_04u": "Leeroy Jenkins",
         "HERO_04v": "Admiral Liadrin",
-        "HERO_04w": "Sir Finley Mrrgglton"
+        "HERO_04w": "Sir Finley Mrrgglton",
+        "HERO_04x": "Fire Glaive Liadrin",
+        "HERO_04y": "Venthyr Liadrin",
+        "HERO_04z": "Bold Guardian Liadrin"
     },
     "priest": {
         "HERO_09": "Anduin Wrynn",
@@ -134,7 +148,10 @@
         "HERO_09o": "Ice Lady Tyrande",
         "HERO_09q": "Little Lion Anduin",
         "HERO_09r": "Handmaiden Tyrande",
-        "HERO_09s": "Butler Anduin"
+        "HERO_09s": "Butler Anduin",
+        "HERO_09t": "Torchbearer Tyrande",
+        "HERO_09u": "Kyrian Tyrande",
+        "HERO_09v": "Love Guardian Tyrande"
     },
     "rogue": {
         "HERO_03": "Valeera Sanguinar",
@@ -153,11 +170,15 @@
         "HERO_03o": "Valeera the Nice",
         "HERO_03q": "Garden Party Valeera",
         "HERO_03s": "Garona Halforcen",
-        "HERO_03u": "Mariner Maiev"
+        "HERO_03t": "Vendor Maiev",
+        "HERO_03u": "Mariner Maiev",
+        "HERO_03x": "Suspect Maiev"
     },
     "shaman": {
         "HERO_02": "Thrall",
         "HERO_02a": "Morgl the Oracle",
+        "HERO_02aa": "Baroness Vashj",
+        "HERO_02ab": "Morgl Holmes",
         "HERO_02b": "King Rastakhan",
         "HERO_02c": "The Thunder King",
         "HERO_02d": "Warchief Thrall",
@@ -179,7 +200,8 @@
         "HERO_02u": "Jade Serpent Thrall",
         "HERO_02w": "Deepsea Morgl",
         "HERO_02x": "Kaldorei Vashj",
-        "HERO_02y": "Murragnaros"
+        "HERO_02y": "Murragnaros",
+        "HERO_02z": "Juggler Morgl"
     },
     "warlock": {
         "HERO_07": "Gul'dan",
@@ -200,7 +222,10 @@
         "HERO_07p": "Mogu'shan Gul'dan",
         "HERO_07r": "Hatcher Gul'dan",
         "HERO_07s": "Diver Nemsy",
-        "HERO_07t": "Feast Nemsy"
+        "HERO_07t": "Feast Nemsy",
+        "HERO_07u": "Sparkspinner Nemsy",
+        "HERO_07v": "Scullery Nemsy",
+        "HERO_07w": "Sparkle Guardian Nemsy"
     },
     "warrior": {
         "HERO_01": "Garrosh Hellscream",
@@ -221,6 +246,10 @@
         "HERO_01p": "Forge-wrought Garrosh",
         "HERO_01q": "Greatfather Winter Magni",
         "HERO_01s": "Garrosh the Wild",
-        "HERO_01t": "Shipwrecked Magni"
+        "HERO_01t": "Shipwrecked Magni",
+        "HERO_01u": "Roaster Magni",
+        "HERO_01v": "Sire Denathrius",
+        "HERO_01w": "Prince Renathal",
+        "HERO_01x": "Garrosh the Chained"
     }
 }
