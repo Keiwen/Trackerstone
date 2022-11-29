@@ -132,5 +132,9 @@
             background-position: -280px -400px;
         }
 
+        &.death_knight::before {
+          background-position: -160px -400px;
+        }
+
     }
 </style>

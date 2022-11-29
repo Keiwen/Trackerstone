@@ -85,7 +85,7 @@
       background-position: -40px -400px;
     }
 
-    .hero-dk {
+    .hero-death_knight {
       background-position: -160px -400px;
     }
 

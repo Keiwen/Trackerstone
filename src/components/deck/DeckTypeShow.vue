@@ -183,6 +183,10 @@
             background-position: -280px -400px;
         }
 
+        &-death_knight .profil {
+          background-position: -160px -400px;
+        }
+
     }
 
     .deckCardBackground {
