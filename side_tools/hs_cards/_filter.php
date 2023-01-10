@@ -44,11 +44,30 @@ foreach($cardList as $card) {
 		}
 		$filteredHeroes[$heroClass][$card['id']] = $card['name'];
 	} else {
-		$filteredCards[$card['id']] = $card['name'];
+    $filteredCards[$card['id']] = $card['name'];
 	}
 }
 asort($filteredCards);
 ksort($filteredHeroes);
+
+/** MERC */
+$mercJson = file_get_contents('./mercenaries.json');
+$mercList = json_decode($mercJson, true);
+$filteredMerc = array();
+if (!$mercJson) {
+  echo PHP_EOL."Fail to read mercenaries input";
+  exit;
+}
+if (!count($mercList)) {
+  echo PHP_EOL."Error in mercenaries JSON decode: ".json_last_error_msg();
+  exit;
+}
+echo PHP_EOL."Filtering ".count($mercList)." mercenaries...";
+foreach($mercList as $merc) {
+  if ($merc['collectible']) {
+    $filteredMerc[$merc['id']] = $merc['name'];
+  }
+}
 
 //echo PHP_EOL."Debugging...";
 //echo PHP_EOL.implode("; ", array_keys($debug['sets']));
@@ -59,5 +78,7 @@ echo PHP_EOL."   => ".count($filteredCards)." cards...";
 file_put_contents('filteredCards.json', json_encode($filteredCards, JSON_PRETTY_PRINT));
 echo PHP_EOL."   => ".$heroCounter." heroes...";
 file_put_contents('filteredHeroes.json', json_encode($filteredHeroes, JSON_PRETTY_PRINT));
+echo PHP_EOL."   => ".count($filteredMerc)." mercenaries...";
+file_put_contents('filteredMerc.json', json_encode($filteredMerc, JSON_PRETTY_PRINT));
 echo PHP_EOL."Files generated";
 echo PHP_EOL;
