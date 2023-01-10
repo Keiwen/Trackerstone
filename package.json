@@ -1,6 +1,6 @@
 {
   "name": "Trackerstone",
-  "version": "0.10.7",
+  "version": "0.10.8",
   "description": "Simple Hearthstone tracker",
   "author": "Keiwen <keiwen.mk@gmail.com>",
   "private": true,
