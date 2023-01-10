@@ -6,7 +6,7 @@ $contentJson = file_get_contents('./cards.collectible.json');
 $cardList = json_decode($contentJson, true);
 $filteredCards = array();
 $filteredHeroes = array(
-	'demon_hunter' => array(), 'druid' => array(), 'hunter' => array(), 'mage' => array(), 'paladin' => array(), 
+	'demon_hunter' => array(), 'druid' => array(), 'hunter' => array(), 'mage' => array(), 'paladin' => array(),
 	'priest' => array(), 'rogue' => array(), 'shaman' => array(), 'warlock' => array(), 'warrior' => array(),
 );
 $heroCounter = 0;
@@ -22,11 +22,11 @@ echo PHP_EOL."Filtering ".count($cardList)." cards...";
 
 $debug = array('sets' => array(), 'names' => array());
 foreach($cardList as $card) {
-	$debug['sets'][$card['set']] = true;
+  if (!empty($card['set'])) $debug['sets'][$card['set']] = true;
 	if(strpos($card['id'], 'CORE_') !== false) continue;
 	if(strpos($card['id'], 'VAN_') !== false) continue;
 	if(strpos($card['id'], 'tt_') !== false) continue;
-	if($card['set'] == 'HERO_SKINS') {
+	if(!empty($card['set']) && $card['set'] == 'HERO_SKINS') {
 		$heroCounter++;
 		switch(true) {
 			case (strpos($card['id'], 'HERO_01') !== false): $heroClass = 'warrior'; break;
@@ -38,7 +38,8 @@ foreach($cardList as $card) {
 			case (strpos($card['id'], 'HERO_07') !== false): $heroClass = 'warlock'; break;
 			case (strpos($card['id'], 'HERO_08') !== false): $heroClass = 'mage'; break;
 			case (strpos($card['id'], 'HERO_09') !== false): $heroClass = 'priest'; break;
-			case (strpos($card['id'], 'HERO_10') !== false): $heroClass = 'demon_hunter'; break;
+      case (strpos($card['id'], 'HERO_10') !== false): $heroClass = 'demon_hunter'; break;
+      case (strpos($card['id'], 'HERO_11') !== false): $heroClass = 'death_knight'; break;
 			default: $heroClass = ''; break;
 		}
 		$filteredHeroes[$heroClass][$card['id']] = $card['name'];
