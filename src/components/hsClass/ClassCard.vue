@@ -93,4 +93,7 @@
       background-position: -280px -400px;
     }
 
+    .hero-neutral {
+      background-position: -40px -520px;
+    }
 </style>

@@ -34,5 +34,8 @@
    "heroes": ["guldan", "nemsy", "jaraxxus"]},
  "warrior": {
    "id": "warrior", "name": "Warrior", "backgroundColor": "#750F1E",
-   "heroes": ["garrosh", "magni", "deathwing"]}
+   "heroes": ["garrosh", "magni", "deathwing"]},
+  "neutral": {
+    "id": "neutral", "name": "Neutral", "backgroundColor": "#000000",
+    "heroes": []}
 }

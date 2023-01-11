@@ -1,6 +1,7 @@
 <template>
     <div class="row class-spread">
-        <div class="col-xs-3 col-sm-3" v-for="(hsClass, key) in classes" v-if="key || allowNone">
+        <div class="col-xs-3 col-sm-3" v-for="(hsClass, key) in classes"
+             v-if="key && allowNeutral || key && key !== 'neutral' || allowNone && (!key || key !== 'neutral') || allowNone && allowNeutral">
             <class-card :hsClass="hsClass" @hero-click="pickClass" />
         </div>
     </div>
@@ -15,6 +16,10 @@
     components: {ClassCard},
     props: {
       allowNone: {
+        type: Boolean,
+        default: false
+      },
+      allowNeutral: {
         type: Boolean,
         default: false
       }

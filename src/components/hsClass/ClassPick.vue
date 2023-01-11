@@ -2,7 +2,7 @@
     <span>
         <button class="btn btn-default btn-class" :class="btnClass" @click="openClassSpread()" :disabled="disabled">{{ btnText }}</button>
         <sweet-modal ref="modalClassPick" overlay-theme="dark" title="Pick class">
-            <class-spread @pick-class="classPicked" :allowNone="allowNone" />
+            <class-spread @pick-class="classPicked" :allowNone="allowNone" :allowNeutral="allowNeutral" />
         </sweet-modal>
     </span>
 
@@ -26,6 +26,10 @@
         default: false
       },
       allowNone: {
+        type: Boolean,
+        default: false
+      },
+      allowNeutral: {
         type: Boolean,
         default: false
       }
@@ -90,6 +94,10 @@
             left: -74px;
             top: -25px;
             background: url('../../assets/icones_classes.png') 0 0 no-repeat;
+        }
+
+        &.neutral::before {
+          background-position: -40px -520px;
         }
 
         &.hunter::before {
