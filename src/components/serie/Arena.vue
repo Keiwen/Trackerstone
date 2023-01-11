@@ -19,7 +19,7 @@
             <arena-prize></arena-prize>
             <div class="newArena container">
                 <div class="col-xs-6">
-                    <class-pick @pick-class="pickClass" />
+                    <class-pick @pick-class="pickClass" :allowNeutral="true" />
                 </div>
                 <div class="col-xs-6">
                     <button @click="newArena()" class="btn btn-success" :disabled="!newClass">Enter arena</button>

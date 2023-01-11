@@ -4,11 +4,11 @@
         <div class="container">
             <div class="col-xs-6">
                 <h3>Current class</h3>
-                <class-pick :initialPick="currentArena.id" :disabled="true"/>
+                <class-pick :initialPick="currentArena.id" :disabled="true" />
             </div>
             <div class="col-xs-6">
                 <h3>Opponent class</h3>
-                <class-pick @pick-class="pickOpponentClass" :initialPick="opponentArena.id" />
+                <class-pick @pick-class="pickOpponentClass" :initialPick="opponentArena.id" :allowNeutral="true" />
             </div>
         </div>
 
