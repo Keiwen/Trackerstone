@@ -232,6 +232,42 @@
         &-illidan .profil {
             background-position: -675px -3075px;
         }
+        &-lichking .profil {
+          background-position: -75px -3375px;
+        }
+        &-demonbane .profil {
+          background-position: -375px -3375px;
+        }
+        &-cenarion .profil {
+          background-position: -675px -3375px;
+        }
+        &-giantstalker .profil {
+          background-position: -75px -3675px;
+        }
+        &-arcanist .profil {
+          background-position: -375px -3675px;
+        }
+        &-lawbringer .profil {
+          background-position: -675px -3675px;
+        }
+        &-prophecy .profil {
+          background-position: -75px -3975px;
+        }
+        &-nightslayer .profil {
+          background-position: -375px -3975px;
+        }
+        &-earthfury .profil {
+          background-position: -675px -3975px;
+        }
+        &-felheart .profil {
+          background-position: -75px -4175px;
+        }
+        &-might .profil {
+          background-position: -375px -4175px;
+        }
+        &-edwin .profil {
+          background-position: -675px -4175px;
+        }
     }
 
 
