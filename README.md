@@ -2,7 +2,7 @@
 
 <a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it on web browser</a> and get mobile app (see below)! (Oh, seems to have some issues with IE)
 
-Current version is 0.10.9 new ranked system (require hard reset for old users).
+Current version is 0.10.10 new ranked system (require hard reset for old users).
 Reworked design is still in progress.
 
 Lastest card set included: March of the Lich King (released 2022-12-06)
