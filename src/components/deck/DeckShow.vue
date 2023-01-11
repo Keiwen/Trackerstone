@@ -260,13 +260,13 @@
           background-position: -675px -3975px;
         }
         &-felheart .profil {
-          background-position: -75px -4175px;
+          background-position: -75px -4275px;
         }
         &-might .profil {
-          background-position: -375px -4175px;
+          background-position: -375px -4275px;
         }
         &-edwin .profil {
-          background-position: -675px -4175px;
+          background-position: -675px -4275px;
         }
     }
 
