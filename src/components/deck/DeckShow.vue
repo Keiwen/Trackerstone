@@ -98,7 +98,7 @@
             left: -63%;
             top: -45px;
             transform: scale(0.4);
-            background: url('../../assets/classes_sprite.png') 0 0 no-repeat;
+            background: url('../../assets/heroskin_sprite.png') 0 0 no-repeat;
             background-position: -75px -975px;
         }
 
