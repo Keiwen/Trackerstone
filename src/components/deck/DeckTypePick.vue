@@ -68,7 +68,6 @@
 
 <style lang="scss" scoped>
     .deckTypePicker {
-        margin-top: 5px;
         margin-left: 10px;
     }
 
