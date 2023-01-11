@@ -13,7 +13,7 @@
             <p>
                 Next chest in <strong>{{ winsToNextChest }}</strong>
                 <span v-if="winsToNextChest === 1">win</span>
-                <span v-else>consecutive wins</span>
+                <span v-else>wins</span>
             </p>
         </div>
 
