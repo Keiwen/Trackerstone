@@ -322,6 +322,9 @@ const actions = {
   },
   setScoreCoef ({state, commit}, scoreCoef) {
     commit(types.SET_SCORE_COEF, scoreCoef)
+  },
+  resetArena ({commit}) {
+    commit(types.RESET_ARENA_HISTORY)
   }
 }
 
@@ -352,6 +355,9 @@ const mutations = {
     } else {
       state.history.push(history)
     }
+  },
+  [types.RESET_ARENA_HISTORY] (state) {
+    state.historyArena = []
   },
   [types.SET_ARENA_HISTORY] (state, history) {
     state.historyArena = history

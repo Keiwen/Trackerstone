@@ -27,6 +27,15 @@
             </div>
             <hr/>
             <arena-stats/>
+            <div class="container">
+              <div class="row">
+                <confirmation-modal
+                  @modal-confirm="resetArena()"
+                  modalText="Are you sure you want to reset arena? History for past arena runs will be loss"
+                  buttonText="Reset arena history" iconName=""
+                />
+              </div>
+            </div>
         </div>
 
     </div>
@@ -53,7 +62,7 @@
       ...mapGetters(['arenaOpen'])
     },
     methods: {
-      ...mapActions(['closeArena', 'chooseDeckArena', 'openArena']),
+      ...mapActions(['closeArena', 'chooseDeckArena', 'openArena', 'resetArena']),
       pickClass (pick) {
         this.newClass = pick
       },
