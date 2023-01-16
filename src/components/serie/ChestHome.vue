@@ -89,7 +89,7 @@
         display: inline-block;
         background: url('../../assets/chest_sprite.png') 0 0 no-repeat;
         background-position: 0 0;
-        margin-left: 80px;
+        margin-left: 50px;
         &.serieChest-45 {
           background-position: 0 -80px;
         }

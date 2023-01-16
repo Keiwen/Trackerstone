@@ -50,7 +50,7 @@
             background: url('../../assets/ranks_sprite.png') 0 0 no-repeat;
             width: 80px;
             height: 100px;
-            margin-left: 50px;
+            margin-left: 30px;
             &.rank-50 {
               background-position: 0 0;
             }
