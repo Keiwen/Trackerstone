@@ -79,6 +79,10 @@
 
 <style lang="scss" scoped>
 
+    .chesthome {
+      margin-bottom: -10px;
+    }
+
     .serieChest {
         width: 110px;
         height: 80px;
