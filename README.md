@@ -1,9 +1,8 @@
 # Trackerstone
 
-<a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it on web browser</a> and get mobile app (see below)! (Oh, seems to have some issues with IE)
+<a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it on web browser</a> and get mobile app! (see below)
 
-Current version is 0.10.11 new ranked system (require hard reset for old users).
-Reworked design is still in progress.
+Current version is 1.0.0 with reworked design.
 
 Lastest card set included: March of the Lich King (released 2022-12-06)
 
@@ -28,32 +27,31 @@ Simple Hearthstone tracker. Just track your win and loss. On app you'll find:
 - charts on rank progress, deck winrates
 - set notes on deck types
 - import deck types from server
-- arena tracker (and gold refund)
+- arena/duel tracker (and gold refund)
 - card pack opening stats
 
 Next steps:
-- Redesign main page to go on first app release
+- ...
 
 ## Mobile app
 Trackerstone is a Progressive Web Application, meaning that it's designed to work both on web browser and mobile app.
 
 With your mobile device, go on <a target="_blank" href="https://keiwen.github.io/Trackerstone/">Trackerstone page</a>, then:
+- You have a smart browser, it will ask you by itself if you want to add Trackerstone.
 
-1) You have a smart browser, it will ask you by itself if you want to add Trackerstone.
-
-2) Basic way: open the menu and select "add to home screen".
+- Or basic way: open the menu and select "add to home screen".
 
 Now you can just click on the Trackerstone icon on your device to open a fullscreen application!
 
 Mobile app orientation is landscape defined, as you should use Hearthstone game landscape as well.
 
+Note: according to your phone configuration, switching on app may reload Hearthstone game.
+
 ## Card background
 Deck type and deck now have a card illustration on their background.
 These illustrations are coming form <a target="_blank" href="https://github.com/HearthSim/hsdata">HS Data project</a>.
 You can change this illustrations by selecting the desired card name
-when editing deck type or deck
-
-Note that this feature may be disabled if project API is not up to date.
+when editing deck type or deck.
 
 ## Build Setup
 
