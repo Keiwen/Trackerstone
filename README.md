@@ -4,7 +4,7 @@
 
 Current version is 1.0.0 with reworked design.
 
-Lastest card set included: TITANS (released 2023-08-02)
+Lastest card set included: Showdown in the Badlands (released 2023-11-14)
 
 > Please note that this project is an experiment with VueJS framework and Progressive Web App, maintained on free-time without guarantee :)
 
