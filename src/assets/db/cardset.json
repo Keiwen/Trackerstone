@@ -1,11 +1,12 @@
 {
+ "wws": {"key": "wws", "name": "Whizbang’s Workshop", "release": "2024-03-20", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},
  "sib": {"key": "sib", "name": "Showdown in the Badlands", "release": "2023-11-14", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},
  "tit": {"key": "tit", "name": "TITANS", "release": "2023-08-02", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},
  "fol": {"key": "fol", "name": "Festival of Legends", "release": "2023-04-11", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},
- "mlk": {"key": "mlk", "name": "March of the Lich King", "release": "2022-12-06", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},
- "mcn": {"key": "mcn", "name": "Murder at Castle Nathria", "release": "2022-08-02", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},
- "vsc": {"key": "vsc", "name": "Voyage to the Sunken City", "release": "2022-04-12", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},
 
+ "mlk": {"key": "mlk", "name": "March of the Lich King", "release": "2022-12-06", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": true, "hasPack": true},
+ "mcn": {"key": "mcn", "name": "Murder at Castle Nathria", "release": "2022-08-02", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": true, "hasPack": true},
+ "vsc": {"key": "vsc", "name": "Voyage to the Sunken City", "release": "2022-04-12", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": true, "hasPack": true},
  "fav": {"key": "fav", "name": "Fractured in Alterac Valley", "release": "2021-12-07", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": true, "hasPack": true},
  "uis": {"key": "uis", "name": "United in Stormwind", "release": "2021-08-04", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": true, "hasPack": true},
  "bar": {"key": "bar", "name": "Forged in the Barrens", "release": "2021-03-30", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": true, "hasPack": true},
