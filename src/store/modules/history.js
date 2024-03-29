@@ -7,8 +7,8 @@ const state = {
   wildMode: false,
   history: [],
   historyWild: [],
-  historyArena: [],
-  completedArena: [],
+  historyArena: [], // list of all games, mixed from any run
+  completedArena: [], // data of each arena run
   recentNumberGames: 10,
   // score is win percent multiplied by function a/(1+(b/(x^3)))
   // x = games count
@@ -358,6 +358,7 @@ const mutations = {
   },
   [types.RESET_ARENA_HISTORY] (state) {
     state.historyArena = []
+    state.completedArena = []
   },
   [types.SET_ARENA_HISTORY] (state, history) {
     state.historyArena = history
