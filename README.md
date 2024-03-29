@@ -2,7 +2,7 @@
 
 <a target="_blank" href="https://keiwen.github.io/Trackerstone/">Try it on web browser</a> and get mobile app! (see below)
 
-Current version is 1.0.0 with reworked design.
+Current version is 1.0.1 with reworked design.
 
 Lastest card set included: Whizbang’s Workshop (released 2024-03-20)
 
