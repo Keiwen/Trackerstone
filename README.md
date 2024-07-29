@@ -4,7 +4,7 @@
 
 Current version is 1.0.1 with reworked design.
 
-Lastest card set included: Whizbang’s Workshop (released 2024-03-20)
+Lastest card set included: Perils in Paradise (released 2024-07-23)
 
 > Please note that this project is an experiment with VueJS framework and Progressive Web App, maintained on free-time without guarantee :)
 
