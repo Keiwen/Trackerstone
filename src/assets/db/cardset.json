@@ -1,4 +1,5 @@
 {
+ "gdb": {"key": "gdb", "name": "The Great Dark Beyond", "release": "2024-11-06", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},
  "pip": {"key": "pip", "name": "Perils in Paradise", "release": "2024-07-23", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},
  "wws": {"key": "wws", "name": "Whizbang’s Workshop", "release": "2024-03-20", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},
  "sib": {"key": "sib", "name": "Showdown in the Badlands", "release": "2023-11-14", "cards": 135, "cardsByRarity": "50/35/25/25", "wild": false, "hasPack": true},
